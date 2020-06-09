@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>IFD Requests</title>
+<script src="https://get.mavo.io/mavo.js"></script>
+<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
+</head>
+<body>
+
+    <div
+		mv-app="ifdr"
+		mv-firebase="auth"
+		mv-bir="status login logout"
+		mv-plugins="firebase-firestore"
+		mv-storage="https://mavo-cd7c3.firebaseio.com/"
+		mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+		>
+		<ul>
+			<li mv-multiple property="session">
+				Name: <span property="name"></span>
+				ID: <span property="sid"></span>
+			</li>
+		</ul>
+	</div>
+
+<!--    <div
+		mv-app="pick"
+		mv-firebase="auth"
+		mv-bir="status login logout"
+		mv-plugins="firebase-firestore"
+		mv-storage="https://mavo-cd7c3.firebaseio.com/mavo-apps/ifdr"
+		mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+		data-user-app="picks"
+		>-->
+		<div mv-app="picks" mv-storage="local">
+		Choose session:
+		<div mv-multiple mv-group mv-value="ifdr.session"></div>
+		<select property="mysid" mv-default="[url(sid)]">
+			<option mv-multiple value="[sid]" mv-value="ifdr.session">[name]</option>
+		</select>
+	</div>
+</body>
+<script src="user.js"></script>
+</html>
