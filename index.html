@@ -1,47 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+	<head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<title>IFD Requests</title>
-<script src="https://get.mavo.io/mavo.js"></script>
-<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
-</head>
-<body>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>IFD Requests</title>
+		<script src="https://get.mavo.io/mavo.js"></script>
+		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
+	<script src="user.js"></script>
+	<script src="ifd.js"></script>
+	</head>
+	<body>
 
-    <div
-		mv-app="ifdr"
-		mv-firebase="auth"
-		mv-bir="status login logout"
-		mv-plugins="firebase-firestore"
-		mv-storage="https://mavo-cd7c3.firebaseio.com/"
-		mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
-		>
-		<ul>
-			<li mv-multiple property="session">
-				Name: <span property="name"></span>
-				ID: <span property="sid"></span>
-			</li>
-		</ul>
-	</div>
+		<div
+			mv-app="ifdr"
+			mv-firebase="realtime auth"
+			mv-bar="status login logout"
+			mv-plugins="firebase-firestore"
+			mv-storage="https://mavo-cd7c3.firebaseio.com/"
+			mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+			>
+			<ul>
+				<li mv-multiple property="session">
+					Name: <span property="name"></span>
+					ID: <span property="sid"></span>
+				</li>
+			</ul>
+		</div>
+		
+		<div style="display:none" mv-app="dances" mv-storage="none" mv-source="ifd.csv" mv-format="csv">
+			<datalist id="dancelist">
+				<option mv-multiple mv-group property="dance" value="[label]"></option>
+			</datalist>
+		</div>
+		
+		<div
+			data-user-app="picks"
+			mv-firebase="auth realtime"
+			mv-bar="none"
+			mv-plugins="firebase-firestore"
+			mv-autosave="5"
+			mv-storage="https://mavo-cd7c3.firebaseio.com/"
+			mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+			data-user-storage="ifdr-user"
+			>
+			<meta property="lastActive">
+			<div>Your name:</div> <input property="name">
+			<div>Choose session:
+			<div mv-multiple mv-group mv-value="ifdr.session"></div></div>
+			<meta property="signedIn" mv-value="false" mv-storage="none">
+			<button mv-if="!signedIn" mv-action="set(signedIn,true),set(lastActive,+$now)">Sign In</button>
+			<button mv-if="signedIn" mv-action="set(signedIn,false),set(lastActive,0)">Sign Out</button>
+			<select property="mysid" mv-default="[url(sid)] width=40">
+				<option mv-group mv-multiple value="[sid]" mv-value="ifdr.session">[name]</option>
+			</select>
+			<div mv-if="signedIn">
 
-<!--    <div
-		mv-app="pick"
-		mv-firebase="auth"
-		mv-bir="status login logout"
-		mv-plugins="firebase-firestore"
-		mv-storage="https://mavo-cd7c3.firebaseio.com/mavo-apps/ifdr"
-		mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
-		data-user-app="picks"
-		>-->
-		<div mv-app="picks" mv-storage="local">
-		Choose session:
-		<div mv-multiple mv-group mv-value="ifdr.session"></div>
-		<select property="mysid" mv-default="[url(sid)]">
-			<option mv-multiple value="[sid]" mv-value="ifdr.session">[name]</option>
-		</select>
-	</div>
-</body>
-<script src="user.js"></script>
+			<div mv-if="session">
+				Choose a dance (or start typing): <input list="dancelist" property="selection" mv-storage="none">
+				<button mv-action="add(group(label: selection, timestamp: $now),pick); set(lastActive,+$now)">request</button>
+				<h2>Picks</h2>
+				<div mv-multiple property="pick">
+					<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp">
+				</div>
+			</div>
+			</div>
+		</div>
+
+		<div id="requests" mv-app="watchRequests" mv-storage="none">
+			<ul>
+				<li mv-multiple property="requests" mv-value="watchRequests(picks.mysid,'requests')">
+					<span property="label"></span>: <span property="count">.  <span mv-multiple property="names"></span>
+				</li>
+			</ul>
+		</div>
+		
+	</body>
 </html>

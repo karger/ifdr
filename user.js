@@ -5,10 +5,9 @@
 	let uid = firebase.auth().currentUser.uid;
         function userize (elt) {
             mavoElts.set(elt, elt.cloneNode(true));
-	    elt.setAttribute('mv-app',elt.getAttribute('data-user-app'));
+	    elt.setAttribute('mv-app',elt.dataset.userApp);
             elt.setAttribute('mv-storage',
-			     elt.getAttribute('mv-storage')+"/"+
-			     (elt.dataset.userStorage || "user")+"/"+uid);
+			     elt.getAttribute('mv-storage')+elt.dataset.userStorage+"/"+uid);
             new Mavo(elt);
         }
         document.querySelectorAll("[data-user-app]").forEach(userize);
@@ -57,35 +56,3 @@
         }})
 
 })();
-
-function makeTotals (users) {
-    let totals = {}, list=[];
-    for (const uid in users) {
-        const ass = users[uid].assessment;
-        for (const i in ass) {
-            let a = ass[i]
-            if (a.emoji && a.meaning) {
-                if (!totals[a.emoji]) {
-                    totals[a.emoji]={};
-                }
-                if (!totals[a.emoji][a.meaning]) {
-                    totals[a.emoji][a.meaning]={};
-                }
-                if (!totals[a.emoji][a.meaning][a.choice]) {
-                    totals[a.emoji][a.meaning][a.choice]=0;
-                }
-                totals[a.emoji][a.meaning][a.choice]++;
-            }
-        }
-    }
-    for (const emoji in totals) {
-        for (const meaning in emoji) {
-            item = {"emoji": emoji, "meaning": meaning};
-            for (const choice in meaning) {
-                item[choice] = meaning[choice];
-            }
-        }
-        list.push(item);
-    }
-    return list;
-}
