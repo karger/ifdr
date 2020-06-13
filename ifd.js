@@ -4,6 +4,7 @@ let watchers = {};
 let unsubscribe=false;
 
 function watchRequests(sid,eid) {
+    if (console) {console.log(Mavo.value(sid), eid);}
     function parseQuery(querySnapshot) {
 	/* object structure: 
 	   requests = {
@@ -16,12 +17,12 @@ function watchRequests(sid,eid) {
 	   }
 	   }
 	*/
-	let requests={}, results=[];
+	let requests={}, results=[], node=Mavo.Node.get(document.getElementById(eid));
 	querySnapshot.forEach(function(doc) {
 	    let uid = doc.id;
 	    let name = doc.data().name;
 	    let theirs = doc.data().pick;
-	    theirs.foreach(pick => {
+	    theirs.forEach(pick => {
 		if (!requests[pick.label]) {
 		    requests[pick.label] = {count: 0, names: [], uids: {}};
 		}
@@ -34,20 +35,26 @@ function watchRequests(sid,eid) {
 	    });
 	});
 	for (r in requests) {
-	    results.push({label: r, count: requests[r].count, names: names[r].names});
+	    results.push({label: r, count: requests[r].count, names: requests[r].names});
 	}
-	return r;
+	node.render({requests: results});
+	return results;
     };
 
+    sid=Mavo.value(sid);
     Mavo.inited
-	.then(() => {
-	    let query = firebase.firestore().collection('ifdr-user').where('mysid','==',sid)
-		.where('lastActive','>',Date.now()-4*60*60*1000); //4 hours
-	    let node = document.getElementById(eid);
-	    if (unsubscribe) {
-		unsubscribe();
-	    }
-	    unsubscribe = query.onSnapshot(parseQuery)
-	});
-    return [{label: 'test', count: 1, names: ['someone']}];
+	.then(() =>
+	      onFireAuth(() =>
+			 {
+			     if (unsubscribe) {
+				 unsubscribe();
+			     }
+			     if (!sid || !eid) return;
+			     
+			     let query = firebase.firestore().collection('ifdr-user').where('mysid','==',sid)
+				 .where('lastActive','>',Date.now()-4*60*60*1000); //4 hours
+			     let node = document.getElementById(eid);
+ 			     unsubscribe = query.onSnapshot(parseQuery);
+			 }));
+    return [{label: 'test', count: 1, names: ['someone']}]
 }

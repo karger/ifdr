@@ -1,3 +1,14 @@
+function onFireAuth (f) {
+    (function loop () {
+        if (typeof(firebase)!='undefined' && firebase.auth &&
+	    firebase.apps.length > 0 && firebase.auth()) {
+            firebase.auth().onAuthStateChanged(f);
+        } else {
+            setTimeout(loop, 100)
+        }
+    })();
+};
+
 (function () {
     let mavoElts = new WeakMap();
 
@@ -25,16 +36,6 @@
         });
     };
 
-    function onFireAuth (f) {
-        (function loop () {
-            if (typeof(firebase)!='undefined' && firebase.auth && firebase.auth()) {
-                firebase.auth().onAuthStateChanged(f);
-            } else {
-                setTimeout(loop, 100)
-            }
-        })();
-    }
-
     function watchUserData(path, callback, filter = (x=>x)) {
 	function aggregate(querySnapshot) {
 	    let data = [];
@@ -47,6 +48,10 @@
     onFireAuth(function(user) {
         if (user) {
             userizeAll();
+	    Mavo.Actions.run(
+		`set(name,${user.displayName})`,
+		Mavo.Node.get(document.getElementById("name"))
+	    );
             document.body.classList.remove('logged-out');
             document.body.classList.add('logged-in');
         } else {
