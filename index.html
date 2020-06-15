@@ -5,8 +5,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
 		<title>IFD Requests</title>
-		<script src="https://get.mavo.io/mavo.js"></script>
-		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
+		<script src="https://get.mavo.io/stable/mavo.js"></script>
+		<link rel="stylesheet" href="https://get.mavo.io/stable/mavo.css">
 		<script src="user.js"></script>
 		<script src="ifd.js"></script>
 		<style>
@@ -55,7 +55,7 @@
 		
 		<main class="show-logged-in">
 
-			<div
+			<section
 				mv-app="picks"
 				mv-firebase="auth realtime"
 				mv-bar="none"
@@ -94,34 +94,34 @@
 						</div>
 					</div>
 				</div>
-				
-				<div mv-app="showRequests" mv-storage="none" mv-bar="none">
-					<h2>Everyone's Requests</h2>
+			</section>				
 
-					<table class="request-table" id="requestData" property="requestData" mv-storage="none">
-						<tr>
-							<th></th>
-							<th>Dance</th>
-							<th>Count</th>
-							<th mv-if="url('markid')">Who</th>
-						</tr>
-						<tr class="request" mv-multiple property="requests" mv-storage="none">
-							<td><button mv-if="picks.active" mv-action="add(group(label: label, timestamp: +$now),picks.pick); set(lastActive,+$now)">request</button>
-								<button mv-if="url('markid')" mv-action="add(group(label: label, timestamp: +$now),playlist.played); set(lastActive,+$now)">play</button>
-								
-							<td><span class="r-label" property="label"></span>:
-							<td><span class="r-count" property="count"></span>
-							<td mv-if="url('markid')"><span class="r-names" mv-multiple property="names"></span>
-						</tr>
-					</table>
-				</div>
-				
-			</div>
+			<section mv-app="showRequests" mv-storage="none" mv-bar="none">
+				<h2>Everyone's Requests</h2>
 
-			<div 
+				<table class="request-table" id="requestData" property="requestData" mv-storage="none">
+					<tr>
+						<th></th>
+						<th>Dance</th>
+						<th>Count</th>
+						<th mv-if="url('markid')">Who</th>
+					</tr>
+					<tr class="request" mv-multiple property="requests" mv-storage="none">
+						<td><button mv-if="picks.active" mv-action="add(group(label: label, timestamp: +$now),picks.pick); set(lastActive,+$now)">request</button>
+							<button mv-if="url('markid')" mv-action="add(group(label: label, timestamp: +$now),playlist.played); set(lastActive,+$now)">play</button>
+							
+						<td><span class="r-label" property="label"></span>:
+						<td><span class="r-count" property="count"></span>
+						<td mv-if="url('markid')"><span class="r-names" mv-multiple property="names"></span>
+					</tr>
+				</table>
+			</section>
+
+			<section 
 				mv-app="playlist"
 				mv-firebase="auth realtime"
 				mv-plugins="firebase-firestore"
+				mv-bar="none"
 				mv-autosave="0"
 				mv-storage="none"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
@@ -136,7 +136,7 @@
 				<div>
 					<button mv-action="delete(played)">Delete Playlist</button>
 				</div>
-			</div>
+			</section>
 		</main>
 		
 	</body>
