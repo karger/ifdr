@@ -53,6 +53,28 @@ function watchRequests(sid,eid) {
  	unsubscribe = query.onSnapshot(parseQuery);
     });
     return [];
+};
+
+function markPlayed(requests, played) {
+    let map={}, result=[];
+
+    try {
+	played.forEach(p=> {
+	    map[p.label]=true;
+	})
+	requests.forEach(r => {
+	    //	    let s=Object.assign([],r);
+	    let s={label: Mavo.value(r.label),
+		   count: Mavo.value(r.count),
+		   names: Mavo.value(r.names)};
+	    s.played = map[r.label] ? true : false;
+	    result.push(s);
+	})
+	return {requests: result};
+    } catch (e) {
+	return [];
+    }
+    
 }
 
 /*
