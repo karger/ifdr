@@ -7,8 +7,7 @@
 		<title>IFD Requests</title>
 		<script src="https://get.mavo.io/mavo.js"></script>
 		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
-		<script src="https://dmitrysharabin.github.io/mavo-firebase-firestore/src/mavo-firebase-firestore.js"></script>
-		<script src="user.js"></script>
+		<scropt src="https://dmitrysharabin.github.io/mavo-firebase-firestore/src/mavo-firebase-firestore.js"></scropt>
 		<script src="ifd.js"></script>
 		<style>
 			.logged-out .show-logged-in {
@@ -27,28 +26,6 @@
 		</style>
 	</head>
 	<body class="logged-out">
-
-		<div
-			mv-app="ifdr"
-			mv-firebase="realtime auth"
-			mv-bar="status login logout"
-			mv-plugins="firebase-firestore"
-			mv-storage="none"
-			mv-source="https://mavo-cd7c3.firebaseio.com/"
-			mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
-			>
-			<!--nothing to see in the mavo except the login bar-->
-			<ul style="display:none">
-				<li mv-multiple property="session">
-					Name: <span property="name"></span>
-					ID: <span property="sid"></span>
-					Markid: <span mv-multiple property="markid"></span>
-				</li>
-			</ul>
-			<meta property="ismarkid" mv-value="url('markid')!=null">
-			<meta property="userStorage" mv-value="if(getUid($now),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'&getUid($now),'none')">
-		</div>
-
 		
 		<div style="display:none" mv-app="dances" mv-storage="none" mv-source="./ifd.csv" mv-format="csv">
 			<datalist id="dancelist">
@@ -56,116 +33,123 @@
 			</datalist>
 		</div>
 
-		<div class="show-logged-out">
-			Log in to make requests.
-		</div>
+		<main>
 
-		<main class="show-logged-in">
-
+			<div mv-app="util" mv-storage="none" mv-bar="none">
+				<meta id="signal" property="signal" mv-storage="none">
+			</div>
 			<section
-				mv-app="picks"
+				mv-app="ifdr"
 				mv-firebase="auth realtime"
 				mv-plugins="firebase-firestore"
 				mv-autosave="0"
-				mv-storage="[ifdr.userStorage]"
+				mv-bar=" status login logout"
+				mv-storage="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
+				<div style="display:none">
+				[setSignal('signal')]
+				[watchRequests(mysid)]
+				[watchSessions()]
+				</div>
+				
 				<h2>Session</h2>
-				<meta property="active" mv-value="session && signedIn">
+				<select property="mysid" mv-default="[url('sid')]" width="60">
+					<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)">[name]</option>
+				</select>
+				<meta property="sessionStorage"
+					  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
+				<meta property="userStorage" mv-value="if(uid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'&uid(util.signal),'none')">
+				<meta property="active" mv-value="mysid and checkedIn">
 				<meta property="lastActive">
-				<meta id="name" property="name"><!--set by user.js-->
-
-				<div mv-if="not(session || signedIn)">
+				<meta property="name" mv-value="username(util.signal)" mv-storage="yes">
+				
+				<div class="show-logged-out">
+					Log in to make requests.
+				</div>
+				
+				<div mv-if="not(mysid) and not(checkedIn)">
 					Choose a session and check in to make requests.
 				</div>
-				<div>Session:
-					<select property="mysid" mv-default="[url('sid')]" width="60">
-						<option mv-group mv-multiple value="[sid]" mv-value="ifdr.session">[name]</option>
-					</select>
-					<meta property="sessionStorage"
-						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
+				<div>
+					<meta property="checkedIn" mv-value="false" mv-storage="none">
+					<div mv-if="!checkedIn">Click <button mv-action="set(checkedIn,true),set(lastActive,+$now)">Check In</button> to make requests</div>
+					<div mv-if="checkedIn">Click <button mv-action="set(checkedIn,false),set(lastActive,0)">Check Out</button> to suspend your requests while you're away</div>
+				</div>
+				<div mv-if="active">
+					<h2>My Requests</h2>
 
-					<meta property="requestPlaceholder" mv-storage="none" mv-value="watchRequests(mysid,'requestData')">
-					<div>
-						<meta property="signedIn" mv-value="false" mv-storage="none">
-						<div mv-if="!signedIn">Click <button mv-action="set(signedIn,true),set(lastActive,+$now)">Check In</button> to make requests</div>
-						<div mv-if="signedIn">Click <button mv-action="set(signedIn,false),set(lastActive,0)">Check Out</button> to suspend your requests while you're away</div>
-					</div>
-					<div mv-if="active">
-						<h2>Your Requests</h2>
-
-						Choose a dance (or start typing): <input list="dancelist" property="selection" mv-storage="none">
-						<button mv-action="add(group(label: selection, timestamp: +$now),pick); set(lastActive,+$now); set(selection,'')">request</button>
-						<div mv-multiple property="pick">
-							<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp">
-						</div>
+					Choose a dance (or start typing): <input list="dancelist" property="selection" mv-storage="none">
+					<button mv-if="ifdr.active" mv-action="add(group(label: selection, timestamp: +$now),ifdr.pick); set(lastActive,+$now); set(selection,'')">request</button>
+					<div class="[if(played,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
+						<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp"> <meta property="played" mv-value="has(label,playlist.played.label)">
 					</div>
 				</div>
-			</section>				
-
+			</section>
 
 			<section mv-app="showRequests" mv-storage="none" mv-bar="none">
 				<h2>Everyone's Requests</h2>
 
-				<meta propert="allRequests" mv-group ud="requestData">
-				<div property="allRequests" id="requestData">
-					<div property="requests" mv-multiple mv-initial-items="0"> 
-						<span property="label"></span>
-						<span property="count"></span>
-						<span property="names"></span>
-						<span property="played"></span>
-					</div>
-				</div>
-
-				<table class="request-table" property="requestData" mv-storage="none" mv-value="markPlayed(allRequests.requests,playlist.played)">
+				<table class="request-table">
 					<tr>
 						<th></th>
 						<th></th>
 						<th>Dance</th>
 						<th>Count</th>
-						<th mv-if="ifdr.ismarkid">Who</th>
+						<th mv-if="url('markid')">Who</th>
 					</tr>
-					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-storage="none">
-						<td><button mv-if="picks.active" mv-action="add(group(label: label, timestamp: +$now),picks.pick); set(lastActive,+$now)">request</button>
-							<td>
-							<button mv-if="ifdr.ismarkid  && not(played)" mv-action="add(group(label: label, timestamp: +$now),playlist.played); set(lastActive,+$now)">play</button>
+					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="markPlayed(getRequests(util.signal),playlist.played,util.signal)">
+						<td><button mv-if="ifdr.active" mv-action="add(group(label: label, timestamp: +$now),ifdr.pick); set(lastActive,+$now)">request</button>
+						<td>
+							<button mv-if="settings.ismarkid  && not(played)" mv-action="add(group(label: label, timestamp: +$now),playlist.played); set(lastActive,+$now)">play</button>
 							
-						<td><span class="r-label" property="label"></span>:
+						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
-						<td mv-if="ifdr.ismarkid"><span class="r-names" mv-multiple property="names"></span>
+						<td mv-if="settings.ismarkid"><span class="r-names" mv-multiple property="names"></span>
 						<td><span property="played"></span>
 					</tr>
 				</table>
 			</section>
 
-			<div mv-app="ifdr" mv-storage="none">
-				<meta property="ismarkid" mv-value="true">
+			<div
+				mv-app="playlist-[mysid]"
+				mv-firebase="realtime"
+				mv-plugins="firebase-firestore"
+				mv-storage="none"
+				mv-bar="none"
+				mv-source="[ifdr.sessionStorage]"
+				mv-siurce="https://mavo-cd7c3.firebaseio.com/ifdr-session/test"
+				mv-siurce="https://mavo-cd7c3.firebaseio.com/ifdr-session/[url(session)]"
+				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				>
+				<h2>Played</h2>
+				<div class="playlist" mv-multiple property="played" mv-initial-items="0">
+					<div property="label"></div> 
+				</div>
 			</div>
 			
 			<section 
-				mv-app="playlist"
+				mv-app="markidlist"
 				mv-firebase="auth realtime"
 				mv-plugins="firebase-firestore"
 				mv-autosave="0"
-				mv-stirage="none"
-				mv-storage="firebase://mavo-cd7c3/ifdr-session/test"
-				mv-stirage="[picks.sessionStorage]"
+				mv-stirage="[settings.sessionStorage]"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<h2>Playlist</h2>
 
-				<div mv-if="ifdr.ismarkid">Choose a dance (or start typing): <input list="dancelist" property="playSelection" mv-storage="none">
+				<div mv-if="settings.ismarkid">Choose a dance (or start typing): <input list="dancelist" property="playSelection" mv-storage="none">
 					<button mv-action="add(group(label: playSelection, timestamp: +$now),played); set(playSelection,'')">Play</button>
 				</div>
 				<div class="playlist" mv-multiple property="played" mv-initial-items="0">
 					<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp">
 				</div>
 				<div>
-					<button mv-if="ifdr.ismarkid" mv-action="delete(played)">Delete Playlist</button>
+					<button mv-if="settings.ismarkid" mv-action="delete(played)">Delete Playlist</button>
 				</div>
 			</section>
 		</main>
-		
+
 
 	</body>
 </html>
