@@ -75,25 +75,28 @@
 				<div class="show-logged-out">
 					Log in to make requests.
 				</div>
-				
-				<div mv-if="not(mysid) and not(checkedIn)">
-					Choose a session and check in to make requests.
-				</div>
-				<div>
-					<meta property="checkedIn" mv-value="false" mv-storage="none">
-					<div mv-if="!checkedIn">Click <button mv-action="set(checkedIn,true),set(lastActive,+$now)">Check In</button> to make requests</div>
-					<div mv-if="checkedIn">Click <button mv-action="set(checkedIn,false),set(lastActive,0)">Check Out</button> to suspend your requests while you're away</div>
-				</div>
-				<div mv-if="active">
-					<h2>My Requests</h2>
 
-					Choose a dance (select or type): <div style="display:inline-block;"><input list="dancelist" property="selection" mv-storage="none">
-					<button mv-if="ifdr.active" mv-action="add(group(label: selection, timestamp: +$now),ifdr.pick); set(lastActive,+$now); set(selection,'')">request</button></div>
-					<div>If it's <span class="played">crossed out</span>, it's been played.
-					<div class="[if(played,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
-						<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp"> <meta property="played" mv-value="has(label,playlist.played.label)">
+				<div class="show-logged-in">
+					
+					<div mv-if="not(mysid) and not(checkedIn)">
+						Choose a session and check in to make requests.
 					</div>
-				</div>
+					<div>
+						<meta property="checkedIn" mv-value="false" mv-storage="none">
+						<div mv-if="!checkedIn">Click <button mv-action="set(checkedIn,true),set(lastActive,+$now)">Check In</button> to make requests</div>
+						<div mv-if="checkedIn">Click <button mv-action="set(checkedIn,false),set(lastActive,0)">Check Out</button> to suspend your requests while you're away</div>
+					</div>
+					<div mv-if="active">
+						<h2>My Requests</h2>
+
+						Choose a dance (select or type): <div style="display:inline-block;"><input list="dancelist" property="selection" mv-storage="none">
+							<button mv-if="ifdr.active" mv-action="add(group(label: selection, timestamp: +$now),ifdr.pick); set(lastActive,+$now); set(selection,'')">request</button></div>
+						<div>If it's <span class="played">crossed out</span>, it's been played.
+							<div class="[if(played,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
+								<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp"> <meta property="played" mv-value="has(label,playlist.played.label)">
+							</div>
+						</div>
+					</div>
 			</section>
 
 			<section mv-app="showRequests" mv-storage="none" mv-bar="none">
