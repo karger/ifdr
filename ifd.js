@@ -20,11 +20,11 @@
 	    if (user) {
 		document.body.classList.remove('logged-out');
 		document.body.classList.add('logged-in');
-		n.setAttribute('mv-storage', storage+user.uid);
+		if (n) {n.setAttribute('mv-storage', storage+user.uid)};
 	    } else {
 		document.body.classList.remove('logged-in');
 		document.body.classList.add('logged-out');
-		n.setAttribute('mv-source', storage+'0');
+		if (n) {n.setAttribute('mv-source', storage+'0')};
 	    }
 	    signal();
 	});
@@ -70,7 +70,6 @@
 
 	    function parseQuery(querySnapshot) {
 		let requestMap={};
-		console.log('new requests')
 
 		querySnapshot.forEach(function(doc) {
 		    let uid = doc.id;
@@ -162,6 +161,5 @@
 	} catch (e) {
 	    return [];
 	}
-	
     }
-
+})();
