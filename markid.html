@@ -49,12 +49,14 @@
 				<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
 			</div>
 		
-			<section mv-app="showRequests" mv-storage="none" mv-bar="none">
+			<section mv-app="showRequests" mv-storage="none" mv-bar="none"
+					 mv-plugins="sort">
 
 				<meta property="sessions" mv-value="getSessions(util.signal)">
 				<meta property="mysid" mv-value="url('session')">
 				<form id="session-select" method=get action="markid.html">
-					<select property="nextSession" name="session" mv-default="[url('session')]" width="60">
+					<select property="nextSession" name="session" width="60">
+						<option value="" selected hidden disabled>Choose a session</option>
 						<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)">[name]</option>
 					</select>
 					<input type="submit" value="Go to Session">
@@ -70,7 +72,7 @@
 						<th>Count</th>
 						<th>Who</th>
 					</tr>
-					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="markPlayed(getRequests(util.signal,excludes),playlist.played,util.signal)">
+					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(markPlayed(getRequests(util.signal,excludes),playlist.played,util.signal),'-count')">
 						<td>
 							<button mv-if="not(played)" mv-action="add(group(label: label, timestamp: +$now),playlist.played)">play</button>
 							
@@ -114,7 +116,7 @@
 				<h2>Folks</h2>
 
 				<div property="excludes" mv-multiple class="[if(excluded,'excluded','')]"
-					 mv-value="getUsers(util.signal)">
+					 mv-value="sort(getUsers(util.signal),'-timestamp')">
 					<button mv-action="setExclude(uid,not(excluded))">
 						[if(excluded,"+","X")]
 					</button>

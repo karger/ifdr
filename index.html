@@ -23,6 +23,9 @@
 			.played {
 				text-decoration: line-through;
 			}
+			#session-header {
+				max-width: 30em;
+			}
 			#session-select {
 				float: right;
 			}
@@ -70,13 +73,15 @@
 				</div>
 
 				<meta property="sessions" mv-value="getSessions(util.signal)">
+				<div id="session-header">
 					<select id="session-select" property="mysid" name="session" width="60">
+						<option value="" selected hidden disabled>Choose session</option>
 						<option mv-group mv-multiple value="[id]" mv-value="sessions">[name]</option>
 					</select>
-				</form>
 				<h2>Session</h2>
+				</div>
 				<meta property="sessionStorage"
-					  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
+					  mv-value="if(mysid&&uid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
 				<meta property="active" mv-value="mysid and checkedIn">
 				<meta property="lastActive">
 				<meta property="name">
@@ -101,7 +106,7 @@
 						Choose a dance (select or type):
 						<div style="display:inline-block;">
 							<input list="dancelist" property="selection" mv-storage="none">
-							<button mv-action="add(group(label: selection, timestamp: +$now),ifdr.pick); set(lastActive,+$now); set(selection,'')">request</button>
+							<button mv-action="if(selection,add(group(label: selection, timestamp: +$now),ifdr.pick)); set(lastActive,+$now); set(selection,'')">request</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 						<div>If it's <span class="played">crossed out</span>, it's been played.
@@ -127,7 +132,7 @@
 						<td>
 						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
-						<meta property="played">
+							<meta property="played">
 					</tr>
 				</table>
 			</section>

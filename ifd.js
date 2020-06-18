@@ -80,7 +80,7 @@
 		querySnapshot.forEach(function(doc) {
 		    let uid = doc.id;
 		    let name = doc.data().name;
-		    users.push({uid: uid, name: name});
+		    users.push({uid: uid, name: name, lastActive: doc.data().lastActive});
 		    if (excluded[uid]) return;
 
 		    let theirs = doc.data().pick;
