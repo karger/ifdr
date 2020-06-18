@@ -20,11 +20,9 @@
 	    if (user) {
 		document.body.classList.remove('logged-out');
 		document.body.classList.add('logged-in');
-		if (n) {n.setAttribute('mv-storage', storage+user.uid)};
 	    } else {
 		document.body.classList.remove('logged-in');
 		document.body.classList.add('logged-out');
-		if (n) {n.setAttribute('mv-source', storage+'0')};
 	    }
 	    signal();
 	});
@@ -61,19 +59,30 @@
 	}
     }
 
+    let excluded = {};
+    setExclude = function(uid, state) {
+	excluded[uid]=state;
+	signal();
+    }
+    
     let unsubscribe=false
-    , requests=[];
+    , requests=[]
+    , users = [];
     watchRequests = function(sid) {
 	fireAuth.then(() => {
 	    sid = Mavo.value(sid);
-	    if (console) {console.log(sid);}
+	    if (console) {console.log("session: "+sid);}
 
 	    function parseQuery(querySnapshot) {
 		let requestMap={};
-
+		users = [];
+		
 		querySnapshot.forEach(function(doc) {
 		    let uid = doc.id;
 		    let name = doc.data().name;
+		    users.push({uid: uid, name: name});
+		    if (excluded[uid]) return;
+
 		    let theirs = doc.data().pick;
 		    theirs.forEach(pick => {
 			if (!requestMap[pick.label]) {
@@ -114,6 +123,11 @@
 
     getRequests = function (signal) {
 	return requests;
+    }
+
+    getUsers = function() {
+	users.forEach(u => {u.excluded=excluded[u.uid]});
+	return users;
     }
 
     let sessions=[];

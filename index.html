@@ -38,16 +38,29 @@
 
 		<main>
 
-			<div mv-app="util" mv-storage="none" mv-bar="none">
-				<meta id="signal" property="signal" mv-storage="none">
+
+			<div mv-app="util" mv-storage="none"
+				 mv-firebase="auth realtime"
+				 mv-plugins="firebase-firestore"
+				 mv-autosave="0"
+				 mv-bar="status login logout"
+				 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
+				 mv-storage="none"
+				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				 >
+				<meta id="signal" property="signal">
+				<meta property="userStorage" mv-value="if(uid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'&uid(util.signal),'none')">
 			</div>
+			
 			<section
 				mv-app="ifdr"
+				class="mavo-user" 
 				mv-firebase="auth realtime"
+				mv-bar="none"
 				mv-plugins="firebase-firestore"
 				mv-autosave="0"
 				mv-bar="status login logout"
-				mv-storage="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
+				mv-storage="[util.userStorage]"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<div style="display:none">
@@ -57,17 +70,16 @@
 				</div>
 
 				<meta property="sessions" mv-value="getSessions(util.signal)">
-					<select property="mysid" name="session" mv-default="[url('session')]" width="60" mv-storage="inherit">
+					<select id="session-select" property="mysid" name="session" width="60">
 						<option mv-group mv-multiple value="[id]" mv-value="sessions">[name]</option>
 					</select>
 				</form>
-				<h2>[condense(sessions where id=mysid).name]</h2>
+				<h2>Session</h2>
 				<meta property="sessionStorage"
 					  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
-				<meta property="userStorage" mv-value="if(uid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'&uid(util.signal),'none')">
 				<meta property="active" mv-value="mysid and checkedIn">
 				<meta property="lastActive">
-				<meta property="name" mv-value="username(util.signal)" mv-storage="yes">
+				<meta property="name">
 				
 				<div class="show-logged-out">
 					Log in to make requests.
@@ -80,7 +92,7 @@
 					</div>
 					<div>
 						<meta property="checkedIn" mv-value="false" mv-storage="none">
-						<div mv-if="!checkedIn">Click <button mv-action="set(checkedIn,true),set(lastActive,+$now)">Check In</button> to make requests</div>
+						<div mv-if="!checkedIn">Click <button mv-action="set(checkedIn,true),set(lastActive,+$now),set(name,username())">Check In</button> to make requests</div>
 						<div mv-if="checkedIn">Click <button mv-action="set(checkedIn,false),set(lastActive,0)">Check Out</button> to suspend your requests while you're away</div>
 					</div>
 					<div mv-if="active">
@@ -111,7 +123,7 @@
 						<th>Count</th>
 					</tr>
 					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="markPlayed(getRequests(util.signal),playlist.played,util.signal)">
-						<td><button mv-if="ifdr.active" mv-action="add(group(label: label, timestamp: +$now),ifdr.pick); set(lastActive,+$now)">request</button>
+						<td><button mv-if="ifdr.active" mv-action="add(group(label: label, timestamp: +$now),ifdr.pick); set(ifdr.lastActive,+$now)">request</button>
 						<td>
 						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
