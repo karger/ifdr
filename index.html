@@ -7,8 +7,8 @@
 		<title>IFD Requests</title>
 		<script src="https://get.mavo.io/mavo.js"></script>
 		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
-		<scropt src="https://dmitrysharabin.github.io/mavo-firebase-firestore/src/mavo-firebase-firestore.js"></scropt>
-		<script src="ifd.js"></script>
+		<script src="https://dmitrysharabin.github.io/mavo-firebase-firestore/src/mavo-firebase-firestore.js"></script>
+		<script defer src="ifd.js"></script>
 		<style>
 			.logged-out .show-logged-in {
 				display: none;
@@ -46,23 +46,20 @@
 				mv-firebase="auth realtime"
 				mv-plugins="firebase-firestore"
 				mv-autosave="0"
-				mv-bar=" status login logout"
+				mv-bar="status login logout"
 				mv-storage="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<div style="display:none">
 					[setSignal('signal')]
-					[watchRequests(url('session'))]
+					[watchRequests(mysid)]
 					[watchSessions()]
 				</div>
 
 				<meta property="sessions" mv-value="getSessions(util.signal)">
-				<meta property="mysid" mv-value="url('session')" mv-storage="inherit">
-				<form id="session-select" method=get action=".">
-					<select property="nextSession" name="session" mv-default="[url('session')]" width="60" mv-storage="none">
+					<select property="mysid" name="session" mv-default="[url('session')]" width="60" mv-storage="inherit">
 						<option mv-group mv-multiple value="[id]" mv-value="sessions">[name]</option>
 					</select>
-					<input type="submit" value="Go to Session">
 				</form>
 				<h2>[condense(sessions where id=mysid).name]</h2>
 				<meta property="sessionStorage"
@@ -89,8 +86,12 @@
 					<div mv-if="active">
 						<h2>My Requests</h2>
 
-						Choose a dance (select or type): <div style="display:inline-block;"><input list="dancelist" property="selection" mv-storage="none">
-							<button mv-if="ifdr.active" mv-action="add(group(label: selection, timestamp: +$now),ifdr.pick); set(lastActive,+$now); set(selection,'')">request</button></div>
+						Choose a dance (select or type):
+						<div style="display:inline-block;">
+							<input list="dancelist" property="selection" mv-storage="none">
+							<button mv-action="add(group(label: selection, timestamp: +$now),ifdr.pick); set(lastActive,+$now); set(selection,'')">request</button>
+							<button mv-action="set(selection,'')">clear</button>
+						</div>
 						<div>If it's <span class="played">crossed out</span>, it's been played.
 							<div class="[if(played,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
 								<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp"> <meta property="played" mv-value="has(label,playlist.played.label)">
@@ -108,17 +109,13 @@
 						<th></th>
 						<th>Dance</th>
 						<th>Count</th>
-						<th mv-if="url('markid')">Who</th>
 					</tr>
 					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="markPlayed(getRequests(util.signal),playlist.played,util.signal)">
 						<td><button mv-if="ifdr.active" mv-action="add(group(label: label, timestamp: +$now),ifdr.pick); set(lastActive,+$now)">request</button>
 						<td>
-							<button mv-if="settings.ismarkid  && not(played)" mv-action="add(group(label: label, timestamp: +$now),playlist.played); set(lastActive,+$now)">play</button>
-							
 						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
-						<td mv-if="settings.ismarkid"><span class="r-names" mv-multiple property="names"></span>
-						<td><span property="played"></span>
+						<meta property="played">
 					</tr>
 				</table>
 			</section>
@@ -129,9 +126,9 @@
 				mv-plugins="firebase-firestore"
 				mv-storage="none"
 				mv-bar="none"
-				mv-siurce="[ifdr.sessionStorage]"
+				mv-source="[ifdr.sessionStorage]"
 				mv-siurce="https://mavo-cd7c3.firebaseio.com/ifdr-session/test"
-				mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-session/[url(session)]"
+				mv-siurce="https://mavo-cd7c3.firebaseio.com/ifdr-session/[url(session)]"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<h2>Played</h2>
