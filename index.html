@@ -29,19 +29,26 @@
 			#session-select {
 				float: right;
 			}
+			body {
+				display: flex;
+				min-height: 98vh;
+				flex-direction: column;
+			}
+			main {
+				flex: 1;
+			}
 		</style>
 	</head>
 	<body class="logged-out">
-		
+
+		<main>
+
 		<div style="display:none" mv-app="dances" mv-storage="none" mv-source="./ifd.csv" mv-format="csv">
 			<datalist id="dancelist">
 				<option mv-multiple mv-group property="dance" value="[label]"></option>
 			</datalist>
 		</div>
-
-		<main>
-
-
+ 
 			<div mv-app="util" mv-storage="none"
 				 mv-firebase="auth realtime"
 				 mv-plugins="firebase-firestore"
@@ -71,6 +78,16 @@
 					[watchRequests(mysid)]
 					[watchSessions()]
 				</div>
+
+				<details><summary>Click for instructions</summary>
+					<ol>
+                        <li>Log in at the top</li>
+                        <li>Choose a session</li>
+                        <li>Click the Check in button to let the Markid know you're dancing</li>
+                        <li>Request dances</li>
+                        <li>Check out if you step away, so they don't play your requests at the wrong time.  Your requests will be saved, but they won't show in the request list until you check in again.</li>
+					</ol>
+				</details>
 
 				<meta property="sessions" mv-value="getSessions(util.signal)">
 				<div id="session-header">
@@ -103,7 +120,7 @@
 					<div mv-if="active">
 						<h2>My Requests</h2>
 
-						Choose a dance (select or type):
+						Choose a dance:
 						<div style="display:inline-block;">
 							<input list="dancelist" property="selection" mv-storage="none">
 							<button mv-action="if(selection,add(group(label: selection, timestamp: +$now),ifdr.pick)); set(lastActive,+$now); set(selection,'')">request</button>
@@ -128,11 +145,12 @@
 						<th>Count</th>
 					</tr>
 					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="markPlayed(getRequests(util.signal),playlist.played,util.signal)">
-						<td><button mv-if="ifdr.active" mv-action="add(group(label: label, timestamp: +$now),ifdr.pick); set(ifdr.lastActive,+$now)">request</button>
+						<td><button mv-if="ifdr.active and not(mine) and not(played)" mv-action="add(group(label: label, timestamp: +$now),ifdr.pick); set(ifdr.lastActive,+$now)">request</button>
 						<td>
 						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
 							<meta property="played">
+							<meta property="mine" mv-value="has(label,ifdr.pick.label)">
 					</tr>
 				</table>
 			</section>
@@ -154,5 +172,6 @@
 				</div>
 			</div>
 		</main>
+		<footer>IFD Request app created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>
 	</body>
 </html>

@@ -2,8 +2,8 @@
 
     fireAuth = new Promise((resolve,reject) => {
 	(function loop () {
-            if (typeof(firebase)!='undefined' && firebase.auth &&
-		firebase.apps.length > 0 && firebase.auth()) {
+            if (typeof(firebase)!='undefined' &&
+		firebase?.apps?.length > 0 && firebase?.auth?.()) {
 		resolve(firebase.auth());
             } else {
 		setTimeout(loop, 100)

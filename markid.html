@@ -4,7 +4,7 @@
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
-		<title>IFD Requests</title>
+		<title>IFD Markid</title>
 		<script src="https://get.mavo.io/mavo.js"></script>
 		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
 		<scropt src="https://dmitrysharabin.github.io/mavo-firebase-firestore/src/mavo-firebase-firestore.js"></scropt>
@@ -32,6 +32,9 @@
 			.r-names:not(:last-child):after {
 				content: ", "
 			}
+			#clear {
+				margin-top: 2em;
+			}
 		</style>
 	</head>
 	<body>
@@ -51,7 +54,7 @@
 		
 			<section mv-app="showRequests" mv-storage="none" mv-bar="none"
 					 mv-plugins="sort">
-
+				
 				<meta property="sessions" mv-value="getSessions(util.signal)">
 				<meta property="mysid" mv-value="url('session')">
 				<form id="session-select" method=get action="markid.html">
@@ -103,7 +106,7 @@
 	
 				<h2>Playlist</h2>
 
-				<div mv-if="settings.ismarkid">Choose a dance (or start typing): <input list="dancelist" property="playSelection" mv-storage="none">
+				<div>Add to playlist: <input list="dancelist" property="playSelection" mv-storage="none">
 					<button mv-action="add(group(label: playSelection, timestamp: +$now),played); set(playSelection,'')">Play</button>
 				</div>
 				<div class="playlist" mv-multiple property="played" mv-initial-items="0">
@@ -113,6 +116,7 @@
 					<button mv-if="settings.ismarkid" mv-action="delete(played)">Delete Playlist</button>
 				</div>
 
+				<button id="clear" mv-action="delete(played)">Clear playlist</button>
 				<h2>Folks</h2>
 
 				<div property="excludes" mv-multiple class="[if(excluded,'excluded','')]"
