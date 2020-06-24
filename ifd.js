@@ -140,6 +140,7 @@
 		    let s=doc.data();
 		    s.id = doc.id;
 		    sessions.push(s);
+		    sessions.sort((a,b) => a.name > b.name);
 		});
 		signal();
 	    });

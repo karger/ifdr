@@ -5,8 +5,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
 		<title>IFD Markid</title>
-		<script src="https://get.mavo.io/mavo.js"></script>
-		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
+		<script src="https://get.mavo.io/stable/mavo.js"></script>
+		<link rel="stylesheet" href="https://get.mavo.io/stable/mavo.css">
 		<scropt src="https://dmitrysharabin.github.io/mavo-firebase-firestore/src/mavo-firebase-firestore.js"></scropt>
 		<script src="ifd.js"></script>
 		<style>
@@ -113,14 +113,14 @@
 					<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp">
 				</div>
 				<div>
-					<button mv-if="settings.ismarkid" mv-action="delete(played)">Delete Playlist</button>
+					<button mv-action="delete(played)">Delete Playlist</button>
 				</div>
 
 				<button id="clear" mv-action="delete(played)">Clear playlist</button>
 				<h2>Folks</h2>
 
 				<div property="excludes" mv-multiple class="[if(excluded,'excluded','')]"
-					 mv-value="sort(getUsers(util.signal),'-timestamp')">
+					 mv-value="sort(getUsers(util.signal),'-lastActive')">
 					<button mv-action="setExclude(uid,not(excluded))">
 						[if(excluded,"+","X")]
 					</button>

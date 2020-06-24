@@ -7,7 +7,7 @@
 		<title>IFD Requests</title>
 		<script src="https://get.mavo.io/mavo.js"></script>
 		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
-		<script src="https://dmitrysharabin.github.io/mavo-firebase-firestore/src/mavo-firebase-firestore.js"></script>
+		<scropt src="https://dmitrysharabin.github.io/mavo-firebase-firestore/src/mavo-firebase-firestore.js"></scropt>
 		<script defer src="ifd.js"></script>
 		<style>
 			.logged-out .show-logged-in {
@@ -43,12 +43,12 @@
 
 		<main>
 
-		<div style="display:none" mv-app="dances" mv-storage="none" mv-source="./ifd.csv" mv-format="csv">
-			<datalist id="dancelist">
-				<option mv-multiple mv-group property="dance" value="[label]"></option>
-			</datalist>
-		</div>
- 
+			<div style="display:none" mv-app="dances" mv-storage="none" mv-source="./ifd.csv" mv-format="csv">
+				<datalist id="dancelist">
+					<option mv-multiple mv-group property="dance" value="[label]"></option>
+				</datalist>
+			</div>
+			
 			<div mv-app="util" mv-storage="none"
 				 mv-firebase="auth realtime"
 				 mv-plugins="firebase-firestore"
@@ -95,7 +95,7 @@
 						<option value="" selected hidden disabled>Choose session</option>
 						<option mv-group mv-multiple value="[id]" mv-value="sessions">[name]</option>
 					</select>
-				<h2>Session</h2>
+					<h2>Session</h2>
 				</div>
 				<meta property="sessionStorage"
 					  mv-value="if(mysid&&uid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
@@ -126,10 +126,9 @@
 							<button mv-action="if(selection,add(group(label: selection, timestamp: +$now),ifdr.pick)); set(lastActive,+$now); set(selection,'')">request</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
-						<div>If it's <span class="played">crossed out</span>, it's been played.
-							<div class="[if(played,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
-								<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp"> <meta property="played" mv-value="has(label,playlist.played.label)">
-							</div>
+						<div>If it's <span class="played">crossed out</span>, it's been played.</div>
+						<div class="[if(played,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
+							<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp"> <meta property="played" mv-value="has(label,playlist.played.label)">
 						</div>
 					</div>
 			</section>
