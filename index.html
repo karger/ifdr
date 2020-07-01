@@ -33,22 +33,39 @@
 				display: flex;
 				min-height: 98vh;
 				flex-direction: column;
+				margin-top: 0;
 			}
 			main {
 				flex: 1;
+			}
+			footer {
+				padding-top: 3em;
+				font-size: small;
+			}
+			.mv-status span {
+				display: none;
+			}
+			.user-active .mv-bar {
+				background-color: green;
+			}
+			.user-inactive .mv-bar {
+				background-color: red;
+			}
+			[mv-app="util"] {
+				position: sticky;
+				top: 0;
+			}
+			.user-inactive .show-active {
+				display: none;
+			}
+			.user-active .show-inactive {
+				display: none;
 			}
 		</style>
 	</head>
 	<body class="logged-out">
 
 		<main>
-
-			<div style="display:none" mv-app="dances" mv-storage="none" mv-source="./ifd.csv" mv-format="csv">
-				<datalist id="dancelist">
-					<option mv-multiple mv-group property="dance" value="[label]"></option>
-				</datalist>
-			</div>
-			
 			<div mv-app="util" mv-storage="none"
 				 mv-firebase="auth realtime"
 				 mv-plugins="firebase-firestore"
@@ -57,14 +74,24 @@
 				 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
 				 mv-storage="none"
 				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				 class="[if(ifdr.active,'user-active','user-inactive')]"
 				 >
+				<div class="mv-bar mv-ui">
+					<span class="show-active">Checked in</span>
+					<span class="show-inactive">Checked out</span>
+				</div>
 				<meta id="signal" property="signal">
 				<meta property="userStorage" mv-value="if(uid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'&uid(util.signal),'none')">
+			</div>
+
+			<div hidden mv-app="dances" mv-storage="none" mv-source="./ifd.csv" mv-format="csv">
+				<datalist id="dancelist">
+					<option mv-multiple mv-group property="dance" value="[label]"></option>
+				</datalist>
 			</div>
 			
 			<section
 				mv-app="ifdr"
-				class="mavo-user" 
 				mv-firebase="auth realtime"
 				mv-bar="none"
 				mv-plugins="firebase-firestore"
@@ -117,23 +144,24 @@
 						<div mv-if="!checkedIn">Click <button mv-action="set(checkedIn,true),set(lastActive,+$now),set(name,username())">Check In</button> to make requests</div>
 						<div mv-if="checkedIn">Click <button mv-action="set(checkedIn,false),set(lastActive,0)">Check Out</button> to suspend your requests while you're away</div>
 					</div>
-					<div mv-if="active">
+					<div>
 						<h2>My Requests</h2>
 
 						Choose a dance:
 						<div style="display:inline-block;">
 							<input list="dancelist" property="selection" mv-storage="none">
-							<button mv-action="if(selection,add(group(label: selection, timestamp: +$now),ifdr.pick)); set(lastActive,+$now); set(selection,'')">request</button>
+							<meta property="selectionPlayed" mv-value="has(selection,playlist.played.label)">
+							<button mv-action="if(selection,add(group(label: selection, timestamp: +$now),ifdr.pick)); set(lastActive,+$now); set(selection,'')"disabled="[selectionPlayed]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
-						<div>If it's <span class="played">crossed out</span>, it's been played.</div>
-						<div class="[if(played,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
+						<div mv-if="ifdr.active">If it's <span class="played">crossed out</span>, it's been played.</div>
+						<div class="[if(played && ifdr.active,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
 							<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp"> <meta property="played" mv-value="has(label,playlist.played.label)">
 						</div>
 					</div>
 			</section>
 
-			<section mv-app="showRequests" mv-storage="none" mv-bar="none">
+			<section mv-if="ifdr.active" mv-app="showRequests" mv-storage="none" mv-bar="none">
 				<h2>Everyone's Requests</h2>
 
 				<table class="request-table">
@@ -154,7 +182,7 @@
 				</table>
 			</section>
 
-			<div
+			<div mv-if="picks.active"
 				mv-app="playlist"
 				mv-firebase="realtime"
 				mv-plugins="firebase-firestore"
