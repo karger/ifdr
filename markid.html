@@ -5,8 +5,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
 		<title>IFD Markid</title>
-		<script src="https://get.mavo.io/stable/mavo.js"></script>
-		<link rel="stylesheet" href="https://get.mavo.io/stable/mavo.css">
+		<script src="https://get.mavo.io/mavo.js"></script>
+		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
 		<scropt src="https://dmitrysharabin.github.io/mavo-firebase-firestore/src/mavo-firebase-firestore.js"></scropt>
 		<script src="ifd.js"></script>
 		<style>
@@ -34,6 +34,9 @@
 			}
 			#clear {
 				margin-top: 2em;
+			}
+			.hidePlayed .played {
+				display: none;
 			}
 		</style>
 	</head>
@@ -64,17 +67,30 @@
 					</select>
 					<input type="submit" value="Go to Session">
 				</form>
+
+			<div hidden mv-app="dances" mv-storage="none" mv-source="./ifd.csv" mv-format="csv">
+				<datalist id="dancelist">
+					<option mv-multiple mv-group property="dance" value="[label]"></option>
+				</datalist>
+			</div>
+
 				<h2>[condense(sessions where id=mysid).name]</h2>
 
-				<h2>Everyone's Requests</h2>
-
-				<table class="request-table">
+				<h2>Requests</h2>
+				<label><input type="checkbox" property="showPlayed"> Show played</label>
+				<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
 					<tr>
 						<th></th>
 						<th>Dance</th>
 						<th>Count</th>
 						<th>Who</th>
 					</tr>
+
+					<tr>
+					<td>	<button mv-action="add(group(label: playSelection, timestamp: +$now),playlist.played); set(playSelection,'')">play</button>
+				 <td><input list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
+					 </tr>
+
 					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(markPlayed(getRequests(util.signal,excludes),playlist.played,util.signal),'-count')">
 						<td>
 							<button mv-if="not(played)" mv-action="add(group(label: label, timestamp: +$now),playlist.played)">play</button>
@@ -103,24 +119,19 @@
 					[watchSessions()]
 				</div>
 
-	
-				<h2>Playlist</h2>
 
-				<div>Add to playlist: <input list="dancelist" property="playSelection" mv-storage="none">
-					<button mv-action="add(group(label: playSelection, timestamp: +$now),played); set(playSelection,'')">Play</button>
-				</div>
+				<h2>Played</h2>
+
 				<div class="playlist" mv-multiple property="played" mv-initial-items="0">
 					<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp">
-				</div>
-				<div>
-					<button mv-action="delete(played)">Delete Playlist</button>
 				</div>
 
 				<button id="clear" mv-action="delete(played)">Clear playlist</button>
 				<h2>Folks</h2>
-
+				<div><input type="checkbox" mv-storage="none" property="addMarkid"> add markidim</div>
 				<div property="excludes" mv-multiple class="[if(excluded,'excluded','')]"
 					 mv-value="sort(getUsers(util.signal),'-lastActive')">
+					<button mv-action="add(uid, owner)" mv-if="addMarkid" disabled="[uid in owner]">Add as Markid</button>
 					<button mv-action="setExclude(uid,not(excluded))">
 						[if(excluded,"+","X")]
 					</button>
