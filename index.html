@@ -7,7 +7,6 @@
 		<title>IFD Requests</title>
 		<script src="https://get.mavo.io/mavo.js"></script>
 		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
-		<scropt src="https://dmitrysharabin.github.io/mavo-firebase-firestore/src/mavo-firebase-firestore.js"></scropt>
 		<script defer src="ifd.js"></script>
 		<style>
 			.logged-out .show-logged-in {
@@ -28,6 +27,9 @@
 			}
 			#session-select {
 				float: right;
+			}
+			#my-requests {
+				line-height: 200%;
 			}
 			body {
 				display: flex;
@@ -77,8 +79,8 @@
 				 class="[if(ifdr.active,'user-active','user-inactive')]"
 				 >
 				<div class="mv-bar mv-ui">
-					<span class="show-active">Checked in</span>
-					<span class="show-inactive">Checked out</span>
+					<span class="show-logged-in show-active">Checked in</span>
+					<span class="show-logged-in show-inactive">Checked out</span>
 				</div>
 				<meta id="signal" property="signal">
 				<meta property="userStorage" mv-value="if(uid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'&uid(util.signal),'none')">
@@ -147,16 +149,18 @@
 					<div>
 						<h2>My Requests</h2>
 
-						Choose a dance:
+
 						<div style="display:inline-block;">
-							<input list="dancelist" property="selection" mv-storage="none">
-							<meta property="selectionPlayed" mv-value="has(selection,playlist.played.label)">
-							<button mv-action="if(selection,add(group(label: selection, timestamp: +$now),ifdr.pick)); set(lastActive,+$now); set(selection,'')"disabled="[selectionPlayed]">[if(selectionPlayed,'played','request')]</button>
+							<input list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
+							<meta property="selectionPlayed" mv-value="has(selection,session.played.label)">
+							<button mv-action="if(selection,add(group(label: selection),ifdr.pick)); set(lastActive,+$now); set(selection,'')"disabled="[selectionPlayed]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 						<div mv-if="ifdr.active">If it's <span class="played">crossed out</span>, it's been played.</div>
-						<div class="[if(played && ifdr.active,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
-							<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp"> <meta property="played" mv-value="has(label,playlist.played.label)">
+						<div id="my-requests">
+							<div class="[if(played && ifdr.active,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
+								<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="played" mv-value="has(label,session.played.label)">
+							</div>
 						</div>
 					</div>
 			</section>
@@ -171,8 +175,8 @@
 						<th>Dance</th>
 						<th>Count</th>
 					</tr>
-					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="markPlayed(getRequests(util.signal),playlist.played,util.signal)">
-						<td><button mv-if="ifdr.active and not(mine) and not(played)" mv-action="add(group(label: label, timestamp: +$now),ifdr.pick); set(ifdr.lastActive,+$now)">request</button>
+					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="markPlayed(getRequests(util.signal),session.played,util.signal)">
+						<td><button mv-if="ifdr.active and not(mine) and not(played)" mv-action="add(group(label: label),ifdr.pick); set(ifdr.lastActive,+$now)">request</button>
 						<td>
 						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
@@ -183,22 +187,20 @@
 			</section>
 
 			<div mv-if="picks.active"
-				mv-app="playlist"
+				mv-app="session"
 				mv-firebase="realtime"
 				mv-plugins="firebase-firestore"
 				mv-storage="none"
 				mv-bar="none"
 				mv-source="[ifdr.sessionStorage]"
-				mv-siurce="https://mavo-cd7c3.firebaseio.com/ifdr-session/test"
-				mv-siurce="https://mavo-cd7c3.firebaseio.com/ifdr-session/[url(session)]"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<h2>Played</h2>
-				<div class="playlist" mv-multiple property="played" mv-initial-items="0">
+				<div class="session" mv-multiple property="played" mv-initial-items="0">
 					<div property="label"></div> 
 				</div>
 			</div>
 		</main>
-		<footer>IFD Request app created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>
+		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>
 	</body>
 </html>

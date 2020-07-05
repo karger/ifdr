@@ -162,8 +162,8 @@
 //		let s=Object.assign([],r);  //breaks mavo for unknown reasons
 		let s={label: Mavo.value(r.label),
 		       count: Mavo.value(r.count),
-		       names: Mavo.value(r.names),
-		       timestamp: Mavo.value(r.timestamp)};
+		       names: Mavo.value(r.names)
+		      }
 		for (k in s) {
 		    if (typeof s[k]=='undefined') {
 			delete s[k]
