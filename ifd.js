@@ -177,4 +177,12 @@
 	    return [];
 	}
     }
+
+    makeIndex = function(list) {
+	let map={};
+	list.forEach(l=> {
+	    map[l]=true;
+	});
+	return map;
+    }
 })();
