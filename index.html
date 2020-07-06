@@ -122,7 +122,7 @@
 				<div id="session-header">
 					<select id="session-select" property="mysid" name="session" width="60">
 						<option value="" selected disabled>Choose session</option>
-						<option mv-group mv-multiple value="[id]" mv-value="sessions">[name]</option>
+						<option property="options" mv-group mv-multiple value="[id]" mv-value="sessions">[name]</option>
 					</select>
 					<h2>Session</h2>
 				</div>
@@ -176,7 +176,7 @@
 						<th>Dance</th>
 						<th>Count</th>
 					</tr>
-					<tr class="request [if(get(pIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="markPlayed(getRequests(util.signal),session.played,util.signal)">
+					<tr class="request [if(get(pIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="getRequests(util.signal)">
 						<td><button mv-if="ifdr.active and not(mine) and not(played)" mv-action="add(group(label: label),ifdr.pick); set(ifdr.lastActive,+$now)">request</button>
 						<td>
 						<td><span class="r-label" property="label"></span>
