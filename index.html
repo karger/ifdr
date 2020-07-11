@@ -86,7 +86,7 @@
 				<meta property="userStorage" mv-value="if(uid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'&uid(util.signal),'none')">
 			</div>
 
-			<div hidden mv-app="dances" mv-storage="none" mv-source="./ifd.csv" mv-format="csv">
+			<div hidden mv-app="dances" mv-storage="none" mv-source="ifd.csv" mv-format="csv">
 				<datalist id="dancelist">
 					<option mv-multiple mv-group property="dance" value="[label]"></option>
 				</datalist>
@@ -117,13 +117,13 @@
                         <li>Check out if you step away, so they don't play your requests at the wrong time.  Your requests will be saved, but they won't show in the request list until you check in again.</li>
 					</ol>
 				</details>
-
+				
 				<meta property="sessions" mv-value="getSessions(util.signal)">
 				<div id="session-header">
-					<select id="session-select" property="mysid" name="session" width="60">
+				<select id="session-select" property="mysid" name="session" width="60">
 						<option value="" selected disabled>Choose session</option>
 						<option property="options" mv-group mv-multiple value="[id]" mv-value="sessions">[name]</option>
-					</select>
+				</select>
 					<h2>Session</h2>
 				</div>
 				<meta property="sessionStorage"
@@ -153,7 +153,7 @@
 						<div style="display:inline-block;">
 							<input list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
 							<meta property="selectionPlayed" mv-value="has(selection,session.played.label)">
-							<button mv-action="if(selection,add(group(label: selection),ifdr.pick)); set(lastActive,+$now); set(selection,'')"disabled="[selectionPlayed]">[if(selectionPlayed,'played','request')]</button>
+							<button mv-action="if(selection,add(group(label: selection),ifdr.pick)); set(lastActive,+$now); set(selection,'')" disabled="[selectionPlayed]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 						<div mv-if="ifdr.active">If it's <span class="played">crossed out</span>, it's been played.</div>
@@ -168,7 +168,6 @@
 			<section mv-if="ifdr.active" mv-app="showRequests" mv-storage="none" mv-bar="none">
 				<h2>Everyone's Requests</h2>
 
-				<meta property="pIndex" mv-value="makeIndex(session.played.label,util.signal)">
 				<table class="request-table">
 					<tr>
 						<th></th>
@@ -176,7 +175,7 @@
 						<th>Dance</th>
 						<th>Count</th>
 					</tr>
-					<tr class="request [if(get(pIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="getRequests(util.signal)">
+					<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="getRequests(util.signal)">
 						<td><button mv-if="ifdr.active and not(mine) and not(played)" mv-action="add(group(label: label),ifdr.pick); set(ifdr.lastActive,+$now)">request</button>
 						<td>
 						<td><span class="r-label" property="label"></span>
@@ -187,7 +186,7 @@
 				</table>
 			</section>
 
-			<div mv-if="picks.active"
+			<div mv-if="ifdr.active"
 				mv-app="session"
 				mv-firebase="realtime"
 				mv-plugins="firebase-firestore"
@@ -200,6 +199,7 @@
 				<div class="session" mv-multiple property="played" mv-initial-items="0">
 					<div property="label"></div> 
 				</div>
+				<meta property="playedIndex" mv-value="makeIndex(played.label,util.signal)">
 			</div>
 		</main>
 		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>

@@ -70,7 +70,7 @@
 				<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
 			</div>
 			
-			<div hidden mv-app="dances" mv-storage="none" mv-source="./ifd.csv" mv-format="csv">
+			<div hidden mv-app="dances" mv-storage="none" mv-source="[if(url('session'),'ifd.csv','none')]" mv-format="csv">
 				<datalist id="dancelist">
 					<option mv-multiple mv-group property="dance" value="[label]"></option>
 				</datalist>
@@ -81,15 +81,16 @@
 				
 				<meta property="sessions" mv-value="getSessions(util.signal)">
 				<meta property="mysid" mv-value="url('session')">
-				<form id="session-select" method=get action="markid.html">
+				<form id="session-select" method="get" action="markid.html">
 					<select property="nextSession" name="session" width="60">
 						<option value="" selected hidden disabled>Choose a session</option>
 						<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)">[name]</option>
 					</select>
 					<input type="submit" value="Go to Session">
 				</form>
+				<div mv-if="not(mysid)">Choose a session to begin</div>
 
-
+				<div mv-if="mysid">
 				<h2>[condense(sessions where id=mysid).name]</h2>
 
 				<h2>Requests</h2>
@@ -117,10 +118,11 @@
 						<td><meta property="played">
 					</tr>
 				</table>
+				</div>
 			</section>
 
 			
-			<section 
+			<section mv-if="showRequests.mysid"
 				mv-app="playlist" mv-bar="none"
 				mv-firebase="auth realtime"
 				mv-plugins="firebase-firestore"
@@ -147,7 +149,7 @@
 				<div><input type="checkbox" mv-storage="none" property="addMarkid"> add markidim</div>
 				<div property="excludes" mv-multiple class="[if(excluded,'excluded','')]"
 					 mv-value="sort(getUsers(util.signal),'-lastActive')">
-					<button mv-action="add(uid, owner)" mv-if="addMarkid" disabled="[uid in owner]">Add as Markid</button>
+					<button mv-action="add(uid, owner)" mv-if="addMarkid" disabled="[uid in owner]">Make Markid</button>
 					<button mv-action="setExclude(uid,not(excluded))">
 						[if(excluded,"+","X")]
 					</button>

@@ -148,7 +148,7 @@
     }
 
     getSessions = function(signal) {
-	return sessions;
+ 	return JSON.parse(JSON.stringify(sessions));
     }
 
     markPlayed = function(requests, played) {
