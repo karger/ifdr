@@ -151,33 +151,6 @@
  	return JSON.parse(JSON.stringify(sessions));
     }
 
-    markPlayed = function(requests, played) {
-	let map={}, result=[];
-
-	try {
-	    played.forEach(p=> {
-		map[p.label]=true;
-	    })
-	    requests.forEach(r => {
-//		let s=Object.assign([],r);  //breaks mavo for unknown reasons
-		let s={label: Mavo.value(r.label),
-		       count: Mavo.value(r.count),
-		       names: Mavo.value(r.names)
-		      }
-		for (k in s) {
-		    if (typeof s[k]=='undefined') {
-			delete s[k]
-		    }
-		}
-		s.played = map[r.label] ? true : false;
-		result.push(s);
-	    })
-	    return result;
-	} catch (e) {
-	    return [];
-	}
-    }
-
     makeIndex = function(list) {
 	let map={};
 	list.forEach(l=> {

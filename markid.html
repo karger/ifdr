@@ -108,7 +108,7 @@
 						<td><input list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
 					</tr>
 
-					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(markPlayed(getRequests(util.signal,excludes),playlist.played,util.signal),'-count')">
+					<tr class="request [if(get(playlist.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(getRequests(util.signal,excludes,playlist.played,util.signal),'-count')">
 						<td>
 							<button mv-if="not(played)" mv-action="add(group(label: label, timestamp: +$now),playlist.played)">play</button>
 							
@@ -143,6 +143,8 @@
 				<div class="playlist" mv-multiple property="played" mv-initial-items="0">
 					<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp">
 				</div>
+				
+				<meta property="playedIndex" mv-value="makeIndex(played.label)">
 
 				<button id="clear" mv-action="delete(played)">Clear playlist</button>
 				<h2>Folks</h2>

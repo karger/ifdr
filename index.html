@@ -121,7 +121,7 @@
 				<meta property="sessions" mv-value="getSessions(util.signal)">
 				<div id="session-header">
 				<select id="session-select" property="mysid" name="session" width="60">
-						<option value="" selected disabled>Choose session</option>
+						<option value="" selected>Choose session</option>
 						<option property="options" mv-group mv-multiple value="[id]" mv-value="sessions">[name]</option>
 				</select>
 					<h2>Session</h2>
@@ -138,13 +138,13 @@
 
 				<div class="show-logged-in">
 					
-					<div mv-if="not(mysid) and not(checkedIn)">
-						Choose a session and check in to make requests.
+					<div mv-if="not(mysid)">
+						Choose a session
 					</div>
 					<div>
 						<meta property="checkedIn" mv-value="false" mv-storage="none">
-						<div mv-if="!checkedIn">Click <button mv-action="set(checkedIn,true),set(lastActive,+$now),set(name,username())">Check In</button> to make requests</div>
-						<div mv-if="checkedIn">Click <button mv-action="set(checkedIn,false),set(lastActive,0)">Check Out</button> to suspend your requests while you're away</div>
+						<div mv-if="mysid && !checkedIn">Click <button mv-action="set(checkedIn,true),set(lastActive,+$now),set(name,username())">Check In</button> to make requests</div>
+						<div mv-if="mysid && checkedIn">Click <button mv-action="set(checkedIn,false),set(lastActive,0)">Check Out</button> to suspend your requests while you're away</div>
 					</div>
 					<div>
 						<h2>My Requests</h2>
@@ -156,10 +156,11 @@
 							<button mv-action="if(selection,add(group(label: selection),ifdr.pick)); set(lastActive,+$now); set(selection,'')" disabled="[selectionPlayed]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
-						<div mv-if="ifdr.active">If it's <span class="played">crossed out</span>, it's been played.</div>
+						
+						<div mv-if="ifdr.mysid">If it's <span class="played">crossed out</span>, it's been played.</div>
 						<div id="my-requests">
-							<div class="[if(played && ifdr.active,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
-								<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="played" mv-value="has(label,session.played.label)">
+							<div class="[if(played,'played','unplayed')]" mv-multiple property="pick" mv-initial-items="0">
+								<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="played" mv-value="get(session.playedIndex,label)">
 							</div>
 						</div>
 					</div>
@@ -186,7 +187,7 @@
 				</table>
 			</section>
 
-			<div mv-if="ifdr.active"
+			<div mv-if="ifdr.mysid"
 				mv-app="session"
 				mv-firebase="realtime"
 				mv-plugins="firebase-firestore"
@@ -199,7 +200,7 @@
 				<div class="session" mv-multiple property="played" mv-initial-items="0">
 					<div property="label"></div> 
 				</div>
-				<meta property="playedIndex" mv-value="makeIndex(played.label,util.signal)">
+				<meta property="playedIndex" mv-value="makeIndex(played.label)">
 			</div>
 		</main>
 		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>
