@@ -110,18 +110,17 @@
 					</tr>
 
 					<tr>
-						<td>	<button mv-action="add(group(label: playSelection, timestamp: +$now),playlist.played); set(playSelection,'')">play</button>
+						<td><button mv-action="add(group(label: playSelection, timestamp: +$now),playlist.played); set(playSelection,'')">play</button>
 						<td><input list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
 					</tr>
 
-					<tr class="request [if(get(playlist.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(getRequests(util.signal,excludes,playlist.played,util.signal),'-count')">
-						<td>
-							<button mv-if="not(played)" mv-action="add(group(label: label, timestamp: +$now),playlist.played)">play</button>
-							
+					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(getRequests(util.signal,excludes,playlist.played,util.signal),'-count')">
+						<td>[played]<button mv-if="not(played)"
+									mv-action="add(group(label: label, timestamp: +$now),playlist.played)">play</button>
 						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
 						<td mv-if="showNames"><span class="r-names" mv-multiple property="names"></span>
-						<td><meta property="played">
+						<td><meta property="played" mv-value="get(playlist.playedIndex,label)">
 					</tr>
 				</table>
 				</div>
