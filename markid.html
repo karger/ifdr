@@ -93,14 +93,20 @@
 				<div mv-if="mysid">
 				<h2>[condense(sessions where id=mysid).name]</h2>
 
+				<div>
+				<div style="float:right">
+					<div> <label><input type="checkbox" property="showPlayed"> Show played</label></div>
+					<div><label><input type="checkbox" mv-storage="none" property="showNames"> Show who</label></div>
+				</div>
 				<h2>Requests</h2>
-				<label><input type="checkbox" property="showPlayed"> Show played</label>
+				</div>
+
 				<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
 					<tr>
 						<th></th>
 						<th>Dance</th>
 						<th>Count</th>
-						<th>Who</th>
+						<th mv-if="showNames">Who</th>
 					</tr>
 
 					<tr>
@@ -114,7 +120,7 @@
 							
 						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
-						<td><span class="r-names" mv-multiple property="names"></span>
+						<td mv-if="showNames"><span class="r-names" mv-multiple property="names"></span>
 						<td><meta property="played">
 					</tr>
 				</table>
@@ -130,16 +136,16 @@
 				mv-storage="[util.sessionStore]"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
-
 				<div style="display:none">
 					[setSignal('signal')]
 					[watchRequests(showRequests.mysid,playlist.excludes)]
 					[watchSessions()]
 				</div>
 
+				<meta mv-multiple property="owner">
 
 				<h2>Played</h2>
-
+				
 				<div class="playlist" mv-multiple property="played" mv-initial-items="0">
 					<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp">
 				</div>
@@ -147,11 +153,15 @@
 				<meta property="playedIndex" mv-value="makeIndex(played.label)">
 
 				<button id="clear" mv-action="delete(played)">Clear playlist</button>
+				<div>
+					<div style="float:right"><input type="checkbox" mv-storage="none" property="addMarkid"> manage markidim</div></div>
 				<h2>Folks</h2>
-				<div><input type="checkbox" mv-storage="none" property="addMarkid"> add markidim</div>
+				Click <button>x</button> to check out people who've left, or <button>+</button> to check them back in.
+
 				<div property="excludes" mv-multiple class="[if(excluded,'excluded','')]"
 					 mv-value="sort(getUsers(util.signal),'-lastActive')">
-					<button mv-action="add(uid, owner)" mv-if="addMarkid" disabled="[uid in owner]">Make Markid</button>
+					<button mv-action="add(uid,owner)" mv-if="addMarkid && not(uid in owner)">Make Markid</button>
+					<button mv-action="delete(uid,owner)" mv-if="addMarkid && (uid in owner)">Remove Markid</button>
 					<button mv-action="setExclude(uid,not(excluded))">
 						[if(excluded,"+","X")]
 					</button>
