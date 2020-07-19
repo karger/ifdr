@@ -14,7 +14,7 @@
     Promise.all([Mavo.inited,fireAuth]).then(([m,auth])=> {
 	let n=document.querySelector('[mv-app="ifdr"]'),
 	    storage='https://mavo-cd7c3.firebaseio.com/ifdr-user/'
-//	    n.getAttribute('mv-storage');
+	//	    n.getAttribute('mv-storage');
 
 	auth.onAuthStateChanged((user)=> {
 	    if (user) {
@@ -28,25 +28,32 @@
 	});
     });
 
-    let signalCounter=0
-    , signalNode
-    ;
-    setSignal = function(id) {
-	signalNode = Mavo.Node.get(document.getElementById(Mavo.value(id)));
-	return signalCounter;
-    }
-    function signal () {
-	if (signalNode) {
-	    signalNode.render(signalCounter++);
+    
+    let signal =function () {
+	if (signal.ready) {
+	    signal.ready=false;
+	    setTimeout(() => {
+		signal.node?.render(signal.counter++);
+		signal.ready=true;
+	    },
+		       100);
 	}
     }
+    signal.counter=0;
+    signal.ready=true;
+
+    setSignal = function(id) {
+	signal.node = Mavo.Node.get(document.getElementById(Mavo.value(id)));
+	return signal.counter;
+    }
     
-    uid = function() {
+    
+    getUid = function() {
 	try {
 	    return firebase.auth().currentUser.uid;
 	}
 	catch (e) {
-	    return "";
+	    return undefined;
 	}
     }
 
@@ -55,20 +62,14 @@
 	    return firebase.auth().currentUser.displayName;
 	}
 	catch (e) {
-	    return ""
+	    return "";
 	}
-    }
-
-    let excluded = {};
-    setExclude = function(uid, state) {
-	excluded[uid]=state;
-	signal();
     }
     
     let unsubscribe=false
     , requests=[]
     , users = [];
-    watchRequests = function(sid) {
+    watchRequests = function(sid, backTime) {
 	fireAuth.then(() => {
 	    sid = Mavo.value(sid);
 	    if (console) {console.log("session: "+sid);}
@@ -79,22 +80,8 @@
 		
 		querySnapshot.forEach(function(doc) {
 		    let uid = doc.id;
-		    let name = doc.data().name;
-		    users.push({uid: uid, name: name, lastActive: doc.data().lastActive});
-		    if (excluded[uid]) return;
-
-		    let theirs = doc.data().pick;
-		    theirs.forEach(pick => {
-			if (!requestMap[pick.label]) {
-			    requestMap[pick.label] = {count: 0, names: [], uids: {}};
-			}
-			let r=requestMap[pick.label];
-			if (!r.uids[uid]) {
-			    r.count++;
-			    r.names.push(name);
-			    r.uids[uid]=true;
-			}
-		    });
+		    let {name, checkInTime, "pick": picks} = doc.data();
+		    users.push({uid: uid, name: name, checkInTime: checkInTime, "picks": picks});
 		});
 		requests=[];
 		for (r in requestMap) {
@@ -114,7 +101,7 @@
 		
 		let query = firebase.firestore().collection('ifdr-user')
 		    .where('mysid','==',sid)
-		    .where('lastActive','>',Date.now()-4*60*60*1000); //4 hours
+		    .where('checkInTime','>',Date.now()-backTime); //4 hours
  		unsubscribe = query.onSnapshot(parseQuery);
 	    });
 	    return [];
@@ -126,10 +113,31 @@
     }
 
     getUsers = function() {
-	users.forEach(u => {u.excluded=excluded[u.uid]});
 	return users;
     }
 
+    mergeRequests = function(users) {
+	let requestMap = {};
+	users.forEach((u) => {
+	    if (u) {
+		let {name, uid, picks=[]}=u;
+		picks.forEach(({label}) => {
+		    if (!requestMap[label]) {
+			requestMap[label] = {label: label, count: 0, names: [], uids: {}};
+		    }
+		    let r=requestMap[label];
+		    if (!r.uids[uid]) {
+			r.count++;
+			r.names.push(name);
+			r.uids[uid]=true;
+		    }
+		});
+	    }
+	});
+
+	return Object.values(requestMap);
+    }
+    
     let sessions=[];
     watchSessions = function() {
 	fireAuth.then(() => {
@@ -151,11 +159,24 @@
  	return JSON.parse(JSON.stringify(sessions));
     }
 
-    makeIndex = function(list) {
+    makeIndex = function(list,key) {
 	let map={};
-	list.forEach(l=> {
-	    map[l]=true;
-	});
+	if (key) { //indexing objects
+	    list.forEach(o => {
+		map[o[key]] = o;
+	    });
+	} else { //indexing strings
+	    list.forEach(s=> {
+		map[s]=true;
+	    })
+	}
 	return map;
     }
+
+    updateIndex = function(index, key, value) {
+	let o = index.getData();
+	o[key] = value;
+	return o;
+    }
+
 })();

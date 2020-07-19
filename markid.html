@@ -25,7 +25,7 @@
 			.mv-status span {
 				display: none;
 			}
-			.excluded {
+			.inactive {
 				text-decoration: line-through;
 			}
 			#session-select {
@@ -83,8 +83,8 @@
 				<meta property="mysid" mv-value="url('session')">
 				<form id="session-select" method="get" action="markid.html">
 					<select property="nextSession" name="session" width="60">
-						<option value="" selected hidden disabled>Choose a session</option>
-						<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)">[name]</option>
+						<option value="" selected disabled>Choose a session</option>
+						<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)" selected="[id==url('session')]">[name]</option>
 					</select>
 					<input type="submit" value="Go to Session">
 				</form>
@@ -101,6 +101,7 @@
 				<h2>Requests</h2>
 				</div>
 
+
 				<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
 					<tr>
 						<th></th>
@@ -110,25 +111,37 @@
 					</tr>
 
 					<tr>
-						<td><button mv-action="add(group(label: playSelection, timestamp: +$now),playlist.played); set(playSelection,'')">play</button>
+						<td><button mv-action="add(group(label: playSelection, timestamp: +$now),session.played); set(playSelection,'')">play</button>
 						<td><input list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
 					</tr>
 
-					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(getRequests(util.signal,excludes,playlist.played,util.signal),'-count')">
+					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergeRequests(session.users where active,util.signal),'-count')">
 						<td><button mv-if="not(played)"
-									mv-action="add(group(label: label, timestamp: +$now),playlist.played)">play</button>
+									mv-action="add(group(label: label, timestamp: +$now),session.played)">play</button>
 						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
 						<td mv-if="showNames"><span class="r-names" mv-multiple property="names"></span>
-						<td><meta property="played" mv-value="get(playlist.playedIndex,label)">
+						<td><meta property="played" mv-value="get(session.playedIndex,label)">
 					</tr>
 				</table>
 				</div>
 			</section>
 
+			<div hidden mv-app="testing" mv-source="none">
+				<div property="users">
+					<span property="uid">1</span>
+					<span property="name">Alice</span>
+					<span property="checkInTime">10</span>
+				</div>
+				<div property="users">
+					<span property="uid">2</span>
+					<span property="name">Bob</span>
+					<span property="checkInTime">10</span>
+				</div>
+			</div>
 			
 			<section mv-if="showRequests.mysid"
-				mv-app="playlist" mv-bar="none"
+				mv-app="session" mv-bar="none"
 				mv-firebase="auth realtime"
 				mv-plugins="firebase-firestore"
 				mv-autosave="0"
@@ -137,12 +150,18 @@
 				>
 				<div style="display:none">
 					[setSignal('signal')]
-					[watchRequests(showRequests.mysid,playlist.excludes)]
+					[watchRequests(showRequests.mysid,24*60*60*1000)]
 					[watchSessions()]
 				</div>
 
 				<meta mv-multiple property="owner">
 
+				<div property="pushOutTimes" mv-multiple mv-initial-items="0">
+					<meta property="uid">
+					<meta property="time" type="number">
+				</div>
+				<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
+				
 				<h2>Played</h2>
 				
 				<div class="playlist" mv-multiple property="played" mv-initial-items="0">
@@ -155,17 +174,23 @@
 				<div>
 					<div style="float:right"><input type="checkbox" mv-storage="none" property="addMarkid"> manage markidim</div></div>
 				<h2>Folks</h2>
-				Click <button>x</button> to check out people who've left, or <button>+</button> to check them back in.
+				Click <button>X</button> to check out people who've left, or <button>+</button> to check them back in.
 
-				<div property="excludes" mv-multiple class="[if(excluded,'excluded','')]"
-					 mv-value="sort(getUsers(util.signal),'-lastActive')">
+				<div property="users" mv-multiple class="[if(not(active),'inactive','')]"
+					 mv-value="sort(getUsers(util.signal),'-checkInTime')">
+					 <!--mv-value="testing.users"-->
+					 <meta property="uid">
+					<meta property="active" mv-value="checkInTime>(get(pushOutIndex,uid).time or 0)">
 					<button mv-action="add(uid,owner)" mv-if="addMarkid && not(uid in owner)">Make Markid</button>
 					<button mv-action="delete(uid,owner)" mv-if="addMarkid && (uid in owner)">Remove Markid</button>
-					<button mv-action="setExclude(uid,not(excluded))">
-						[if(excluded,"+","X")]
-					</button>
-					<span property="name"></span> <meta property="uid"> <meta property="excluded">
+					<button mv-if="not(active)"
+							mv-action="if(uid in pushOutTimes.uid,set(pushOutTimes.time where pushOutTimes.uid=uid,-1),add(group(uid: uid, time: -1),pushOutTimes))">+</button>
+					<button mv-if="active"
+							mv-action="if(uid in pushOutTimes.uid,set(pushOutTimes.time where pushOutTimes.uid=uid,+$now),add(group(uid: uid, time: +$now),pushOutTimes))">X</button>
+					
+					<span property="name"></span> [pushOutRecord.time]
 				</div>
+
 			</section>
 		</main>
 		

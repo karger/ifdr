@@ -76,14 +76,14 @@
 				 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
 				 mv-storage="none"
 				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
-				 class="[if(ifdr.active,'user-active','user-inactive')]"
+				 class="[if(ifdr.checkedIn,'user-active','user-inactive')]"
 				 >
 				<div class="mv-bar mv-ui">
 					<span class="show-logged-in show-active">Checked in</span>
 					<span class="show-logged-in show-inactive">Checked out</span>
 				</div>
 				<meta id="signal" property="signal">
-				<meta property="userStorage" mv-value="if(uid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'&uid(util.signal),'none')">
+				<meta property="userStorage" mv-value="if(getUid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& getUid(util.signal),'none')">
 			</div>
 
 			<div hidden mv-app="dances" mv-storage="none" mv-source="ifd.csv" mv-format="csv">
@@ -104,7 +104,7 @@
 				>
 				<div style="display:none">
 					[setSignal('signal')]
-					[watchRequests(mysid)]
+					[watchRequests(mysid,24*60*60*1000)]
 					[watchSessions()]
 				</div>
 
@@ -127,9 +127,8 @@
 					<h2>Session</h2>
 				</div>
 				<meta property="sessionStorage"
-					  mv-value="if(mysid&&uid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
-				<meta property="active" mv-value="mysid and checkedIn">
-				<meta property="lastActive">
+					  mv-value="if(mysid&&getUid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
+				<meta property="checkInTime" mv-default="[-1]">
 				<meta property="name">
 				
 				<div class="show-logged-out">
@@ -142,9 +141,9 @@
 						Choose a session
 					</div>
 					<div>
-						<meta property="checkedIn" mv-value="false" mv-storage="none">
-						<div mv-if="mysid && !checkedIn">Click <button mv-action="set(checkedIn,true),set(lastActive,+$now),set(name,username())">Check In</button> to make requests</div>
-						<div mv-if="mysid && checkedIn">Click <button mv-action="set(checkedIn,false),set(lastActive,0)">Check Out</button> to suspend your requests while you're away</div>
+						<meta property="checkedIn" mv-value="mysid and checkInTime>first(session.pushOutTimes where uid=getUid(util.signal)).time" mv-storage="none">
+						<div mv-if="mysid && !checkedIn">Click <button mv-action="set(checkInTime,+$now),set(name,username())">Check In</button> to make requests</div>
+						<div mv-if="mysid && checkedIn">Click <button mv-action="set(checkInTime,-1)">Check Out</button> to suspend your requests while you're away</div>
 					</div>
 					<div>
 						<h2>My Requests</h2>
@@ -153,7 +152,7 @@
 						<div style="display:inline-block;">
 							<input list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
 							<meta property="selectionPlayed" mv-value="has(selection,session.played.label)">
-							<button mv-action="if(selection,add(group(label: selection),ifdr.pick)); set(lastActive,+$now); set(selection,'')" disabled="[selectionPlayed]">[if(selectionPlayed,'played','request')]</button>
+							<button mv-action="if(selection,add(group(label: selection),ifdr.pick)); set(selection,''); if(checkedIn,set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in ifdr.pick.label)]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 						
@@ -166,7 +165,7 @@
 					</div>
 			</section>
 
-			<section mv-if="ifdr.active" mv-app="showRequests" mv-storage="none" mv-bar="none">
+			<section mv-if="ifdr.checkedIn" mv-app="showRequests" mv-storage="none" mv-bar="none">
 				<h2>Everyone's Requests</h2>
 
 				<table class="request-table">
@@ -177,7 +176,7 @@
 						<th>Count</th>
 					</tr>
 					<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="getRequests(util.signal)">
-						<td><button mv-if="ifdr.active and not(mine) and not(played)" mv-action="add(group(label: label),ifdr.pick); set(ifdr.lastActive,+$now)">request</button>
+						<td><button mv-if="ifdr.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label),ifdr.pick); if(checkedIn,set(checkInTime,+$now))">request</button>
 						<td>
 						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
@@ -195,7 +194,8 @@
 				mv-bar="none"
 				mv-source="[ifdr.sessionStorage]"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
-				>
+				 >
+				<meta property="pushOutTimes" mv-multiple mv-initial-items=0>
 				<h2>Played</h2>
 				<div class="session" mv-multiple property="played" mv-initial-items="0">
 					<div property="label"></div> 
