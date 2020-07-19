@@ -67,9 +67,8 @@
     }
     
     let unsubscribe=false
-    , requests=[]
     , users = [];
-    watchRequests = function(sid, backTime) {
+    watchUsers = function(sid, backTime) {
 	fireAuth.then(() => {
 	    sid = Mavo.value(sid);
 	    if (console) {console.log("session: "+sid);}
@@ -80,15 +79,9 @@
 		
 		querySnapshot.forEach(function(doc) {
 		    let uid = doc.id;
-		    let {name, checkInTime, "pick": picks} = doc.data();
-		    users.push({uid: uid, name: name, checkInTime: checkInTime, "picks": picks});
+		    let {name, checkInTime, picks} = doc.data();
+		    users.push({uid: uid, name: name, checkInTime: checkInTime, picks: picks});
 		});
-		requests=[];
-		for (r in requestMap) {
-		    requests.push({label: r,
-				   count: requestMap[r].count,
-				   names: requestMap[r].names});
-		}
 		signal();
 		return 0;
 	    };
@@ -108,7 +101,7 @@
 	})
     };
 
-    getRequests = function (signal) {
+    getRequests = function () {
 	return requests;
     }
 

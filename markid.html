@@ -127,19 +127,6 @@
 				</div>
 			</section>
 
-			<div hidden mv-app="testing" mv-source="none">
-				<div property="users">
-					<span property="uid">1</span>
-					<span property="name">Alice</span>
-					<span property="checkInTime">10</span>
-				</div>
-				<div property="users">
-					<span property="uid">2</span>
-					<span property="name">Bob</span>
-					<span property="checkInTime">10</span>
-				</div>
-			</div>
-			
 			<section mv-if="showRequests.mysid"
 				mv-app="session" mv-bar="none"
 				mv-firebase="auth realtime"
@@ -150,7 +137,7 @@
 				>
 				<div style="display:none">
 					[setSignal('signal')]
-					[watchRequests(showRequests.mysid,24*60*60*1000)]
+					[watchUsers(showRequests.mysid,24*60*60*1000)]
 					[watchSessions()]
 				</div>
 
@@ -188,7 +175,7 @@
 					<button mv-if="active"
 							mv-action="if(uid in pushOutTimes.uid,set(pushOutTimes.time where pushOutTimes.uid=uid,+$now),add(group(uid: uid, time: +$now),pushOutTimes))">X</button>
 					
-					<span property="name"></span> [pushOutRecord.time]
+					<span property="name"></span>
 				</div>
 
 			</section>
