@@ -83,7 +83,8 @@
 					<span class="show-logged-in show-inactive">Checked out</span>
 				</div>
 				<meta id="signal" property="signal">
-				<meta property="userStorage" mv-value="if(getUid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& getUid(util.signal),'none')">
+				<meta property="userStorage" mv-value="if(getUid(signal),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& getUid(signal),'none')">
+				<meta property="sessions" mv-value="getSessions(signal)">
 				<div hidden>
 					[setSignal('signal')]
 					[watchSessions()]
@@ -100,7 +101,7 @@
 				mv-app="user"
 				mv-firebase="auth realtime"
 				mv-bar="none"
-				mv-plugins="firebase-firestore"
+				mv-plugins="firebase-firestore sort"
 				mv-autosave="0"
 				mv-bar="status login logout"
 				mv-storage="[util.userStorage]"
@@ -109,6 +110,7 @@
 				<div hidden>
 					[watchUsers(mysid,24*60*60*1000)]
 				</div>
+
 				<section>
 					<details><summary>Click for instructions</summary>
 						<ol>
@@ -120,12 +122,11 @@
 						</ol>
 					</details>
 					
-					<meta property="sessions" mv-value="getSessions(util.signal)">
 
 					<div id="session-header">
-						<select id="session-select" property="mysid" name="session" width="60">
+						<select id="session-select" property="mysid" mv-default="[url('session')]" name="session" width="60">
 							<option value="" selected>Choose session</option>
-							<option property="options" mv-group mv-multiple value="[id]" mv-value="sessions">[name]</option>
+							<option property="options" mv-group mv-multiple value="[id]" mv-value="util.sessions">[name]</option>
 						</select>
 						<h2>Session</h2>
 					</div>
@@ -151,25 +152,32 @@
 							<div mv-if="!checkedIn">Click <button mv-action="set(checkInTime,+$now),set(name,username())">Check In</button> to make requests</div>
 							<div mv-if="checkedIn">Click <button mv-action="set(checkInTime,-1)">Check Out</button> to suspend your requests while you're away</div>
 						</div>
-						<div>
-							<h2>My Requests</h2>
+					</div>
+				</section>
+				
+				<section class="show-logged-in">
+					<div>
+						<h2>My Requests</h2>
 
 
-							<div style="display:inline-block;">
-								<input list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
-								<meta property="selectionPlayed" mv-value="has(selection,session.played.label)">
-								<button mv-action="if(selection,add(group(label: selection),picks)); set(selection,''); if(checkedIn,set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label)]">[if(selectionPlayed,'played','request')]</button>
-								<button mv-action="set(selection,'')">clear</button>
-							</div>
-							
-							<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been played.</div>
-							<div id="my-requests">
-								<div class="[if(played,'played','unplayed')]" mv-multiple property="picks" mv-initial-items="0" mv-alias="pick">
-									<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="played" mv-value="get(session.playedIndex,label)">
-								</div>
+						<div style="display:inline-block;">
+							<input list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
+							<meta property="selectionPlayed" mv-value="get(session.playedIndex,selection)">
+							<button mv-action="if(selection,add(group(label: selection),picks)); set(selection,''); if(checkedIn,set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label)]">[if(selectionPlayed,'played','request')]</button>
+							<button mv-action="set(selection,'')">clear</button>
+						</div>
+						
+						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been played.</div>
+						<div id="my-requests">
+							<div class="[if(played,'played','unplayed')]" mv-multiple property="picks" mv-initial-items="0" mv-alias="pick">
+								<button mv-action="delete($this)">X</button>
+								<span property="label"></span>
+								<meta property="played" mv-value="get(session.playedIndex,label)">
 							</div>
 						</div>
+					</div>
 				</section>
+
 				<section>
 					<h2>Everyone's Requests</h2>
 
@@ -180,7 +188,7 @@
 							<th>Dance</th>
 							<th>Count</th>
 						</tr>
-						<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="mergeRequests(session.users where active,util.signal)">
+						<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','label')">
 							<td><button mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label),user.picks); if(checkedIn,set(checkInTime,+$now))">request</button>
 							<td>
 							<td><span class="r-label" property="label"></span>
@@ -190,32 +198,36 @@
 						</tr>
 					</table>
 				</section>
+			</div>
+
+			<div mv-if="user.mysid"
+				 mv-app="session"
+				 mv-firebase="realtime"
+				 mv-plugins="firebase-firestore"
+				 mv-storage="none"
+				 mv-bar="none"
+				 mv-source="[user.sessionStorage]"
+				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				 >
+				<meta property="pushOutTimes" mv-multiple mv-initial-items="0">
+				<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
+				<div hidden property="users" mv-multiple class="[if(not(active),'inactive','')]"
+					 mv-value="getUsers(util.signal)">
+					<!--mv-value="testing.users"-->
+					<meta property="uid">
+					<meta property="pushOut" mv-value="get(pushOutIndex,uid)">
+					<meta property="active" mv-value="!pushOut || (checkInTime > pushOut.time)">
 				</div>
 
-				<div mv-if="user.mysid"
-					 mv-app="session"
-					 mv-firebase="realtime"
-					 mv-plugins="firebase-firestore"
-					 mv-storage="none"
-					 mv-bar="none"
-					 mv-source="[user.sessionStorage]"
-					 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
-					 >
-					<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
-					<div hidden property="users" mv-multiple class="[if(not(active),'inactive','')]"
-						 mv-value="getUsers(util.signal)">
-						<!--mv-value="testing.users"-->
-						<meta property="uid">
-						<meta property="pushOut" mv-value="get(pushOutIndex,uid)">
-						<meta property="active" mv-value="!pushOut || (checkInTime > pushOut.time)">
-					</div>
-					<meta property="pushOutTimes" mv-multiple mv-initial-items="0">
+				<section>
 					<h2>Played</h2>
 					<div class="session" mv-multiple property="played" mv-initial-items="0">
 						<div property="label"></div> 
 					</div>
-					<meta property="playedIndex" mv-value="makeIndex(played.label)">
-				</div>
+				</section>
+
+				<meta property="playedIndex" mv-value="makeIndex(played.label)">
+			</div>
 		</main>
 		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>
 	</body>

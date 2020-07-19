@@ -101,15 +101,11 @@
 	})
     };
 
-    getRequests = function () {
-	return requests;
-    }
-
     getUsers = function() {
 	return users;
     }
 
-    mergeRequests = function(users) {
+    mergePicks = function(users) {
 	let requestMap = {};
 	users.forEach((u) => {
 	    if (u) {
@@ -148,7 +144,7 @@
 	});
     }
 
-    getSessions = function(signal) {
+    getSessions = function() {
  	return JSON.parse(JSON.stringify(sessions));
     }
 
@@ -164,12 +160,6 @@
 	    })
 	}
 	return map;
-    }
-
-    updateIndex = function(index, key, value) {
-	let o = index.getData();
-	o[key] = value;
-	return o;
     }
 
 })();
