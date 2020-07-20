@@ -71,7 +71,7 @@
     watchUsers = function(sid, backTime) {
 	fireAuth.then(() => {
 	    sid = Mavo.value(sid);
-	    if (console) {console.log("session: "+sid);}
+	    console?.log("session: "+sid);
 
 	    function parseQuery(querySnapshot) {
 		let requestMap={};
@@ -123,7 +123,6 @@
 		});
 	    }
 	});
-
 	return Object.values(requestMap);
     }
     
@@ -145,6 +144,7 @@
     }
 
     getSessions = function() {
+	console.log('getSessions');
  	return JSON.parse(JSON.stringify(sessions));
     }
 
