@@ -12,10 +12,6 @@
     });
 
     Promise.all([Mavo.inited,fireAuth]).then(([m,auth])=> {
-	let n=document.querySelector('[mv-app="ifdr"]'),
-	    storage='https://mavo-cd7c3.firebaseio.com/ifdr-user/'
-	//	    n.getAttribute('mv-storage');
-
 	auth.onAuthStateChanged((user)=> {
 	    if (user) {
 		document.body.classList.remove('logged-out');
