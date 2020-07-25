@@ -22,6 +22,9 @@
 			.played {
 				text-decoration: line-through;
 			}
+			.hidePlayed .played {
+				display: none;
+			}
 			#session-header {
 				max-width: 30em;
 			}
@@ -103,7 +106,7 @@
 				mv-firebase="auth realtime"
 				mv-bar="none"
 				mv-plugins="firebase-firestore sort"
-				mv-autosave="0"
+				mv-autosave="5"
 				mv-bar="status login logout"
 				mv-storage="[util.userStorage]"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
@@ -182,9 +185,12 @@
 				</section>
 
 				<section>
+					<div style="float:right">
+						<div> <label><input type="checkbox" property="showPlayed"> Show played</label></div>
+					</div>
 					<h2>Everyone's Requests</h2>
 
-					<table class="request-table">
+					<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>
 							<th></th>
 							<th></th>
@@ -192,7 +198,7 @@
 							<th>Count</th>
 						</tr>
 						<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','label')">
-							<td><button mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label),user.picks); if(checkedIn,set(checkInTime,+$now))">request</button>
+							<td><button mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label),user.picks); if(checkedIn,set(checkInTime,+$now))">+</button>
 							<td>
 							<td><span class="r-label" property="label"></span>
 							<td><span class="r-count" property="count"></span>
