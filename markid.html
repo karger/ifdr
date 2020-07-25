@@ -76,7 +76,7 @@
 				</datalist>
 			</div>
 			
-			<section mv-app="showRequests" mv-storage="none" mv-bar="none"
+			<section mv-app="requests" mv-storage="none" mv-bar="none"
 					 mv-plugins="sort">
 				
 				<meta property="sessions" mv-value="getSessions(util.signal)">
@@ -84,7 +84,7 @@
 				<form id="session-select" method="get" action="markid.html">
 					<select property="nextSession" name="session" width="60">
 						<option value="" selected disabled>Choose a session</option>
-						<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)" selected="[id==url('session')]">[name]</option>
+						<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)" selected="[id=url('session')]">[name]</option>
 					</select>
 					<input type="submit" value="Go to Session">
 				</form>
@@ -126,7 +126,7 @@
 				</div>
 			</section>
 
-			<section mv-if="showRequests.mysid"
+			<section mv-if="requests.mysid"
 				mv-app="session" mv-bar="none"
 				mv-firebase="auth realtime"
 				mv-plugins="firebase-firestore"
@@ -136,7 +136,7 @@
 				>
 				<div style="display:none">
 					[setSignal('sig'&'nal')]
-					[watchUsers(showRequests.mysid,if(showRequests.mysid='test',365*24*60*60*100,24*60*60*1000))]
+					[watchUsers(requests.mysid,if(requests.mysid='test',365*24*60*60*100,24*60*60*1000))]
 					[watchSessions()]
 				</div>
 
@@ -157,8 +157,13 @@
 				<meta property="playedIndex" mv-value="makeIndex(played.label)">
 
 				<button id="clear" mv-action="delete(played)">Clear playlist</button>
-				<div>
-					<div style="float:right"><input type="checkbox" mv-storage="none" property="addMarkid"> manage markidim</div></div>
+
+				<div style="float:right">
+					<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
+					<div><label><input type="checkbox" mv-storage="none" property="showRequests"> Show requests</label></div>
+					
+				</div>
+
 				<h2>Folks</h2>
 				Click <button>X</button> to check out people who've left, or <button>+</button> to check them back in.
 
@@ -173,7 +178,7 @@
 					<button mv-if="active"
 							mv-action="if(uid in pushOutTimes.uid,set(pushOutTimes.time where pushOutTimes.uid=uid,+$now),add(group(uid: uid, time: +$now),pushOutTimes))">X</button>
 					
-					<span property="name"></span>
+					<span property="name"></span><span mv-if="showRequests">: [picks.label]</span>
 				</div>
 
 			</section>
