@@ -137,7 +137,7 @@
 				>
 				<div style="display:none">
 					[setSignal('sig'&'nal')]
-					[watchUsers(showRequests.mysid,24*60*60*1000)]
+					[watchUsers(showRequests.mysid,if(showRequests.mysid='test',365*24*60*60*100,24*60*60*1000))]
 					[watchSessions()]
 				</div>
 
@@ -165,7 +165,6 @@
 
 				<div property="users" mv-multiple class="[if(not(active),'inactive','')]"
 					 mv-value="sort(getUsers(util.signal),'-checkInTime')">
-					 <!--mv-value="testing.users"-->
 					 <meta property="uid">
 					<meta property="active" mv-value="checkInTime>(get(pushOutIndex,uid).time or 0)">
 					<button mv-action="add(uid,owner)" mv-if="addMarkid && not(uid in owner)">Make Markid</button>

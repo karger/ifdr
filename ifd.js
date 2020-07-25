@@ -63,11 +63,10 @@
     }
     
     let unsubscribe=false
-    , users = [];
+    , users = []
     watchUsers = function(sid, backTime) {
 	fireAuth.then(() => {
 	    sid = Mavo.value(sid);
-	    console?.log("session: "+sid);
 
 	    function parseQuery(querySnapshot) {
 		let requestMap={};
@@ -90,7 +89,7 @@
 		
 		let query = firebase.firestore().collection('ifdr-user')
 		    .where('mysid','==',sid)
-		    .where('checkInTime','>',Date.now()-backTime); //4 hours
+		    .where('checkInTime','>',Date.now()-backTime); //prune ancient checkins
  		unsubscribe = query.onSnapshot(parseQuery);
 	    });
 	    return [];

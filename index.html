@@ -83,7 +83,8 @@
 					<span class="show-logged-in show-inactive">Checked out</span>
 				</div>
 				<meta id="signal" property="signal">
-				<meta property="userStorage" mv-value="if(getUid(signal),'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& getUid(signal),'none')">
+				<meta property="uid" mv-value="url('uid') || getUid(signal)">
+				<meta property="userStorage" mv-value="if(uid,'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& uid,'none')">
 				<meta property="sessions" mv-value="getSessions(signal)">
 				<div hidden>
 					[setSignal('sig'&'nal')]
@@ -108,7 +109,7 @@
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<div hidden>
-					[watchUsers(mysid,24*60*60*1000)]
+					[watchUsers(mysid,if(mysid='test',365*24*60*60*100,24*60*60*1000))]
 				</div>
 
 				<section>
@@ -124,18 +125,20 @@
 					
 
 					<div id="session-header">
-						<select id="session-select" property="mysid" mv-default="[url('session')]" name="session" width="60">
+						<select id="session-select" property="mysid" name="session" width="60">
 							<option value="" selected>Choose session</option>
 							<option property="options" mv-group mv-multiple value="[id]" mv-value="util.sessions">[name]</option>
 						</select>
+						<meta property="mysid2" mv-storage="inherit"
+							  mv-value="url('session') || sessionSelect || mysid">
 						<h2>Session</h2>
 					</div>
 
 					<meta property="sessionStorage"
-						  mv-value="if(mysid&&getUid(util.signal),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
+						  mv-value="if(mysid && util.uid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
 					<meta property="checkInTime" mv-default="[-1]">
 					<meta property="name">
-					
+
 					<div class="show-logged-out">
 						Log in to make requests.
 					</div>
@@ -146,7 +149,7 @@
 							Choose a session
 						</div>
 						<div mv-if="mysid">
-							<meta property="myPushOut" mv-value="first(session.pushOutTimes where uid=getUid(util.signal)).time">
+							<meta property="myPushOut" mv-value="first(session.pushOutTimes where uid=util.uid).time">
 							<meta property="checkedIn"
 								  mv-value="mysid and checkInTime > (myPushOut || 0)">
 							<div mv-if="!checkedIn">Click <button mv-action="set(checkInTime,+$now),set(name,username())">Check In</button> to make requests</div>
