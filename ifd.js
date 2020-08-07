@@ -85,11 +85,12 @@
 		if (unsubscribe) {
 		    unsubscribe();
 		}
-		if (!sid) return;
+
+		if (!sid || !Number.isInteger(1*backTime)) return;
 		
 		let query = firebase.firestore().collection('ifdr-user')
 		    .where('mysid','==',sid)
-		    .where('checkInTime','>',Date.now()-backTime); //prune ancient checkins
+		    .where('checkInTime','>',Date.now()-1*backTime); //prune ancient checkins
  		unsubscribe = query.onSnapshot(parseQuery);
 	    });
 	    return [];
