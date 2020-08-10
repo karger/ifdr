@@ -91,7 +91,7 @@
 				<meta property="sessions" mv-value="getSessions(signal)">
 				<div hidden>
 					[setSignal('sig'&'nal')]
-					[watchSessions()]
+					[watchSessions(session.duration || 24*60*60*1000)]
 				</div>
 			</div>
 
@@ -112,7 +112,7 @@
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<div hidden>
-					[watchUsers(mysid,if(mysid='test',365*24*60*60*100,24*60*60*1000))]
+					[watchUsers(mysid,if(mysid='test',365*24*60*60*100,session.duration))]
 				</div>
 
 				<section>

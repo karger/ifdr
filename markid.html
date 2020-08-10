@@ -187,7 +187,7 @@
 				<div style="float:right; vertical-align: top">
 					<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
 					<div><label><input type="checkbox" mv-storage="none" property="showRequests"> Show requests</label></div>
-					Activity: <select property="durationChoice" mv-storage="none">
+					Activity: <select property="durationChoice">
 						<option value="[4*60*60*1000]">past 4 hours</option>
 						<option value="[24*60*60*1000]">past day</option>
 						<option value="[7*24*60*60*1000]">past week</option>
@@ -197,7 +197,7 @@
 						<option value="">specific date</option>
 					</select>
 					<div mv-if="!durationChoice"><input type="datetime-local" property="beginCustom"></div>
-					<meta property="duration"
+					<meta property="duration" mv-storage="inherit"
 						  mv-value="durationChoice || if(beginCustom, $startup-beginCustom, 4*60*60*1000)">
 				</div>
 
