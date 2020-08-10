@@ -16,11 +16,25 @@
 				display: none;
 			}
 			.request-table {
-				border-collapse: separate;
-				border-spacing: 1em 0em;
+				margin-left: 1em;
+			}
+			.request-table td {
+				padding-right: 1em;
 			}
 			.played {
 				text-decoration: line-through;
+			}
+			.playlist {
+				margin-left: 1em;
+			}
+			.playlist button {
+				margin-right: 1em;
+			}
+			.users {
+				margin-left: 1em;
+			}
+			.users button {
+				margin-right: 1em;
 			}
 			.mv-status span {
 				display: none;
@@ -115,7 +129,7 @@
 					</tr>
 
 					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count')">
-						<td><button mv-if="not(played)"
+						<td><button mv-if="not(played)" title="mark played"
 									mv-action="add(group(label: label, timestamp: +$now),session.played)">play</button>
 						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
@@ -178,15 +192,15 @@
 				<h2>Folks</h2>
 				<div style="clear:both">Click <button>X</button> to check out people who've left, or <button>+</button> to check them back in.</div>
 
-				<div property="users" mv-multiple class="[if(not(active),'inactive','')]"
+				<div property="users" class="users" mv-multiple class="[if(not(active),'inactive','')]"
 					 mv-value="sort(getUsers(util.signal),'-checkInTime')">
 					 <meta property="uid">
 					<meta property="active" mv-value="checkInTime>(get(pushOutIndex,uid).time or 0)">
 					<button mv-action="add(uid,owner)" mv-if="addMarkid && not(uid in owner)">Make Markid</button>
 					<button mv-action="delete(uid,owner)" mv-if="addMarkid && (uid in owner)">Remove Markid</button>
-					<button mv-if="not(active)"
+					<button mv-if="not(active)" title="Check in" 
 							mv-action="if(uid in pushOutTimes.uid,set(pushOutTimes.time where pushOutTimes.uid=uid,-1),add(group(uid: uid, time: -1),pushOutTimes))">+</button>
-					<button mv-if="active"
+					<button mv-if="active" title="Check out"
 							mv-action="if(uid in pushOutTimes.uid,set(pushOutTimes.time where pushOutTimes.uid=uid,+$now),add(group(uid: uid, time: +$now),pushOutTimes))">X</button>
 					
 					<span property="name"></span><span mv-if="showRequests">: [picks.label]</span>

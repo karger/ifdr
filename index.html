@@ -176,7 +176,7 @@
 						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been played.</div>
 						<div id="my-requests">
 							<div class="[if(played,'played','unplayed')]" mv-multiple property="picks" mv-initial-items="0" mv-alias="pick">
-								<button mv-action="delete($this)">X</button>
+								<button title="Remove request" mv-action="delete($this)">X</button>
 								<span property="label"></span>
 								<meta property="played" mv-value="get(session.playedIndex,label)">
 							</div>
