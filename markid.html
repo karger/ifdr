@@ -83,7 +83,19 @@
 				<meta id="signal" property="signal">
 				<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
 			</div>
-			
+			<details><summary>Click for instructions</summary>
+				<ol>
+					<li>Log in at the top</li>
+					<li>Choose your session using the dropdown</li>
+					<li>Look over the request</li>
+					<li>Click "play" when you play or queue a request, so it will be marked played</li>
+					<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
+					<li>There is a checkbox to let you also see the dances you've already played, and another to see who requested each dance.
+					<li>Below is a list of folks currently checked in to your session.  If you know someone has left, you can chexk them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
+					<li>There is a checkbox to let you manage markidim (add new ones who will be able to manage the playlist) and also to show requests by individual.
+				</ol>
+			</details>
+
 			<div hidden mv-app="dances" mv-storage="none" mv-source="[if(url('session'),'ifd.csv','none')]" mv-format="csv">
 				<datalist id="dancelist">
 					<option mv-multiple mv-group property="dance" value="[label]"></option>
