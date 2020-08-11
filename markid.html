@@ -156,7 +156,7 @@
 				mv-app="session" mv-bar="none"
 				mv-firebase="auth realtime"
 				mv-plugins="firebase-firestore"
-				mv-autosave="0"
+				mv-autosave="5"
 				mv-storage="[util.sessionStore]"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
@@ -207,7 +207,7 @@
 				<div property="users" class="users" mv-multiple class="[if(not(active),'inactive','')]"
 					 mv-value="sort(getUsers(util.signal),'-checkInTime')">
 					 <meta property="uid">
-					<meta property="active" mv-value="checkInTime>(get(pushOutIndex,uid).time or 0)">
+					<meta property="active" mv-value="!get(pushOutIndex,uid) || checkInTime>(get(pushOutIndex,uid).time or 0)">
 					<button mv-action="add(uid,owner)" mv-if="addMarkid && not(uid in owner)">Make Markid</button>
 					<button mv-action="delete(uid,owner)" mv-if="addMarkid && (uid in owner)">Remove Markid</button>
 					<button mv-if="not(active)" title="Check in" 
