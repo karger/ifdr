@@ -73,14 +73,14 @@
     notify = false;
     notifying = false;
     watchNotify = function(n) {
-	notify = n;
+	notify = (n==true); //! operator fails on proxy object
 	if (n && Notification.permission=='default') {
 	    Notification.requestPermission();
 	}
     }
     sendNotify = function(msg) {
 	console.log("send notify " + notify + "/" + notifying);
-	if (!!notify && !notifying && Notification.permission=='granted') {
+	if (notify && !notifying && Notification.permission=='granted') {
 	    console.log("do notify");
 	    notifying = true;
 	    n = new Notification(msg);
