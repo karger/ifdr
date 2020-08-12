@@ -53,12 +53,41 @@
 	}
     }
 
+    updateURLParam = function(name,value,title) {
+	var u = new URL(window.location);
+	var s = url.searchParams;
+	s.set(name,value);
+	url.search=s.toString;
+	history.pushState("",title,url);
+    }
+    
     username = function() {
 	try {
 	    return firebase.auth().currentUser.displayName;
 	}
 	catch (e) {
 	    return "";
+	}
+    }
+
+    notify = false;
+    notifying = false;
+    watchNotify = function(n) {
+	notify = n;
+	if (n && Notification.permission=='default') {
+	    Notification.requestPermission();
+	}
+    }
+    sendNotify = function(msg) {
+	console.log("send notify " + notify + "/" + notifying);
+	if (!!notify && !notifying && Notification.permission=='granted') {
+	    console.log("do notify");
+	    notifying = true;
+	    n = new Notification(msg);
+	    setTimeout(() => {
+		notifying = false;
+		n.close();
+	    }, 4000);
 	}
     }
     
@@ -70,6 +99,8 @@
 
 	    function parseQuery(querySnapshot) {
 		let requestMap={};
+
+		sendNotify("Requests have changed");
 		users = [];
 		
 		querySnapshot.forEach(function(doc) {

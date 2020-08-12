@@ -121,8 +121,9 @@
 
 				<div>
 				<div style="float:right">
-					<div> <label><input type="checkbox" property="showPlayed">Include played</label></div>
-					<div><label><input type="checkbox" mv-storage="none" property="showNames"> Show who</label></div>
+					<div> <label><input type="checkbox"property="showPlayed" mv-storage="none" >Include played</label></div>
+					<div><label><input type="checkbox" property="showNames" mv-storage="none">Show who</label></div>
+					<div mv-if="url('notify')=''"><label><input type="checkbox" mv-storage="none" property="notify" mv-storage="none">Notify</label><span hidden>[watchNotify(notify)]</span></div>
 				</div>
 				<h2>Requests</h2>
 				</div>
@@ -188,6 +189,8 @@
 					<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
 					<div><label><input type="checkbox" mv-storage="none" property="showRequests"> Show requests</label></div>
 					Activity: <select property="durationChoice">
+						<option value="[30*60*1000]">past half hour</option>
+						<option value="[1*60*60*1000]">past hour</option>
 						<option value="[4*60*60*1000]">past 4 hours</option>
 						<option value="[24*60*60*1000]">past day</option>
 						<option value="[7*24*60*60*1000]">past week</option>
