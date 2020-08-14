@@ -79,9 +79,7 @@
 	}
     }
     sendNotify = function(msg) {
-	console.log("send notify " + notify + "/" + notifying);
 	if (notify && !notifying && Notification.permission=='granted') {
-	    console.log("do notify");
 	    notifying = true;
 	    n = new Notification(msg);
 	    setTimeout(() => {
@@ -94,13 +92,16 @@
     let unsubscribe=false
     , users = []
     watchUsers = function(sid, backTime) {
+	deepEqual = function(u,v) {
+	    return JSON.stringify(u) == JSON.stringify(v);
+	}
 	fireAuth.then(() => {
 	    sid = Mavo.value(sid);
 
 	    function parseQuery(querySnapshot) {
-		let requestMap={};
+		let requestMap = {}
+		, oldUsers = users;
 
-		sendNotify("Requests have changed");
 		users = [];
 		
 		querySnapshot.forEach(function(doc) {
@@ -108,7 +109,10 @@
 		    let {name, checkInTime, picks} = doc.data();
 		    users.push({uid: uid, name: name, checkInTime: checkInTime, picks: picks});
 		});
-		signal();
+		if (!deepEqual(users,oldUsers)) {
+		    sendNotify("Requests have changed");
+		    signal();
+		}
 		return 0;
 	    };
 
