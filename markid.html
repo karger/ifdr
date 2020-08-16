@@ -81,6 +81,7 @@
 				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				 >
 				<meta id="signal" property="signal">
+				<meta property="uid" mv-value="getUid(signal)">
 				<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
 			</div>
 			<details><summary>Click for instructions</summary>
@@ -143,7 +144,7 @@
 
 					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count')">
 						<td><button mv-if="not(played)" title="mark played"
-									mv-action="add(group(label: label, timestamp: +$now),session.played)">play</button>
+									mv-action="add(group(label: label, timestamp: +$now, markid: util.uid),session.played)">play</button>
 						<td><span class="r-label" property="label"></span>
 						<td><span class="r-count" property="count"></span>
 						<td mv-if="showNames"><span class="r-names" mv-multiple property="names"></span>
@@ -174,11 +175,15 @@
 					<meta property="time" type="number">
 				</div>
 				<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
-				
+
+				<div style="float:right; vertical-align: top">
+					<div><label><input type="checkbox" mv-storage="none" property="showMarkid">Show Markid</label></div>
+				</div>
 				<h2>Played</h2>
 				
 				<div class="playlist" mv-multiple property="played" mv-initial-items="0">
-					<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp">
+					<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp"> <meta property="markid">
+					<span mv-if="showMarkid">([(get(userIndex,markid)).name])</span>
 				</div>
 				
 				<meta property="playedIndex" mv-value="makeIndex(played.label)">
@@ -221,7 +226,7 @@
 					
 					<span property="name"></span><span mv-if="showRequests">: [picks.label]</span>
 				</div>
-
+				<meta property="userIndex" mv-value="makeIndex(users,'uid')">
 			</section>
 		</main>
 		
