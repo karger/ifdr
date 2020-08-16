@@ -15,10 +15,13 @@
 			.logged-in .show-logged-out {
 				display: none;
 			}
-			.request-table {
+			.dance-table {
 				margin-left: 1em;
 			}
-			.request-table td {
+			.my-play {
+				font-weight: bold;
+			}
+			.dance-table td {
 				padding-right: 1em;
 			}
 			.played {
@@ -129,7 +132,7 @@
 				<h2>Requests</h2>
 				</div>
 
-				<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
+				<table class="dance-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
 					<tr>
 						<th></th>
 						<th>Dance</th>
@@ -145,8 +148,8 @@
 					<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count')">
 						<td><button mv-if="not(played)" title="mark played"
 									mv-action="add(group(label: label, timestamp: +$now, markid: util.uid),session.played)">play</button>
-						<td><span class="r-label" property="label"></span>
-						<td><span class="r-count" property="count"></span>
+						<td><span class="dance-label" property="label"></span>
+						<td><span property="count"></span>
 						<td mv-if="showNames"><span class="r-names" mv-multiple property="names"></span>
 						<td><meta property="played" mv-value="get(session.playedIndex,label)">
 					</tr>
@@ -179,13 +182,19 @@
 				<div style="float:right; vertical-align: top">
 					<div><label><input type="checkbox" mv-storage="none" property="showMarkid">Show Markid</label></div>
 				</div>
-				<h2>Played</h2>
-				
-				<div class="playlist" mv-multiple property="played" mv-initial-items="0">
-					<button mv-action="delete($this)">X</button> <span property="label"></span> <meta property="timestamp"> <meta property="markid">
-					<span mv-if="showMarkid">([(get(userIndex,markid)).name])</span>
-				</div>
-				
+				<h2>Accepted</h2>
+
+				<table class="dance-table">
+					<tr><th></th><th>Dance</th><th mv-if="showMarkid">Markid</th></tr>
+				<tr class="playlist [if(myPlay and showMarkid,'my-play')]" mv-multiple property="played" mv-initial-items="0">
+					<td><button mv-action="delete($this)">X</button>
+					<td><span class="dance-label" property="label"></span> <meta property="timestamp"> <meta property="markid">
+						<meta property="myPlay" mv-value="markid=util.uid">
+						<td>
+					<span mv-if="showMarkid and markid">[(get(userIndex,markid)).name]</span>
+				</tr>
+				<table>
+					
 				<meta property="playedIndex" mv-value="makeIndex(played.label)">
 
 				<button id="clear" mv-action="delete(played)">Clear playlist</button>
@@ -209,6 +218,9 @@
 						  mv-value="durationChoice || if(beginCustom, $startup-beginCustom, 4*60*60*1000)">
 				</div>
 
+				<datalist id="markidlist">
+					<option mv-multiple mv-group property="ownerChoice" mv-value="owner" value="[ownerChoice]">[get(userIndex,ownerChoice).name]</option>
+				</datalist>
 				<h2>Folks</h2>
 				<div style="clear:both">Click <button>X</button> to check out people who've left, or <button>+</button> to check them back in.</div>
 
@@ -217,10 +229,10 @@
 					<meta property="uid">
 					<meta property="pushOutTime" mv-value="get(pushOutIndex,uid).time">
 					<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
-					<button mv-action="add(uid,owner)" mv-if="addMarkid && not(uid in owner)">Make Markid</button>
-					<button mv-action="delete(uid,owner)" mv-if="addMarkid && (uid in owner)">Remove Markid</button>
+					<button mv-action="add(uid,owner)" mv-if="addMarkid and not(uid in owner)">Make Markid</button>
+					<button mv-action="delete(uid,owner)" mv-if="addMarkid and (uid in owner)">Remove Markid</button>
 					<button mv-if="not(active)" title="Check in" 
-							mv-action="if(uid in pushOutTimes.uid,set(pushOutTimes.time where pushOutTimes.uid=uid,-1),add(group(uid: uid, time: -1),pushOutTimes))">+</button>
+							mv-action="delete(pushOutTimes where pushOutTimes.uid = uid)">+</button>
 					<button mv-if="active" title="Check out"
 							mv-action="if(uid in pushOutTimes.uid,set(pushOutTimes.time where pushOutTimes.uid=uid,+$now),add(group(uid: uid, time: +$now),pushOutTimes))">X</button>
 					
