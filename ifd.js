@@ -53,6 +53,16 @@
 	}
     }
 
+    getProfile = function() {
+	try {
+	    let u = firebase.auth().currentUser; 
+	    return {uid: u.uid, name: u.displayName, photo: u.photoURL}
+	}
+	catch (e) {
+	    return undefined;
+	}
+    }
+
     updateURLParam = function(name,value,title) {
 	var u = new URL(window.location);
 	var s = url.searchParams;
@@ -193,4 +203,7 @@
 	return map;
     }
 
+    lookup = function(index, key) {
+	return index?.[key];
+    }
 })();
