@@ -198,13 +198,14 @@
 						<td><span class="dance-label" property="label"></span>
 							<meta property="timestamp">
 							<meta property="myPlay" mv-value="markid=util.me.name"></td>
-						<td><span property="notes" mv-mode="edit"></span></td>
 						<td mv-if="showMarkid">
 							<input list="markidList"
 								   property="markid"></td>
+						<td><span property="notes" mv-mode="edit"></span></td>
 					</tr>
 				</table>
 
+				<select id="markidSelect" list=markidList></select>
 				<datalist id="markidList">
 					<option mv-multiple property="ownerChoice" mv-attribute="value" mv-value="markidim.name" value="[ownerChoice]"></option>
 				</datalist>
