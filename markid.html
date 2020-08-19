@@ -27,6 +27,9 @@
 			.played {
 				text-decoration: line-through;
 			}
+			#heading {
+				width: 100%;
+			}
 			.playlist {
 				margin-left: 1em;
 			}
@@ -65,6 +68,12 @@
 			}
 			main {
 				flex: 1;
+				display:flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				align-items: flex-start;
+				align-content: flex-start;
 			}
 			footer {
 				padding-top: 3em;
@@ -99,40 +108,43 @@
 		</div>
 
 		<main>
-			<details><summary>Click for instructions</summary>
-				<ol>
-					<li>Choose your session using the dropdown and click <button>Go to Session</button></li>
-					<li>Log in at the top</li>
-					<li>Look over the requests</li>
-					<li>Click <button>play</button> next to each request you play or queue up, so it will be marked played.</li>
-					<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
-					<li>There is a checkbox to let you include the dances you've already played in the same list, and another to see who requested each dance.
-					<li>Below that is a list of folks currently checked in to your session.  If you know someone has left, you can chexk them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
-					<li>There is a checkbox to let you manage markidim (add new ones who will be able to run this playlist app) and also to show requests by individual.
-				</ol>
-			</details>
-			
 			<div mv-app="requests" mv-storage="none" mv-bar="none"
-					 mv-plugins="sort" style="display:contents">
-				
-				<meta property="sessions" mv-value="getSessions(util.signal)">
-				<meta property="mysid" mv-value="url('session')">
-				<div>
-				<form id="session-select" method="get" action="markid.html">
-					<select property="nextSession" name="session" width="60">
-						<option value="" selected disabled>Choose a session</option>
-						<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)" selected="[id=url('session')]">[name]</option>
-					</select>
-					<input type="submit" value="Go to Session">
-				</form>
-				<div mv-if="not(mysid)">Choose a session to begin</div>
+				 mv-plugins="sort" style="display:contents">
+				<!--header-->
+				<section id="heading">
+					<meta property="sessions" mv-value="getSessions(util.signal)">
+					<meta property="mysid" mv-value="url('session')">
 
-				<div mv-if="mysid">
-					<h2>[condense(sessions where id=mysid).name]</h2>
-				</div>
-				</div>
-				<div mv-if="mysid">
-					<section>
+					<details><summary>Click for instructions</summary>
+						<ol>
+							<li>Choose your session using the dropdown and click <button>Go to Session</button></li>
+							<li>Log in at the top</li>
+							<li>Look over the requests</li>
+							<li>Click <button>play</button> next to each request you play or queue up, so it will be marked played.</li>
+							<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
+							<li>There is a checkbox to let you include the dances you've already played in the same list, and another to see who requested each dance.
+							<li>Below that is a list of folks currently checked in to your session.  If you know someone has left, you can chexk them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
+							<li>There is a checkbox to let you manage markidim (add new ones who will be able to run this playlist app) and also to show requests by individual.
+						</ol>
+					</details>
+			
+
+					<form id="session-select" method="get" action="markid.html">
+						<select property="nextSession" name="session" width="60">
+							<option value="" selected disabled>Choose a session</option>
+							<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)" selected="[id=url('session')]">[name]</option>
+						</select>
+						<input type="submit" value="Go to Session">
+					</form>
+					<div mv-if="not(mysid)">Choose a session to begin</div>
+
+					<div mv-if="mysid">
+						<h2>[condense(sessions where id=mysid).name]</h2>
+					</div>
+				</section>
+
+				<!--Requests-->
+				<section mv-if="mysid">
 					<div>
 						<div style="float:right">
 							<div> <label><input type="checkbox"property="showPlayed" mv-storage="none" >Include played</label></div>
@@ -164,19 +176,18 @@
 							<td><meta property="played" mv-value="lookup(session.playedIndex,label)">
 						</tr>
 					</table>
-					</section>
-				</div>
+				</section>
 			</div>
 
-			<!--Playlist-->
-			<section mv-if="requests.mysid"
+			<div mv-if="requests.mysid"
 					 mv-app="session" mv-bar="none"
 					 mv-firebase="auth realtime"
 					 mv-plugins="firebase-firestore"
 					 mv-autosave="5"
 					 mv-storage="[util.sessionStore]"
 					 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
-					 >
+				 style="display:contents"
+				 >
 				<div style="display:none">
 					[setSignal('sig'&'nal')]
 					[watchUsers(requests.mysid,duration)]
@@ -194,77 +205,78 @@
 					<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
 				</div>
 
-				<section>
-				<div style="float:right; vertical-align: top">
-					<div><label><input type="checkbox" mv-storage="none" property="showMarkid">Show Markid</label></div>
-				</div>
+				<!--Playlist-->
+				<section style="clear: both">
+					<div style="float:right; vertical-align: top">
+						<div><label><input type="checkbox" mv-storage="none" property="showMarkid">Show Markid</label></div>
+					</div>
 
 
-				<h2>Accepted</h2>
+					<h2>Accepted</h2>
 
-				<table class="dance-table">
-					<tr><th></th><th>Dance</th><th mv-if="showMarkid">Markid</th><th>Notes</th></tr>
-					<tr class="playlist [if(myPlay and showMarkid,'my-play')]" mv-multiple property="played" mv-initial-items="0">
-						<td><button mv-action="delete($this)">X</button></td>
-						<td><span class="dance-label" property="label"></span>
-							<meta property="timestamp">
-							<meta property="myPlay" mv-value="markid=util.me.name"></td>
-						<td mv-if="showMarkid">
-							<input list="markidList"
-								   property="markid"></td>
-						<td><span property="notes" mv-mode="edit"></span></td>
-					</tr>
-				</table>
+					<table class="dance-table">
+						<tr><th></th><th>Dance</th><th mv-if="showMarkid">Markid</th><th>Notes</th></tr>
+						<tr class="playlist [if(myPlay and showMarkid,'my-play')]" mv-multiple property="played" mv-initial-items="0">
+							<td><button mv-action="delete($this)">X</button></td>
+							<td><span class="dance-label" property="label"></span>
+								<meta property="timestamp">
+								<meta property="myPlay" mv-value="markid=util.me.name"></td>
+							<td mv-if="showMarkid">
+								<input list="markidList"
+									   property="markid"></td>
+							<td><span property="notes" mv-mode="edit"></span></td>
+						</tr>
+					</table>
 
-				<datalist id="markidList">
-					<option mv-multiple property="ownerChoice" mv-attribute="value" mv-value="markidim.name" value="[ownerChoice]"></option>
-				</datalist>
+					<datalist id="markidList">
+						<option mv-multiple property="ownerChoice" mv-attribute="value" mv-value="markidim.name" value="[ownerChoice]"></option>
+					</datalist>
 
-				<meta property="playedIndex" mv-value="makeIndex(played.label)">
+					<meta property="playedIndex" mv-value="makeIndex(played.label)">
 
-				<button id="clear" mv-action="delete(played)">Clear playlist</button>
+					<button id="clear" mv-action="delete(played)">Clear playlist</button>
 				</section>
 
 				<!--Folks-->
 				<section>
-				<div style="clear:both">
-					<div style="float:right; vertical-align: top">
-						<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
-						<div><label><input type="checkbox" mv-storage="none" property="showRequests"> Show requests</label></div>
-						Activity: <select property="durationChoice">
-							<option value="[30*60*1000]">past half hour</option>
-							<option value="[1*60*60*1000]">past hour</option>
-							<option value="[4*60*60*1000]">past 4 hours</option>
-							<option value="[24*60*60*1000]">past day</option>
-							<option value="[7*24*60*60*1000]">past week</option>
-							<option value="[30*24*60*60*1000]">past month</option>
-							<option selected="[url('session')='test']" value="[365*24*60*60*1000]">past year</option>
-							<option value="[10*365*24*60*60*1000]">all</option>
-							<option value="">specific date</option>
-						</select>
-						<div mv-if="!durationChoice"><input type="datetime-local" property="beginCustom"></div>
-						<meta property="duration" mv-storage="inherit"
-							  mv-value="durationChoice || if(beginCustom, $startup-beginCustom, 4*60*60*1000)">
-					</div>
+					<div style="clear:both">
+						<div style="float:right; vertical-align: top">
+							<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
+							<div><label><input type="checkbox" mv-storage="none" property="showRequests"> Show requests</label></div>
+							Activity: <select property="durationChoice">
+								<option value="[30*60*1000]">past half hour</option>
+								<option value="[1*60*60*1000]">past hour</option>
+								<option value="[4*60*60*1000]">past 4 hours</option>
+								<option value="[24*60*60*1000]">past day</option>
+								<option value="[7*24*60*60*1000]">past week</option>
+								<option value="[30*24*60*60*1000]">past month</option>
+								<option selected="[url('session')='test']" value="[365*24*60*60*1000]">past year</option>
+								<option value="[10*365*24*60*60*1000]">all</option>
+								<option value="">specific date</option>
+							</select>
+							<div mv-if="!durationChoice"><input type="datetime-local" property="beginCustom"></div>
+							<meta property="duration" mv-storage="inherit"
+								  mv-value="durationChoice || if(beginCustom, $startup-beginCustom, 4*60*60*1000)">
+						</div>
 
-					<h2>Folks</h2>
-					<div style="clear:both">Click <button>X</button> to check out people who've left, or <button>+</button> to check them back in.</div>
+						<h2>Folks</h2>
+						<div style="clear:both">Click <button>X</button> to check out people who've left, or <button>+</button> to check them back in.</div>
 
-					<div property="users" class="users" mv-multiple class="[if(active,'','inactive')]"
-						 mv-value="sort(getUsers(util.signal),'-checkInTime')">
-						<meta property="uid">
-						<meta property="checkInTime">
-						<meta property="pushOutTime" mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
-						<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
-						<button mv-action="add(uid,owner),add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in owner)">Make Markid</button>
-						<button mv-action="delete(owner where owner=uid),delete(markidim where markidim.uid=uid)" mv-if="addMarkid and (uid in owner)">Remove Markid</button>
-						<button mv-if="not(active)" title="Check in" 
-								mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid), Mavo.all.session.expressions.update()">+</button>
-						<button mv-if="active" title="Check out"
-								mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid),add(group(uid: uid, time: +$now),pushOutTimes)">X</button>
-						<span property="name"></span><span mv-if="showRequests">: [picks.label]</span>
-					</div>
-					<meta property="userIndex" mv-value="makeIndex(users,'uid')">
+						<div property="users" class="users" mv-multiple class="[if(active,'','inactive')]"
+							 mv-value="sort(getUsers(util.signal),'-checkInTime')">
+							<meta property="uid">
+							<meta property="checkInTime">
+							<meta property="pushOutTime" mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
+							<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
+							<button mv-action="add(uid,owner),add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in owner)">Make Markid</button>
+							<button mv-action="delete(owner where owner=uid),delete(markidim where markidim.uid=uid)" mv-if="addMarkid and (uid in owner)">Remove Markid</button>
+							<button mv-if="not(active)" title="Check in" 
+									mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid), Mavo.all.session.expressions.update()">+</button>
+							<button mv-if="active" title="Check out"
+									mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid),add(group(uid: uid, time: +$now),pushOutTimes)">X</button>
+							<span property="name"></span><span mv-if="showRequests">: [picks.label]</span>
+						</div>
+						<meta property="userIndex" mv-value="makeIndex(users,'uid')">
 				</section>
 		</main>
 		
