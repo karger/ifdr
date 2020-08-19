@@ -69,8 +69,7 @@
 			main {
 				flex: 1;
 				display:flex;
-				flex-direction: row;
-				flex-wrap: wrap;
+				flex-flow: row wrap;
 				justify-content: space-between;
 				align-items: flex-start;
 				align-content: flex-start;
@@ -78,6 +77,9 @@
 			footer {
 				padding-top: 3em;
 				font-size: small;
+			}
+			section {
+				margin-right: 2em
 			}
 		</style>
 	</head>
@@ -215,7 +217,7 @@
 					<h2>Accepted</h2>
 
 					<table class="dance-table">
-						<tr><th></th><th>Dance</th><th mv-if="showMarkid">Markid</th><th>Notes</th></tr>
+						<tr><th></th><th>Dance</th><th mv-if="showMarkid">Assigned markid</th><th>Notes</th></tr>
 						<tr class="playlist [if(myPlay and showMarkid,'my-play')]" mv-multiple property="played" mv-initial-items="0">
 							<td><button mv-action="delete($this)">X</button></td>
 							<td><span class="dance-label" property="label"></span>
@@ -276,6 +278,15 @@
 									mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid),add(group(uid: uid, time: +$now),pushOutTimes)">X</button>
 							<span property="name"></span><span mv-if="showRequests">: [picks.label]</span>
 						</div>
+
+						<div property="toPushOut" mv-multiple mv-value="users where checkInTime > 0" mv-storage="none">
+							<meta property="myuid" mv-value="uid">
+							<div property="container">
+								<meta property="uid" mv-value="myuid">
+								<meta property="time" mv-value="+$now">
+							</div>
+						</div>
+						<button mv-action="set(pushOutTimes,toPushOut.container)">Check All Out</button>
 						<meta property="userIndex" mv-value="makeIndex(users,'uid')">
 				</section>
 		</main>
