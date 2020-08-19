@@ -203,7 +203,11 @@
 	return map;
     }
 
-    lookup = function(index, key) {
-	return index?.[key];
+    lookup = function(index, key, def) {
+	if (!!index && index.hasOwnProperty(key)) {
+	    return index[key]
+	} else {
+	    return undefined
+	}
     }
 })();

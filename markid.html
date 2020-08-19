@@ -5,8 +5,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
 		<title>IFD Markid</title>
-		<script src="//get.mavo.io/mavo.js"></script>
-		<link rel="stylesheet" href="//get.mavo.io/mavo.css">
+		<script src="//get.mavo.io/stable/mavo.es5.js"></script>
+		<link rel="stylesheet" href="//get.mavo.io/stable/mavo.css">
 		<script src="ifd.js"></script>
 		<style>
 			.logged-out .show-logged-in {
@@ -74,22 +74,31 @@
 	</head>
 	<body>
 
-		<main>
-			<div mv-app="util" mv-storage="none"
-				 mv-firebase="auth realtime"
-				 mv-plugins="firebase-firestore"
-				 mv-autosave="0"
-				 mv-bar="status login logout"
-				 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
-				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
-				 >
-				<meta id="signal" property="signal">
-				<meta property="uid" mv-value="getUid(signal)">
-				<div property="me" mv-value="getProfile(signal)">
-					<meta property="uid"> <meta property="name">
-				</div>
-				<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
+		<!--login/utility-->
+		<div mv-app="util" mv-storage="none"
+			 mv-firebase="auth realtime"
+			 mv-plugins="firebase-firestore"
+			 mv-autosave="0"
+			 mv-bar="status login logout"
+			 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
+			 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+			 >
+			<meta id="signal" property="signal">
+			<meta property="uid" mv-value="getUid(signal)">
+			<div property="me" mv-value="getProfile(signal)">
+				<meta property="uid"> <meta property="name">
 			</div>
+			<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
+		</div>
+
+		<!--dance list-->
+		<div hidden mv-app="dances" mv-storage="none" mv-source="[if(url('session'),'ifd.csv','none')]" mv-format="csv">
+			<datalist id="dancelist">
+				<option mv-multiple mv-group property="dance" value="[label]"></option>
+			</datalist>
+		</div>
+
+		<main>
 			<details><summary>Click for instructions</summary>
 				<ol>
 					<li>Choose your session using the dropdown and click <button>Go to Session</button></li>
@@ -102,18 +111,13 @@
 					<li>There is a checkbox to let you manage markidim (add new ones who will be able to run this playlist app) and also to show requests by individual.
 				</ol>
 			</details>
-
-			<div hidden mv-app="dances" mv-storage="none" mv-source="[if(url('session'),'ifd.csv','none')]" mv-format="csv">
-				<datalist id="dancelist">
-					<option mv-multiple mv-group property="dance" value="[label]"></option>
-				</datalist>
-			</div>
 			
-			<section mv-app="requests" mv-storage="none" mv-bar="none"
-					 mv-plugins="sort">
+			<div mv-app="requests" mv-storage="none" mv-bar="none"
+					 mv-plugins="sort" style="display:contents">
 				
 				<meta property="sessions" mv-value="getSessions(util.signal)">
 				<meta property="mysid" mv-value="url('session')">
+				<div>
 				<form id="session-select" method="get" action="markid.html">
 					<select property="nextSession" name="session" width="60">
 						<option value="" selected disabled>Choose a session</option>
@@ -125,7 +129,10 @@
 
 				<div mv-if="mysid">
 					<h2>[condense(sessions where id=mysid).name]</h2>
-
+				</div>
+				</div>
+				<div mv-if="mysid">
+					<section>
 					<div>
 						<div style="float:right">
 							<div> <label><input type="checkbox"property="showPlayed" mv-storage="none" >Include played</label></div>
@@ -157,9 +164,11 @@
 							<td><meta property="played" mv-value="lookup(session.playedIndex,label)">
 						</tr>
 					</table>
+					</section>
 				</div>
-			</section>
+			</div>
 
+			<!--Playlist-->
 			<section mv-if="requests.mysid"
 					 mv-app="session" mv-bar="none"
 					 mv-firebase="auth realtime"
@@ -172,23 +181,25 @@
 					[setSignal('sig'&'nal')]
 					[watchUsers(requests.mysid,duration)]
 					[watchSessions(duration)]
+					<meta mv-multiple property="owner">
+					<div mv-multiple property="markidim" mv-initial-items="0">
+						<meta property="uid"> <meta property="name">
+					</div>
+					<meta mv-multiple property="markidUids" mv-value="markidim.uid" mv-storage="inherit">
+
+					<div property="pushOutTimes" mv-multiple mv-initial-items="0">
+						<meta property="uid"></meta>
+						<meta property="time" type="number"></meta>
+					</div>
+					<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
 				</div>
 
-				<meta mv-multiple property="owner">
-				<div mv-multiple property="markidim" mv-initial-items="0">
-					<meta property="uid"> <meta property="name">
-				</div>
-				<meta mv-multiple property="markidUids" mv-value="markidim.uid" mv-storage="inherit">
-
-				<div property="pushOutTimes" mv-multiple mv-initial-items="0">
-					<meta property="uid"></meta>
-					<meta property="time" type="number"></meta>
-				</div>
-				<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
-
+				<section>
 				<div style="float:right; vertical-align: top">
 					<div><label><input type="checkbox" mv-storage="none" property="showMarkid">Show Markid</label></div>
 				</div>
+
+
 				<h2>Accepted</h2>
 
 				<table class="dance-table">
@@ -205,7 +216,6 @@
 					</tr>
 				</table>
 
-				<select id="markidSelect" list=markidList></select>
 				<datalist id="markidList">
 					<option mv-multiple property="ownerChoice" mv-attribute="value" mv-value="markidim.name" value="[ownerChoice]"></option>
 				</datalist>
@@ -213,6 +223,10 @@
 				<meta property="playedIndex" mv-value="makeIndex(played.label)">
 
 				<button id="clear" mv-action="delete(played)">Clear playlist</button>
+				</section>
+
+				<!--Folks-->
+				<section>
 				<div style="clear:both">
 					<div style="float:right; vertical-align: top">
 						<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
@@ -240,7 +254,7 @@
 						 mv-value="sort(getUsers(util.signal),'-checkInTime')">
 						<meta property="uid">
 						<meta property="checkInTime">
-						<meta property="pushOutTime" mv-value="lookup(pushOutIndex,uid).time">
+						<meta property="pushOutTime" mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
 						<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
 						<button mv-action="add(uid,owner),add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in owner)">Make Markid</button>
 						<button mv-action="delete(owner where owner=uid),delete(markidim where markidim.uid=uid)" mv-if="addMarkid and (uid in owner)">Remove Markid</button>
@@ -251,7 +265,7 @@
 						<span property="name"></span><span mv-if="showRequests">: [picks.label]</span>
 					</div>
 					<meta property="userIndex" mv-value="makeIndex(users,'uid')">
-			</section>
+				</section>
 		</main>
 		
 		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>
