@@ -84,18 +84,19 @@
     notifying = false;
     watchNotify = function(n) {
 	notify = (n==true); //! operator fails on proxy object
-	if (n && Notification.permission=='default') {
+	if (notify && Notification.permission=='default') {
 	    Notification.requestPermission();
 	}
     }
     sendNotify = function(msg) {
 	if (notify && !notifying && Notification.permission=='granted') {
-	    notifying = true;
+	    /*notifying = true;*/
 	    n = new Notification(msg);
+	    /*
 	    setTimeout(() => {
 		notifying = false;
 		n.close();
-	    }, 4000);
+	    }, 4000);*/
 	}
     }
     
@@ -120,7 +121,7 @@
 		    users.push({uid: uid, name: name, checkInTime: checkInTime, picks: picks});
 		});
 		if (!deepEqual(users,oldUsers)) {
-		    sendNotify("Requests have changed");
+//		    sendNotify("Requests have changed");
 		    signal();
 		}
 		return 0;
@@ -146,8 +147,24 @@
 	return users;
     }
 
+    let oldPlayMap = {};
+    watchPlaylist = function(playlist) {
+	let playMap = {};
+	playlist.forEach(item => {playMap[item.label]=item});
+	for (const label in playMap) {
+	    if (playMap[label].note != oldPlayMap?.[label]?.note) {
+		sendNotify("New note on " + label + ": " + playMap[label].note);
+	    }
+	    if (playMap[label]?.markid && (playMap[label]?.markid  != oldPlayMap?.[label]?.markid)) {
+		sendNotify(label + " assigned to " + playMap[label].markid);
+	    }
+	}
+	oldPlayMap = playMap;
+    }
+    
+    let oldRequestMap = {};
     mergePicks = function(users) {
-	let requestMap = {};
+	let requestMap = {}, newRequests=[];
 	users.forEach((u) => {
 	    if (u) {
 		let {name, uid, picks=[]}=u;
@@ -164,6 +181,17 @@
 		});
 	    }
 	});
+	for (const dance in requestMap) {
+	    if (!oldRequestMap[dance]) {
+		newRequests.push(dance);
+	    }
+	}
+	if (newRequests.length == 1) {
+	    sendNotify("new request: " + newRequests[0]);
+	} else if (newRequests.length > 1) {
+	    sendNotify("new requests: " + newRequests.join(", "));
+	}
+	oldRequestMap = requestMap;
 	return Object.values(requestMap);
     }
     

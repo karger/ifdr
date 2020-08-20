@@ -151,7 +151,7 @@
 						<div style="float:right">
 							<div> <label><input type="checkbox"property="showPlayed" mv-storage="none" >Include played</label></div>
 							<div><label><input type="checkbox" property="showNames" mv-storage="none">Show who</label></div>
-							<div mv-if="url('notify')=''"><label><input type="checkbox" mv-storage="none" property="notify" mv-storage="none">Notify</label><span hidden>[watchNotify(notify)]</span></div>
+							<div><label><input type="checkbox" mv-storage="none" property="notify" mv-storage="none">Notify</label><span hidden>[watchNotify(notify)]</span></div>
 						</div>
 						<h2>Requests</h2>
 					</div>
@@ -229,7 +229,7 @@
 							<td><span property="notes" mv-mode="edit"></span></td>
 						</tr>
 					</table>
-
+					
 					<datalist id="markidList">
 						<option mv-multiple property="ownerChoice" mv-attribute="value" mv-value="markidim.name" value="[ownerChoice]"></option>
 					</datalist>
