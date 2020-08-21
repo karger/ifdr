@@ -257,11 +257,11 @@
 								<option value="[30*24*60*60*1000]">past month</option>
 								<option value="[365*24*60*60*1000]">past year</option>
 								<option value="[10*365*24*60*60*1000]">all</option>
-								<option value="">specific date</option>
+								<!--option value="">specific date</option-->
 							</select>
-							<div mv-if="!durationChoice"><input type="datetime-local" property="beginCustom" mv-storage="none"></div>
-							<meta property="duration" mv-storage="inherit"
-								  mv-value="durationChoice || if(beginCustom, $startup-beginCustom, 4*60*60*1000)">
+							<!--div mv-if="!durationChoice"><input type="datetime-local" property="beginCustom" mv-storage="none"></div-->
+							<meta property="duration">
+								 <!-- mv-value="durationChoice || if(beginCustom, $startup-beginCustom, 4*60*60*1000)"-->
 						</div>
 
 						<h2>Folks</h2>
