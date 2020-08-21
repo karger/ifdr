@@ -68,7 +68,7 @@
 			}
 			main {
 				flex: 1;
-				display:flex;
+ 				display:flex;
 				flex-flow: row wrap;
 				justify-content: space-between;
 				align-items: flex-start;
@@ -89,7 +89,6 @@
 		<div mv-app="util" mv-storage="none"
 			 mv-firebase="auth realtime"
 			 mv-plugins="firebase-firestore"
-			 mv-autosave="0"
 			 mv-bar="status login logout"
 			 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
 			 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
@@ -151,16 +150,19 @@
 						<div style="float:right">
 							<div> <label><input type="checkbox"property="showPlayed" mv-storage="none" >Include played</label></div>
 							<div><label><input type="checkbox" property="showNames" mv-storage="none">Show who</label></div>
+							<div><label><input type="checkbox" property="showTimes" mv-storage="none">Show times</label></div>
 							<div><label><input type="checkbox" mv-storage="none" property="notify" mv-storage="none">Notify</label><span hidden>[watchNotify(notify)]</span></div>
 						</div>
 						<h2>Requests</h2>
 					</div>
 
+					<meta property="thisMinute" mv-value="round($now/60000)*60000">
 					<table class="dance-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>
 							<th></th>
 							<th>Dance</th>
 							<th>Count</th>
+							<th mv-if="showTimes">Age</th>
 							<th mv-if="showNames">Who</th>
 						</tr>
 
@@ -169,11 +171,12 @@
 							<td><input list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
 						</tr>
 
-						<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count')">
+						<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','-timestamp')">
 							<td><button mv-if="not(played)" title="mark played"
 										mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)">play</button>
 							<td><span class="dance-label" property="label"></span>
 							<td><span property="count"></span>
+							<td mv-if="showTimes"><meta property="timestamp"><span class="r-time">[duration(thisMinute-timestamp)]</span>
 							<td mv-if="showNames"><span class="r-names" mv-multiple property="names"></span>
 							<td><meta property="played" mv-value="lookup(session.playedIndex,label)">
 						</tr>
@@ -245,18 +248,18 @@
 						<div style="float:right; vertical-align: top">
 							<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
 							<div><label><input type="checkbox" mv-storage="none" property="showRequests"> Show requests</label></div>
-							Activity: <select property="durationChoice">
+							Activity: <select property="durationChoice" mv-storage="none">
 								<option value="[30*60*1000]">past half hour</option>
 								<option value="[1*60*60*1000]">past hour</option>
 								<option value="[4*60*60*1000]">past 4 hours</option>
 								<option value="[24*60*60*1000]">past day</option>
-								<option value="[7*24*60*60*1000]">past week</option>
+								<option selected value="[6*24*60*60*1000]">past 6 days</option>
 								<option value="[30*24*60*60*1000]">past month</option>
-								<option selected="[url('session')='test']" value="[365*24*60*60*1000]">past year</option>
+								<option value="[365*24*60*60*1000]">past year</option>
 								<option value="[10*365*24*60*60*1000]">all</option>
 								<option value="">specific date</option>
 							</select>
-							<div mv-if="!durationChoice"><input type="datetime-local" property="beginCustom"></div>
+							<div mv-if="!durationChoice"><input type="datetime-local" property="beginCustom" mv-storage="none"></div>
 							<meta property="duration" mv-storage="inherit"
 								  mv-value="durationChoice || if(beginCustom, $startup-beginCustom, 4*60*60*1000)">
 						</div>
