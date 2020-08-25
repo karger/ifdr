@@ -11,6 +11,7 @@
 	})();
     });
 
+    
     Promise.all([Mavo.inited,fireAuth]).then(([m,auth])=> {
 	auth.onAuthStateChanged((user)=> {
 	    if (user) {
@@ -56,7 +57,7 @@
     getProfile = function() {
 	try {
 	    let u = firebase.auth().currentUser; 
-	    return {uid: u.uid, name: u.displayName, photo: u.photoURL}
+	    return {uid: u.uid, name: u.displayName, photo: u.photoURL, email: u.email}
 	}
 	catch (e) {
 	    return undefined;
@@ -165,7 +166,8 @@
     let oldRequestMap = {};
     mergePicks = function(users) {
 	let requestMap = {}, newRequests=[];
-	users.forEach((u) => {
+	
+	users?.forEach((u) => {
 	    if (u) {
 		let {name, uid, picks=[]}=u;
 		picks.forEach(({label,timestamp=0}) => {
