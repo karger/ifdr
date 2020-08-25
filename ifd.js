@@ -1,17 +1,5 @@
 (function () {
 
-    fireAuth = new Promise((resolve,reject) => {
-	(function loop () {
-            if (typeof(firebase)!='undefined' &&
-		firebase?.apps?.length > 0 && firebase?.auth?.()) {
-		resolve(firebase.auth());
-            } else {
-		setTimeout(loop, 100)
-            }
-	})();
-    });
-
-
     firebaseReady = new Promise((resolve,reject) => {
 	(function loop () {
             if ((typeof(firebase) != "undefined") &&
@@ -44,7 +32,7 @@
 		signal.node?.render(signal.counter++);
 		signal.ready=true;
 	    },
-		       100);
+		       1000);
 	}
     }
     signal.counter=0;
@@ -112,8 +100,7 @@
 	}
     }
     
-    let unsubscribe=false
-    , users = []
+    let users = []
     watchUsers = function(sid, backTime) {
 	deepEqual = function(u,v) {
 	    return JSON.stringify(u) == JSON.stringify(v);
@@ -140,16 +127,14 @@
 	    };
 
 	    firebaseReady.then(() => {
-		if (unsubscribe) {
-		    unsubscribe();
-		}
+		watchUsers?.unsubscribe?.();
 
 		if (!sid || !Number.isInteger(1*backTime)) return;
 		
 		let query = firebase.firestore().collection('ifdr-user')
 		    .where('mysid','==',sid)
 		    .where('checkInTime','>',Date.now()-1*backTime); //prune ancient checkins
- 		unsubscribe = query.onSnapshot(parseQuery);
+ 		watchUsers.unsubscribe = query.onSnapshot(parseQuery);
 	    });
 	    return [];
 	})
@@ -201,6 +186,7 @@
 	    }
 	});
 	for (const dance in requestMap) {
+	    delete dance.uids;
 	    if (!oldRequestMap[dance]) {
 		newRequests.push(dance);
 	    }
@@ -216,9 +202,10 @@
     
     let sessions=[];
     watchSessions = function() {
+	watchSessions?.unsubscribe?.()
 	firebaseReady.then(() => {
 	    let count=0;
-	    firebase.firestore().collection('ifdr-session').onSnapshot(shot=>{
+	    watchSessions.unsubscribe = firebase.firestore().collection('ifdr-session').onSnapshot(shot=>{
 		sessions = [];
 		shot.forEach(doc => {
 		    let s=doc.data();

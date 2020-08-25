@@ -114,7 +114,7 @@
 				<meta property="sessions" mv-value="getSessions(signal)">
 				<div hidden>
 					[setSignal('sig'&'nal')]
-					[watchSessions(session.duration || 24*60*60*1000)]
+					[watchSessions()]
 				</div>
 			</div>
 
@@ -163,7 +163,7 @@
 					<meta property="sessionStorage"
 						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
 					<meta property="checkInTime" mv-default="[$startup]">
-					<meta property="name" mv-default="username(signal)">
+					<meta property="name" mv-default="username(signal) || 'unnamed user">
 					<meta property="email" mv-default="[getProfile(signal).email]">
 
 					<div class="show-logged-out">
@@ -222,7 +222,7 @@
 							<th>Count</th>
 						</tr>
 						<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','label')">
-							<td><button title="add request" mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">+</button>
+							<td><button mv-class="show-logged-in" title="add request" mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">+</button>
 							<td>
 							<td><span class="r-label" property="label"></span>
 							<td><span class="r-count" property="count"></span>
