@@ -180,7 +180,7 @@
 	
 	users?.forEach((u) => {
 	    if (u) {
-		let {name, uid, picks=[]}=u;
+		let {name, uid, checkInTime, picks=[]}=u;
 		picks.forEach(({label,timestamp=0}) => {
 		    if (!requestMap[label]) {
 			requestMap[label] = {label: label, count: 0, timestamp: 0, names: [], uids: {}};
@@ -191,7 +191,10 @@
 			r.names.push(name);
 			r.uids[uid]=true;
 			if (r.timestamp < timestamp) {
-			    r.timestamp=timestamp;
+			    r.timestamp = timestamp;
+			}
+			if (r.timestamp < checkInTime) {
+			    r.timestamp = checkInTime;
 			}
 		    }
 		});
