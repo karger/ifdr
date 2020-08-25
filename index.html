@@ -86,8 +86,8 @@
 					<span class="show-logged-in show-inactive">Checked out</span>
 				</div>
 				<meta id="signal" property="signal">
-				<meta property="uid" mv-value="url('uid') || getUid(signal)">
-				<meta property="userStorage" mv-value="if(uid,'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& uid,'none')">
+				<meta property="meid" mv-value="url('meid') || getUid(signal)">
+				<meta property="userStorage" mv-value="if(meid,'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& meid,'none')">
 				<meta property="sessions" mv-value="getSessions(signal)">
 				<div hidden>
 					[setSignal('sig'&'nal')]
@@ -138,8 +138,8 @@
 					</div>
 
 					<meta property="sessionStorage"
-						  mv-value="if(mysid && util.uid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
-					<meta property="checkInTime" mv-default="[-1]">
+						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
+					<meta property="checkInTime" mv-default="[$startup]">
 					<meta property="name">
 
 					<div class="show-logged-out">
@@ -152,9 +152,9 @@
 							Choose a session
 						</div>
 						<div mv-if="mysid">
-							<meta property="myPushOut" mv-value="first(session.pushOutTimes where uid=util.uid).time">
+							<meta property="myPushOut" mv-value="first(session.pushOutTimes where uid=util.meid).time">
 							<meta property="checkedIn"
-								  mv-value="mysid and checkInTime > (myPushOut || 0)">
+								  mv-value="mysid and util.meid and checkInTime > (myPushOut || 0)">
 							<div mv-if="!checkedIn">Click <button mv-action="set(checkInTime,+$now),set(name,username())">Check In</button> to make requests</div>
 							<div mv-if="checkedIn">Click <button mv-action="set(checkInTime,-1)">Check Out</button> to suspend your requests while you're away</div>
 						</div>

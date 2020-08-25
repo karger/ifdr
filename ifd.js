@@ -11,9 +11,20 @@
 	})();
     });
 
+
+    firebaseReady = new Promise((resolve,reject) => {
+	(function loop () {
+            if ((typeof(firebase) != "undefined") &&
+		(firebase?.apps?.length > 0)) {
+		resolve(firebase);
+            } else {
+		setTimeout(loop, 100)
+            }
+	})();
+    });
     
-    Promise.all([Mavo.inited,fireAuth]).then(([m,auth])=> {
-	auth.onAuthStateChanged((user)=> {
+    Promise.all([Mavo.inited,firebaseReady]).then(([m,fb])=> {
+	fb.auth().onAuthStateChanged((user)=> {
 	    if (user) {
 		document.body.classList.remove('logged-out');
 		document.body.classList.add('logged-in');
@@ -107,7 +118,7 @@
 	deepEqual = function(u,v) {
 	    return JSON.stringify(u) == JSON.stringify(v);
 	}
-	fireAuth.then(() => {
+	firebaseReady.then(() => {
 	    sid = Mavo.value(sid);
 
 	    function parseQuery(querySnapshot) {
@@ -128,7 +139,7 @@
 		return 0;
 	    };
 
-	    fireAuth.then(() => {
+	    firebaseReady.then(() => {
 		if (unsubscribe) {
 		    unsubscribe();
 		}
@@ -202,7 +213,7 @@
     
     let sessions=[];
     watchSessions = function() {
-	fireAuth.then(() => {
+	firebaseReady.then(() => {
 	    let count=0;
 	    firebase.firestore().collection('ifdr-session').onSnapshot(shot=>{
 		sessions = [];
@@ -244,3 +255,5 @@
 	}
     }
 })();
+
+firebaseReady.then((fb)=>console.log(fb.auth()));
