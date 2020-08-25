@@ -34,6 +34,22 @@
 			#my-requests {
 				line-height: 200%;
 			}
+			#email-login {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				padding: 2em;
+				border: 2px solid black;
+				max-width: 40em;
+				background: white;
+				border-radius: 10px;
+				z-index: 10;
+				display: none;
+			}
+			.show-email-login #email-login {
+				display: visible;
+			}
 			body {
 				display: flex;
 				min-height: 98vh;
@@ -85,6 +101,13 @@
 					<span class="show-logged-in show-active">Checked in</span>
 					<span class="show-logged-in show-inactive">Checked out</span>
 				</div>
+
+				<div id="email-login">
+					<div>Note: accounts set up this way will not be secure; anyone will be able to modify your information.  If you want a secure accont, login with google.</div>
+					<div>Email: <input style="width: 20em" property="email"></div>
+					<div><button style="float:right">Submit</button></div>
+				</div>
+
 				<meta id="signal" property="signal">
 				<meta property="meid" mv-value="url('meid') || getUid(signal)">
 				<meta property="userStorage" mv-value="if(meid,'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& meid,'none')">
@@ -140,7 +163,8 @@
 					<meta property="sessionStorage"
 						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
 					<meta property="checkInTime" mv-default="[$startup]">
-					<meta property="name">
+					<meta property="name" mv-default="username(signal)">
+					<meta property="email" mv-default="[getProfile(signal).email]">
 
 					<div class="show-logged-out">
 						Log in to make requests.
@@ -224,6 +248,7 @@
 					 mv-value="getUsers(util.signal)">
 					<!--mv-value="testing.users"-->
 					<meta property="uid">
+					<meta property="duration">
 					<meta property="pushOut" mv-value="get(pushOutIndex,uid)">
 					<meta property="active" mv-value="!pushOut || (checkInTime > pushOut.time)">
 				</div>
