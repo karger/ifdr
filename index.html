@@ -103,9 +103,10 @@
 				</div>
 
 				<div id="email-login">
-					<div>Note: accounts set up this way will not be secure; anyone will be able to modify your information.  If you want a secure accont, login with google.</div>
-					<div>Email: <input style="width: 20em" property="email"></div>
-					<div><button style="float:right">Submit</button></div>
+					<div><b>Warning</b>: accounts set up this way will not be secure; anyone will be able to modify your requests.  If you want a secure accont, login with google.</div>
+					<div>Email: <input style="width: 20em" property="enterEmail"></div>
+					<div>Name: <input style="width: 20em" property="enterName"></div>
+					<div><button disabled="!enterEmail || !enterName" style="float:right">Submit</button></div>
 				</div>
 
 				<meta id="signal" property="signal">
@@ -135,7 +136,7 @@
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<div hidden>
-					[watchUsers(mysid,if(mysid='test',365*24*60*60*100,session.duration))]
+					[watchUsers(mysid,if(mysid='test' || !session.duration,365*24*60*60*100,session.duration))]
 				</div>
 
 				<section>
@@ -161,8 +162,9 @@
 					<meta property="sessionStorage"
 						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
 					<meta property="checkInTime" mv-default="[$startup]">
-					<meta property="name" mv-default="[getProfile(signal).name || 'unnamed user']">
-					<meta property="email" mv-default="[getProfile(signal).email]">
+					<meta property="me" mv-value="[getProfile(signal)]">
+					<meta property="name" mv-default="[if(me,me.name,'unnamed user ')]">
+					<meta property="email" mv-default="[if(me,me.email)]">
 
 					<div class="show-logged-out">
 						Log in to make requests.
@@ -185,7 +187,7 @@
 				
 				<section class="show-logged-in">
 					<div>
-						<h2>My Requests</h2>
+						<h2>My <span mv-if="!checkedIn">Planned</span> Requests</h2>
 
 
 						<div style="display:inline-block;">

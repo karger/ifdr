@@ -246,4 +246,3 @@
     }
 })();
 
-firebaseReady.then((fb)=>console.log(fb.auth()));
