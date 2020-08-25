@@ -155,15 +155,13 @@
 							<option selected value="" selected>Choose session</option>
 							<option property="options" mv-group mv-multiple value="[id]" mv-value="util.sessions">[name]</option>
 						</select>
-						<meta property="mysid2" mv-storage="inherit"
-							  mv-value="url('session') || sessionSelect || mysid">
 						<h2>Session</h2>
 					</div>
 
 					<meta property="sessionStorage"
 						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
 					<meta property="checkInTime" mv-default="[$startup]">
-					<meta property="name" mv-default="username(signal) || 'unnamed user">
+					<meta property="name" mv-default="[getProfile(signal).name || 'unnamed user']">
 					<meta property="email" mv-default="[getProfile(signal).email]">
 
 					<div class="show-logged-out">
