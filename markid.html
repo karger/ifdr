@@ -94,7 +94,7 @@
 			 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 			 >
 			<meta id="signal" property="signal">
-			<meta property="uid" mv-value="getUid(signal)">
+			<meta property="meid" mv-value="getUid(signal)">
 			<div property="me" mv-value="getProfile(signal)">
 				<meta property="uid"> <meta property="name">
 			</div>
@@ -144,8 +144,16 @@
 					</div>
 				</section>
 
+				<div mv-if="mysid and !session.meIsMarkid">
+					You are not registered as a markid for this session.  To be added as a markid:
+					<ol>
+						<li>Sign in to the session using the request app <a href="..">here</a></li>
+						<li>Ask a current markid to add you to the markid list in the markid app</li>
+					</ol>	
+				</div>
+				
 				<!--Requests-->
-				<section mv-if="mysid">
+				<section mv-if="mysid and session.meIsMarkid">
 					<div>
 						<div style="float:right">
 							<div> <label><input type="checkbox"property="showPlayed" mv-storage="none" >Include played</label></div>
@@ -202,7 +210,7 @@
 						<meta property="uid"> <meta property="name">
 					</div>
 					<meta mv-multiple property="markidUids" mv-value="markidim.uid" mv-storage="inherit">
-
+					<meta property="meIsMarkid" mv-value="has(util.meid,markidUids) || url('markid')=''">
 					<div property="pushOutTimes" mv-multiple mv-initial-items="0">
 						<meta property="uid"></meta>
 						<meta property="time" type="number"></meta>
@@ -211,7 +219,7 @@
 				</div>
 
 				<!--Playlist-->
-				<section style="clear: both">
+				<section mv-if="meIsMarkid" style="clear: both">
 					<div style="float:right; vertical-align: top">
 						<div><label><input type="checkbox" mv-storage="none" property="showMarkid">Show Markid</label></div>
 					</div>
@@ -243,7 +251,7 @@
 				</section>
 
 				<!--Folks-->
-				<section>
+				<section mv-if="meIsMarkid">
 					<div style="clear:both">
 						<div style="float:right; vertical-align: top">
 							<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
@@ -273,7 +281,7 @@
 							<meta property="pushOutTime" mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
 							<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
 							<button mv-action="add(uid,owner),add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in owner)">Make Markid</button>
-							<button mv-action="delete(owner where owner=uid),delete(markidim where markidim.uid=uid)" mv-if="addMarkid and (uid in owner)">Remove Markid</button>
+							<button mv-action="delete(owner where owner=uid),delete(markidim where markidim.uid=uid)" mv-if="addMarkid and (uid in owner) and not(uid=util.meid)">Remove Markid</button>
 							<button mv-if="not(active)" title="Check in" 
 									mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid), Mavo.all.session.expressions.update()">+</button>
 							<button mv-if="active" title="Check out"
