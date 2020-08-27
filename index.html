@@ -105,7 +105,7 @@
 				<div class="mv-bar mv-ui">
 					<span class="show-logged-in show-active">Checked in</span>
 					<span class="show-logged-in show-inactive">Checked out</span>
-					<button class="mv-login">Login using Google (secure)</button>
+					<button class="mv-login show-logged-out">Login using Google (secure)</button>
 					<button class="show-logged-out"
 							mv-action="set(showEmailLogin,true)">Login using email (insecure)</button>
 				</div>
@@ -158,9 +158,12 @@
 				>
 				<div hidden>
 					[watchUsers(mysid,if(mysid='test' || !session.duration,365*24*60*60*100,session.duration))]
+					[watchFont(fontSize)]
 				</div>
 
 				<section>
+					<span style="float:right">Font size: <input property="fontSize" type="range" min="100" max="300" step="20" value="100"></span>
+					
 					<details><summary>Click for instructions</summary>
 						<ol>
 							<li>Log in at the top</li>
@@ -186,7 +189,7 @@
 					<meta property="checkInTime" mv-default="[$startup]">
 					<meta property="me" mv-group
 						  mv-value="if(util.useEmailLogin,util.emailLoginData,getProfile(signal))">
-					<meta property="name" mv-value="[if(me,me.name,'unnamed user ')]" mv-storage="inherit"">
+					<meta property="name" mv-value="[if(me,me.name,'unnamed user ')]" mv-storage="inherit">
 					<meta property="email" mv-value="[if(me,me.email)]" mv-storage="inherit">
 
 					<div class="show-logged-out">

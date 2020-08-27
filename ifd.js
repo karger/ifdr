@@ -80,6 +80,10 @@
 	}
     }
 
+    watchFont = function(size) {
+	document.body.style.fontSize=Mavo.value(size)+"%";
+    }
+    
     notify = false;
     notifying = false;
     watchNotify = function(n) {
