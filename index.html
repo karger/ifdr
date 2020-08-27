@@ -12,7 +12,7 @@
 			.logged-out .show-logged-in {
 				display: none;
 			}
-			.logged-in .show-logged-out {
+			.logged-in .show-logged-out.show-logged-out {
 				display: none;
 			}
 			.r-label {
@@ -45,10 +45,15 @@
 				background: white;
 				border-radius: 10px;
 				z-index: 10;
-				display: none;
 			}
-			.show-email-login #email-login {
-				display: visible;
+			#email-login input {
+				padding: 3px;
+				margin: 3px;
+				border: 2px solid;
+				border-radius: 3px;
+			}
+			#email-login:not(.show-email-login) {
+				display: none;
 			}
 			body {
 				display: flex;
@@ -100,22 +105,39 @@
 				<div class="mv-bar mv-ui">
 					<span class="show-logged-in show-active">Checked in</span>
 					<span class="show-logged-in show-inactive">Checked out</span>
+					<button class="mv-login">Login using Google (secure)</button>
+					<button class="show-logged-out"
+							mv-action="set(showEmailLogin,true)">Login using email (insecure)</button>
 				</div>
 
-				<div id="email-login">
+				<meta property="showEmailLogin">
+				<meta property="useEmailLogin" mv-default="[false]">
+				<div property="emailLoginData" id="email-login"
+					 mv-storage="local"
+					 class="[if(showEmailLogin,'show-email-login')]">
 					<div><b>Warning</b>: accounts set up this way will not be secure; anyone will be able to modify your requests.  If you want a secure accont, login with google.</div>
-					<div>Email: <input style="width: 20em" property="enterEmail"></div>
-					<div>Name: <input style="width: 20em" property="enterName"></div>
-					<div><button disabled="!enterEmail || !enterName" style="float:right">Submit</button></div>
+					<div>Email: <input style="width: 20em" property="email"
+									   ></div>
+					<div>Name: <input style="width: 20em" property="name"
+									  ></div>
+					<div><span style="float:right; margin-top: 5px;">
+							<button disabled="[!email || !name]"
+									mv-action="set(useEmailLogin,true), set(showEmailLogin,false)"
+									>Submit</button>
+							<button mv-action="set(showEmailLogin,false)"
+									>Cancel</button>
+					</span></div>
+					<meta property="uid" mv-value="email">
 				</div>
 
 				<meta id="signal" property="signal">
-				<meta property="meid" mv-value="url('meid') || getUid(signal)">
+				<meta property="meid" mv-value="url('meid') || if(useEmailLogin,emailLoginData.email,getUid(signal))">
 				<meta property="userStorage" mv-value="if(meid,'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& meid,'none')">
 				<meta property="sessions" mv-value="getSessions(signal)">
 				<div hidden>
 					[setSignal('sig'&'nal')]
 					[watchSessions()]
+					[watchLoginState(meid)]
 				</div>
 			</div>
 
@@ -127,11 +149,10 @@
 			
 			<div
 				mv-app="user"
-				mv-firebase="auth realtime"
+				mv-firebase="realtime"
 				mv-bar="none"
 				mv-plugins="firebase-firestore sort"
 				mv-autosave="5"
-				mv-bar="status login logout"
 				mv-storage="[util.userStorage]"
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
@@ -159,12 +180,14 @@
 						<h2>Session</h2>
 					</div>
 
+					<meta property="publicWrite" mv-value="util.useEmailLogin" mv-storage="inherit">
 					<meta property="sessionStorage"
 						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
 					<meta property="checkInTime" mv-default="[$startup]">
-					<meta property="me" mv-group mv-value="[getProfile(signal)]">
-					<meta property="name" mv-default="[if(me,me.name,'unnamed user ')]">
-					<meta property="email" mv-default="[if(me,me.email)]">
+					<meta property="me" mv-group
+						  mv-value="if(util.useEmailLogin,util.emailLoginData,getProfile(signal))">
+					<meta property="name" mv-value="[if(me,me.name,'unnamed user ')]" mv-storage="inherit"">
+					<meta property="email" mv-value="[if(me,me.email)]" mv-storage="inherit">
 
 					<div class="show-logged-out">
 						Log in to make requests.

@@ -12,16 +12,7 @@
     });
     
     Promise.all([Mavo.inited,firebaseReady]).then(([m,fb])=> {
-	fb.auth().onAuthStateChanged((user)=> {
-	    if (user) {
-		document.body.classList.remove('logged-out');
-		document.body.classList.add('logged-in');
-	    } else {
-		document.body.classList.remove('logged-in');
-		document.body.classList.add('logged-out');
-	    }
-	    signal();
-	});
+	fb.auth().onAuthStateChanged(signal)
     });
 
     
@@ -42,7 +33,16 @@
 	signal.node = Mavo.Node.get(document.getElementById(Mavo.value(id)));
 	return signal.counter;
     }
-    
+
+    watchLoginState = function(uid) {
+	if (Mavo.value(uid)) {
+	    document.body.classList.remove('logged-out');
+	    document.body.classList.add('logged-in');
+	} else {
+	    document.body.classList.remove('logged-in');
+	    document.body.classList.add('logged-out');
+	}
+    }
     
     getUid = function() {
 	try {
