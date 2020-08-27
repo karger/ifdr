@@ -255,6 +255,7 @@
 					<div style="clear:both">
 						<div style="float:right; vertical-align: top">
 							<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
+							<div><label><input type="checkbox" mv-storage="none" property="showActivity"> Show activity</label></div>
 							<div><label><input type="checkbox" mv-storage="none" property="showRequests"> Show requests</label></div>
 							Activity: <select property="duration" mv-default="6*24*60*60*1000">
 								<option value="[30*60*1000]">past half hour</option>
@@ -272,22 +273,36 @@
 						</div>
 
 						<h2>Folks</h2>
+						<meta property="thisMinute" mv-value="round($now/60000)*60000">
 						<div style="clear:both">Click <button>X</button> to check out people who've left, or <button>+</button> to check them back in.</div>
 
-						<div property="users" class="users" mv-multiple class="[if(active,'','inactive')]"
+						<table>
+							<tr>
+								<th></th>
+								<th></th>
+								<th mv-if="showActivity">last active</th>
+								<th mv-if="showRequests">requests</th>
+						<tr property="users" class="users" mv-multiple class="[if(active,'','inactive')]"
 							 mv-value="sort(getUsers(util.signal),'-checkInTime')">
 							<meta property="uid">
 							<meta property="checkInTime">
 							<meta property="pushOutTime" mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
 							<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
+							<td>
 							<button mv-action="add(uid,owner),add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in owner)">Make Markid</button>
 							<button mv-action="delete(owner where owner=uid),delete(markidim where markidim.uid=uid)" mv-if="addMarkid and (uid in owner) and not(uid=util.meid)">Remove Markid</button>
 							<button mv-if="not(active)" title="Check in" 
 									mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid), Mavo.all.session.expressions.update()">+</button>
 							<button mv-if="active" title="Check out"
 									mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid),add(group(uid: uid, time: +$now),pushOutTimes)">X</button>
-							<span property="name"></span><span mv-if="showRequests">: [picks.label]</span>
-						</div>
+							<td>
+								<span property="name"></span>
+							</td>
+							<td mv-if="showActivity"><span mv-if="active">[duration(thisMinute-checkInTime)]</span></td>
+							<td>
+								<span mv-if="showRequests">[picks.label]</span>
+						</tr>
+						</table>
 
 						<div property="toPushOut" mv-multiple mv-value="users where checkInTime > 0" mv-storage="none">
 							<meta property="myuid" mv-value="uid">
