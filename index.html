@@ -162,7 +162,7 @@
 					<meta property="sessionStorage"
 						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
 					<meta property="checkInTime" mv-default="[$startup]">
-					<meta property="me" mv-value="[getProfile(signal)]">
+					<meta property="me" mv-group mv-value="[getProfile(signal)]">
 					<meta property="name" mv-default="[if(me,me.name,'unnamed user ')]">
 					<meta property="email" mv-default="[if(me,me.email)]">
 
