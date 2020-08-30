@@ -131,8 +131,8 @@
 					
 
 					<form id="session-select" method="get" action="markid.html">
-						<select property="nextSession" name="session" width="60">
-							<option value="" selected disabled>Choose a session</option>
+						<select property="nextSession" name="session">
+							<option value="" selected="[!url('session')]">Choose a session</option>
 							<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)" selected="[id=url('session')]">[name]</option>
 						</select>
 						<input type="submit" value="Go to Session">
@@ -156,10 +156,10 @@
 				<section mv-if="mysid and session.meIsMarkid">
 					<div>
 						<div style="float:right">
-							<div> <label><input type="checkbox"property="showPlayed" mv-storage="none" >Include played</label></div>
+							<div> <label><input type="checkbox" property="showPlayed" mv-storage="none" >Include played</label></div>
 							<div><label><input type="checkbox" property="showNames" mv-storage="none">Show who</label></div>
 							<div><label><input type="checkbox" property="showTimes" mv-storage="none">Show times</label></div>
-							<div><label><input type="checkbox" mv-storage="none" property="notify" mv-storage="none">Notify</label><span hidden>[watchNotify(notify)]</span></div>
+							<div><label><input type="checkbox" mv-storage="none" property="notify">Notify</label><span hidden>[watchNotify(notify)]</span></div>
 						</div>
 						<h2>Requests</h2>
 					</div>
@@ -186,7 +186,7 @@
 							<td><span property="count"></span>
 							<td mv-if="showTimes"><meta property="timestamp"><span class="r-time">[duration(thisMinute-timestamp)]</span>
 							<td mv-if="showNames"><span class="r-names" mv-multiple property="names"></span>
-							<td><meta property="played" mv-value="lookup(session.playedIndex,label)">
+								<meta property="played" mv-value="lookup(session.playedIndex,label)">
 						</tr>
 					</table>
 				</section>
@@ -212,8 +212,8 @@
 					<meta mv-multiple property="markidUids" mv-value="markidim.uid" mv-storage="inherit">
 					<meta property="meIsMarkid" mv-value="has(util.meid,markidUids) || url('markid')='' || requests.mysid='test'">
 					<div property="pushOutTimes" mv-multiple mv-initial-items="0">
-						<meta property="uid"></meta>
-						<meta property="time" type="number"></meta>
+						<meta property="uid">
+						<meta property="time" type="number">
 					</div>
 					<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
 				</div>
@@ -237,7 +237,7 @@
 							<td mv-if="showMarkid">
 								<input list="markidList"
 									   property="markid"></td>
-							<td><span property="notes" mv-mode="edit"></span></td>
+							<td mv-mode="edit"><span property="notes" mv-mode="edit"></span></td>
 						</tr>
 					</table>
 					
@@ -282,26 +282,26 @@
 								<th></th>
 								<th mv-if="showActivity">last active</th>
 								<th mv-if="showRequests">requests</th>
-						<tr property="users" class="users" mv-multiple class="[if(active,'','inactive')]"
-							 mv-value="sort(getUsers(util.signal),'-checkInTime')">
-							<td>
-							<meta property="uid">
-							<meta property="checkInTime">
-							<meta property="pushOutTime" mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
-							<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
-							<button mv-action="add(uid,owner),add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in owner)">Make Markid</button>
-							<button mv-action="delete(owner where owner=uid),delete(markidim where markidim.uid=uid)" mv-if="addMarkid and (uid in owner) and not(uid=util.meid)">Remove Markid</button>
-							<button mv-if="not(active)" title="Check in" 
-									mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid), Mavo.all.session.expressions.update()">+</button>
-							<button mv-if="active" title="Check out"
-									mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid),add(group(uid: uid, time: +$now),pushOutTimes)">X</button>
-							<td>
-								<span property="name"></span>
-							</td>
-							<td mv-if="showActivity"><span mv-if="active">[duration(thisMinute-checkInTime)]</span></td>
-							<td>
-								<span mv-if="showRequests">[picks.label]</span>
-						</tr>
+							<tr property="users" mv-multiple class="users [if(active,'','inactive')]"
+								mv-value="sort(getUsers(util.signal),'-checkInTime')">
+								<td>
+									<meta property="uid">
+									<meta property="checkInTime">
+									<meta property="pushOutTime" mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
+									<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
+									<button mv-action="add(uid,owner),add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in owner)">Make Markid</button>
+									<button mv-action="delete(owner where owner=uid),delete(markidim where markidim.uid=uid)" mv-if="addMarkid and (uid in owner) and not(uid=util.meid)">Remove Markid</button>
+									<button mv-if="not(active)" title="Check in" 
+											mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid), Mavo.all.session.expressions.update()">+</button>
+									<button mv-if="active" title="Check out"
+											mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid),add(group(uid: uid, time: +$now),pushOutTimes)">X</button>
+								<td>
+									<span property="name"></span>
+								</td>
+								<td mv-if="showActivity"><span mv-if="active">[duration(thisMinute-checkInTime)]</span></td>
+								<td>
+									<span mv-if="showRequests">[picks.label]</span>
+							</tr>
 						</table>
 
 						<div property="toPushOut" mv-multiple mv-value="users where checkInTime > 0" mv-storage="none">
@@ -313,8 +313,9 @@
 						</div>
 						<button mv-action="set(pushOutTimes,toPushOut.container)">Check All Out</button>
 						<meta property="userIndex" mv-value="makeIndex(users,'uid')">
+					</div>
 				</section>
-
+			</div>
 		</main>
 
 		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>
