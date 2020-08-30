@@ -242,14 +242,12 @@
 
 					<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>
-							<th></th>
-							<th></th>
+							<th>Add</th>
 							<th>Dance</th>
 							<th>Count</th>
 						</tr>
 						<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','label')">
 							<td><button mv-class="show-logged-in" title="add request" mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">+</button>
-							<td>
 							<td><span class="r-label" property="label"></span>
 							<td><span class="r-count" property="count"></span>
 								<meta property="played">
@@ -276,7 +274,7 @@
 					<meta property="uid">
 					<meta property="duration">
 					<meta property="pushOut" mv-value="get(pushOutIndex,uid)">
-					<meta property="active" mv-value="!pushOut || (checkInTime > pushOut.time)">
+					<meta property="active" mv-value="if(!pushOut,true,(checkInTime > pushOut.time))">
 				</div>
 
 				<section>

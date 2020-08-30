@@ -145,7 +145,7 @@
 				</section>
 
 				<div mv-if="mysid and !session.meIsMarkid">
-					You are not registered as a markid for this session.  To be added as a markid:
+					You are not registered as a markid for this session.  If you just want to try out the markid app, visit the <a href="markid.html?session=test">test session</a>.  To be added as a markid:
 					<ol>
 						<li>Sign in to the session using the request app <a href="..">here</a></li>
 						<li>Ask a current markid to add you to the markid list in the markid app</li>
@@ -228,7 +228,7 @@
 					<h2>Accepted</h2>
 
 					<table class="dance-table">
-						<tr><th></th><th>Dance</th><th mv-if="showMarkid">Assigned markid</th><th>Notes</th></tr>
+						<tr mv-if="count(played)>0"><th></th><th>Dance</th><th mv-if="showMarkid">Assigned markid</th><th>Notes</th></tr>
 						<tr class="playlist [if(myPlay and showMarkid,'my-play')]" mv-multiple property="played" mv-initial-items="0">
 							<td><button mv-action="delete($this)">X</button></td>
 							<td><span class="dance-label" property="label"></span>
@@ -247,7 +247,7 @@
 
 					<meta property="playedIndex" mv-value="makeIndex(played.label)">
 
-					<button id="clear" mv-action="delete(played)">Clear playlist</button>
+					<button mv-if="count(played)>0" id="clear" mv-action="delete(played)">Clear playlist</button>
 				</section>
 
 				<!--Folks-->
@@ -262,7 +262,7 @@
 								<option value="[1*60*60*1000]">past hour</option>
 								<option value="[4*60*60*1000]">past 4 hours</option>
 								<option value="[24*60*60*1000]">past day</option>
-								<option selected value="[6*24*60*60*1000]">past 6 days</option>
+								<option value="[6*24*60*60*1000]">past 6 days</option>
 								<option value="[30*24*60*60*1000]">past month</option>
 								<option value="[365*24*60*60*1000]">past year</option>
 								<option value="[10*365*24*60*60*1000]">all</option>
@@ -284,11 +284,11 @@
 								<th mv-if="showRequests">requests</th>
 						<tr property="users" class="users" mv-multiple class="[if(active,'','inactive')]"
 							 mv-value="sort(getUsers(util.signal),'-checkInTime')">
+							<td>
 							<meta property="uid">
 							<meta property="checkInTime">
 							<meta property="pushOutTime" mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
 							<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
-							<td>
 							<button mv-action="add(uid,owner),add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in owner)">Make Markid</button>
 							<button mv-action="delete(owner where owner=uid),delete(markidim where markidim.uid=uid)" mv-if="addMarkid and (uid in owner) and not(uid=util.meid)">Remove Markid</button>
 							<button mv-if="not(active)" title="Check in" 
