@@ -185,7 +185,7 @@
 							<td><span class="dance-label" property="label"></span>
 							<td><span property="count"></span>
 							<td mv-if="showTimes"><meta property="timestamp"><span class="r-time">[duration(thisMinute-timestamp)]</span>
-							<td mv-if="showNames"><span class="r-names" mv-multiple property="names"></span>
+							<td hidden="[!showNames]"> <span class="r-names" mv-multiple property="names"></span>
 								<meta property="played" mv-value="lookup(session.playedIndex,label)">
 						</tr>
 					</table>
@@ -196,7 +196,7 @@
 				 mv-app="session" mv-bar="none"
 				 mv-firebase="auth realtime"
 				 mv-plugins="firebase-firestore"
-				 mv-autosave="5"
+				 mv-autosave="2"
 				 mv-storage="[util.sessionStore]"
 				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				 style="display:contents"
@@ -263,6 +263,7 @@
 								<option value="[4*60*60*1000]">past 4 hours</option>
 								<option value="[24*60*60*1000]">past day</option>
 								<option value="[2*24*60*60*1000]">past 2 days</option>
+								<option value="[4*24*60*60*1000]">past 4 days</option>
 								<option value="[6*24*60*60*1000]">past 6 days</option>
 								<option value="[30*24*60*60*1000]">past month</option>
 								<option value="[365*24*60*60*1000]">past year</option>
