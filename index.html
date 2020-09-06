@@ -5,8 +5,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
 		<title>IFD Requests</title>
-		<script src="https://get.mavo.io/mavo.js"></script>
-		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
+		<script src="https://get.mavo.io/stable/mavo.es5.js"></script>
+		<link rel="stylesheet" href="https://get.mavo.io/stable/mavo.css">
 		<script defer src="ifd.js"></script>
 		<style>
 			.logged-out .show-logged-in {
@@ -25,6 +25,15 @@
 			.hidePlayed .played {
 				display: none;
 			}
+			[mv-app="util"] .mv-bar {
+				flex-basis: 100%
+			}
+			header {
+				flex-basis: 100%;
+			}
+			section {
+				margin: 1em;
+			}
 			#session-header {
 				max-width: 30em;
 			}
@@ -34,9 +43,11 @@
 			#my-requests {
 				line-height: 200%;
 			}
-			[mv-app="util"] {
-				z-index: 1;
+			.break {
+				flex-basis: 100%;
+				height: 0;
 			}
+
 			#email-login {
 				position: fixed;
 				top: 50%;
@@ -66,6 +77,11 @@
 			}
 			main {
 				flex: 1;
+				display: flex;
+				flex-wrap: wrap;
+				align-items: flex-start;
+				align-content: flex-start;
+				justify-content: space-between;
 			}
 			footer {
 				padding-top: 3em;
@@ -80,9 +96,14 @@
 			.ifdr-inactive .mv-bar {
 				background-color: red;
 			}
+			[mv-app] {
+				display: contents;
+			}
 			[mv-app="util"] {
 				position: sticky;
 				top: 0;
+				z-index: 1;
+				flex-basis: 100%;
 			}
 			.ifdr-inactive .show-active {
 				display: none;
@@ -144,7 +165,7 @@
 				</div>
 			</div>
 
-			<div hidden mv-app="dances" mv-storage="none" mv-source="ifd.csv" mv-format="csv">
+			<div style="display: none" mv-app="dances" mv-storage="none" mv-source="ifd.csv" mv-format="csv">
 				<datalist id="dancelist">
 					<option mv-multiple mv-group property="dance" value="[label]"></option>
 				</datalist>
@@ -163,8 +184,8 @@
 					[watchUsers(mysid,if(mysid='test' || !session.duration,365*24*60*60*100,session.duration))]
 					[watchFont(fontSize)]
 				</div>
-
-				<section>
+				<div class="break"></div>
+				<header>
 					<span style="float:right">Font size: <input property="fontSize" type="range" min="100" max="300" step="20" value="100"></span>
 					
 					<details><summary>Click for instructions</summary>
@@ -212,8 +233,9 @@
 							<div mv-if="checkedIn">Click <button mv-action="set(checkInTime,-1)">Check Out</button> to suspend your requests while you're away</div>
 						</div>
 					</div>
-				</section>
-				
+				</header>
+				<div class="break"></div>
+					
 				<section class="show-logged-in">
 					<div>
 						<h2>My <span mv-if="!checkedIn">Planned</span> Requests</h2>
