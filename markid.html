@@ -203,8 +203,8 @@
 				 >
 				<div style="display:none">
 					[setSignal('sig'&'nal')]
-					[watchUsers(requests.mysid,duration)]
-					[watchSessions(duration)]
+					[watchUsers(requests.mysid,lookbackTime)]
+					[watchSessions(lookbackTime)]
 					<meta mv-multiple property="owner">
 					<div mv-multiple property="markidim" mv-initial-items="0">
 						<meta property="uid"> <meta property="name">
@@ -257,7 +257,7 @@
 							<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
 							<div><label><input type="checkbox" mv-storage="none" property="showActivity"> Show activity</label></div>
 							<div><label><input type="checkbox" mv-storage="none" property="showRequests"> Show requests</label></div>
-							Activity: <select property="duration" mv-default="6*24*60*60*1000">
+							Activity: <select property="lookbackChoice" mv-default="6*24*60*60*1000">
 								<option value="[30*60*1000]">past half hour</option>
 								<option value="[1*60*60*1000]">past hour</option>
 								<option value="[4*60*60*1000]">past 4 hours</option>
@@ -268,10 +268,14 @@
 								<option value="[30*24*60*60*1000]">past month</option>
 								<option value="[365*24*60*60*1000]">past year</option>
 								<option value="[10*365*24*60*60*1000]">all</option>
-								<!--option value="">specific date</option-->
+								<option value="date">specific date</option>
 							</select>
-							<!-- mv-if="!durationChoice" input type="datetime-local" property="beginCustom" mv-storage="none" -->
-							<!-- mv-value="durationChoice || if(beginCustom, $startup-beginCustom, 4*60*60*1000)"-->
+							<input mv-if="lookbackChoice='date'"
+								   type="datetime-local"
+								   property="customStart"
+								   mv-default="[date($startup-7*24*60*60*1000)]"
+								   mv-storage="inherit"> 
+							<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,lookbackChoice)" mv-storage="inherit">
 						</div>
 
 						<h2>Folks</h2>
