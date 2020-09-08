@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
 		<title>IFD Markid</title>
@@ -257,6 +256,7 @@
 							<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
 							<div><label><input type="checkbox" mv-storage="none" property="showActivity"> Show activity</label></div>
 							<div><label><input type="checkbox" mv-storage="none" property="showRequests"> Show requests</label></div>
+							<div><label><input type="checkbox" property="zoom">zoom names</label></div>
 							Activity: <select property="lookbackChoice" mv-default="6*24*60*60*1000">
 								<option value="[30*60*1000]">past half hour</option>
 								<option value="[1*60*60*1000]">past hour</option>
@@ -293,6 +293,8 @@
 								<td>
 									<meta property="uid">
 									<meta property="checkInTime">
+									<meta property="name">
+									<meta property="zoomName">
 									<meta property="pushOutTime" mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
 									<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
 									<button mv-action="add(uid,owner),add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in owner)">Make Markid</button>
@@ -302,7 +304,7 @@
 									<button mv-if="active" title="Check out"
 											mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid),add(group(uid: uid, time: +$now),pushOutTimes)">X</button>
 								<td>
-									<span property="name"></span>
+									[if(zoom && zoomName,zoomName,name)]
 								</td>
 								<td mv-if="showActivity"><span mv-if="active">[duration(thisMinute-checkInTime)]</span></td>
 								<td>

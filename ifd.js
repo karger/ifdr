@@ -120,8 +120,8 @@
 		
 		querySnapshot.forEach(function(doc) {
 		    let uid = doc.id;
-		    let {name, checkInTime, picks} = doc.data();
-		    users.push({uid: uid, name: name, checkInTime: checkInTime, picks: picks});
+		    let {name, checkInTime, picks, zoomName} = doc.data();
+		    users.push({uid: uid, name: name, checkInTime: checkInTime, picks: picks, zoomName: zoomName});
 		});
 		if (!deepEqual(users,oldUsers)) {
 //		    sendNotify("Requests have changed");

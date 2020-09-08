@@ -142,7 +142,7 @@
 					<div><b>Warning</b>: accounts set up this way will not be secure; anyone will be able to modify your requests.  If you want a secure accont, login with google.</div>
 					<div>Email: <input style="width: 20em" property="email"
 									   ></div>
-					<div>Name: <input style="width: 20em" property="name"
+					<div>Full name: <input style="width: 20em" property="name"
 									  ></div>
 					<div><span style="float:right; margin-top: 5px;">
 							<button disabled="[!email || !name]"
@@ -229,6 +229,7 @@
 							<meta property="myPushOut" mv-value="first(session.pushOutTimes where uid=util.meid).time">
 							<meta property="checkedIn"
 								  mv-value="mysid and util.meid and checkInTime > (myPushOut || 0)">
+							<div mv-if="session.zoom">Please enter your zoom name: <input property="zoomName"></div>
 							<div mv-if="!checkedIn">Click <button mv-action="set(checkInTime,+$now)">Check In</button> to make requests</div>
 							<div mv-if="checkedIn">Click <button mv-action="set(checkInTime,-1)">Check Out</button> to suspend your requests while you're away</div>
 						</div>
@@ -293,11 +294,11 @@
 				 >
 				<meta property="pushOutTimes" mv-multiple mv-initial-items="0">
 				<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
+				<meta property="duration">
 				<div hidden property="users" mv-multiple class="[if(not(active),'inactive','')]"
 					 mv-value="getUsers(util.signal)">
 					<!--mv-value="testing.users"-->
 					<meta property="uid">
-					<meta property="duration">
 					<meta property="pushOut" mv-value="get(pushOutIndex,uid)">
 					<meta property="active" mv-value="if(!pushOut,true,(checkInTime > pushOut.time))">
 				</div>
