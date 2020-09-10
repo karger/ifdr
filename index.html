@@ -135,8 +135,8 @@
 				</div>
 
 				<meta property="showEmailLogin">
-				<meta property="useEmailLogin" mv-default="[false]">
-				<div property="emailLoginData" id="email-login"
+				<meta property="useNameLogin" mv-default="[false]">
+				<div property="nameLoginData" id="email-login"
 					 mv-storage="local"
 					 class="[if(showEmailLogin,'show-email-login')]">
 					<div><b>Warning</b>: accounts set up this way will not be secure; anyone will be able to modify your requests.  If you want a secure accont, login with google.</div>
@@ -146,7 +146,7 @@
 									  ></div>
 					<div><span style="float:right; margin-top: 5px;">
 							<button disabled="[!email || !name]"
-									mv-action="set(useEmailLogin,true), set(showEmailLogin,false)"
+									mv-action="set(useNameLogin,true), set(showEmailLogin,false)"
 									>Submit</button>
 							<button mv-action="set(showEmailLogin,false)"
 									>Cancel</button>
@@ -155,7 +155,7 @@
 				</div>
 
 				<meta id="signal" property="signal">
-				<meta property="meid" mv-value="url('meid') || if(useEmailLogin,emailLoginData.email,getUid(signal))">
+				<meta property="meid" mv-value="url('meid') || if(useNameLogin,nameLoginData.email,getUid(signal))">
 				<meta property="userStorage" mv-value="if(meid,'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& meid,'none')">
 				<meta property="sessions" mv-value="getSessions(signal)">
 				<div hidden>
@@ -207,12 +207,12 @@
 						<h2>Session</h2>
 					</div>
 
-					<meta property="publicWrite" mv-value="util.useEmailLogin" mv-storage="inherit">
+					<meta property="publicWrite" mv-value="util.useNameLogin" mv-storage="inherit">
 					<meta property="sessionStorage"
 						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
 					<meta property="checkInTime" mv-default="[$startup]">
 					<meta property="me" mv-group
-						  mv-value="if(util.useEmailLogin,util.emailLoginData,getProfile(signal))">
+						  mv-value="if(util.useNameLogin,util.nameLoginData,getProfile(signal))">
 					<meta property="name" mv-value="if(me,me.name,'unnamed user')" mv-storage="inherit">
 					<meta property="email" mv-value="if(me,me.email)" mv-storage="inherit">
 

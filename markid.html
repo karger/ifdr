@@ -121,7 +121,7 @@
 							<li>Choose your session using the dropdown and click <button>Go to Session</button></li>
 							<li>Log in at the top</li>
 							<li>Look over the requests</li>
-							<li>Click <button>play</button> next to each request you play or queue up, so it will be marked played.</li>
+							<li>Click <button>accept</button> next to each request you play or queue up, so it will be marked played.</li>
 							<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
 							<li>There is a checkbox to let you include the dances you've already played in the same list, and another to see who requested each dance.
 							<li>Below that is a list of folks currently checked in to your session.  If you know someone has left, you can chexk them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
@@ -175,13 +175,13 @@
 						</tr>
 
 						<tr>
-							<td><button mv-action="add(group(label: playSelection, timestamp: +$now, markid: util.me.name),session.played); set(playSelection,'')">play</button>
+							<td><button mv-action="add(group(label: playSelection, timestamp: +$now, markid: util.me.name),session.played); set(playSelection,'')">accept</button>
 							<td><input list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
 						</tr>
 
 						<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','-timestamp')">
 							<td><button mv-if="not(played)" title="mark played"
-										mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)">play</button>
+										mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)">accept</button>
   								<meta property="played" mv-value="lookup(session.playedIndex,label)">
 
 							<td><span class="dance-label" property="label"></span>
@@ -312,7 +312,7 @@
 								</td>
 								<td mv-if="showActivity"><span mv-if="active">[duration(thisMinute-checkInTime)]</span></td>
 								<td>
-									<span mv-if="showRequests">[picks.label]</span>
+									<span mv-if="showRequests"><span class="r-names" mv-multiple mv-value="picks.label where not(has(label,playedIndex))"></span></span>
 							</tr>
 						</table>
 
