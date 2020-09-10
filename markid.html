@@ -180,9 +180,10 @@
 						</tr>
 
 						<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','-timestamp')">
-							<meta property="played" mv-value="lookup(session.playedIndex,label)">
 							<td><button mv-if="not(played)" title="mark played"
 										mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)">play</button>
+  								<meta property="played" mv-value="lookup(session.playedIndex,label)">
+
 							<td><span class="dance-label" property="label"></span>
 							<td><span property="count"></span>
 							<td mv-if="showTimes"><meta property="timestamp"><span class="r-time">[duration(thisMinute-timestamp)]</span>
