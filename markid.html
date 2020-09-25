@@ -12,6 +12,30 @@
 		<link rel="manifest" href="manifest.json">
 		<script src="ifd.js"></script>
 		<style>
+			#schedule {
+				border-top: 1px solid black;
+				border-right: 1px solid black;
+			}
+			#schedule span {
+				display: inline-block;
+				width: 4em;
+				border-left: 1px solid black;
+				border-bottom: 1px solid black;
+			}
+			#schedule .presenter {
+				font-weight: bold;
+			}
+			#schedule .name {
+				margin-left: 5em;
+			}
+			
+			#schedule .name input, #schedule .suggest input, #schedule .status select {
+				box-sizing: border-box;
+				width: 100%;
+			}
+			#schedule .name, #schedule .presenter, #schedule .status {
+				width: 12em;
+			}
 			.logged-out .show-logged-in {
 				display: none;
 			}
@@ -119,6 +143,7 @@
 			<datalist id="dancelist">
 				<option mv-multiple mv-group property="dance" value="[label]"></option>
 			</datalist>
+			<meta property="danceIndex" mv-value="makeIndex(dance,'label')">
 		</div>
 
 		<main>
@@ -169,7 +194,7 @@
 				<section mv-if="mysid and session.meIsMarkid">
 					<div>
 						<div style="float:right">
-							<div> <label><input type="checkbox" property="showPlayed" mv-storage="none" >Include [session.playedTitle]</label></div>
+							<div> <label><input type="checkbox" property="showPlayed" mv-storage="none" >Include [lowercase(session.playedTitle)]</label></div>
 							<div><label><input type="checkbox" property="showNames" mv-storage="none">Show who</label></div>
 							<div><label><input type="checkbox" property="showTimes" mv-storage="none">Show times</label></div>
 							<div><label><input type="checkbox" mv-storage="none" property="notify" mv-value="true">Notify</label><span hidden>[watchNotify(notify)]</span></div>
@@ -338,6 +363,44 @@
 						</div>
 						<button mv-action="set(pushOutTimes,toPushOut.container)">Check All Out</button>
 						<meta property="userIndex" mv-value="makeIndex(users,'uid')">
+					</div>
+				</section>
+
+				<section mv-if="requests.mysid='test'" mv-mode="edit">
+
+					<h2>Playlist</h2>
+					<div id="schedule">
+						<div>
+							<div class="presenter">Presenter</div>
+							<div>
+								<span class="name">Dance Name</span>
+								<span class="slot">Slot</span>
+								<span class="form">Formation</span>
+								<span class="current">Current sequence</span>
+								<span class="suggest">Suggest sequence</span>
+								<span class="wasplayed">Actually played</span>
+								<span class="status">CID status</span>
+								<span class="request">Request?</span>
+							</div>
+						</div>
+						
+						<div property="segment" mv-multiple style="display:contents">
+							<div class="presenter"><input property="presenter" placeholder="Presenter" list="markidList"></div>
+							<div mv-multiple property="entry" mv-accepts="entry">
+								<span class="name"><input placeholder="dance name" property="name" list="dancelist"></span>
+								<span class="slot">[segment.$index+1]</span>
+								<span class="form">[if(name,get(dances.danceIndex,name).type)]</span>
+								<span class="current">[$index+1]</span>
+								<span class="suggest"><input type="number" property="suggest"></span>
+								<span class="wasplayed"><input type="checkbox" property="played"></span>
+								<span class="status"><select property="known">
+										<option selected value="known"></option>
+										<option>forgotten</option>
+										<option>never</option>
+								</select></span>
+								<span class="request"><input type="checkbox" property="request"></span>
+							</div>
+						</div>
 					</div>
 				</section>
 			</div>
