@@ -21,6 +21,9 @@
 			.dance-table {
 				margin-left: 1em;
 			}
+			.visible-false {
+				visibility: hidden;
+			}
 			.my-play {
 				font-weight: bold;
 			}
@@ -31,7 +34,9 @@
 				text-decoration: line-through;
 			}
 			#heading {
+				flex: 0 1 auto;
 				width: 100%;
+				max-width: 100%;
 			}
 			.playlist {
 				margin-left: 1em;
@@ -77,12 +82,16 @@
 				align-items: flex-start;
 				align-content: flex-start;
 			}
+			main * {
+				flex: 1 1 auto;
+			}
 			footer {
 				padding-top: 3em;
 				font-size: small;
 			}
 			section {
-				margin-right: 2em
+				margin-right: 2em;
+				max-width: 50em;
 			}
 		</style>
 	</head>
@@ -174,8 +183,8 @@
 							<th></th>
 							<th>Dance</th>
 							<th>Count</th>
-							<th mv-if="showTimes">Age</th>
-							<th mv-if="showNames">Who</th>
+							<th class="visible-[showTimes]">Age</th>
+							<th class="visible-[showNames]">Who</th>
 						</tr>
 
 						<tr>
@@ -190,8 +199,8 @@
 
 							<td><span class="dance-label" property="label"></span>
 							<td><span property="count"></span>
-							<td mv-if="showTimes"><meta property="timestamp"><span class="r-time">[duration(thisMinute-timestamp)]</span>
-							<td hidden="[!showNames]"> <span class="r-names" mv-multiple property="names"></span>
+							<td class="visible-[showTimes]"><meta property="timestamp"><span class="r-time">[duration(thisMinute-timestamp)]</span>
+							<td class="visible-[showNames]"> <span class="r-names" mv-multiple property="names"></span>
 						</tr>
 					</table>
 				</section>
@@ -235,13 +244,13 @@
 						mv-default="Played"></h2>
 
 					<table class="dance-table">
-						<tr mv-if="count(played)>0"><th></th><th>Dance</th><th mv-if="showMarkid">Assigned markid</th><th>Notes</th></tr>
+						<tr mv-if="count(played)>0"><th></th><th>Dance</th><th class="visible-[showMarkid]">Assigned markid</th><th>Notes</th></tr>
 						<tr class="playlist [if(myPlay and showMarkid,'my-play')]" mv-multiple property="played" mv-initial-items="0">
 							<td><button mv-action="delete($this)">X</button></td>
 							<td><span class="dance-label" property="label"></span>
 								<meta property="timestamp">
 								<meta property="myPlay" mv-value="markid=util.me.name"></td>
-							<td mv-if="showMarkid">
+							<td class="visible-[showMarkid]">
 								<input list="markidList"
 									   property="markid"></td>
 							<td mv-mode="edit"><span property="notes" mv-mode="edit"></span></td>
