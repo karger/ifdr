@@ -241,6 +241,11 @@
 	return map;
     }
 
+    toClipboard=function(id) {
+	let content=document.querySelector('#'+id).outerHTML;
+	navigator.clipboard.writeText(content);
+    }
+    
     lookup = function(index, key, def) {
 	if (!!index && index.hasOwnProperty(key)) {
 	    return index[key]
