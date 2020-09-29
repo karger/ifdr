@@ -18,14 +18,14 @@
 				border-top: 1px solid black;
 				border-right: 1px solid black;
 			}
-			#schedule span {
+			#schedule > div > div > span {
 				display: inline-block;
 				width: 4em;
 				border-left: 1px solid black;
 				border-bottom: 1px solid black;
 			}
-			#schedule .mv-item-bar.mv-ui {
-				position: relative;
+			.mv-item-bar {
+				display: none;
 			}
 			#schedule .presenter {
 				font-weight: bold;
@@ -33,13 +33,27 @@
 			#schedule .name {
 				margin-left: 5em;
 			}
-			
+			#schedule .request, #schedule .wasplayed, #schedule .form {
+				padding: 0 2ex;
+			}
 			#schedule .name input, #schedule .suggest input, #schedule .status select {
 				box-sizing: border-box;
 				width: 100%;
 			}
-			#schedule .name, #schedule .presenter, #schedule .status, #schedule .controls {
+			#schedule .controls {
+				width: 6em;
+			}
+			#schedule .name, #schedule .presenter, #schedule .status, #schedule .conflict {
 				width: 12em;
+			}
+			#schedule .controls {
+				visibility: hidden;
+			}
+			#schedule div:hover > .controls {
+				visibility: visible;
+			}
+			#schedule .conflict-true {
+				border: 2px solid red;
 			}
 			.logged-out .show-logged-in {
 				display: none;
@@ -380,37 +394,43 @@
 							<div>
 								<span class="controls"></span>
 								<span class="name">Dance Name</span>
-								<span class="slot">Slot</span>
 								<span class="form">Formation</span>
-								<span class="current">Current sequence</span>
-								<span class="suggest">Suggest sequence</span>
+								<span class="slot">Suggest slot</span>
 								<span class="wasplayed">Actually played</span>
 								<span class="status">CID status</span>
 								<span class="request">Request?</span>
+								<span class="conflict">Conflict?</span>
 							</div>
 						</div>
 
-
 						<div property="segment" mv-multiple style="display:contents">
 							<div><span class="presenter"><input property="presenter" placeholder="Presenter" list="markidList"></span>
-							<span class="mv-item-bar mv-ui"></span></div>
-							<div mv-multiple property="entry" mv-accepts="entry">
-								<span class="controls mv-item-bar mv-ui"></span>
-								<span class="name"><input placeholder="dance name" property="name" list="dancelist"></span>
-								<span class="form">[if(name,get(dances.danceIndex,name).type)]</span>
+								<span class="controls"><button mv-action="add(segment,$index+1)">+</button><button class="mv-drag-handle">≡</button><button mv-action="delete($item)">-</button></span></div>
+
+
+							<div mv-multiple property="entry" mv-accepts="entry" class="conflict-[conflicted]">
+								<span class="controls"><button mv-action="add(entry,$index+1)">+</button><button class="mv-drag-handle">≡</button><button mv-action="delete($item)">-</button></span>
+								<span class="name"><input placeholder="dance name" property="entryname" mv-alias="name" list="dancelist"></span>
+								<span class="form">[if(entryname,get(dances.danceIndex,entryname).type)]</span>
 								<span class="suggest"><input type="number" property="suggest"></span>
-								<span class="wasplayed"><input type="checkbox" property="played"></span>
+								<span class="wasplayed"> <input type="checkbox" property="played"> </span>
 								<span class="status"><select property="known">
 										<option selected value="known"></option>
 										<option>forgotten</option>
 										<option>never</option>
 								</select></span>
-								<span class="request"><input type="checkbox" property="request"></span>
+								<span class="request"> <input type="checkbox" property="request"> </span>
+								<span class="conflict">
+									<meta property="entryPresenter" mv-value="presenter">
+									<meta property="conflicted" mv-value="count(allEntries)>1">
+									<span property="allEntries" mv-multiple mv-group mv-value=get(entryIndex,entryname).$items><span mv-if="conflicted" mv-value="entryPresenter"></span>
+									</span>
+								</span>
 							</div>
 						</div>
-						[entry by entry.name]
 					</div>
-
+					<meta hidden property="entryGroups" mv-value="group segment.entry by entryname">
+					<meta hidden property="entryIndex" mv-value="makeIndex(entryGroups,'entryname')">
 					<details>
 						<summary>Export to spreadsheet</summary>
 						
@@ -423,7 +443,7 @@
 									<th>Formation</th>
 									<th>Sequence</th>
 									<th>Actually Played</th>
-									<th>Notes</th>
+									<th>CID status</th>
 									<th>Request</th>
 								</tr>
 							</tbody>
