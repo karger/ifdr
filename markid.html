@@ -103,7 +103,6 @@
 		<!--login/utility-->
 		<div mv-app="util" mv-storage="none"
 			 mv-firebase="auth realtime"
-			 mv-plugins="firebase-firestore"
 			 mv-bar="none"
 			 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
 			 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
@@ -114,9 +113,12 @@
 			<meta property="help" mv-value="0">
 			<meta property="configure" mv-value="url('configure')=''">
 			<meta id="signal" property="signal">
-			<div property="me" mv-value="getProfile(signal)">
-				<meta property="uid"> <meta property="name">
-			</div>
+			<h2>Global Marathon Markid App</h2>
+            <div property="me">
+                Choose your name/slot: <input property="name" width="50"
+										  list="markidList">
+            </div>
+  
 			<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
 		</div>
 
@@ -126,6 +128,14 @@
 				<option mv-multiple mv-group property="dance" value="[label]"></option>
 			</datalist>
 		</div>
+
+		<div mv-app="markidList" mv-source="markidim.csv"
+                     mv-format="csv" mv-bar="none">
+            <datalist id="markidList">
+                <option mv-multiple mv-group property="markid"
+                        value="[name]"></option>
+            </datalist>
+        </div>
 
 		<main>
 			<div mv-app="requests" mv-storage="none" mv-bar="none"
@@ -137,14 +147,13 @@
 
 					<details><summary>Click for instructions</summary>
 						<ol>
-							<li>Choose your session using the dropdown and click <button>Go to Session</button></li>
-							<li>Log in at the top</li>
-							<li>Look over the requests</li>
-							<li>Click <button>accept</button> next to each request you play or queue up, so it will be marked played.</li>
-							<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
-							<li>There is a checkbox to let you include the dances you've already played in the same list, and another to see who requested each dance.
-							<li>Below that is a list of folks currently checked in to your session.  If you know someone has left, you can chexk them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
-							<li>There is a checkbox to let you manage markidim (add new ones who will be able to run this playlist app) and also to show requests by individual.
+							<li> As a first step, choose your name/slot from the dropdown menu (you can type your name to find it fast).
+							<li> You will then see a <b>Requests</b> list showing incoming requests from participants, and an <b>Accepted</b> list showing requests that have been accepted by some markid.
+							<li> You can click  <button>accept</button> by any request in order to accept it and assign it to yourself.  This will move it to the <b>Accepted</b> list.  Dances accepted by you are in bold.
+							<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Accepted</b> dances</li>
+							<li> You can assign a dance to a different markid by editing the markid entry by the dance.
+							<li> You can also jot some notes in the <b>Notes</b> field.
+							<li> Take care about repeating dances: look forward and backward 6 slots before accepting a request. 
 						</ol>
 					</details>
 					
@@ -158,21 +167,11 @@
 					</form>
 					<div mv-if="not(mysid)">Choose a session to begin</div>
 
-					<div mv-if="mysid">
+					<div hidden mv-if="mysid">
 						<h2>[condense(sessions where id=mysid).name]</h2>
 					</div>
 				</section>
 
-				<div mv-if="mysid and !session.meIsMarkid">
-					You are not registered as a markid for this session.  If you just want to try out the markid app, visit the <a href="markid.html?session=test">test session</a>. 
-
-					To join the markidim for [condense(sessions where id=mysid).name],
-					<span mv-if="session.openMarkid"><button mv-action="add(util.me,session.markidim)">Click here</button></span>
-					<ol mv-if="not(session.openMarkid)">
-						<li>Sign in to the session using the request app <a href="..">here</a></li>
-						<li>Ask a current markid to add you to the markid list in the markid app</li>
-					</ol>	
-				</div>
 				
 				<!--Requests-->
 				<section class="hide show-if-[mysid and session.meIsMarkid]">
@@ -232,7 +231,7 @@
 						<meta property="uid"> <meta property="name">
 					</div>
 					<meta mv-multiple property="markidUids" mv-value="markidim.uid" mv-storage="inherit">
-					<meta property="meIsMarkid" mv-value="has(util.me.uid,markidUids) || url('markid')='' || requests.mysid='test'">
+					<meta property="meIsMarkid" mv-value="has(util.me.uid,markidUids) || url('markid')='' || requests.mysid='test' || (openMarkid && !!util.me.name)">
 					<div property="pushOutTimes" mv-multiple mv-initial-items="0">
 						<meta property="uid">
 						<meta property="time" type="number">
@@ -265,9 +264,6 @@
 						</tr>
 					</table>
 					
-					<datalist id="markidList">
-						<option mv-multiple property="ownerChoice" mv-attribute="value" mv-value="markidim.name" value="[ownerChoice]"></option>
-					</datalist>
 
 					<meta property="playedIndex" mv-value="makeIndex(played.label)">
 
