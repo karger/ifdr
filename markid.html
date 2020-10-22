@@ -115,7 +115,7 @@
 			<meta id="signal" property="signal">
 			<h2>Global Marathon Markid App</h2>
             <div property="me">
-                Choose your name/slot: <input property="name" width="50"
+                Choose your name/slot: <input property="name" size="55"
 										  list="markidList">
             </div>
   
@@ -145,12 +145,12 @@
 					<meta property="sessions" mv-value="getSessions(util.signal)">
 					<meta property="mysid" mv-value="url('session')">
 
-					<details><summary>Click for instructions</summary>
+					<details open><summary>Click to show/hide instructions</summary>
 						<ol>
-							<li> As a first step, choose your name/slot from the dropdown menu (you can type your name to find it fast).
+							<li> First, choose the markid's name/slot from the dropdown menu (you can type your name to find it fast).
 							<li> You will then see a <b>Requests</b> list showing incoming requests from participants, and an <b>Accepted</b> list showing requests that have been accepted by some markid.
 							<li> You can click  <button>accept</button> by any request in order to accept it and assign it to yourself.  This will move it to the <b>Accepted</b> list.  Dances accepted by you are in bold.
-							<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Accepted</b> dances</li>
+							<li>If you click <button>accept</button> by mistake, just click the <button>X</button> in the list of <b>Accepted</b> dances</li>
 							<li> You can assign a dance to a different markid by editing the markid entry by the dance.
 							<li> You can also jot some notes in the <b>Notes</b> field.
 							<li> Take care about repeating dances: look forward and backward 6 slots before accepting a request. 
