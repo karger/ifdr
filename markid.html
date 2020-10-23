@@ -102,7 +102,7 @@
 
 		<!--login/utility-->
 		<div mv-app="util" mv-storage="none"
-			 mv-firebase="realtime"
+			 mv-firebase="auth realtime"
 			 mv-bar="none"
 			 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
 			 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
@@ -122,6 +122,14 @@
 			<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
 		</div>
 
+		<div mv-app="masterPlay" mv-source="https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vRyCibxDJxxqpq9yW_hxUMKg8UjnuaKv6MvJ0suQBK_SY3DZqXVDYsLwrIyKzHxE5nCUNQnodZz_zfb/pub?gid=0&single=true&output=csv" mv-format="csv" mv-bar="none">
+			<div mv-multiple mv-group property="dances">
+				<meta property="SLOT">
+				<meta property="Dance Name">
+				<meta property="danceName" mv-value="dances['Dance Name']">
+			</div>
+		</div>
+		
 		<!--dance list-->
 		<div hidden mv-app="dances" mv-storage="none" mv-source="[if(url('session'),'ifd.csv','none')]" mv-format="csv">
 			<datalist id="dancelist">
@@ -129,11 +137,15 @@
 			</datalist>
 		</div>
 
-		<div mv-app="markidList" mv-source="markidim.csv"
-                     mv-format="csv" mv-bar="none">
+		<div hidden mv-app="markidList" mv-source="markidim.csv"
+             mv-format="csv" mv-bar="none">
+			<div mv-multiple property="markidim">
+				<meta property="slot">
+				<meta property="name">
+			</div>
+			<meta property="index" mv-value="makeIndex(markidim,'name')">
             <datalist id="markidList">
-                <option mv-multiple mv-group property="markid"
-                        value="[name]"></option>
+                <option mv-multiple mv-value="markidim.name"></option>
             </datalist>
         </div>
 
@@ -190,6 +202,7 @@
 						<tr>
 							<th></th>
 							<th>Dance</th>
+							<th>Slots</th>
 							<th>Count</th>
 							<th class="visible-[showTimes]">Age</th>
 							<th class="visible-[showNames]">Who</th>
@@ -206,6 +219,7 @@
   								<meta property="played" mv-value="lookup(session.playedIndex,label)">
 
 							<td><span class="dance-label" property="label"></span>
+							<td><span>[condense(masterPlay.dances.SLOT where danceName=label)]</span>
 							<td><span property="count"></span>
 							<td class="visible-[showTimes]"><meta property="timestamp"><span class="r-time">[duration(thisMinute-timestamp)]</span>
 							<td class="visible-[showNames]"> <span class="r-names" mv-multiple property="names"></span>
