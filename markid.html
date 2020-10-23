@@ -164,7 +164,7 @@
 							<li> You can click  <button>accept</button> by any request in order to accept it and assign it to yourself.  This will move it to the <b>Accepted</b> list.  Dances accepted by you are in bold.
 							<li>If you click <button>accept</button> by mistake, just click the <button>X</button> in the list of <b>Accepted</b> dances</li>
 							<li>The <b>Slot</b> column shows slots where the request is already programmed, if any
-							<li> You can assign a dance to a different markid by editing the markid entry by the dance.
+							<li> You can assign a dance to a different markid by editing the <b>Assigned markid</b> entry by the dance.
 							<li> You can also jot some notes in the <b>Notes</b> field.
 							<li> Take care about repeating dances: look forward and backward 6 slots before accepting a request. 
 						</ol>
@@ -220,7 +220,7 @@
   								<meta property="played" mv-value="lookup(session.playedIndex,label)">
 
 							<td><span class="dance-label" property="label"></span>
-							<td><span>[condense(masterPlay.dances.SLOT where danceName=label)]</span>
+							<td><meta property="shortName" mv-value="label.replace(/\(.*\)/,'')"><span>[condense(masterPlay.dances.SLOT where danceName=shortName)]</span>
 							<td><span property="count"></span>
 							<td class="visible-[showTimes]"><meta property="timestamp"><span class="r-time">[duration(thisMinute-timestamp)]</span>
 							<td class="visible-[showNames]"> <span class="r-names" mv-multiple property="names"></span>
@@ -275,7 +275,7 @@
 							<td class="visible-[showMarkid]">
 								<input list="markidList"
 									   property="markid"></td>
-							<td mv-mode="edit"><span property="notes" mv-mode="edit"></span></td>
+							<td mv-mode="edit"><span property="notes" mv-mode="edit" mv-default="...."></span></td>
 						</tr>
 					</table>
 					
