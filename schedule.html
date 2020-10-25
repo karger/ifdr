@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>IFD Markid</title>
+		<!--<script src="//get.mavo.io/stable/mavo.es5.js"></script>
+		<link rel="stylesheet" href="//get.mavo.io/stable/mavo.css">-->
+		<script src="//get.mavo.io/mavo.js"></script>
+		<link rel="stylesheet" href="//get.mavo.io/mavo.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+		<link rel="manifest" href="manifest.json">
+		<script src="ifd.js"></script>
+		<style>
+			#schedule {
+				border-top: 1px solid black;
+				border-right: 1px solid black;
+			}
+			#schedule > div > div > span {
+				display: inline-block;
+				width: 4em;
+				border-left: 1px solid black;
+				border-bottom: 1px solid black;
+			}
+			.mv-item-bar {
+				display: none;
+			}
+			#schedule .presenter {
+				font-weight: bold;
+			}
+			#schedule .name {
+				margin-left: 5em;
+			}
+			#schedule .request, #schedule .wasplayed, #schedule .form {
+				padding: 0 2ex;
+			}
+			#schedule .name input, #schedule .suggest input, #schedule .status select {
+				box-sizing: border-box;
+				width: 100%;
+			}
+			#schedule .controls {
+				width: 6em;
+			}
+			#schedule .name, #schedule .presenter, #schedule .status, #schedule .conflict {
+				width: 12em;
+			}
+			#schedule .controls {
+				visibility: hidden;
+			}
+			#schedule div:hover > .controls {
+				visibility: visible;
+			}
+			#schedule .conflict-true {
+				margin: -2px;
+				box-sizing: border-box;
+				border: 2px solid red;
+			}
+			.logged-out .show-logged-in {
+				display: none;
+			}
+			.logged-in .show-logged-out {
+				display: none;
+			}
+			.hide:not(.show-if-true) {
+				display: none
+			}
+			.dance-table {
+				margin-left: 1em;
+			}
+			.visible-false {
+				visibility: hidden;
+			}
+			.my-play {
+				font-weight: bold;
+			}
+			.dance-table td {
+				padding-right: 1em;
+			}
+			.played {
+				text-decoration: line-through;
+			}
+			#heading {
+				flex: 0 1 auto;
+				width: 100%;
+				max-width: 100%;
+			}
+			.playlist {
+				margin-left: 1em;
+			}
+			.playlist button {
+				margin-right: 1em;
+			}
+			.users {
+				margin-left: 1em;
+			}
+			.users button {
+				margin-right: 1em;
+			}
+			.mv-status span {
+				display: none;
+			}
+			.inactive {
+				text-decoration: line-through;
+			}
+			#session-select {
+				float: right;
+			}
+			.r-names:not(:last-child):after {
+				content: ", "
+			}
+			#clear {
+				margin-top: 2em;
+			}
+			.hidePlayed .played {
+				display: none;
+			}
+			body {
+				display: flex;
+				min-height: 98vh;
+				flex-direction: column;
+				margin-top: 0;
+			}
+			main {
+				flex: 1;
+ 				display:flex;
+				flex-flow: row wrap;
+				justify-content: space-between;
+				align-items: flex-start;
+				align-content: flex-start;
+			}
+			main * {
+				flex: 1 1 auto;
+			}
+			footer {
+				padding-top: 3em;
+				font-size: small;
+			}
+			section:not(.wide) {
+				margin-right: 2em;
+				max-width: 50em;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!--login/utility-->
+		<div mv-app="util" mv-storage="none"
+			 mv-firebase="auth realtime"
+			 mv-plugins="firebase-firestore"
+			 mv-bar="status login logout"
+			 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
+			 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+			 >
+			<div class="mv-bar mv-ui">
+				<button class="help" style="order: 3" data-action="set(help, not help)">Help</button>
+			</div>
+			<meta property="help" mv-value="0">
+			<meta property="configure" mv-value="url('configure')=''">
+			<meta id="signal" property="signal">
+			<div property="me" mv-value="getProfile(signal)">
+				<meta property="uid"> <meta property="name">
+			</div>
+			<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
+		</div>
+
+		<!--dance list-->
+		<div hidden mv-app="dances" mv-storage="none" mv-source="[if(url('session'),'ifd.csv','none')]" mv-format="csv">
+			<datalist id="dancelist">
+				<option mv-multiple mv-group property="dance" value="[label]"></option>
+			</datalist>
+			<meta property="danceIndex" mv-value="makeIndex(dance,'label')">
+		</div>
+
+		<main>
+			<div mv-app="requests" mv-storage="none" mv-bar="none"
+				 mv-plugins="sort" style="display:contents">
+				<!--header-->
+				<section id="heading">
+					<meta property="sessions" mv-value="getSessions(util.signal)">
+					<meta property="mysid" mv-value="url('session')">
+
+					<details><summary>Click for instructions</summary>
+						<ol>
+							<li>Choose your session using the dropdown and click <button>Go to Session</button></li>
+							<li>Log in at the top</li>
+							<li>Look over the requests</li>
+							<li>Click <button>accept</button> next to each request you play or queue up, so it will be marked played.</li>
+							<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
+							<li>There is a checkbox to let you include the dances you've already played in the same list, and another to see who requested each dance.
+							<li>Below that is a list of folks currently checked in to your session.  If you know someone has left, you can chexk them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
+							<li>There is a checkbox to let you manage markidim (add new ones who will be able to run this playlist app) and also to show requests by individual.
+						</ol>
+					</details>
+					
+
+					<form id="session-select" method="get" action="markid.html">
+						<select property="nextSession" name="session">
+							<option value="" selected="[!url('session')]">Choose a session</option>
+							<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)" selected="[id=url('session')]">[name]</option>
+						</select>
+						<input type="submit" value="Go to Session">
+					</form>
+					<div mv-if="not(mysid)">Choose a session to begin</div>
+
+					<div mv-if="mysid">
+						<h2>[condense(sessions where id=mysid).name]</h2>
+					</div>
+				</section>
+
+				<div mv-if="mysid and !session.meIsMarkid">
+					You are not registered as a markid for this session.  If you just want to try out the markid app, visit the <a href="markid.html?session=test">test session</a>. 
+
+					To join the markidim for [condense(sessions where id=mysid).name],
+					<span mv-if="session.openMarkid"><button mv-action="add(util.me,session.markidim)">Click here</button></span>
+					<ol mv-if="not(session.openMarkid)">
+						<li>Sign in to the session using the request app <a href="..">here</a></li>
+						<li>Ask a current markid to add you to the markid list in the markid app</li>
+					</ol>	
+				</div>
+				
+			</div>
+
+			<div class="hide show-if-[not(not(mysid))]"
+				 mv-app="session" mv-bar="none"
+				 mv-firebase="auth realtime"
+				 mv-plugins="firebase-firestore"
+				 mv-autosave="2"
+				 mv-storage="[util.sessionStore]"
+				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				 style="display:contents"
+				 >
+				<div style="display:none">
+					[setSignal('sig'&'nal')]
+					[watchUsers(requests.mysid,lookbackTime)]
+					[watchSessions(lookbackTime)]
+					<div mv-multiple property="markidim" mv-initial-items="0">
+						<meta property="uid"> <meta property="name">
+					</div>
+					<meta mv-multiple property="markidUids" mv-value="markidim.uid" mv-storage="inherit">
+					<meta property="meIsMarkid" mv-value="has(util.me.uid,markidUids) || url('markid')='' || requests.mysid='test'">
+					<div property="pushOutTimes" mv-multiple mv-initial-items="0">
+						<meta property="uid">
+						<meta property="time" type="number">
+					</div>
+					<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
+				</div>
+
+
+
+				<section class="wide" mv-if="requests.mysid='test'"
+						 mv-mode="edit">
+
+					<h2>Playlist</h2>
+					<div id="schedule">
+						<div>
+							<div><span class="presenter">Presenter</span></div>
+							<div>
+								<span class="controls"></span><span class="name">
+									Dance Name</span><span class="form">
+									Formation</span><span class="slot">
+									Suggest slot</span><span class="wasplayed">
+									Actually played</span><span class="status">
+									CID status</span><span class="request">
+									Request?</span><span class="conflict">
+									Conflict?</span>
+							</div>
+						</div>
+
+						<div property="segment" mv-multiple style="display:contents">
+							<div><span class="presenter"><input property="presenter" placeholder="Presenter" list="markidList"></span><span class="controls"><button mv-action="add(segment,$index+1)">+</button><button class="mv-drag-handle">≡</button><button mv-action="delete($item)">-</button></span></div>
+
+							<div mv-multiple property="entry" mv-accepts="entry" class="conflict-[conflicted]">
+								<span class="controls"><button mv-action="add(entry,$index+1)">+</button>
+									<button class="mv-drag-handle">≡</button>
+									<button mv-action="delete($item)">-</button></span>
+								<span class="name"><input placeholder="dance name"
+														  property="entryname"
+														  mv-alias="name"
+														  list="dancelist"></span><span class="form">[if(entryname,get(dances.danceIndex,entryname).type)]</span><span class="suggest">
+									<input type="number" property="suggest">
+								</span><span class="wasplayed">
+									<input type="checkbox" property="played">
+								</span><span class="status"><select property="known">
+										<option selected value="known"></option>
+										<option>forgotten</option>
+										<option>never</option>
+								</select></span><span class="request"><input type="checkbox" property="request"></span><span class="conflict">
+									<meta property="entryPresenter" mv-value="presenter">
+									<meta property="conflicted" mv-value="count(allEntries)>1">
+									<span property="allEntries" mv-multiple mv-group
+										  mv-value=get(entryIndex,entryname).$items>
+										<span mv-if="conflicted" mv-value="entryPresenter"></span>
+									</span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<button class="mv-add-segment">Add Segment</button>
+
+					<meta hidden property="entryGroups" mv-value="group segment.entry by entryname">
+					<meta hidden property="entryIndex" mv-value="makeIndex(entryGroups,'entryname')">
+
+					<details>
+						<summary>Export to spreadsheet</summary>
+						
+						<table id="schedule-export">
+							<tbody>
+								<tr>
+									<th>Dance Name</th>
+									<th>Presenter</th>
+									<th>Slot</th>
+									<th>Formation</th>
+									<th>Sequence</th>
+									<th>Actually Played</th>
+									<th>CID status</th>
+									<th>Request</th>
+								</tr>
+							</tbody>
+							<tbody mv-multiple property="exportsegment" mv-group mv-value="segment">
+								<tr property="exportentry" mv-multiple mv-group mv-value="entry">
+									<td>[name]</td>
+									<td>[presenter]</td>
+									<td>[exportsegment.$index+1]</td>
+									<td>[type]</td>
+									<td>[$index+1]</td>
+									<td>[played]</td>
+									<td>[known]</td>
+									<td>[if(request,'yes','')]</td>
+								</tr>
+							</tbody>
+						</table>
+					</details>
+				</section>
+			</div>
+		</main>
+
+		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>
+
+
+	</body>
+</html>
