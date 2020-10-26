@@ -60,6 +60,9 @@
 				box-sizing: border-box;
 				border: 2px solid red;
 			}
+			.comma-separated:not(:last-child):after {
+				content: ", "
+			}
 			.logged-out .show-logged-in {
 				display: none;
 			}
@@ -275,20 +278,23 @@
 										<option>forgotten</option>
 										<option>never</option>
 								</select></span><span class="request"><input type="checkbox" property="request"></span><span class="conflict">
-									<meta property="entryPresenter" mv-value="presenter">
 									<meta property="conflicted" mv-value="count(allEntries)>1">
-									<span class="nocollapse"  property="allEntries" mv-multiple mv-group
+									<span class="nocollapse comma-separated"  property="allEntries" mv-multiple mv-group
 										  mv-value="get(entryIndex,entryName).$items">
-										<span mv-if="conflicted" mv-value="entryPresenter"></span>
+										[if(conflicted,presenter1)]
 									</span>
 								</span>
+								<div hidden property="shortEntry"><!--hack to break circular dependence-->
+									<meta property="entryName1" mv-value="entryName">
+									<meta property="presenter1" mv-value="presenter">
+								</div>
 							</div>
 						</div>
 					</div>
 					<button class="mv-add-segment">Add Segment</button>
 
-					<meta hidden property="entryGroups" mv-value="group segment.entry by entryName">
-					<meta hidden property="entryIndex" mv-value="makeIndex(entryGroups,'entryName')">
+					<meta hidden property="entryGroups" mv-value="group segment.shortEntry by shortEntry.entryName1">
+					<meta hidden property="entryIndex" mv-value="makeIndex(entryGroups,'entryName1')">
 
 					<details>
 						<summary>Export to spreadsheet</summary>
