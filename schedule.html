@@ -27,7 +27,7 @@
 			.nocollapse:before {
 				content: "\200b"; // unicode zero width space character
 			}
-			.mv-item-bar {
+			.mv-item-bar.mv-item-bar.mv-item-bar {
 				display: none;
 			}
 			#schedule .presenter {
@@ -201,6 +201,25 @@
 					</div>
 				</section>
 
+				<details open><summary>Click for instructions</summary>
+					<ul>
+						<li>This playlist manages a collection of <b>segments</b> that each hold a list of <b>entries</b> of specific dance</li>
+						<li>Fill in dances in the dance name column; there's a dropdown to complete what you type
+						<li>If you hover next to an entry, 3 buttons appear that let you
+							<ul>
+								<li><button>+</button> add a dance immediately after</li>
+								<li><button>-</button> remove the dance</li>
+								<li><button>≡</button> drag the dance somewhere else</li>
+							</ul>
+						<li>If you hover next to a presenter, the buttons appear to let you add, remove, or drag the <b>entire segment</b>
+						<li>The formation will be filled in automatically
+						<li>If two segments have a dance, it will be highlighted in red and the guilty parties listed in the conflict column
+						<li>There are checkboxes for some columns and dropdowns for others; uses should be obvious
+						<li>There's also a column to suggest moving a dance to a different slot
+					</ul>
+						
+
+				
 				<div mv-if="mysid and !session.meIsMarkid">
 					You are not registered as a markid for this session.  If you just want to try out the markid app, visit the <a href="markid.html?session=test">test session</a>. 
 
