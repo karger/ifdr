@@ -24,6 +24,9 @@
 				border-left: 1px solid black;
 				border-bottom: 1px solid black;
 			}
+			.nocollapse:before {
+				content: "\200b"; // unicode zero width space character
+			}
 			.mv-item-bar {
 				display: none;
 			}
@@ -181,20 +184,6 @@
 					<meta property="sessions" mv-value="getSessions(util.signal)">
 					<meta property="mysid" mv-value="url('session')">
 
-					<details><summary>Click for instructions</summary>
-						<ol>
-							<li>Choose your session using the dropdown and click <button>Go to Session</button></li>
-							<li>Log in at the top</li>
-							<li>Look over the requests</li>
-							<li>Click <button>accept</button> next to each request you play or queue up, so it will be marked played.</li>
-							<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
-							<li>There is a checkbox to let you include the dances you've already played in the same list, and another to see who requested each dance.
-							<li>Below that is a list of folks currently checked in to your session.  If you know someone has left, you can chexk them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
-							<li>There is a checkbox to let you manage markidim (add new ones who will be able to run this playlist app) and also to show requests by individual.
-						</ol>
-					</details>
-					
-
 					<form id="session-select" method="get" action="markid.html">
 						<select property="nextSession" name="session">
 							<option value="" selected="[!url('session')]">Choose a session</option>
@@ -275,10 +264,9 @@
 								<span class="controls"><button mv-action="add(entry,$index+1)">+</button>
 									<button class="mv-drag-handle">≡</button>
 									<button mv-action="delete($item)">-</button></span>
-								<span class="name"><input placeholder="dance name"
-														  property="entryname"
-														  mv-alias="name"
-														  list="dancelist"></span><span class="form">[if(entryname,get(dances.danceIndex,entryname).type)]</span><span class="suggest">
+								<meta property="danceInfo" mv-value="if(entryName,get(dances.danceIndex,entryName))"><span class="name"><input placeholder="dance name"
+														  property="entryName"
+														  list="dancelist"></span><span class="form">[if(danceInfo,danceInfo.type)]</span><span class="suggest">
 									<input type="number" property="suggest">
 								</span><span class="wasplayed">
 									<input type="checkbox" property="played">
@@ -289,8 +277,8 @@
 								</select></span><span class="request"><input type="checkbox" property="request"></span><span class="conflict">
 									<meta property="entryPresenter" mv-value="presenter">
 									<meta property="conflicted" mv-value="count(allEntries)>1">
-									<span property="allEntries" mv-multiple mv-group
-										  mv-value=get(entryIndex,entryname).$items>
+									<span class="nocollapse"  property="allEntries" mv-multiple mv-group
+										  mv-value="get(entryIndex,entryName).$items">
 										<span mv-if="conflicted" mv-value="entryPresenter"></span>
 									</span>
 								</span>
@@ -299,8 +287,8 @@
 					</div>
 					<button class="mv-add-segment">Add Segment</button>
 
-					<meta hidden property="entryGroups" mv-value="group segment.entry by entryname">
-					<meta hidden property="entryIndex" mv-value="makeIndex(entryGroups,'entryname')">
+					<meta hidden property="entryGroups" mv-value="group segment.entry by entryName">
+					<meta hidden property="entryIndex" mv-value="makeIndex(entryGroups,'entryName')">
 
 					<details>
 						<summary>Export to spreadsheet</summary>
@@ -318,12 +306,12 @@
 									<th>Request</th>
 								</tr>
 							</tbody>
-							<tbody mv-multiple property="exportsegment" mv-group mv-value="segment">
+							<tbody property="exportsegment" mv-multiple mv-group mv-value="segment">
 								<tr property="exportentry" mv-multiple mv-group mv-value="entry">
-									<td>[name]</td>
+									<td>[danceInfo.title]</td>
 									<td>[presenter]</td>
 									<td>[exportsegment.$index+1]</td>
-									<td>[type]</td>
+									<td>[danceInfo.type]</td>
 									<td>[$index+1]</td>
 									<td>[played]</td>
 									<td>[known]</td>
