@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>IFD Requests</title>
+		<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+		<link rel="manifest" href="manifest.json">
+		<link rel="stylesheet" href="https://get.mavo.io/stable/mavo.css">
+		<script src="https://get.mavo.io/stable/mavo.es5.js"></script>
+		<script defer src="ifd.js"></script>
+		<style>
+			.logged-out .show-logged-in {
+				display: none;
+			}
+			.logged-in .show-logged-out.show-logged-out {
+				display: none;
+			}
+			.r-label {
+				padding-left 1em;
+				padding-right 1em;
+			}
+			.played {
+				text-decoration: line-through;
+			}
+			.hidePlayed .played {
+				display: none;
+			}
+			[mv-app="util"] .mv-bar {
+				flex-basis: 100%
+			}
+			header {
+				flex-basis: 100%;
+			}
+			section {
+				margin: 1em;
+			}
+			#session-header {
+				max-width: 30em;
+			}
+			#session-select {
+				float: right;
+			}
+			#my-requests {
+				line-height: 200%;
+			}
+			.break {
+				flex-basis: 100%;
+				height: 0;
+			}
+
+			#name-login {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				padding: 2em;
+				border: 2px solid black;
+				max-width: 40em;
+				background: white;
+				border-radius: 10px;
+				z-index: 10;
+			}
+			#name-login input {
+				padding: 3px;
+				margin: 3px;
+				border: 2px solid;
+				border-radius: 3px;
+			}
+			#name-login:not(.show-name-login) {
+				display: none;
+			}
+			body {
+				display: flex;
+				min-height: 98vh;
+				flex-direction: column;
+				margin-top: 0;
+			}
+			main {
+				flex: 1;
+				display: flex;
+				flex-wrap: wrap;
+				align-items: flex-start;
+				align-content: flex-start;
+				justify-content: space-between;
+			}
+			footer {
+				padding-top: 3em;
+				font-size: small;
+			}
+			.mv-status span {
+				display: none;
+			}
+			.ifdr-active .mv-bar {
+				background-color: green;
+			}
+			.ifdr-inactive .mv-bar {
+				background-color: red;
+			}
+			[mv-app] {
+				display: contents;
+			}
+			[mv-app="util"] {
+				position: sticky;
+				top: 0;
+				z-index: 1;
+				flex-basis: 100%;
+			}
+			.ifdr-inactive .show-active {
+				display: none;
+			}
+			.ifdr-active .show-inactive {
+				display: none;
+			}
+		</style>
+	</head>
+	<body class="logged-out">
+
+		<main>
+			<div mv-app="util" mv-storage="none"
+				 mv-firebase="auth"
+				 mv-plugins="firebase-firestore"
+				 mv-autosave="1"
+				 mv-bar="status login logout"
+				 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
+				 mv-storage="none"
+				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				 class="[if(user.checkedIn,'ifdr-active','ifdr-inactive')]"
+				 >
+				<div class="mv-bar mv-ui">
+					<span class="show-logged-in show-active">Checked in</span>
+					<span class="show-logged-in show-inactive">Checked out</span>
+					<button class="mv-login show-logged-out">Login using Google (secure)</button>
+					<button class="show-logged-out"
+							mv-action="set(showNameLogin,true)">Just use my name (insecure)</button>
+				</div>
+
+				<meta property="showNameLogin">
+				<meta property="useNameLogin" mv-default="[false]">
+				<div property="nameLoginData" id="name-login"
+					 mv-storage="local"
+					 class="[if(showNameLogin,'show-name-login')]">
+					<div><b>Warning</b>: requests set up this way will not be secure; anyone will be able to modify them.  If you want a secure accont, login with google.</div>
+					<div>Full name: <input style="width: 20em" property="name"
+										   ></div>
+					<div>(Optional) email: <input style="width: 20em" property="email"
+										   ></div>
+					<div><span style="float:right; margin-top: 5px;">
+							<button disabled="[!name]"
+									mv-action="set(useNameLogin,true), set(showNameLogin,false)"
+									>Submit</button>
+							<button mv-action="set(showNameLogin,false)"
+									>Cancel</button>
+					</span></div>
+					<meta property="uid" mv-value="name">
+				</div>
+
+				<meta id="signal" property="signal">
+				<meta property="meid" mv-value="url('meid') || if(useNameLogin,nameLoginData.name,getUid(signal))">
+				<meta property="userStorage" mv-value="if(meid,'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& meid,'none')">
+				<meta property="sessions" mv-value="getSessions(signal)">
+				<div hidden>
+					[setSignal('sig'&'nal')]
+					[watchSessions()]
+					[watchLoginState(meid)]
+				</div>
+			</div>
+
+			<div style="display: none" mv-app="dances" mv-storage="none" mv-source="ifd.csv" mv-format="csv">
+				<datalist id="dancelist">
+					<option mv-multiple mv-group property="dance" value="[label]"></option>
+				</datalist>
+			</div>
+			
+			<div
+				mv-app="user"
+				mv-firebase="realtime"
+				mv-bar="none"
+				mv-plugins="firebase-firestore sort"
+				mv-autosave="2"
+				mv-storage="[util.userStorage]"
+				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				>
+				<div hidden>
+					[watchUsers(mysid,if(mysid='test' || !session.duration,365*24*60*60*100,session.duration))]
+					[watchFont(fontSize)]
+				</div>
+				<div class="break"></div>
+				<header>
+					<span style="float:right">Font size: <input property="fontSize" type="range" min="100" max="300" step="20" value="100"></span>
+					
+					<details><summary>Click for instructions</summary>
+						<ol>
+							<li>Log in at the top</li>
+							<li>Click the Check in button to let the Markid know you're dancing</li>
+							<li>Request dances</li>
+							<li>Check out if you step away, so they don't play your requests at the wrong time.  Your requests will be saved, but they won't show in the request list until you check in again.</li>
+						</ol>
+					</details>
+					
+
+					<div id="session-header">
+                                        <meta property="mysid" mv-default="globalmarathon">
+					  <h2>Global Marathon Requests</h2>
+					</div>
+
+					<meta property="publicWrite" mv-value="util.useNameLogin" mv-storage="inherit">
+					<meta property="sessionStorage"
+						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
+					<meta property="checkInTime" mv-default="[$startup]">
+					<meta property="me" mv-group
+						  mv-value="if(util.useNameLogin,util.nameLoginData,getProfile(signal))">
+					<meta property="name" mv-value="if(me,me.name,'unnamed user')" mv-storage="inherit">
+					<meta property="email" mv-value="if(me,me.email)" mv-storage="inherit">
+
+					<div class="show-logged-out">
+						Log in or give your name above to make requests.
+					</div>
+
+					<div class="show-logged-in">
+						
+						<div mv-if="not(mysid)">
+							Choose a session
+						</div>
+						<div mv-if="mysid">
+							<meta property="myPushOut" mv-value="first(session.pushOutTimes where uid=util.meid).time">
+							<meta property="checkedIn"
+								  mv-value="mysid and util.meid and checkInTime > (myPushOut || 0)">
+							<div mv-if="session.zoom">Please enter your zoom name: <input property="zoomName"></div>
+							<div mv-if="!checkedIn">Click <button mv-action="set(checkInTime,+$now)">Check In</button> to make requests</div>
+							<div mv-if="checkedIn">Click <button mv-action="set(checkInTime,-1)">Check Out</button> to suspend your requests while you're away</div>
+						</div>
+					</div>
+				</header>
+				<div class="break"></div>
+					
+				<section class="show-logged-in">
+					<div>
+						<h2>My <span mv-if="!checkedIn">Planned</span> Requests</h2>
+
+
+						<div style="display:inline-block;">
+							<input list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
+							<meta property="selectionPlayed" mv-value="get(session.playedIndex,selection)">
+							<button mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn,set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label)]">[if(selectionPlayed,'played','request')]</button>
+							<button mv-action="set(selection,'')">clear</button>
+						</div>
+						
+						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been played.</div>
+						<div id="my-requests">
+							<div class="[if(played,'played','unplayed')]" mv-multiple property="picks" mv-initial-items="0" mv-alias="pick">
+								<button title="Remove request" mv-action="delete($this)">X</button>
+								<span property="label"></span>
+								<meta property="played" mv-value="get(session.playedIndex,label)">
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div style="float:right">
+						<div> <label><input type="checkbox" property="showPlayed"> Show played</label></div>
+					</div>
+					<h2>Everyone's Requests</h2>
+
+					<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
+						<tr>
+							<th>Add</th>
+							<th>Dance</th>
+							<th>Count</th>
+						</tr>
+						<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','label')">
+							<td><button mv-class="show-logged-in" title="add request" mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">+</button>
+							<td><span class="r-label" property="label"></span>
+							<td><span class="r-count" property="count"></span>
+								<meta property="played">
+								<meta property="mine" mv-value="has(label,user.picks.label)">
+						</tr>
+					</table>
+				</section>
+			</div>
+
+			<div mv-if="user.mysid"
+				 mv-app="session"
+				 mv-firebase="realtime"
+				 mv-plugins="firebase-firestore"
+				 mv-storage="none"
+				 mv-bar="none"
+				 mv-source="[user.sessionStorage]"
+				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				 >
+				<meta property="pushOutTimes" mv-multiple mv-initial-items="0">
+				<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
+				<meta property="duration">
+				<div hidden property="users" mv-multiple class="[if(not(active),'inactive','')]"
+					 mv-value="getUsers(util.signal)">
+					<!--mv-value="testing.users"-->
+					<meta property="uid">
+					<meta property="pushOut" mv-value="get(pushOutIndex,uid)">
+					<meta property="active" mv-value="if(!pushOut,true,(checkInTime > pushOut.time))">
+				</div>
+
+				<section>
+					<h2 property="playedTitle">Played</h2>
+					<div class="session" mv-multiple property="played" mv-initial-items="0">
+						<div property="label"></div> 
+					</div>
+				</section>
+
+				<meta property="playedIndex" mv-value="makeIndex(played.label)">
+			</div>
+		</main>
+		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>
+	</body>
+</html>
