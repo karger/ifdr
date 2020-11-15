@@ -317,12 +317,14 @@
 							<tr property="users" mv-multiple class="users [if(active,'','inactive')]"
 								mv-value="sort(getUsers(util.signal),'-checkInTime')">
 								<td>
-									<meta property="uid">
+								  <span>
+                                                                        <meta property="uid">
 									<meta property="checkInTime">
 									<meta property="name">
 									<meta property="zoomName">
 									<meta property="pushOutTime" mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
 									<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
+                                                                  </span>
 									<button mv-action="add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in markidim.uid)">Make Markid</button>
 									<button mv-action="delete(markidim where markidim.uid=uid)" mv-if="addMarkid and (uid in markidim.uid) and not(uid=util.me.uid)">Remove Markid</button>
 									<button mv-if="not(active)" title="Check in" 
