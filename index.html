@@ -195,9 +195,9 @@
 						<ol>
 							<li>Log in at the top</li>
 							<li>Choose a session</li>
-							<li>Click the Check in button to let the Markid know you're dancing</li>
+							<li mv-if="!session.noCheckout">Click the Check in button to let the Markid know you're dancing</li>
 							<li>Request dances</li>
-							<li>Check out if you step away, so they don't play your requests at the wrong time.  Your requests will be saved, but they won't show in the request list until you check in again.</li>
+							<li mv-if="!session.noCheckout">Check out if you step away, so they don't play your requests at the wrong time.  Your requests will be saved, but they won't show in the request list until you check in again.</li>
 						</ol>
 					</details>
 					
@@ -232,9 +232,9 @@
 							<meta property="myPushOut" mv-value="first(session.pushOutTimes where uid=util.meid).time">
 							<meta property="checkedIn"
 								  mv-value="mysid and util.meid and checkInTime > (myPushOut || 0)">
-							<div mv-if="session.zoom">Please enter your zoom name: <input property="zoomName"></div>
+							<div mv-if="session.zoom">Please enter your zoom name: <input property="zoomName" mv-default="[me.name]"></div>
 							<div mv-if="!checkedIn">Click <button mv-action="set(checkInTime,+$now)">Check In</button> to make requests</div>
-							<div mv-if="checkedIn">Click <button mv-action="set(checkInTime,-1)">Check Out</button> to suspend your requests while you're away</div>
+							<div mv-if="!session.noCheckout and checkedIn">Click <button mv-action="set(checkInTime,-1)">Check Out</button> to suspend your requests while you're away</div>
 						</div>
 					</div>
 				</header>
@@ -265,7 +265,7 @@
 
 				<section>
 					<div style="float:right">
-						<div> <label><input type="checkbox" property="showPlayed"> Show played</label></div>
+						<div> <label><input type="checkbox" property="showPlayed"> Show accepted</label></div>
 					</div>
 					<h2>Everyone's Requests</h2>
 
@@ -307,7 +307,7 @@
 				</div>
 
 				<section>
-					<h2 property="playedTitle">Played</h2>
+					<h2>Accepted</h2>
 					<div class="session" mv-multiple property="played" mv-initial-items="0">
 						<div property="label"></div> 
 					</div>
