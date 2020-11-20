@@ -135,8 +135,10 @@
 					<button class="mv-login show-logged-out">Login using Google (secure)</button>
 					<button class="show-logged-out"
 							mv-action="set(showNameLogin,true)">Just use my name (insecure)</button>
+					<button class="help" style="order: 3" mv-action="set(help,!help)">Help</button>
 				</div>
 
+				<meta property="help" mv-value="false">
 				<meta property="showNameLogin">
 				<meta property="useNameLogin" mv-default="[false]">
 				<div property="nameLoginData" id="name-login"
@@ -191,16 +193,14 @@
 				<header>
 					<span style="float:right">Font size: <input property="fontSize" type="range" min="100" max="300" step="20" value="100"></span>
 					
-					<details><summary>Click for instructions</summary>
-						<ol>
-							<li>Log in at the top</li>
-							<li>Choose a session</li>
-							<li mv-if="!session.noCheckout">Click the Check in button to let the Markid know you're dancing</li>
-							<li>Request dances</li>
-							<li mv-if="!session.noCheckout">Check out if you step away, so they don't play your requests at the wrong time.  Your requests will be saved, but they won't show in the request list until you check in again.</li>
-						</ol>
-					</details>
-					
+					<ol mv-if="util.help">
+						<h2>Help</h2>
+						<li>Log in at the top</li>
+						<li>Choose a session</li>
+						<li mv-if="!session.noCheckout">Click the Check in button to let the Markid know you're dancing</li>
+						<li>Request dances</li>
+						<li mv-if="!session.noCheckout">Check out if you step away, so they don't play your requests at the wrong time.  Your requests will be saved, but they won't show in the request list until you check in again.</li>
+					</ol>
 
 					<div id="session-header">
 						<select mv-if="!url('session')" id="session-select" property="sessionSelect" name="session" width="60">
@@ -264,10 +264,8 @@
 				</section>
 
 				<section>
-					<div style="float:right">
-						<div> <label><input type="checkbox" property="showPlayed"> Show accepted</label></div>
-					</div>
 					<h2>Everyone's Requests</h2>
+						<div> <label><input type="checkbox" property="showPlayed"> Show accepted</label></div>
 
 					<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>

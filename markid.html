@@ -109,7 +109,7 @@
 			 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 			 >
 			<div class="mv-bar mv-ui">
-				<button class="help" style="order: 3" data-action="set(help, not help)">Help</button>
+				<button class="help" style="order: 3" mv-action="set(help,!help)">Help</button>
 			</div>
 			<meta property="help" mv-value="0">
 			<meta property="configure" mv-value="url('configure')=''">
@@ -135,18 +135,17 @@
 					<meta property="sessions" mv-value="getSessions(util.signal)">
 					<meta property="mysid" mv-value="url('session')">
 
-					<details><summary>Click for instructions</summary>
-						<ol>
-							<li>Choose your session using the dropdown and click <button>Go to Session</button></li>
-							<li>Log in at the top</li>
-							<li>Look over the requests</li>
-							<li>Click <button>accept</button> next to each request you play or queue up, so it will be marked played.</li>
-							<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
-							<li>There is a checkbox to let you include the dances you've already played in the same list, and another to see who requested each dance.
-							<li>Below that is a list of folks currently checked in to your session.  If you know someone has left, you can chexk them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
-							<li>There is a checkbox to let you manage markidim (add new ones who will be able to run this playlist app) and also to show requests by individual.
-						</ol>
-					</details>
+					<ol mv-if="util.help">
+						<h2>Help</h2>
+						<li>Choose your session using the dropdown and click <button>Go to Session</button></li>
+						<li>Log in at the top</li>
+						<li>Look over the requests</li>
+						<li>Click <button>accept</button> next to each request you play or queue up, so it will be marked played.</li>
+						<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
+						<li>There is a checkbox to let you include the dances you've already played in the same list, and another to see who requested each dance.
+						<li>Below that is a list of folks currently checked in to your session.  If you know someone has left, you can chexk them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
+						<li>There is a checkbox to let you manage markidim (add new ones who will be able to run this playlist app) and also to show requests by individual.
+					</ol>
 					
 
 					<form id="session-select" method="get" action="markid.html">
