@@ -15,6 +15,28 @@
 	fb.auth().onAuthStateChanged(signal)
     });
 
+    let requestInput = document.getElementById("request-input")
+    if (requestInput) {//request app
+	requestInput.addEventListener("keyup",e => {
+	    if (e.keyCode==13) {
+		let datalist=document.getElementById("dancelist")
+		, options=datalist.getElementsByTagName("option")
+		, input = requestInput.value.toLowerCase()
+		, matches = 0;
+
+		for (i=0; i<options.length; i++) {
+		    if (options[i].value.toLowerCase()
+			.includes(input)) {
+			matches++;
+		    }
+		}
+		if (matches < 2) {
+		    document.getElementById("request-button").click();
+		}
+	    }
+	}
+			 );
+    }
     
     let signal =function () {
 	if (signal.ready) {
@@ -26,6 +48,7 @@
 		       1000);
 	}
     }
+
     signal.counter=0;
     signal.ready=true;
 

@@ -203,13 +203,13 @@
 					
 
 					<div id="session-header">
-						<select id="session-select" property="mysid" name="session" width="60">
+						<select mv-if="!url('session')" id="session-select" property="sessionSelect" name="session" width="60">
 							<option selected value="" selected>Choose session</option>
 							<option property="options" mv-group mv-multiple value="[id]" mv-value="util.sessions">[name]</option>
 						</select>
-						<h2>Session</h2>
+						<h2>[if(url('session'),session.name,'Session')]</h2>
 					</div>
-
+					<meta property="mysid" mv-value="url('session') or sessionSelect" mv-storage="inherit">
 					<meta property="publicWrite" mv-value="util.useNameLogin" mv-storage="inherit">
 					<meta property="sessionStorage"
 						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
@@ -246,9 +246,9 @@
 
 
 						<div style="display:inline-block;">
-							<input list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
+							<input id="request-input" list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
 							<meta property="selectionPlayed" mv-value="get(session.playedIndex,selection)">
-							<button mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn,set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label)]">[if(selectionPlayed,'played','request')]</button>
+							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn,set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label)]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 						
