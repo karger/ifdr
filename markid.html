@@ -109,10 +109,11 @@
 			 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 			 >
 			<div class="mv-bar mv-ui">
-				<button class="help" style="order: 3" mv-action="set(help,!help)">Help</button>
+				<button style="order: 3" mv-action="set(configure,!configure)">Configure</button>
+				<button class="help" style="order: 4" mv-action="set(help,!help)">Help</button>
 			</div>
 			<meta property="help" mv-value="0">
-			<meta property="configure" mv-value="url('configure')=''">
+			<meta property="configure">
 			<meta id="signal" property="signal">
 			<div property="me" mv-value="getProfile(signal)">
 				<meta property="uid"> <meta property="name">
@@ -143,7 +144,7 @@
 						<li>Click <button>accept</button> next to each request you play or queue up, so it will be marked played.</li>
 						<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
 						<li>There is a checkbox to let you include the dances you've already played in the same list, and another to see who requested each dance.
-						<li>Below that is a list of folks currently checked in to your session.  If you know someone has left, you can chexk them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
+						<li>Below that is a list of folks currently checked in to your session.  You can check them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
 						<li>There is a checkbox to let you manage markidim (add new ones who will be able to run this playlist app) and also to show requests by individual.
 					</ol>
 					
@@ -177,10 +178,9 @@
 				<section class="hide show-if-[mysid and session.meIsMarkid]">
 					<div>
 						<div style="float:right">
-							<div> <label><input type="checkbox" property="showPlayed" mv-storage="none" >Include [session.playedTitle]</label></div>
+							<div> <label><input type="checkbox" property="showPlayed" mv-storage="none" >Include accepted</label></div>
 							<div><label><input type="checkbox" property="showNames" mv-storage="none">Show who</label></div>
 							<div><label><input type="checkbox" property="showTimes" mv-storage="none">Show times</label></div>
-							<div><label><input type="checkbox" mv-storage="none" property="notify" mv-value="true">Notify</label><span hidden>[watchNotify(notify)]</span></div>
 						</div>
 						<h2>Requests</h2>
 					</div>
@@ -239,16 +239,50 @@
 					<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
 				</div>
 
+				<section class="hide show-if-[util.configure and meIsMarkid]">
+					<h2>Configure</h2>
+					<h3>Session Settings</h3>
+					<table mv-mode="edit">
+						<tr>
+							<td><b>Session name:</b></td>
+							<td><input property="name"></td>
+					</table>
+					<div><label><input type="checkbox" property="zoom">Require Zoom names</label></div>
+					<div><label><input type="checkbox" property="openMarkid">Anyone can markid</label></div>
+					<div><label><input type="checkbox" property="noCheckout" mv-default="false">No checkout option</label></div>
+					<div><label><input type="checkbox" mv-storage="none" property="addMarkid">Add/remove markidim</label></div>
+					Ignore requests older than: <select property="lookbackChoice" mv-default="6*24*60*60*1000">
+						<option value="[30*60*1000]">past half hour</option>
+						<option value="[1*60*60*1000]">past hour</option>
+						<option value="[4*60*60*1000]">past 4 hours</option>
+						<option value="[24*60*60*1000]">past day</option>
+						<option value="[2*24*60*60*1000]">past 2 days</option>
+						<option value="[4*24*60*60*1000]">past 4 days</option>
+						<option value="[6*24*60*60*1000]">past 6 days</option>
+						<option value="[30*24*60*60*1000]">past month</option>
+						<option value="[365*24*60*60*1000]">past year</option>
+						<option value="[10*365*24*60*60*1000]">all</option>
+						<option value="date">specific date</option>
+					</select>
+					<div  mv-if="lookbackChoice='date'"
+					<input type="datetime-local"
+						   property="customStart"
+						   mv-default="[date($startup-7*24*60*60*1000)]"
+						   mv-storage="inherit">
+					</div>
+					<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,lookbackChoice)" mv-storage="inherit">
+
+					<h3>Display Settings</h3>
+					<div><label><input type="checkbox" mv-storage="none" property="showActivity">Show users' last active time</label></div>
+					<div><label><input type="checkbox" mv-storage="none" property="showRequests">Show each user's requests</label></div>
+					<div><label><input type="checkbox" mv-storage="none" property="notify" mv-value="true">Notify</label><span hidden>[watchNotify(notify)]</span></div>
+						<div><label><input type="checkbox" mv-storage="none" property="showMarkid">Show Markid</label></div>
+
+				</section>
+				
 				<!--Playlist-->
 				<section class="hide show-if-[meIsMarkid]" style="clear: both">
-					<div style="float:right; vertical-align: top">
-						<div><label><input type="checkbox" mv-storage="none" property="showMarkid">Show Markid</label></div>
-					</div>
-
-
-					<h2 property="playedTitle"
-						mv-mode="[if(url('configure')='','edit','read')]"
-						mv-default="Played"></h2>
+					<h2>Accepted</h2>
 
 					<table class="dance-table">
 						<tr mv-if="count(played)>0"><th></th><th>Dance</th><th class="visible-[showMarkid]">Assigned markid</th><th>Notes</th></tr>
@@ -276,37 +310,10 @@
 				<!--Folks-->
 				<section class="hide show-if-[meIsMarkid]">
 					<div style="clear:both">
-						<div style="float:right; vertical-align: top">
-							<div><label><input type="checkbox" mv-storage="none" property="addMarkid"> Manage markidim</label></div>
-							<div><label><input type="checkbox" mv-storage="none" property="showActivity"> Show activity</label></div>
-							<div><label><input type="checkbox" mv-storage="none" property="showRequests"> Show requests</label></div>
-							<div><label><input type="checkbox" property="zoom"> Zoom names</label></div>
-							<div><label><input type="checkbox" property="openMarkid">Anyone can markid</label></div>
-							<div><label><input type="checkbox" property="noCheckout" mv-default="false">No checkout option</label></div>
-							Activity: <select property="lookbackChoice" mv-default="6*24*60*60*1000">
-								<option value="[30*60*1000]">past half hour</option>
-								<option value="[1*60*60*1000]">past hour</option>
-								<option value="[4*60*60*1000]">past 4 hours</option>
-								<option value="[24*60*60*1000]">past day</option>
-								<option value="[2*24*60*60*1000]">past 2 days</option>
-								<option value="[4*24*60*60*1000]">past 4 days</option>
-								<option value="[6*24*60*60*1000]">past 6 days</option>
-								<option value="[30*24*60*60*1000]">past month</option>
-								<option value="[365*24*60*60*1000]">past year</option>
-								<option value="[10*365*24*60*60*1000]">all</option>
-								<option value="date">specific date</option>
-							</select>
-							<input mv-if="lookbackChoice='date'"
-								   type="datetime-local"
-								   property="customStart"
-								   mv-default="[date($startup-7*24*60*60*1000)]"
-								   mv-storage="inherit"> 
-							<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,lookbackChoice)" mv-storage="inherit">
-						</div>
 
 						<h2>Folks</h2>
 						<meta property="thisMinute" mv-value="round($now/60000)*60000">
-						<div style="clear:both">Click <button>X</button> to check out people who've left, or <button>+</button> to check them back in.</div>
+						<div mv-if="util.help">Click <button>X</button> to check people out, or <button>+</button> to check them back in.</div>
 
 						<table>
 							<tr>
