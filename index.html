@@ -114,6 +114,13 @@
 			.ifdr-active .show-inactive {
 				display: none;
 			}
+			.request-table th, .request-table td {
+				padding: 0 1ex;
+			}
+			.r-count {
+				text-align: right;
+				margin-right: 1ex;
+			}
 		</style>
 	</head>
 	<body class="logged-out">
@@ -252,7 +259,7 @@
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 						
-						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been played.</div>
+						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been accepted.</div>
 						<div id="my-requests">
 							<div class="[if(played,'played','unplayed')]" mv-multiple property="picks" mv-initial-items="0" mv-alias="pick">
 								<button title="Remove request" mv-action="delete($this)">X</button>
@@ -265,9 +272,9 @@
 
 				<section>
 					<h2>Everyone's Requests</h2>
-						<div> <label><input type="checkbox" property="showPlayed"> Show accepted</label></div>
+						<div hidden> <label><input type="checkbox" property="showPlayed"> Show accepted</label></div>
 
-					<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
+						<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>
 							<th>Add</th>
 							<th>Dance</th>
@@ -275,8 +282,8 @@
 						</tr>
 						<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','label')">
 							<td><button mv-class="show-logged-in" title="add request" mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">+</button>
-							<td><span class="r-label" property="label"></span>
-							<td><span class="r-count" property="count"></span>
+							<td class="r-label"><span property="label"></span>
+							<td class="r-count"><span property="count"></span>
 								<meta property="played">
 								<meta property="mine" mv-value="has(label,user.picks.label)">
 						</tr>
