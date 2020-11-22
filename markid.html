@@ -11,21 +11,10 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 		<link rel="manifest" href="manifest.json">
 		<script src="ifd.js"></script>
+		<link href="style.css" rel="stylesheet">
 		<style>
-			.logged-out .show-logged-in {
-				display: none;
-			}
-			.logged-in .show-logged-out {
-				display: none;
-			}
-			.hide:not(.show-if-true) {
-				display: none
-			}
 			.dance-table {
 				margin-left: 1em;
-			}
-			.visible-false {
-				visibility: hidden;
 			}
 			.my-play {
 				font-weight: bold;
@@ -113,16 +102,46 @@
 			 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 			 >
 			<div class="mv-bar mv-ui">
-				<button style="order: 3" mv-action="set(configure,!configure)">Configure session</button>
-				<button class="help" style="order: 4" mv-action="set(help,!help)">Help</button>
+				<button class="mv-login show-logged-out">Sign in using Google (secure)</button>
+				<button mv-if="session.openMarkid && session.anonymousMarkid"
+						class="show-logged-out"
+						mv-action="set(showNameLogin,true)"
+						>Enter name (insecure), or </button>
+				<button mv-if="session.meIsMarkid" style="order: 3" mv-action="set(configure,!configure)"
+						>Configure session</button>
+				<button class="help"
+						style="order: 4" mv-action="set(help,!help)"
+						>Help</button>
 			</div>
+			<div hidden>[watchLoginState(me.uid)]</div>
+
 			<meta property="help" mv-value="0">
 			<meta property="configure">
 			<meta id="signal" property="signal">
-			<div property="me" mv-value="getProfile(signal)">
+			<div property="me" mv-value="if(useNameLogin,nameLoginData,getProfile(signal))">
 				<meta property="uid"> <meta property="name">
 			</div>
 			<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
+
+				<meta property="showNameLogin">
+				<meta property="useNameLogin" mv-default="[false]">
+				<div property="nameLoginData" id="name-login"
+					 mv-storage="local"
+					 class="hide show-if-[showNameLogin]">
+					<div>Full name: <input style="width: 20em" property="name"
+										   ></div>
+					<meta property="uid" mv-value="name">
+					<div>(Optional) email: <input style="width: 20em" property="email"
+										   ></div>
+					<div><span style="float:right; margin-top: 5px;">
+							<button disabled="[!name]"
+									mv-action="set(useNameLogin,true), set(showNameLogin,false)"
+									>Submit</button>
+							<button mv-action="set(showNameLogin,false)"
+									>Cancel</button>
+					</span></div>
+				</div>
+
 		</div>
 
 		<!--dance list-->
@@ -159,6 +178,8 @@
 							<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)" selected="[id=url('session')]">[name]</option>
 						</select>
 						<input type="submit" value="Go to Session">
+					<div mv-if="session.meIsMarkid"><label><input type="checkbox" mv-storage="none" property="notify">Enable notification of new requests</label><span hidden>[watchNotify(notify)]</span></div>
+
 					</form>
 					<div mv-if="not(mysid)">Choose a session to begin</div>
 
@@ -168,14 +189,15 @@
 				</section>
 
 				<div mv-if="mysid and !session.meIsMarkid">
-					You are not registered as a markid for this session.  If you just want to try out the markid app, visit the <a href="markid.html?session=test">test session</a>. 
+					<span mv-if="session.openMarkid and util.me.uid and !session.meIsMarkid"><button mv-action="delete(session.markidim where uid=util.me.uid), add(util.me,session.markidim)">Click here</button> to join the markidim</span>
+					<div mv-if="!session.openMarkid">You are not registered as a markid for this session.  If you just want to try out the markid app, visit the <a href="markid.html?session=test">test session</a>. 
 
 					To join the markidim for [condense(sessions where id=mysid).name],
-					<span mv-if="session.openMarkid"><button mv-action="add(util.me,session.markidim)">Click here</button></span>
 					<ol mv-if="not(session.openMarkid)">
 						<li>Sign in to the session using the request app <a href="..">here</a></li>
 						<li>Ask a current markid to add you to the markid list in the markid app</li>
 					</ol>	
+					</div>
 				</div>
 				
 				<!--Requests-->
@@ -189,13 +211,13 @@
 					</div>
 
 					<meta property="thisMinute" mv-value="round($now/60000)*60000">
-					<table class="dance-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
+					<table class="dance-table [if(session.showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>
 							<th></th>
 							<th>Dance</th>
 							<th>Count</th>
-							<th><label><input type="checkbox" property="showTimes" mv-storage="none">When</label></th>
-							<th><label><input type="checkbox" property="showNames" mv-storage="none">Who</label></th>
+							<th><label class="hide-if-[session.hideOptions and !showTimes]"><input class="hide-if-[session.hideOptions]" type="checkbox" property="showTimes" mv-default="true" mv-storage="none">When</label></th>
+							<th><label class="hide-if-[session.hideOptions and !showNames]"><input class="hide-if-[session.hideOptions]" type="checkbox" property="showNames" mv-default="true" mv-storage="none">Who</label></th>
 						</tr>
 
 						<tr>
@@ -219,7 +241,7 @@
 
 			<div class="hide show-if-[not(not(mysid))]"
 				 mv-app="session" mv-bar="none"
-				 mv-firebase="auth realtime"
+				 mv-firebase="realtime"
 				 mv-plugins="firebase-firestore"
 				 mv-autosave="2"
 				 mv-storage="[util.sessionStore]"
@@ -234,7 +256,7 @@
 						<meta property="uid"> <meta property="name">
 					</div>
 					<meta mv-multiple property="markidUids" mv-value="markidim.uid" mv-storage="inherit">
-					<meta property="meIsMarkid" mv-value="has(util.me.uid,markidUids) || url('markid')='' || requests.mysid='test'">
+					<meta property="meIsMarkid" mv-value="has(util.me.uid,markidUids) or url('markid')='' or requests.mysid='test'">
 					<div property="pushOutTimes" mv-multiple mv-initial-items="0">
 						<meta property="uid">
 						<meta property="time" type="number">
@@ -245,16 +267,15 @@
 				<section class="hide show-if-[util.configure and meIsMarkid]">
 					<h2>Configure</h2>
 					<h3>Session Settings</h3>
-					<table mv-mode="edit">
-						<tr>
-							<td><b>Session name:</b></td>
-							<td><input property="name"></td>
-					</table>
+
+					<div><b>Session name:</b>
+							<input property="name"></div>
 					<div><label><input type="checkbox" property="zoom">Require Zoom names</label></div>
 					<div><label><input type="checkbox" property="noCheckout" mv-default="false">Disable checkin/checkout option in request app</label></div>
-					<div><label><input type="checkbox" mv-storage="none" property="showMarkid">Show Markid assigned to a dance</label></div>
+					<div><label><input type="checkbox" property="hideOptions">Hide markid options</label></div>
+					<div><label><input type="checkbox" property="showMarkid">Show Markid assigned to a dance</label></div>
 					<div><label><input type="checkbox" property="openMarkid">Anyone can markid</label></div>
-					<div mv-if="openMarkid"><label><input type="checkbox" property="anonymousMarkid">&hellip; without signing in</label></div>
+					<div mv-if="openMarkid"><label><input type="checkbox" property="anonymousMarkid">&hellip; without Google sign-in</label></div>
 					<div mv-if="!openMarkid"><label><input type="checkbox" mv-storage="none" property="addMarkid">Add/remove markidim</label></div>
 					Ignore requests older than: <select property="lookbackChoice" mv-default="6*24*60*60*1000">
 						<option value="[30*60*1000]">past half hour</option>
@@ -277,9 +298,8 @@
 					</div>
 					<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,lookbackChoice)" mv-storage="inherit">
 
-					<div> <label><input type="checkbox" property="showPlayed" mv-storage="none" >Include accepted dances in Requests</label></div>
+					<div> <label><input type="checkbox" property="showPlayed">Include accepted dances in Requests</label></div>
 
-					<div><label><input type="checkbox" mv-storage="none" property="notify" mv-value="true">Enable notification of new requests</label><span hidden>[watchNotify(notify)]</span></div>
 
 				</section>
 				
@@ -288,13 +308,13 @@
 					<h2>Accepted</h2>
 
 					<table class="dance-table">
-						<tr mv-if="count(played)>0"><th></th><th>Dance</th><th class="visible-[showMarkid]">Assigned markid</th><th>Notes</th></tr>
+						<tr mv-if="count(played)>0"><th></th><th>Dance</th><th class="show-if-[showMarkid]">Assigned markid</th><th hidden>Notes</th></tr>
 						<tr class="playlist [if(myPlay and showMarkid,'my-play')]" mv-multiple property="played" mv-initial-items="0">
 							<td><button mv-action="delete($this)">X</button></td>
 							<td><span class="dance-label" property="label"></span>
 								<meta property="timestamp">
 								<meta property="myPlay" mv-value="markid=util.me.name"></td>
-							<td class="visible-[showMarkid]">
+							<td class="show-if-[showMarkid]">
 								<input list="markidList"
 									   property="markid"></td>
 							<td mv-mode="edit"><span property="notes" mv-mode="edit"></span></td>
@@ -322,8 +342,9 @@
 							<tr>
 								<th></th>
 								<th></th>
-								<th><label><input type="checkbox" mv-storage="none" property="showActivity">Last active</label></th>
-								<th><label><input type="checkbox" mv-storage="none" property="showRequests">Requests</label></th>
+								<th>
+									<label class="hide-if-[hideOptions and !showActivity]"><input class="hide-if-[hideOptions]" type="checkbox" mv-storage="none" mv-default="[hideOptions]" property="showActivity">Last active</label></th>
+								<th><label class="hide-if-[hideOptions and !showRequests]"><input class="hide-if-[hideOptions]" type="checkbox" mv-default="[hideOptions]" mv-storage="none" property="showRequests">Requests</label></th>
 							<tr property="users" mv-multiple class="users [if(active,'','inactive')]"
 								mv-value="sort(getUsers(util.signal),'-checkInTime')">
 								<td>

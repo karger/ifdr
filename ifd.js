@@ -144,7 +144,9 @@
 		querySnapshot.forEach(function(doc) {
 		    let uid = doc.id;
 		    let {name, checkInTime, picks, zoomName} = doc.data();
-		    users.push({uid: uid, name: name, checkInTime: checkInTime, picks: picks, zoomName: zoomName});
+		    if (uid) {
+			users.push({uid: uid, name: name, checkInTime: checkInTime, picks: picks, zoomName: zoomName});
+		    }
 		});
 		if (!deepEqual(users,oldUsers)) {
 //		    sendNotify("Requests have changed");
@@ -254,7 +256,9 @@
 	let map={};
 	if (key) { //indexing objects
 	    list.forEach(o => {
-		map[o[key]] = o;
+		if (o[key]) {
+		    map[o[key]] = o;
+		}
 	    });
 	} else { //indexing strings
 	    list.forEach(s=> {
