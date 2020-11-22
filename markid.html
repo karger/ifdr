@@ -244,7 +244,8 @@
 				 mv-firebase="realtime"
 				 mv-plugins="firebase-firestore"
 				 mv-autosave="2"
-				 mv-storage="[util.sessionStore]"
+				 mv-source="[util.sessionStore]"
+				 mv-storage="[if(util.me.uid,util.sessionStore,'')]"
 				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				 style="display:contents"
 				 >
@@ -262,6 +263,7 @@
 						<meta property="time" type="number">
 					</div>
 					<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
+					<meta property="nonce">
 				</div>
 
 				<section class="hide show-if-[util.configure and meIsMarkid]">
