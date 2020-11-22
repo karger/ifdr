@@ -139,9 +139,9 @@
 				<div class="mv-bar mv-ui">
 					<span class="show-logged-in show-active">Checked in</span>
 					<span class="show-logged-in show-inactive">Checked out</span>
-					<button class="mv-login show-logged-out">Login using Google (secure)</button>
+					<button class="mv-login show-logged-out">Sign in using Google (secure)</button>
 					<button class="show-logged-out"
-							mv-action="set(showNameLogin,true)">Just use my name (insecure)</button>
+							mv-action="set(showNameLogin,true)">Enter my name (insecure), or </button>
 					<button class="help" style="order: 3" mv-action="set(help,!help)">Help</button>
 				</div>
 
@@ -226,9 +226,6 @@
 					<meta property="name" mv-value="if(me,me.name,'unnamed user')" mv-storage="inherit">
 					<meta property="email" mv-value="if(me,me.email)" mv-storage="inherit">
 
-					<div class="show-logged-out">
-						Log in to make requests.
-					</div>
 
 					<div class="show-logged-in">
 						

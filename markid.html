@@ -96,6 +96,10 @@
 				margin-right: 2em;
 				max-width: 50em;
 			}
+			.count-holder {
+				text-align: right;
+				margin-right: 1ex;
+			}
 		</style>
 	</head>
 	<body>
@@ -109,7 +113,7 @@
 			 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 			 >
 			<div class="mv-bar mv-ui">
-				<button style="order: 3" mv-action="set(configure,!configure)">Configure</button>
+				<button style="order: 3" mv-action="set(configure,!configure)">Configure session</button>
 				<button class="help" style="order: 4" mv-action="set(help,!help)">Help</button>
 			</div>
 			<meta property="help" mv-value="0">
@@ -178,9 +182,8 @@
 				<section class="hide show-if-[mysid and session.meIsMarkid]">
 					<div>
 						<div style="float:right">
-							<div> <label><input type="checkbox" property="showPlayed" mv-storage="none" >Include accepted</label></div>
-							<div><label><input type="checkbox" property="showNames" mv-storage="none">Show who</label></div>
-							<div><label><input type="checkbox" property="showTimes" mv-storage="none">Show times</label></div>
+							<div></div>
+							<div></div>
 						</div>
 						<h2>Requests</h2>
 					</div>
@@ -191,8 +194,8 @@
 							<th></th>
 							<th>Dance</th>
 							<th>Count</th>
-							<th class="visible-[showTimes]">Age</th>
-							<th class="visible-[showNames]">Who</th>
+							<th><label><input type="checkbox" property="showTimes" mv-storage="none">When</label></th>
+							<th><label><input type="checkbox" property="showNames" mv-storage="none">Who</label></th>
 						</tr>
 
 						<tr>
@@ -206,7 +209,7 @@
   								<meta property="played" mv-value="lookup(session.playedIndex,label)">
 
 							<td><span class="dance-label" property="label"></span>
-							<td><span property="count"></span>
+							<td class="count-holder"><span property="count"></span>
 							<td class="visible-[showTimes]"><meta property="timestamp"><span class="r-time">[duration(thisMinute-timestamp)]</span>
 							<td class="visible-[showNames]"> <span class="r-names" mv-multiple property="names"></span>
 						</tr>
@@ -248,9 +251,11 @@
 							<td><input property="name"></td>
 					</table>
 					<div><label><input type="checkbox" property="zoom">Require Zoom names</label></div>
+					<div><label><input type="checkbox" property="noCheckout" mv-default="false">Disable checkin/checkout option in request app</label></div>
+					<div><label><input type="checkbox" mv-storage="none" property="showMarkid">Show Markid assigned to a dance</label></div>
 					<div><label><input type="checkbox" property="openMarkid">Anyone can markid</label></div>
-					<div><label><input type="checkbox" property="noCheckout" mv-default="false">No checkout option</label></div>
-					<div><label><input type="checkbox" mv-storage="none" property="addMarkid">Add/remove markidim</label></div>
+					<div mv-if="openMarkid"><label><input type="checkbox" property="anonymousMarkid">&hellip; without signing in</label></div>
+					<div mv-if="!openMarkid"><label><input type="checkbox" mv-storage="none" property="addMarkid">Add/remove markidim</label></div>
 					Ignore requests older than: <select property="lookbackChoice" mv-default="6*24*60*60*1000">
 						<option value="[30*60*1000]">past half hour</option>
 						<option value="[1*60*60*1000]">past hour</option>
@@ -264,7 +269,7 @@
 						<option value="[10*365*24*60*60*1000]">all</option>
 						<option value="date">specific date</option>
 					</select>
-					<div  mv-if="lookbackChoice='date'"
+					<div  mv-if="lookbackChoice='date'">
 					<input type="datetime-local"
 						   property="customStart"
 						   mv-default="[date($startup-7*24*60*60*1000)]"
@@ -272,11 +277,9 @@
 					</div>
 					<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,lookbackChoice)" mv-storage="inherit">
 
-					<h3>Display Settings</h3>
-					<div><label><input type="checkbox" mv-storage="none" property="showActivity">Show users' last active time</label></div>
-					<div><label><input type="checkbox" mv-storage="none" property="showRequests">Show each user's requests</label></div>
-					<div><label><input type="checkbox" mv-storage="none" property="notify" mv-value="true">Notify</label><span hidden>[watchNotify(notify)]</span></div>
-						<div><label><input type="checkbox" mv-storage="none" property="showMarkid">Show Markid</label></div>
+					<div> <label><input type="checkbox" property="showPlayed" mv-storage="none" >Include accepted dances in Requests</label></div>
+
+					<div><label><input type="checkbox" mv-storage="none" property="notify" mv-value="true">Enable notification of new requests</label><span hidden>[watchNotify(notify)]</span></div>
 
 				</section>
 				
@@ -319,8 +322,8 @@
 							<tr>
 								<th></th>
 								<th></th>
-								<th mv-if="showActivity">last active</th>
-								<th mv-if="showRequests">requests</th>
+								<th><label><input type="checkbox" mv-storage="none" property="showActivity">Last active</label></th>
+								<th><label><input type="checkbox" mv-storage="none" property="showRequests">Requests</label></th>
 							<tr property="users" mv-multiple class="users [if(active,'','inactive')]"
 								mv-value="sort(getUsers(util.signal),'-checkInTime')">
 								<td>
@@ -341,7 +344,7 @@
 								<td>
 									[if(zoom && zoomName,zoomName,name)]
 								</td>
-								<td mv-if="showActivity"><span mv-if="active">[duration(thisMinute-checkInTime)]</span></td>
+								<td><span mv-if="showActivity and active">[duration(thisMinute-checkInTime)] ago</span></td>
 								<td>
 									<span mv-if="showRequests"><span class="r-names" mv-multiple mv-value="picks.label where not(has(label,playedIndex))"></span></span>
 							</tr>
