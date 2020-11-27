@@ -13,6 +13,9 @@
 		<script src="ifd.js"></script>
 		<link href="style.css" rel="stylesheet">
 		<style>
+			#configure {
+				order: -1;
+			}
 			.dance-table {
 				margin-left: 1em;
 			}
@@ -51,7 +54,7 @@
 			#session-select {
 				float: right;
 			}
-			.r-names:not(:last-child):after {
+			span[mv-multiple]:not(:last-child):after {
 				content: ", "
 			}
 			#clear {
@@ -68,7 +71,7 @@
 			}
 			main {
 				flex: 1;
- 				display:flex;
+ 				display: flex;
 				flex-flow: row wrap;
 				justify-content: space-between;
 				align-items: flex-start;
@@ -162,7 +165,7 @@
 					<ol mv-if="util.help">
 						<h2>Help</h2>
 						<li>Choose your session using the dropdown and click <button>Go to Session</button></li>
-						<li>Log in at the top</li>
+						<li>Sign in at the top</li>
 						<li>Look over the requests</li>
 						<li>Click <button>accept</button> next to each request you play or queue up, so it will be marked played.</li>
 						<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
@@ -184,40 +187,48 @@
 					<div mv-if="not(mysid)">Choose a session to begin</div>
 
 					<div mv-if="mysid">
-						<h2>[condense(sessions where id=mysid).name]</h2>
+						<h2 property="sessionName">[condense(sessions where id=mysid).name]</h2>
 					</div>
 				</section>
 
-				<div mv-if="mysid and !session.meIsMarkid">
-					<span mv-if="session.openMarkid and util.me.uid and !session.meIsMarkid"><button mv-action="delete(session.markidim where uid=util.me.uid), add(util.me,session.markidim)">Click here</button> to join the markidim</span>
-					<div mv-if="!session.openMarkid">You are not registered as a markid for this session.  If you just want to try out the markid app, visit the <a href="markid.html?session=test">test session</a>. 
+				<div mv-if="!util.me.uid">
+					Please <span mv-if="anonymousMarkid">enter your name </span>or sign in above.
+				</div>
+				<div mv-if="util.me.uid and mysid">
+					<div mv-if="!session.meIsMarkid">
+						<span mv-if="session.openMarkid"><button
+															 mv-action="delete(session.markidim where uid=util.me.uid), add(util.me,session.markidim)"
+															 >Click here</button> to join the markidim for [sessionName].
+						</span>
+						<div mv-if="!session.openMarkid">You are not registered as a markid for this session.  If you just want to try out the markid app, visit the <a href="markid.html?session=test">test session</a>. 
 
-					To join the markidim for [condense(sessions where id=mysid).name],
-					<ol mv-if="not(session.openMarkid)">
-						<li>Sign in to the session using the request app <a href="..">here</a></li>
-						<li>Ask a current markid to add you to the markid list in the markid app</li>
-					</ol>	
+							To join the markidim for [sessionName],
+							<ol>
+								<li>Sign in to the session using the request app <a href="..">here</a></li>
+								<li>Ask a current markid to add you to the markid list in the markid app</li>
+							</ol>	
+						</div>
 					</div>
 				</div>
 				
 				<!--Requests-->
 				<section class="hide show-if-[mysid and session.meIsMarkid]">
 					<div>
-						<div style="float:right">
-							<div></div>
-							<div></div>
-						</div>
 						<h2>Requests</h2>
 					</div>
 
 					<meta property="thisMinute" mv-value="round($now/60000)*60000">
 					<table class="dance-table [if(session.showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>
-							<th></th>
-							<th>Dance</th>
+							<th><!--accept button--></th>
+							<th class="dance-label">Dance</th>
 							<th>Count</th>
-							<th><label class="hide-if-[session.hideOptions and !showTimes]"><input class="hide-if-[session.hideOptions]" type="checkbox" property="showTimes" mv-default="true" mv-storage="none">When</label></th>
-							<th><label class="hide-if-[session.hideOptions and !showNames]"><input class="hide-if-[session.hideOptions]" type="checkbox" property="showNames" mv-default="true" mv-storage="none">Who</label></th>
+							<th style="width: 10ex">
+								<label class="hide-if-[session.hideOptions and !showTimes]"><input class="hide-if-[session.hideOptions]" type="checkbox" property="showTimes" mv-default="true" mv-storage="none">When</label>
+							</th>
+							<th style="width: [if(showNames,'30ex','8ex')]">
+								<label class="hide-if-[session.hideOptions and !showNames]"><input class="hide-if-[session.hideOptions]" type="checkbox" property="showNames" mv-default="true" mv-storage="none">Who</label>
+							</th>
 						</tr>
 
 						<tr>
@@ -230,10 +241,10 @@
 										mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)">accept</button>
   								<meta property="played" mv-value="lookup(session.playedIndex,label)">
 
-							<td><span class="dance-label" property="label"></span>
+							<td><span property="label"></span>
 							<td class="count-holder"><span property="count"></span>
 							<td class="visible-[showTimes]"><meta property="timestamp"><span class="r-time">[duration(thisMinute-timestamp)]</span>
-							<td class="visible-[showNames]"> <span class="r-names" mv-multiple property="names"></span>
+							<td class="show-if-[showNames]"> <span mv-multiple property="names"></span>
 						</tr>
 					</table>
 				</section>
@@ -266,7 +277,7 @@
 					<meta property="nonce">
 				</div>
 
-				<section class="hide show-if-[util.configure and meIsMarkid]">
+				<section id="configure" class="hide show-if-[util.configure and meIsMarkid]">
 					<h2>Configure</h2>
 					<h3>Session Settings</h3>
 
@@ -310,10 +321,10 @@
 					<h2>Accepted</h2>
 
 					<table class="dance-table">
-						<tr mv-if="count(played)>0"><th></th><th>Dance</th><th class="show-if-[showMarkid]">Assigned markid</th><th hidden>Notes</th></tr>
+						<tr mv-if="count(played)>0"><th></th><th class="dance-label">Dance</th><th class="show-if-[showMarkid]">Assigned markid</th><th hidden>Notes</th></tr>
 						<tr class="playlist [if(myPlay and showMarkid,'my-play')]" mv-multiple property="played" mv-initial-items="0">
 							<td><button mv-action="delete($this)">X</button></td>
-							<td><span class="dance-label" property="label"></span>
+							<td><span property="label"></span>
 								<meta property="timestamp">
 								<meta property="myPlay" mv-value="markid=util.me.name"></td>
 							<td class="show-if-[showMarkid]">
@@ -351,7 +362,7 @@
 								mv-value="sort(getUsers(util.signal),'-checkInTime')">
 								<td>
 								  <span>
-                                                                        <meta property="uid">
+                                      <meta property="uid">
 									<meta property="checkInTime">
 									<meta property="name">
 									<meta property="zoomName">
@@ -369,7 +380,7 @@
 								</td>
 								<td><span mv-if="showActivity and active">[duration(thisMinute-checkInTime)] ago</span></td>
 								<td>
-									<span mv-if="showRequests"><span class="r-names" mv-multiple mv-value="picks.label where not(has(label,playedIndex))"></span></span>
+									<span mv-if="showRequests"><span mv-multiple mv-value="picks.label where not(has(label,playedIndex))"></span></span>
 							</tr>
 						</table>
 

@@ -22,15 +22,20 @@
 		let datalist=document.getElementById("dancelist")
 		, options=datalist.getElementsByTagName("option")
 		, input = requestInput.value.toLowerCase()
-		, matches = 0;
+		, matches = 0
+		, match = null;
 
 		for (i=0; i<options.length; i++) {
 		    if (options[i].value.toLowerCase()
 			.includes(input)) {
+			match = options[i].value;
 			matches++;
 		    }
 		}
 		if (matches < 2) {
+		    if (matches == 1) {
+			requestInput.value=match;
+		    }
 		    document.getElementById("request-button").click();
 		}
 	    }
@@ -38,7 +43,7 @@
 			 );
     }
     
-    let signal =function () {
+    let signal = function () {
 	if (signal.ready) {
 	    signal.ready=false;
 	    setTimeout(() => {
