@@ -10,6 +10,9 @@
     border-radius: 10px;
     z-index: 10;
 }
+[mv-bar="none"] .mv-bar {
+    display: none;
+}
 #name-login input {
     padding: 3px;
     margin: 3px;

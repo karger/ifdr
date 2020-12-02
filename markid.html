@@ -13,56 +13,6 @@
 		<script src="ifd.js"></script>
 		<link href="style.css" rel="stylesheet">
 		<style>
-			#configure {
-				order: -1;
-			}
-			.dance-table {
-				margin-left: 1em;
-			}
-			.my-play {
-				font-weight: bold;
-			}
-			.dance-table td {
-				padding-right: 1em;
-			}
-			.played {
-				text-decoration: line-through;
-			}
-			#heading {
-				flex: 0 1 auto;
-				width: 100%;
-				max-width: 100%;
-			}
-			.playlist {
-				margin-left: 1em;
-			}
-			.playlist button {
-				margin-right: 1em;
-			}
-			.users {
-				margin-left: 1em;
-			}
-			.users button {
-				margin-right: 1em;
-			}
-			.mv-status span {
-				display: none;
-			}
-			.inactive {
-				text-decoration: line-through;
-			}
-			#session-select {
-				float: right;
-			}
-			span[mv-multiple]:not(:last-child):after {
-				content: ", "
-			}
-			#clear {
-				margin-top: 2em;
-			}
-			.hidePlayed .played {
-				display: none;
-			}
 			body {
 				display: flex;
 				min-height: 98vh;
@@ -84,9 +34,62 @@
 				padding-top: 3em;
 				font-size: small;
 			}
+			#configure {
+				order: -1;
+			}
+			#heading {
+				flex: 0 1 auto;
+				width: 100%;
+				max-width: 100%;
+			}
+			#session-select {
+				float: right;
+			}
+			span[mv-multiple]:not(:last-child):after {
+				content: ", "
+			}
 			section {
 				margin-right: 2em;
 				max-width: 50em;
+			}
+			/*requests*/
+			.dance-table {
+				margin-left: 1em;
+			}
+			.my-play {
+				font-weight: bold;
+			}
+			.dance-table td {
+				padding-right: 1em;
+			}
+			.played {
+				text-decoration: line-through;
+			}
+			.playlist {
+				margin-left: 1em;
+			}
+			.playlist button {
+				margin-right: 1em;
+			}
+			/*accepted*/
+			/*folks*/
+			.users {
+				margin-left: 1em;
+			}
+			.users button {
+				margin-right: 1em;
+			}
+			.mv-status span {
+				display: none;
+			}
+			.inactive {
+				text-decoration: line-through;
+			}
+			#clear {
+				margin-top: 2em;
+			}
+			.hidePlayed .played {
+				display: none;
 			}
 			.count-holder {
 				text-align: right;
@@ -189,27 +192,29 @@
 					<div mv-if="mysid">
 						<h2 property="sessionName">[condense(sessions where id=mysid).name]</h2>
 					</div>
-				</section>
-
-				<div mv-if="!util.me.uid">
-					Please <span mv-if="anonymousMarkid">enter your name </span>or sign in above.
-				</div>
-				<div mv-if="util.me.uid and mysid">
-					<div mv-if="!session.meIsMarkid">
-						<span mv-if="session.openMarkid"><button
-															 mv-action="delete(session.markidim where uid=util.me.uid), add(util.me,session.markidim)"
-															 >Click here</button> to join the markidim for [sessionName].
-						</span>
-						<div mv-if="!session.openMarkid">You are not registered as a markid for this session.  If you just want to try out the markid app, visit the <a href="markid.html?session=test">test session</a>. 
-
-							To join the markidim for [sessionName],
-							<ol>
-								<li>Sign in to the session using the request app <a href="..">here</a></li>
-								<li>Ask a current markid to add you to the markid list in the markid app</li>
-							</ol>	
+					<div mv-if="!util.me.uid">
+						Please <span mv-if="anonymousMarkid">enter your name </span>or sign in above.
+					</div>
+					<div mv-if="util.me.uid and mysid">
+						<div mv-if="!session.meIsMarkid">
+							<span mv-if="session.openMarkid">
+								<button
+									mv-action="delete(session.markidim where uid=util.me.uid), add(util.me,session.markidim)"
+									>Click here</button> to join the markidim for [sessionName].
+							</span>
+							<div mv-if="!session.openMarkid">You are not registered as a markid for this session.
+								If you just want to try out the markid app, visit the <a href="markid.html?session=test">test session</a>. 
+                                <p>
+								To join the markidim for [sessionName],
+								<ol>
+									<li>Sign in to the session using the request app <a href="..">here</a></li>
+									<li>Ask a current markid to add you to the markid list in the markid app</li>
+								</ol>	
+							</div>
 						</div>
 					</div>
-				</div>
+				</section>
+
 				
 				<!--Requests-->
 				<section class="hide show-if-[mysid and session.meIsMarkid]">
@@ -223,11 +228,17 @@
 							<th><!--accept button--></th>
 							<th class="dance-label">Dance</th>
 							<th>Count</th>
-							<th style="width: 10ex">
-								<label class="hide-if-[session.hideOptions and !showTimes]"><input class="hide-if-[session.hideOptions]" type="checkbox" property="showTimes" mv-default="true" mv-storage="none">When</label>
+							<th style="width: 13ex">
+								<label class="hide-if-[session.hideOptions and !showTimes]"
+									   ><input class="hide-if-[session.hideOptions]"
+											   type="checkbox" property="showTimes"
+											   mv-default="true" mv-storage="none"
+											   >When</label>
 							</th>
 							<th style="width: [if(showNames,'30ex','8ex')]">
-								<label class="hide-if-[session.hideOptions and !showNames]"><input class="hide-if-[session.hideOptions]" type="checkbox" property="showNames" mv-default="true" mv-storage="none">Who</label>
+								<label class="hide-if-[session.hideOptions and !showNames]"
+									   ><input class="hide-if-[session.hideOptions]" type="checkbox"
+											   property="showNames" mv-default="true" mv-storage="none">Who</label>
 							</th>
 						</tr>
 
@@ -236,15 +247,20 @@
 							<td><input list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
 						</tr>
 
-						<tr class="request [if(played,'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','-timestamp')">
+						<tr class="request [if(played,'played','unplayed')]" mv-multiple
+							property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','-timestamp')">
 							<td><button mv-if="not(played)" title="mark played"
-										mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)">accept</button>
+										mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)"
+										>accept</button>
   								<meta property="played" mv-value="lookup(session.playedIndex,label)">
 
 							<td><span property="label"></span>
 							<td class="count-holder"><span property="count"></span>
-							<td class="visible-[showTimes]"><meta property="timestamp"><span class="r-time">[duration(thisMinute-timestamp)]</span>
-							<td class="show-if-[showNames]"> <span mv-multiple property="names"></span>
+							<td class="visible-[showTimes]">
+								<meta property="timestamp">
+								<span class="r-time">[duration(thisMinute-timestamp)]</span>
+							<td class="show-if-[showNames]">
+								<span mv-multiple property="names"></span>
 						</tr>
 					</table>
 				</section>
@@ -282,7 +298,7 @@
 					<h3>Session Settings</h3>
 
 					<div><b>Session name:</b>
-							<input property="name"></div>
+							<input property="name" mv-default="A Session"></div>
 					<div><label><input type="checkbox" property="zoom">Require Zoom names</label></div>
 					<div><label><input type="checkbox" property="noCheckout" mv-default="false">Disable checkin/checkout option in request app</label></div>
 					<div><label><input type="checkbox" property="hideOptions">Hide markid options</label></div>
@@ -333,14 +349,16 @@
 							<td mv-mode="edit"><span property="notes" mv-mode="edit"></span></td>
 						</tr>
 					</table>
+
+					<button mv-if="count(played)>0" id="clear" mv-action="delete(played)">Clear playlist</button>
 					
 					<datalist id="markidList">
-						<option mv-multiple property="ownerChoice" mv-attribute="value" mv-value="markidim.name" value="[ownerChoice]"></option>
+						<option mv-multiple property="ownerChoice" mv-attribute="value"
+								mv-value="markidim.name" value="[ownerChoice]"></option>
 					</datalist>
 
 					<meta property="playedIndex" mv-value="makeIndex(played.label)">
 
-					<button mv-if="count(played)>0" id="clear" mv-action="delete(played)">Clear playlist</button>
 				</section>
 
 				<!--Folks-->
@@ -349,15 +367,22 @@
 
 						<h2>Folks</h2>
 						<meta property="thisMinute" mv-value="round($now/60000)*60000">
-						<div mv-if="util.help">Click <button>X</button> to check people out, or <button>+</button> to check them back in.</div>
+						<div mv-if="util.help">Click <button>X</button> to check people out,
+							or <button>+</button> to check them back in.</div>
 
 						<table>
 							<tr>
 								<th></th>
 								<th></th>
 								<th>
-									<label class="hide-if-[hideOptions and !showActivity]"><input class="hide-if-[hideOptions]" type="checkbox" mv-storage="none" mv-default="[hideOptions]" property="showActivity">Last active</label></th>
-								<th><label class="hide-if-[hideOptions and !showRequests]"><input class="hide-if-[hideOptions]" type="checkbox" mv-default="[hideOptions]" mv-storage="none" property="showRequests">Requests</label></th>
+									<label class="hide-if-[hideOptions and !showActivity]"
+										   ><input class="hide-if-[hideOptions]" type="checkbox"
+												   mv-storage="none" mv-default="[hideOptions]"
+												   property="showActivity">Last active</label></th>
+								<th><label class="hide-if-[hideOptions and !showRequests]"
+										   ><input class="hide-if-[hideOptions]" type="checkbox"
+												   mv-default="[hideOptions]" mv-storage="none"
+												   property="showRequests">Requests</label></th>
 							<tr property="users" mv-multiple class="users [if(active,'','inactive')]"
 								mv-value="sort(getUsers(util.signal),'-checkInTime')">
 								<td>
