@@ -157,6 +157,12 @@
 			</datalist>
 		</div>
 
+		<div style="position:relative">
+		<div mv-app="options" mv-storage="local" mv-bar="none" style="float:right" mv-autosave="0">
+		<div mv-if="session.meIsMarkid"><label><input type="checkbox" property="notify">Enable notification of new requests</label><span hidden>[watchNotify(notify)]</span></div>
+		</div>
+		</div>
+		
 		<main>
 			<div mv-app="requests" mv-storage="none" mv-bar="none"
 				 mv-plugins="sort" style="display:contents">
@@ -184,8 +190,6 @@
 							<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)" selected="[id=url('session')]">[name]</option>
 						</select>
 						<input type="submit" value="Go to Session">
-					<div mv-if="session.meIsMarkid"><label><input type="checkbox" mv-storage="none" property="notify">Enable notification of new requests</label><span hidden>[watchNotify(notify)]</span></div>
-
 					</form>
 					<div mv-if="not(mysid)">Choose a session to begin</div>
 

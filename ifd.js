@@ -157,6 +157,7 @@
 //		    sendNotify("Requests have changed");
 		    signal();
 		}
+		mergePicks(users, true);  //hack to overcome background update failure in mavo
 		return 0;
 	    };
 
@@ -194,7 +195,7 @@
     }
     
     let oldRequestMap = {};
-    mergePicks = function(users) {
+    mergePicks = function(users, notify) {
 	let requestMap = {}, newRequests=[];
 	
 	users?.forEach((u) => {
@@ -225,10 +226,12 @@
 		newRequests.push(dance);
 	    }
 	}
-	if (newRequests.length == 1) {
-	    sendNotify("new request: " + newRequests[0]);
-	} else if (newRequests.length > 1) {
-	    sendNotify("new requests: " + newRequests.join(", "));
+	if (notify) {
+	    if (newRequests.length == 1) {
+		sendNotify("new request: " + newRequests[0]);
+	    } else if (newRequests.length > 1) {
+		sendNotify("new requests: " + newRequests.join(", "));
+	    }
 	}
 	oldRequestMap = requestMap;
 	return Object.values(requestMap);
