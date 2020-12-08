@@ -24,6 +24,7 @@
 				border-bottom: 1px solid black;
 			}
 			[property="segment"] {
+				margin-top: 1em;
 				margin-bottom: 2em;
 				border-bottom: 2px solid black;
 			}
@@ -213,7 +214,7 @@
 						<li>Fill in dances in the dance name column; there's a dropdown to complete what you type
 						<li>If you hover next to an entry, 3 buttons appear that let you
 							<ul>
-								<li><button>+</button> add a dance immediately after</li>
+								<li><button>+</button> add a dance immediately before</li>
 								<li><button>-</button> remove the dance</li>
 								<li><button>≡</button> drag the dance somewhere else</li>
 							</ul>
@@ -313,12 +314,12 @@
 									   property="presenter"
 									   mv-edit="#markidList"
 									   ></span>
-								<span class="controls"><button mv-action="add(segment,$index+1)">+</button>
+								<span class="controls"><button mv-action="add(segment,$index)">+</button>
 									<button class="mv-drag-handle">≡</button><button mv-action="delete($item)">-</button>
 							</span></div>
 
 							<div mv-multiple property="entry" mv-accepts="entry" class="conflict-[conflicted]">
-								<span class="controls"><button mv-action="add(entry,$index+1)">+</button>
+								<span class="controls"><button mv-action="add(entry,$index)">+</button>
 									<button class="mv-drag-handle">≡</button>
 									<button mv-action="delete($item)">-</button></span>
 								<meta property="danceInfo"
