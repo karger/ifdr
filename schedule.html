@@ -21,8 +21,11 @@
 			#schedule > div > div > span {
 				display: inline-block;
 				width: 4em;
-				border-left: 1px solid black;
 				border-bottom: 1px solid black;
+			}
+			[property="segment"] {
+				margin-bottom: 2em;
+				border-bottom: 2px solid black;
 			}
 			.nocollapse:before {
 				content: "\200b"; // unicode zero width space character
@@ -46,7 +49,10 @@
 			#schedule .controls {
 				width: 6em;
 			}
-			#schedule .name, #schedule .presenter, #schedule .status, #schedule .conflict {
+			#schedule .name {
+				width: 20em;
+			}
+			#schedule .presenter, #schedule .status, #schedule .conflict {
 				width: 12em;
 			}
 			#schedule .controls {
@@ -264,6 +270,8 @@
 						 mv-mode="edit">
 
 					<h2>Playlist</h2>
+					<button mv-action="delete(segment)">Clear Playlist</button>
+
 					<div id="schedule">
 						<div>
 							<div><span class="presenter">Presenter</span></div>
@@ -279,24 +287,48 @@
 							</div>
 						</div>
 
-						<div property="segment" mv-multiple style="display:contents">
-							<div><span class="presenter"><input property="presenter" placeholder="Presenter" list="markidList"></span><span class="controls"><button mv-action="add(segment,$index+1)">+</button><button class="mv-drag-handle">≡</button><button mv-action="delete($item)">-</button></span></div>
+						<div style="display:none">
+							<select id="markidList">
+								<option>--choose markid--</option>
+								<option>Phil Moss</option>
+								<option>David Karger</option>
+								<option>Rina Wagman</option>
+								<option>Aaron Alpert</option>
+							</select>
+							<select id="presenterList" placeholder="Presenter" list="markidList"></select>
+
+							<input id="danceEdit" placeholder="dance name" list="dancelist">
+							
+							<input id="numberEdit" type="number">
+
+							<select id="knownEdit">
+										<option selected value="known"></option>
+										<option>forgotten</option>
+										<option>never</option>
+								</select>
+						</div>
+						
+						<div property="segment" mv-multiple>
+							<div><span class="presenter"
+									   property="presenter"
+									   mv-edit="#markidList"
+									   ></span>
+								<span class="controls"><button mv-action="add(segment,$index+1)">+</button>
+									<button class="mv-drag-handle">≡</button><button mv-action="delete($item)">-</button>
+							</span></div>
 
 							<div mv-multiple property="entry" mv-accepts="entry" class="conflict-[conflicted]">
 								<span class="controls"><button mv-action="add(entry,$index+1)">+</button>
 									<button class="mv-drag-handle">≡</button>
 									<button mv-action="delete($item)">-</button></span>
-								<meta property="danceInfo" mv-value="if(entryName,get(dances.danceIndex,entryName))"><span class="name"><input placeholder="dance name"
-														  property="entryName"
-														  list="dancelist"></span><span class="form">[if(danceInfo,danceInfo.type)]</span><span class="suggest">
-									<input type="number" property="suggest">
+								<meta property="danceInfo"
+									  mv-value="if(entryName,get(dances.danceIndex,entryName))"
+									  ><span class="name" property="entryName" mv-edit="#danceEdit"
+											 ></span
+												  ><span class="form">[if(danceInfo,danceInfo.type)]</span><span class="suggest" mv-edit="#numberEdit" property="suggest"> 
 								</span><span class="wasplayed">
 									<input type="checkbox" property="played">
-								</span><span class="status"><select property="known">
-										<option selected value="known"></option>
-										<option>forgotten</option>
-										<option>never</option>
-								</select></span><span class="request"><input type="checkbox" property="request"></span><span class="conflict">
+								</span><span class="status" property="known" mv-edit="#knownEdit"></span><span class="request"><input type="checkbox" property="request"></span><span class="conflict">
 									<meta property="conflicted" mv-value="count(allEntries)>1">
 									<span class="nocollapse comma-separated"  property="allEntries" mv-multiple mv-group
 										  mv-value="get(entryIndex,entryName).$items">
@@ -315,6 +347,7 @@
 					<meta hidden property="entryGroups" mv-value="group segment.shortEntry by shortEntry.entryName1">
 					<meta hidden property="entryIndex" mv-value="makeIndex(entryGroups,'entryName1')">
 
+					
 					<details>
 						<summary>Export to spreadsheet</summary>
 						
