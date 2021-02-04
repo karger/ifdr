@@ -197,7 +197,6 @@
     let oldRequestMap = {};
     mergePicks = function(users, notify) {
 	let requestMap = {}, newRequests=[];
-	
 	users?.forEach((u) => {
 	    if (u) {
 		let {name, uid, checkInTime, picks=[]}=u;

@@ -8,8 +8,8 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 		<link rel="manifest" href="manifest.json">
-		<link rel="stylesheet" href="https://get.mavo.io/stable/mavo.css">
-		<script src="https://get.mavo.io/stable/mavo.es5.js"></script>
+		<link rel="stylesheet" href="https://get.mavo.io/v0.2.1/mavo.css">
+		<script src="https://get.mavo.io/v0.2.1/mavo.es5.js"></script>
 		<script defer src="ifd.js"></script>
 		<link href="style.css" rel="stylesheet">
 		<style>
@@ -187,7 +187,7 @@
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<div hidden>
-					[watchUsers(mysid,if(mysid='test' || !session.duration,365*24*60*60*100,session.duration))]
+					[watchUsers(mysid,if(mysid='test' || !session.lookbackTime,365*24*60*60*100,session.lookbackTime))]
 					[watchFont(fontSize)]
 				</div>
 				<div class="break"></div>
@@ -271,7 +271,7 @@
 							<th>Dance</th>
 							<th>Count</th>
 						</tr>
-						<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','label')">
+						<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal,picks),'-count','label')">
 							<td><button mv-class="show-logged-in" title="add request" mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">+</button>
 							<td class="r-label"><span property="label"></span>
 							<td class="r-count"><span property="count"></span>
