@@ -282,5 +282,13 @@
 	    return undefined
 	}
     }
+
+    window.addEventListener('load', ()=> {
+	document.body.addEventListener('focusin', (e)=> {
+	    if (e.target.matches('.pending-delete')) {
+		e.target.select();
+	    }
+	});
+    });
 })();
 
