@@ -164,6 +164,7 @@
 				<meta property="meid" mv-value="url('meid') || if(useNameLogin,nameLoginData.name,getUid(signal))">
 				<meta property="userStorage" mv-value="if(meid,'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& meid,'none')">
 				<meta property="sessions" mv-value="getSessions(signal)">
+				<meta property="requestLimit" mv-value="session.requestLimit or 1000">
 				<div hidden>
 					[setSignal('sig'&'nal')]
 					[watchSessions()]
@@ -246,11 +247,12 @@
 						<div style="display:inline-block;">
 							<input id="request-input" list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
 							<meta property="selectionPlayed" mv-value="get(session.playedIndex,selection)">
-							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label)]">[if(selectionPlayed,'played','request')]</button>
+							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label) or count(picks)>=util.requestLimit]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 						
 						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been accepted.</div>
+						<div mv-if="count(picks)>=util.requestLimit">Maximum request limit reached</div>
 						<div id="my-requests">
 							<div class="[if(played,'played','unplayed')]" mv-multiple property="picks" mv-initial-items="0" mv-alias="pick">
 								<button title="Remove request" mv-action="delete($this), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
