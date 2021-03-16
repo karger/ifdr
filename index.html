@@ -246,14 +246,14 @@
 						<div style="display:inline-block;">
 							<input id="request-input" list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
 							<meta property="selectionPlayed" mv-value="get(session.playedIndex,selection)">
-							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn,set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label)]">[if(selectionPlayed,'played','request')]</button>
+							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label)]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 						
 						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been accepted.</div>
 						<div id="my-requests">
 							<div class="[if(played,'played','unplayed')]" mv-multiple property="picks" mv-initial-items="0" mv-alias="pick">
-								<button title="Remove request" mv-action="delete($this)">X</button>
+								<button title="Remove request" mv-action="delete($this), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
 								<meta property="played" mv-value="get(session.playedIndex,label)">
 							</div>

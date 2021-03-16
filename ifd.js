@@ -155,9 +155,9 @@
 		});
 		if (!deepEqual(users,oldUsers)) {
 //		    sendNotify("Requests have changed");
-		    signal();
 		}
 		mergePicks(users, true);  //hack to overcome background update failure in mavo
+		signal();
 		return 0;
 	    };
 

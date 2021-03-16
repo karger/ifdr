@@ -35,7 +35,10 @@
 				font-size: small;
 			}
 			#configure {
-				order: -1;
+				order: -2;
+			}
+			#markidim {
+			    order: -1;
 			}
 			#heading {
 				flex: 0 1 auto;
@@ -301,7 +304,9 @@
 				</div>
 
 				<section id="configure" class="hide show-if-[util.configure and meIsMarkid]">
-					<h2>Configure</h2>
+				  <h2>Configure</h2>
+				  <main>
+				  <section>
 					<h3>Session Settings</h3>
 
 					<div><b>Session name:</b>
@@ -338,8 +343,17 @@
 					<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,lookbackChoice)" mv-storage="inherit">
 
 					<div> <label><input type="checkbox" property="showPlayed">Include accepted dances in Requests</label></div>
-
-
+				  </section>
+				  <section>
+				    <h3>Markidim</h3>
+				    <table>
+				      <tr mv-multiple mv-group mv-value="markidim">
+					<td><button mv-action="delete(markidim where markidim.uid=uid)">X</button></td>
+					<td><meta property="uid"><span property="name"></span></td>
+				      </tr>
+				    </table>
+				  </section>
+				  </main>
 				</section>
 				
 				<!--Playlist-->
