@@ -27,7 +27,7 @@
 				align-items: flex-start;
 				align-content: flex-start;
 			}
-			main * {
+			main > * {
 				flex: 1 1 auto;
 			}
 			footer {
@@ -53,7 +53,7 @@
 			}
 			section {
 				margin-right: 2em;
-				max-width: 50em;
+				max-width: 60em;
 			}
 			/*requests*/
 			.dance-table {
@@ -170,7 +170,7 @@
 		</div>
 		
 		<main>
-			<div mv-app="requests" mv-storage="none" mv-bar="none"
+		  <div mv-app="requests" mv-storage="none" mv-bar="none"
 				 mv-plugins="sort" style="display:contents">
 				<!--header-->
 				<section id="heading">
@@ -257,12 +257,18 @@
 							<td><input list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
 						</tr>
 
-						<tr class="request [if(played,'played','unplayed')] [if(recent,'recent')]" mv-multiple
+						<tr class="request [if(played or declined,'played','unplayed')] [if(recent,'recent')]" mv-multiple
 							property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','+label')">
-							<td><button mv-if="not(played)" title="mark played"
-										mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)"
-										>accept</button>
+							<td><span mv-if="not(played) and not(declined)">
+												<button title="mark played"
+																mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)"
+																>accept</button>
+												<button mv-if="session.enableDeclines" title="mark declined"
+																mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.declined)"
+																>decline</button>
+                    </span>
   							  <meta property="played" mv-value="lookup(session.playedIndex,label)">
+  							  <meta property="declined" mv-value="lookup(session.declinedIndex,label)">
 							  <meta property="recent" mv-value="if(timestamp > thisMinute-10*60*1000,1,0)">
 							<td><span property="label"></span>
 							<td class="count-holder"><span property="count"></span>
@@ -343,7 +349,8 @@
 					<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,lookbackChoice)" mv-storage="inherit">
 
 					<div> <label><input type="checkbox" property="showPlayed">Include accepted dances in Requests</label></div>
-					<div>Max requests per user: <input property="requestLimit" type="number" min="0" max="1000">
+					<div>Max requests per user: <input property="requestLimit" type="number" min="0" max="1000"></div>
+					<div><input type="checkbox" property="enableDeclines"> Dances can be declined</div>
 				  </section>
 				  <section>
 				    <h3>Markidim</h3>
@@ -412,7 +419,7 @@
 								mv-value="sort(getUsers(util.signal),'-checkInTime')">
 								<td>
 								  <span>
-                                      <meta property="uid">
+                    <meta property="uid">
 									<meta property="checkInTime">
 									<meta property="name">
 									<meta property="zoomName">
@@ -441,11 +448,33 @@
 								<meta property="time" mv-value="+$now">
 							</div>
 						</div>
-						<button mv-action="set(pushOutTimes,toPushOut.container)">Check All Out</button>
+						<button mv-if="count(toPushOut)>0" mv-action="set(pushOutTimes,toPushOut.container)">Check All Out</button>
 						<meta property="userIndex" mv-value="makeIndex(users,'uid')">
 					</div>
 				</section>
-			</div>
+
+				
+				<!--Declined-->
+				<section class="hide show-if-[meIsMarkid && count(declined)>0]" style="clear: both">
+					<h2>Declined</h2>
+
+					<table class="dance-table">
+						<tr mv-if="count(declined)>0"><th></th><th class="dance-label">Dance</th></tr>
+						<tr class="playlist" mv-multiple property="declined" mv-initial-items="0">
+							<td><button mv-action="delete($this)">X</button></td>
+							<td><span property="label"></span>
+								<meta property="timestamp">
+						</tr>
+					</table>
+
+					<button mv-if="count(declined)>0" id="clear" mv-action="delete(declined)">Clear Declined</button>
+
+					<meta property="declinedIndex" mv-value="makeIndex(declined.label)">
+
+				</section>
+
+
+				</div>
 		</main>
 
 		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>

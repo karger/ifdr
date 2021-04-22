@@ -246,7 +246,7 @@
 
 						<div style="display:inline-block;">
 							<input id="request-input" list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
-							<meta property="selectionPlayed" mv-value="get(session.playedIndex,selection)">
+							<meta property="selectionPlayed" mv-value="get(session.playedIndex,selection) or get(session.declinedIndex,selection)">
 							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label) or count(picks)>=util.requestLimit]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
@@ -254,11 +254,12 @@
 						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been accepted.</div>
 						<div mv-if="count(picks)>=util.requestLimit">Maximum request limit reached</div>
 						<div id="my-requests">
-							<div class="[if(played,'played','unplayed')]" mv-multiple property="picks" mv-initial-items="0" mv-alias="pick">
+							<div class="[if(played or declined,'played','unplayed')]" mv-multiple property="picks" mv-initial-items="0" mv-alias="pick">
 								<button title="Remove request" mv-action="delete($this), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
 								<meta property="timestamp">
 								<meta property="played" mv-value="get(session.playedIndex,label)">
+								<meta property="declined" mv-value="get(session.declinedIndex,label)">
 							</div>
 						</div>
 					</div>
@@ -312,7 +313,15 @@
 					</div>
 				</section>
 
+				<section mv-if="count(declined)>0">
+					<h2>Declined</h2>
+					<div class="session" mv-multiple property="declined" mv-initial-items="0">
+						<div property="label"></div> 
+					</div>
+				</section>
+
 				<meta property="playedIndex" mv-value="makeIndex(played.label)">
+				<meta property="declinedIndex" mv-value="makeIndex(declined.label)">
 			</div>
 		</main>
 		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>
