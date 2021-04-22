@@ -257,6 +257,7 @@
 							<div class="[if(played,'played','unplayed')]" mv-multiple property="picks" mv-initial-items="0" mv-alias="pick">
 								<button title="Remove request" mv-action="delete($this), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
+								<meta property="timestamp">
 								<meta property="played" mv-value="get(session.playedIndex,label)">
 							</div>
 						</div>
