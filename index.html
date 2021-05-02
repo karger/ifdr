@@ -17,7 +17,7 @@
 				padding-left 1em;
 				padding-right 1em;
 			}
-			.played {
+			.played span {
 				text-decoration: line-through;
 			}
 			.hidePlayed .played {
@@ -38,7 +38,7 @@
 			#session-select {
 				float: right;
 			}
-			#my-requests {
+			.request-list {
 				line-height: 200%;
 			}
 			.break {
@@ -164,7 +164,6 @@
 				<meta property="meid" mv-value="url('meid') || if(useNameLogin,nameLoginData.name,getUid(signal))">
 				<meta property="userStorage" mv-value="if(meid,'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& meid,'none')">
 				<meta property="sessions" mv-value="getSessions(signal)">
-				<meta property="requestLimit" mv-value="session.requestLimit or 1000">
 				<div hidden>
 					[setSignal('sig'&'nal')]
 					[watchSessions()]
@@ -191,6 +190,7 @@
 					[watchUsers(mysid,if(mysid='test' || !session.lookbackTime,365*24*60*60*100,session.lookbackTime))]
 					[watchFont(fontSize)]
 				</div>
+				<meta property="requestLimit" mv-value="session.requestLimit or 1000">
 				<div class="break"></div>
 				<header>
 					<span style="float:right">Font size: <input property="fontSize" type="range" min="100" max="300" step="20" value="100"></span>
@@ -246,28 +246,55 @@
 
 						<div style="display:inline-block;">
 							<input id="request-input" list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
-							<meta property="selectionPlayed" mv-value="get(session.playedIndex,selection) or get(session.declinedIndex,selection)">
-							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label) or count(picks)>=util.requestLimit]">[if(selectionPlayed,'played','request')]</button>
+							<meta property="selectionPlayed" mv-value="getIndex(session.playedIndex,selection) or getIndex(session.declinedIndex,selection)">
+							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label) or count(picks)>=requestLimit]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
-						
-						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been accepted.</div>
-						<div mv-if="count(picks)>=util.requestLimit">Maximum request limit reached</div>
-						<div id="my-requests">
-							<div class="[if(played or declined,'played','unplayed')]" mv-multiple property="picks" mv-initial-items="0" mv-alias="pick">
-								<button title="Remove request" mv-action="delete($this), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
+
+							<div hidden mv-multiple property="picks" mv-initial-items="0">
 								<span property="label"></span>
 								<meta property="timestamp">
-								<meta property="played" mv-value="get(session.playedIndex,label)">
-								<meta property="declined" mv-value="get(session.declinedIndex,label)">
+								<meta property="played" mv-value="!!getIndex(session.playedIndex,label)">
+								<meta property="declined" mv-value="!!getIndex(session.declinedIndex,label)">
+								<meta property="resolved" mv-value="played or declined">
+								<meta property="current" mv-value="timestamp > session.timeout">
+								<meta property="eligible" mv-value="current and not(resolved)">
+							</div>
+							
+						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been accepted or declined.</div>
+						<div mv-if="count(picks)>=requestLimit">Maximum request limit reached</div>
+						<div class="request-list">
+							<div class="[if(resolved,'played','unplayed')]" mv-multiple property="currentPicks" mv-initial-items="0" mv-value="picks where picks.current">
+								<button mv-if="oldestPick<session.timeout" title="Demote request" mv-action="set(picks.timestamp where picks.label=label,oldestPick-1), if(checkedIn || noCheckout, set(checkInTime,+$now))">&darr;</button>
+								<button title="Remove request" mv-action="delete(picks where picks.label=label), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
+								<span property="label"></span>
+								<meta property="timestamp">
+								<meta property="played">
+								<meta property="declined">
+								<meta property="resolved">
 							</div>
 						</div>
+
+						<div class="request-list hide show-if-[count(pastRequests)>0]">
+							<h3>Past Requests</h3>
+							<div class="[if(resolved,'played','unplayed')]" property="pastRequests" mv-multiple mv-initial-items="0" mv-value="picks where not(picks.current)">
+								<button mv-if="oldestPick<session.timeout" title="Renew request" mv-action="set(picks.timestamp where picks.label=label,1*$now), if(checkedIn || noCheckout, set(checkInTime,+$now))">&uarr;</button>
+								<button title="Remove request" mv-action="delete(picks where picks.label=label), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
+								<span property="label"></span>
+								<meta property="timestamp">
+								<meta property="played">
+								<meta property="declined">
+								<meta property="resolved">
+							</div>
+						</div>
+
+
 					</div>
 				</section>
 
-				<section>
+				<section class="show-if-[!!user.mysid]">
 					<h2>Everyone's Requests</h2>
-						<div hidden> <label><input type="checkbox" property="showPlayed"> Show accepted</label></div>
+						<div> <label><input type="checkbox" property="showPlayed"> Show resolved</label></div>
 
 						<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>
@@ -275,7 +302,7 @@
 							<th>Dance</th>
 							<th>Count</th>
 						</tr>
-						<tr class="request [if(get(session.playedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal,picks),'-count','+label')">
+						<tr class="request [if(getIndex(session.playedIndex,label) or getIndex(session.declinedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal,picks),'-count','+label')">
 							<td><button mv-class="show-logged-in" title="add request" mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">+</button>
 							<td class="r-label"><span property="label"></span>
 							<td class="r-count"><span property="count"></span>
@@ -297,12 +324,18 @@
 				 >
 				<meta property="pushOutTimes" mv-multiple mv-initial-items="0">
 				<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
-				<meta property="duration">
+				<meta property="requestLimit" mv-default="1000">
+				<meta property="playedIndex" mv-value="makeIndex(played.label)">
+				<meta property="declinedIndex" mv-value="makeIndex(declined.label)">
+				<meta property="lookbackTime" mv-default="6*24*60*60*1000">
+				<meta property="thisMinute" mv-value="round($now/60000)*60000">
+				<meta property="timeout" mv-value="thisMinute-lookbackTime">  <!--when requests time out-->
+				
 				<div hidden property="users" mv-multiple class="[if(not(active),'inactive','')]"
 					 mv-value="getUsers(util.signal)">
 					<!--mv-value="testing.users"-->
 					<meta property="uid">
-					<meta property="pushOut" mv-value="get(pushOutIndex,uid)">
+					<meta property="pushOut" mv-value="getIndex(pushOutIndex,uid)">
 					<meta property="active" mv-value="if(!pushOut,true,(checkInTime > pushOut.time))">
 				</div>
 
@@ -320,8 +353,6 @@
 					</div>
 				</section>
 
-				<meta property="playedIndex" mv-value="makeIndex(played.label)">
-				<meta property="declinedIndex" mv-value="makeIndex(declined.label)">
 			</div>
 		</main>
 		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>

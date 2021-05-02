@@ -275,6 +275,10 @@
 	return map;
     }
 
+    getIndex = function(o,key) {
+	return o.hasOwnProperty(key) ? o[key] : undefined;
+    }
+    
     lookup = function(index, key, def) {
 	if (!!index && index.hasOwnProperty(key)) {
 	    return index[key]
