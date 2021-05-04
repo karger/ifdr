@@ -287,6 +287,10 @@
 	}
     }
 
+    rest = function(n, arr=n) {
+	return arr.slice(arguments.length > 1 ? n : 1);
+    }
+    
     window.addEventListener('load', ()=> {
 	document.body.addEventListener('focusin', (e)=> {
 	    if (e.target.matches('.pending-delete')) {

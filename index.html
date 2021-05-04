@@ -247,26 +247,28 @@
 						<div style="display:inline-block;">
 							<input id="request-input" list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
 							<meta property="selectionPlayed" mv-value="getIndex(session.playedIndex,selection) or getIndex(session.declinedIndex,selection)">
-							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label) or count(picks)>=requestLimit]">[if(selectionPlayed,'played','request')]</button>
+							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label)]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 
-							<div hidden mv-multiple property="picks" mv-initial-items="0">
-								<span property="label"></span>
-								<meta property="timestamp">
-								<meta property="played" mv-value="!!getIndex(session.playedIndex,label)">
-								<meta property="declined" mv-value="!!getIndex(session.declinedIndex,label)">
-								<meta property="resolved" mv-value="played or declined">
-								<meta property="current" mv-value="timestamp > session.timeout">
-								<meta property="eligible" mv-value="current and not(resolved)">
-							</div>
-							
 						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been accepted or declined.</div>
-						<div mv-if="count(picks)>=requestLimit">Maximum request limit reached</div>
+
+						<div hidden mv-multiple property="picks" mv-initial-items="0">
+							<span property="label"></span>
+							<meta property="timestamp">
+							<meta property="played" mv-value="!!getIndex(session.playedIndex,label)">
+							<meta property="declined" mv-value="!!getIndex(session.declinedIndex,label)">
+							<meta property="resolved" mv-value="played or declined">
+							<meta property="current" mv-value="timestamp > session.timeout">
+							<meta property="eligible" mv-value="current and not(resolved)">
+						</div>
+						<meta property="currentList" mv-value="sort(picks where current,'+resolved','-timestamp')">
+						<meta property="oldestCurrent" mv-value=min(currentList.timestamp)>
+						
 						<div class="request-list">
-							<div class="[if(resolved,'played','unplayed')]" mv-multiple property="currentPicks" mv-initial-items="0" mv-value="picks where picks.current">
-								<button mv-if="oldestPick<session.timeout" title="Demote request" mv-action="set(picks.timestamp where picks.label=label,oldestPick-1), if(checkedIn || noCheckout, set(checkInTime,+$now))">&darr;</button>
-								<button title="Remove request" mv-action="delete(picks where picks.label=label), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
+							<div class="[if(resolved,'played','unplayed')]" mv-multiple property="topPicks" mv-value="sort(first(requestLimit,currentList),'-timestamp')">
+								<button mv-if="count(picks.eligible)>requestLimit" title="Demote request" mv-action="set(picks.timestamp where picks.label=label,oldestCurrent-1), if(checkedIn || noCheckout, set(checkInTime,+$now))">&darr;</button>
+								<button title="Remove request" mv-action="set(picks.timestamp where picks.label=label, session.timeout), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
 								<meta property="timestamp">
 								<meta property="played">
@@ -275,10 +277,26 @@
 							</div>
 						</div>
 
+						<div class="request-list hide show-if-[count(overflowPicks) > 0]">
+							<h3>Overflow Requests</h3>
+							<div>(Request limit is [session.requestLimit])</div>
+							<div class="request-list">
+								<div class="[if(resolved,'played','unplayed')]" mv-multiple property="overflowPicks" mv-value="sort(rest(requestLimit,currentList),'-timestamp')">
+									<button title="Promote request" mv-action="set(picks.timestamp where picks.label=label,+$now), if(checkedIn || noCheckout, set(checkInTime,+$now))">&uarr;</button>
+									<button title="Remove request" mv-action="set(picks.timestamp where picks.label=label, session.timeout), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
+									<span property="label"></span>
+									<meta property="timestamp">
+									<meta property="played">
+									<meta property="declined">
+									<meta property="resolved">
+								</div>
+							</div>
+						</div>
+						
 						<div class="request-list hide show-if-[count(pastRequests)>0]">
 							<h3>Past Requests</h3>
-							<div class="[if(resolved,'played','unplayed')]" property="pastRequests" mv-multiple mv-initial-items="0" mv-value="picks where not(picks.current)">
-								<button mv-if="oldestPick<session.timeout" title="Renew request" mv-action="set(picks.timestamp where picks.label=label,1*$now), if(checkedIn || noCheckout, set(checkInTime,+$now))">&uarr;</button>
+							<div class="[if(resolved,'played','unplayed')]" property="pastRequests" mv-multiple mv-value="picks where not(picks.current)">
+								<button title="Renew request" mv-action="set(picks.timestamp where picks.label=label,1*$now), if(checkedIn || noCheckout, set(checkInTime,+$now))">&uarr;</button>
 								<button title="Remove request" mv-action="delete(picks where picks.label=label), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
 								<meta property="timestamp">
@@ -287,7 +305,6 @@
 								<meta property="resolved">
 							</div>
 						</div>
-
 
 					</div>
 				</section>
