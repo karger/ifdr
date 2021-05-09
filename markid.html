@@ -139,7 +139,7 @@
 				<meta property="useNameLogin" mv-default="[false]">
 				<div property="nameLoginData" id="name-login"
 					 mv-storage="local"
-					 class="hide show-if-[showNameLogin]">
+					 class="hide hide-if-[!showNameLogin]">
 					<div>Full name: <input style="width: 20em" property="name"
 										   ></div>
 					<meta property="uid" mv-value="name">
@@ -227,7 +227,7 @@
 
 				
 				<!--Requests-->
-				<section class="hide show-if-[mysid and session.meIsMarkid]">
+				<section class="hide-if-[!mysid or !session.meIsMarkid]">
 					<div>
 						<h2>Requests</h2>
 					</div>
@@ -275,14 +275,14 @@
 							<td class="visible-[showTimes]">
 								<meta property="timestamp">
 								<span class="r-time">[duration(thisMinute-timestamp)]</span>
-							<td class="show-if-[showNames]">
+							<td class="hide-if-[!showNames]">
 								<span mv-multiple property="names"></span>
 						</tr>
 					</table>
 				</section>
 			</div>
 
-			<div class="hide show-if-[not(not(mysid))]"
+			<div class="hide-if-[not(mysid)]"
 				 mv-app="session" mv-bar="none"
 				 mv-firebase="realtime"
 				 mv-plugins="firebase-firestore"
@@ -309,24 +309,30 @@
 					<meta property="nonce">
 				</div>
 
-				<section id="configure" class="hide show-if-[util.configure and meIsMarkid]">
+				<section id="configure" class="hide-if-[not(util.configure and meIsMarkid)]">
 				  <h2>Configure</h2>
 				  <main>
 				  <section>
 					<h3>Session Settings</h3>
 
 					<div><b>Session name:</b>
-							<input property="name" mv-default="A Session"></div>
+							<span mv-mode="edit" property="name" mv-default="A Session"></span></div>
 					<div><b>Zoom link:</b>
-						<input property="zoomLink"></div>
+						<span mv-mode="edit" property="zoomLink"></span></div>
 					<div>Request app direct link: <a href="./?session=[requests.mysid]">[name]</a></div>
+
+					<h4>User Settings</h4>
 					<div><label><input type="checkbox" property="zoom">Require Zoom names</label></div>
 					<div><label><input type="checkbox" property="noCheckout" mv-default="false">Disable checkin/checkout option in request app</label></div>
+
+					<h4>Markid Settings</h4>
 					<div><label><input type="checkbox" property="hideOptions">Hide markid options</label></div>
 					<div><label><input type="checkbox" property="showMarkid">Show Markid assigned to a dance</label></div>
 					<div><label><input type="checkbox" property="openMarkid">Anyone can markid</label></div>
 					<div mv-if="openMarkid"><label><input type="checkbox" property="anonymousMarkid">&hellip; without Google sign-in</label></div>
 					<div mv-if="!openMarkid"><label><input type="checkbox" mv-storage="none" property="addMarkid">Add/remove markidim</label></div>
+
+					<h4>Request List Settings</h4>
 					Ignore requests older than: <select property="lookbackChoice" mv-default="[6*24*60*60*1000]">
 						<option value="[30*60*1000]">past half hour</option>
 						<option value="[1*60*60*1000]">past hour</option>
@@ -340,22 +346,22 @@
 						<option value="[10*365*24*60*60*1000]">all</option>
 						<option value="date">specific date</option>
 					</select>
-					<div  mv-if="lookbackChoice='date'">
+					<span  mv-if="lookbackChoice='date'">
 					<input type="datetime-local"
 						   property="customStart"
 						   mv-default="[date($startup-7*24*60*60*1000)]"
 						   mv-storage="inherit">
-					</div>
+					</span>
 					<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,lookbackChoice)" mv-storage="inherit">
 
-					<div> <label><input type="checkbox" property="showPlayed">Include accepted dances in Requests</label></div>
 					<div>Max requests per user: <input property="requestLimit" type="number" min="0" max="1000"></div>
+					<div> <label><input type="checkbox" property="showPlayed">Include accepted dances in Requests list</label></div>
 					<div><input type="checkbox" property="enableDeclines"> Dances can be declined</div>
 				  </section>
 				  <section>
 				    <h3>Markidim</h3>
 				    <table>
-				      <tr mv-multiple mv-group mv-value="markidim">
+				      <tr mv-multiple mv-value="markidim">
 					<td><button mv-action="delete(markidim where markidim.uid=uid)">X</button></td>
 					<td><meta property="uid"><span property="name"></span></td>
 				      </tr>
@@ -365,17 +371,17 @@
 				</section>
 				
 				<!--Playlist-->
-				<section class="hide show-if-[meIsMarkid]" style="clear: both">
+				<section class="hide-if-[!meIsMarkid]" style="clear: both">
 					<h2>Accepted</h2>
 
 					<table class="dance-table">
-						<tr mv-if="count(played)>0"><th></th><th class="dance-label">Dance</th><th class="show-if-[showMarkid]">Assigned markid</th><th hidden>Notes</th></tr>
+						<tr mv-if="count(played)>0"><th></th><th class="dance-label">Dance</th><th class="hide-if-[!showMarkid]">Assigned markid</th><th hidden>Notes</th></tr>
 						<tr class="playlist [if(myPlay and showMarkid,'my-play')]" mv-multiple property="played" mv-initial-items="0">
 							<td><button mv-action="delete($this)">X</button></td>
 							<td><span property="label"></span>
 								<meta property="timestamp">
 								<meta property="myPlay" mv-value="markid=util.me.name"></td>
-							<td class="show-if-[showMarkid]">
+							<td class="hide-if-[!showMarkid]">
 								<input class="pending-delete" list="markidList"
 									   property="markid"></td>
 							<td mv-mode="edit"><span property="notes" mv-mode="edit"></span></td>
@@ -394,7 +400,7 @@
 				</section>
 
 				<!--Folks-->
-				<section class="hide show-if-[meIsMarkid]">
+				<section class="hide-if-[!meIsMarkid]">
 					<div style="clear:both">
 
 						<h2>Folks</h2>
@@ -455,7 +461,7 @@
 
 				
 				<!--Declined-->
-				<section class="hide show-if-[meIsMarkid && count(declined)>0]" style="clear: both">
+				<section class="hide-if-[!meIsMarkid || count(declined)==0]" style="clear: both">
 					<h2>Declined</h2>
 
 					<table class="dance-table">
