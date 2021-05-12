@@ -260,7 +260,7 @@
 						<tr class="request [if(played or declined,'played','unplayed')] [if(recent,'recent')]" mv-multiple
 							property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','+label')">
 							<td><span mv-if="not(played) and not(declined)">
-												<button title="mark played"
+												<button title="mark accepted"
 																mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)"
 																>accept</button>
 												<button mv-if="session.enableDeclines" title="mark declined"
@@ -285,7 +285,7 @@
 			<div class="hide-if-[not(mysid)]"
 				 mv-app="session" mv-bar="none"
 				 mv-firebase="realtime"
-				 mv-plugins="firebase-firestore"
+				 mv-plugins="firebase-firestore sort"
 				 mv-autosave="2"
 				 mv-source="[util.sessionStore]"
 				 mv-storage="[if(util.me.uid,util.sessionStore,'')]"
@@ -443,7 +443,18 @@
 								</td>
 								<td><span mv-if="showActivity and active">[duration(thisMinute-checkInTime)] ago</span></td>
 								<td>
-									<span mv-if="showRequests"><span mv-multiple mv-value="picks.label where not(has(label,playedIndex))"></span></span>
+									<div hidden property="picks" mv-multiple>
+										<meta property="label">
+										<meta property="timestamp">
+										<meta property="played" mv-value="!!lookup(session.playedIndex,label)">
+										<meta property="declined" mv-value="!!lookup(session.declinedIndex,label)">
+										<meta property="resolved" mv-value="played or declined">
+										<meta property="current" mv-value="timestamp > session.timeout">
+									</div>
+									<meta property="currentList" mv-multiple mv-value="sort(picks where current,'+resolved','-timestamp')">
+									<meta property="topPicks" mv-multiple mv-value="sort(first(requestLimit,currentList),'-timestamp')">
+
+									<span mv-if="showRequests"><span mv-multiple mv-value="topPicks.label where not(has(label,playedIndex))"></span></span>
 							</tr>
 						</table>
 

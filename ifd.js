@@ -156,7 +156,7 @@
 		if (!deepEqual(users,oldUsers)) {
 //		    sendNotify("Requests have changed");
 		}
-		mergePicks(users, true);  //hack to overcome background update failure in mavo
+//		mergePicks(users, true);  //hack to overcome background update failure in mavo
 		signal();
 		return 0;
 	    };
@@ -199,8 +199,8 @@
 	let requestMap = {}, newRequests=[];
 	users?.forEach((u) => {
 	    if (u) {
-		let {name, uid, checkInTime, picks=[]}=u;
-		picks.forEach(({label,timestamp=0}) => {
+		let {name, uid, checkInTime, topPicks=[]}=u;
+		topPicks.forEach(({label,timestamp=0}) => {
 		    if (!requestMap[label]) {
 			requestMap[label] = {label: label, count: 0, timestamp: 0, names: [], uids: {}};
 		    }
@@ -273,10 +273,6 @@
 	    })
 	}
 	return map;
-    }
-
-    getIndex = function(o,key) {
-	return o.hasOwnProperty(key) ? o[key] : undefined;
     }
     
     lookup = function(index, key, def) {

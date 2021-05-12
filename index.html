@@ -246,7 +246,7 @@
 
 						<div style="display:inline-block;">
 							<input id="request-input" list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
-							<meta property="selectionPlayed" mv-value="getIndex(session.playedIndex,selection) or getIndex(session.declinedIndex,selection)">
+							<meta property="selectionPlayed" mv-value="lookup(session.playedIndex,selection) or lookup(session.declinedIndex,selection)">
 							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label)]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
@@ -256,11 +256,11 @@
 						<div hidden mv-multiple property="picks" mv-initial-items="0">
 							<span property="label"></span>
 							<meta property="timestamp">
-							<meta property="played" mv-value="!!getIndex(session.playedIndex,label)">
-							<meta property="declined" mv-value="!!getIndex(session.declinedIndex,label)">
+							<meta property="played" mv-value="!!lookup(session.playedIndex,label)">
+							<meta property="declined" mv-value="!!lookup(session.declinedIndex,label)">
 							<meta property="resolved" mv-value="played or declined">
-							<meta property="current" mv-value="timestamp > session.timeout">
-							<meta property="eligible" mv-value="current and not(resolved)">
+							<meta property="current" mv-value="timestamp > session.timeout" mv-storage="none">
+							<meta property="eligible" mv-value="current and not(resolved)" mv-storage="none">
 						</div>
 						<meta property="currentList" mv-value="sort(picks where current,'+resolved','-timestamp')">
 						<meta property="oldestCurrent" mv-value=min(currentList.timestamp)>
@@ -271,8 +271,6 @@
 								<button title="Remove request" mv-action="set(picks.timestamp where picks.label=label, session.timeout), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
 								<meta property="timestamp">
-								<meta property="played">
-								<meta property="declined">
 								<meta property="resolved">
 							</div>
 						</div>
@@ -286,8 +284,6 @@
 									<button title="Remove request" mv-action="set(picks.timestamp where picks.label=label, session.timeout), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 									<span property="label"></span>
 									<meta property="timestamp">
-									<meta property="played">
-									<meta property="declined">
 									<meta property="resolved">
 								</div>
 							</div>
@@ -300,8 +296,6 @@
 								<button title="Remove request" mv-action="delete(picks where picks.label=label), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
 								<meta property="timestamp">
-								<meta property="played">
-								<meta property="declined">
 								<meta property="resolved">
 							</div>
 						</div>
@@ -319,7 +313,7 @@
 							<th>Dance</th>
 							<th>Count</th>
 						</tr>
-						<tr class="request [if(getIndex(session.playedIndex,label) or getIndex(session.declinedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal,picks),'-count','+label')">
+						<tr class="request [if(lookup(session.playedIndex,label) or lookup(session.declinedIndex,label),'played','unplayed')]" mv-multiple property="requests" mv-value="sort(mergePicks(session.users where active,util.signal,picks),'-count','+label')">
 							<td><button mv-class="show-logged-in" title="add request" mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">+</button>
 							<td class="r-label"><span property="label"></span>
 							<td class="r-count"><span property="count"></span>
@@ -352,7 +346,7 @@
 					 mv-value="getUsers(util.signal)">
 					<!--mv-value="testing.users"-->
 					<meta property="uid">
-					<meta property="pushOut" mv-value="getIndex(pushOutIndex,uid)">
+					<meta property="pushOut" mv-value="lookup(pushOutIndex,uid)">
 					<meta property="active" mv-value="if(!pushOut,true,(checkInTime > pushOut.time))">
 				</div>
 
