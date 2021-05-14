@@ -349,7 +349,7 @@
 					<span  mv-if="lookbackChoice='date'">
 					<input type="datetime-local"
 						   property="customStart"
-						   mv-default="[date($startup-7*24*60*60*1000)]"
+						   mv-default="[$startup-7*24*60*60*1000]"
 						   mv-storage="inherit">
 					</span>
 					<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,lookbackChoice)" mv-storage="inherit">

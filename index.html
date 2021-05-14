@@ -348,6 +348,16 @@
 					<meta property="uid">
 					<meta property="pushOut" mv-value="lookup(pushOutIndex,uid)">
 					<meta property="active" mv-value="if(!pushOut,true,(checkInTime > pushOut.time))">
+					<div property="picks" mv-multiple>
+						<meta property="label">
+						<meta property="timestamp">
+						<meta property="played" mv-value="!!lookup(session.playedIndex,label)">
+						<meta property="declined" mv-value="!!lookup(session.declinedIndex,label)">
+						<meta property="resolved" mv-value="played or declined">
+						<meta property="current" mv-value="timestamp > session.timeout">
+					</div>
+					<meta property="currentList" mv-multiple mv-value="sort(picks where current,'+resolved','-timestamp')">
+					<meta property="topPicks" mv-multiple mv-value="sort(first(requestLimit,currentList),'-timestamp')">
 				</div>
 
 				<section>
