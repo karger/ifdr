@@ -345,15 +345,22 @@
 						<option value="[30*24*60*60*1000]">past month</option>
 						<option value="[365*24*60*60*1000]">past year</option>
 						<option value="[10*365*24*60*60*1000]">all</option>
+						<option value="week">Weekly timeout</option>
 						<option value="date">specific date</option>
 					</select>
+					<span mv-if="lookbackChoice='week'">
+					  <input type="datetime-local" property="weekdayChoice" type="datetime-local" mv-default="[thisMinute-2*24*60*60*1000]">
+					  [weekday(weekdayChoice,'name')]s at [time(weekdayChoice)]
+					  <meta property="weekMs" mv-value="7*24*60*60*1000">
+					  <meta property="weekTimeout" mv-value="weekdayChoice+weekMs*floor((thisMinute-weekdayChoice)/weekMs)"> 
+					</span> 
 					<span  mv-if="lookbackChoice='date'">
-					<input type="datetime-local"
-						   property="customStart"
-						   mv-default="[$startup-7*24*60*60*1000]"
-						   mv-storage="inherit">
+					  <input type="datetime-local"
+						 property="customStart"
+						 mv-default="[$startup-7*24*60*60*1000]"
+						 mv-storage="inherit">
 					</span>
-					<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,lookbackChoice)" mv-storage="inherit">
+					<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,if(lookbackChoice='week',thisMinute-weekTimeout,lookbackChoice))" mv-storage="inherit">
 
 					<div>Max requests per user: <input property="requestLimit" type="number" min="0" max="1000"></div>
 					<div> <label><input type="checkbox" property="showPlayed">Include accepted dances in Requests list</label></div>
