@@ -12,7 +12,9 @@
     });
     
     Promise.all([Mavo.inited,firebaseReady]).then(([m,fb])=> {
-	fb.auth().onAuthStateChanged(signal)
+	let session = Mavo.get(document.querySelector('[mv-app=session]'));
+	afterNap(()=>{console.log('woke '+(new Date()).toLocaleTimeString()); session.load()})
+	fb.auth().onAuthStateChanged(signal);
     });
 
     let requestInput = document.getElementById("request-input")
@@ -42,11 +44,23 @@
 	}
 			 );
     }
+
+    let afterNap = function(f, nap = 10000) {
+	let lastTime = Date.now();
+	let inner = function() {
+	    if (Date.now()-lastTime > nap) {
+		f();
+	    }
+	    lastTime=Date.now();
+	}
+	setInterval(inner, 100);
+    }
     
     let signal = function () {
 	if (signal.ready) {
 	    signal.ready=false;
 	    setTimeout(() => {
+		console.log('signal');
 		signal.node?.render(signal.counter++);
 		signal.ready=true;
 	    },
@@ -255,7 +269,6 @@
     }
 
     getSessions = function() {
-	console.log('getSessions');
  	return JSON.parse(JSON.stringify(sessions));
     }
 
