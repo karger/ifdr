@@ -370,7 +370,7 @@
 				    <h3>Markidim</h3>
 				    <table>
 				      <tr mv-multiple mv-value="markidim">
-					<td><button mv-action="delete(markidim where markidim.uid=uid)">X</button></td>
+					<td><button mv-action="delete(markidim where uid=uid)">X</button></td>
 					<td><meta property="uid"><span property="name"></span></td>
 				      </tr>
 				    </table>
@@ -441,7 +441,7 @@
 									<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
                                                                   </span>
 									<button mv-action="add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in markidim.uid)">Make Markid</button>
-									<button mv-action="delete(markidim where markidim.uid=uid)" mv-if="addMarkid and (uid in markidim.uid) and not(uid=util.me.uid)">Remove Markid</button>
+									<button mv-action="delete(markidim where uid=uid)" mv-if="addMarkid and (uid in markidim.uid) and not(uid=util.me.uid)">Remove Markid</button>
 									<button mv-if="not(active)" title="Check in" 
 											mv-action="set(pushOutTimes, pushOutTimes where pushOutTimes.uid != uid), Mavo.all.session.expressions.update()">+</button>
 									<button mv-if="active" title="Check out"

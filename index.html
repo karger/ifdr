@@ -247,7 +247,7 @@
 						<div style="display:inline-block;">
 							<input id="request-input" list="dancelist" property="selection" mv-storage="none" size="30" placeholder="Type or choose dance name">
 							<meta property="selectionPlayed" mv-value="lookup(session.playedIndex,selection) or lookup(session.declinedIndex,selection)">
-							<button id="request-button" mv-action="if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed or (selection in picks.label)]">[if(selectionPlayed,'played','request')]</button>
+							<button id="request-button" mv-action="if(selection,delete(picks where label=selection)),if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 
@@ -293,7 +293,7 @@
 							<h3>Past Requests</h3>
 							<div class="[if(resolved,'played','unplayed')]" property="pastRequests" mv-multiple mv-value="picks where not(picks.current)">
 								<button title="Renew request" mv-action="set(picks.timestamp where picks.label=label,1*$now), if(checkedIn || noCheckout, set(checkInTime,+$now))">&uarr;</button>
-								<button title="Remove request" mv-action="delete(picks where picks.label=label), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
+								<button title="Remove request" mv-action="delete(picks where label=label), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
 								<meta property="timestamp">
 								<meta property="resolved">
