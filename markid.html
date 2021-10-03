@@ -107,7 +107,7 @@
 
 		<!--login/utility-->
 		<div mv-app="util" mv-storage="none"
-			 mv-firebase="auth realtime"
+			 mv-firebase="auth realtime skip-unsaved-data-warning"
 			 mv-plugins="firebase-firestore"
 			 mv-bar="status login logout"
 			 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
@@ -284,7 +284,7 @@
 
 			<div class="hide-if-[not(mysid)]"
 				 mv-app="session" mv-bar="none"
-				 mv-firebase="realtime"
+				 mv-storage-options="realtime skip-unsaved-data-warning"
 				 mv-plugins="firebase-firestore sort"
 				 mv-autosave="2"
 				 mv-source="[util.sessionStore]"

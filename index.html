@@ -179,7 +179,7 @@
 			
 			<div
 				mv-app="user"
-				mv-firebase="realtime"
+				mv-storage-options="realtime skip-unsaved-data-warning"
 				mv-bar="none"
 				mv-plugins="firebase-firestore sort"
 				mv-autosave="2"
@@ -220,7 +220,6 @@
 						  mv-value="if(util.useNameLogin,util.nameLoginData,getProfile(signal))">
 					<meta property="name" mv-value="if(me,me.name,'unnamed user')" mv-storage="inherit">
 					<meta property="email" mv-value="if(me,me.email)" mv-storage="inherit">
-
 
 					<div class="show-logged-in">
 						
@@ -326,7 +325,7 @@
 
 			<div mv-if="user.mysid"
 				 mv-app="session"
-				 mv-firebase="realtime"
+				 mv-storage-options="realtime skip-unsaved-data-warning"
 				 mv-plugins="firebase-firestore"
 				 mv-storage="none"
 				 mv-bar="none"
