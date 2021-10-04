@@ -162,7 +162,8 @@
 
 				<meta id="signal" property="signal">
 				<meta property="meid" mv-value="url('meid') || if(useNameLogin,nameLoginData.name,getUid(signal))">
-				<meta property="userStorage" mv-value="if(meid,'https://mavo-cd7c3.firebaseio.com/ifdr-user/'& meid,'none')">
+				<meta property="path" mv-value="if(url('favorites'),'ifdr-favorite','ifdr-user')">
+				<meta property="userStorage" mv-value="if(meid,'https://mavo-cd7c3.firebaseio.com/' & path & '/' & meid,'none')">
 				<meta property="sessions" mv-value="getSessions(signal)">
 				<div hidden>
 					[setSignal('sig'&'nal')]
@@ -187,7 +188,7 @@
 				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<div hidden>
-					[watchUsers(mysid,if(mysid='test' || !session.lookbackTime,365*24*60*60*100,session.lookbackTime))]
+					[watchUsers(mysid,if(mysid='test' || !session.lookbackTime,365*24*60*60*100,session.lookbackTime),url('favorites'))]
 					[watchFont(fontSize)]
 				</div>
 				<meta property="requestLimit" mv-value="session.requestLimit or 1000">
