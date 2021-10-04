@@ -294,7 +294,7 @@
 				 >
 				<div style="display:none">
 					[setSignal('sig'&'nal')]
-					[watchUsers(requests.mysid,lookbackTime,url('favorites'))]
+					[watchUsers(requests.mysid,lookbackTime,(search(url(),'favorites')>0))]
 					[watchSessions(lookbackTime)]
 					<div mv-multiple property="markidim" mv-initial-items="0">
 						<meta property="uid"> <meta property="name">
