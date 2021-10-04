@@ -292,7 +292,7 @@
 							<h3>Past Requests</h3>
 							<div class="[if(resolved,'played','unplayed')]" property="pastRequests" mv-multiple mv-value="picks where not(picks.current)">
 								<button title="Renew request" mv-action="set(picks.timestamp where picks.label=label,1*$now), if(checkedIn || noCheckout, set(checkInTime,+$now))">&uarr;</button>
-								<button title="Remove request" mv-action="delete(picks where label=label), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
+								<button title="Remove request" mv-action="delete(picks where picks.label=label), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
 								<meta property="timestamp">
 								<meta property="resolved">
