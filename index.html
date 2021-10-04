@@ -197,10 +197,12 @@
 					
 					<ol mv-if="util.help">
 						<h2>Help</h2>
-						<li>Log in at the top</li>
-						<li>Choose a session</li>
+						<li>Log in at the top (optional Google login is used only for security; nothing is tracked)</li>
+						<li mv-if="!url('session')">Choose a session</li>
 						<li mv-if="!session.noCheckout">Click the Check in button to let the Markid know you're dancing</li>
-						<li>Request dances</li>
+						<li>Pick dances in the search box, and click the <button>request</button> button</li>
+						<li>Click the <button>X</button> to remove a pick
+						<li>You can also copy other people's picks, by clicking on the <button>+</button> beside the dance name
 						<li mv-if="!session.noCheckout">Check out if you step away, so they don't play your requests at the wrong time.  Your requests will be saved, but they won't show in the request list until you check in again.</li>
 					</ol>
 
@@ -241,7 +243,7 @@
 				<section class="show-logged-in">
 				  [session.announcement]
 					<div>
-						<h2>My <span mv-if="!checkedIn">Planned</span> Requests</h2>
+						<h2>My <span mv-if="!checkedIn">Planned</span> Picks</h2>
 
 
 						<div style="display:inline-block;">
@@ -290,7 +292,7 @@
 						</div>
 						
 						<div class="request-list hide show-if-[count(pastRequests)>0]">
-							<h3>Past Requests</h3>
+							<h3>Past Picks</h3>
 							<div class="[if(resolved,'played','unplayed')]" property="pastRequests" mv-multiple mv-value="picks where not(picks.current)">
 								<button title="Renew request" mv-action="set(picks.timestamp where picks.label=label,1*$now), if(checkedIn || noCheckout, set(checkInTime,+$now))">&uarr;</button>
 								<button title="Remove request" mv-action="delete(picks where picks.label=label), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
@@ -304,7 +306,7 @@
 				</section>
 
 				<section class="show-if-[!!user.mysid]">
-					<h2>Everyone's Requests</h2>
+					<h2>Everyone's Picks</h2>
 						<div> <label><input type="checkbox" property="showPlayed"> Show resolved</label></div>
 
 						<table class="request-table [if(showPlayed, 'showPlayed', 'hidePlayed')]">
@@ -326,7 +328,7 @@
 
 			<div mv-if="user.mysid"
 				 mv-app="session"
-				 mv-firebase="realtime"
+				 mv-firebase="realtime skip-unsaved-data-warning"
 				 mv-plugins="firebase-firestore"
 				 mv-storage="none"
 				 mv-bar="none"
