@@ -239,6 +239,7 @@
 				<div class="break"></div>
 					
 				<section class="show-logged-in">
+				  [session.announcement]
 					<div>
 						<h2>My <span mv-if="!checkedIn">Planned</span> Requests</h2>
 
@@ -325,7 +326,7 @@
 
 			<div mv-if="user.mysid"
 				 mv-app="session"
-				 mv-storage-options="realtime skip-unsaved-data-warning"
+				 mv-storage-options="realtime"
 				 mv-plugins="firebase-firestore"
 				 mv-storage="none"
 				 mv-bar="none"
@@ -359,7 +360,7 @@
 					<meta property="topPicks" mv-multiple mv-value="sort(first(requestLimit,currentList),'-timestamp')">
 				</div>
 
-				<section>
+				<section mv-if="count(played)>0">
 					<h2>Accepted</h2>
 					<div class="session" mv-multiple property="played" mv-initial-items="0">
 						<div property="label"></div> 
