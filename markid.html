@@ -362,7 +362,8 @@
 					</span>
 					<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,if(lookbackChoice='week',thisMinute-weekTimeout,lookbackChoice))" mv-storage="inherit">
 
-					<div>Max requests per user: <input property="requestLimit" type="number" min="0" max="1000"></div>
+					<div>Max requests per user: <input property="requestInput" type="number" min="0" max="1000"></div>
+					<meta property="requestLimit" mv-value="if(requestInput='',100,requestInput)" mv-storage="inherit">
 					<div> <label><input type="checkbox" property="showPlayed">Include accepted dances in Requests list</label></div>
 					<div><input type="checkbox" property="enableDeclines"> Dances can be declined</div>
 				  </section>
