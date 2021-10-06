@@ -255,7 +255,7 @@
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 
-						<div mv-if="user.mysid">If it's <span class="played">crossed out</span>, it's been accepted or declined.</div>
+						<div mv-if="user.mysid and not util.favorites">If it's <span class="played">crossed out</span>, it's been accepted or declined.</div>
 
 						<div hidden mv-multiple property="picks" mv-initial-items="0">
 							<span property="label"></span>
