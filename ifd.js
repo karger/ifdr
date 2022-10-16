@@ -180,7 +180,7 @@
 
 		if (!sid || !Number.isInteger(1*backTime)) return;
 		
-		let query = firebase.firestore().collection(favorites ? 'ifdr-favorite' :'ifdr-user')
+		let query = firebase.firestore().collection(favorites==true ? 'ifdr-favorite' :'ifdr-user')
 		    .where('mysid','==',sid)
 		    .where('checkInTime','>',Date.now()-1*backTime); //prune ancient checkins
  		watchUsers.unsubscribe = query.onSnapshot(parseQuery);
