@@ -91,7 +91,7 @@
 			.inactive {
 				text-decoration: line-through;
 			}
-			#clear {
+			.clear-button {
 				margin-top: 2em;
 			}
 			.hidePlayed .played {
@@ -346,7 +346,7 @@
 						<option value="[365*24*60*60*1000]">past year</option>
 						<option value="[10*365*24*60*60*1000]">forever</option>
 						<option value="week">Weekly timeout</option>
-						<option value="date">specific date</option>
+						<option value="date">specific date/time</option>
 					</select>
 					<span mv-if="lookbackChoice='week'">
 					  <input type="datetime-local" property="weekdayChoice" type="datetime-local" mv-default="[thisMinute-2*24*60*60*1000]">
@@ -402,7 +402,7 @@
 						</tr>
 					</table>
 
-					<button mv-if="count(played)>0" id="clear" mv-action="delete(played)">Clear playlist</button>
+					<button mv-if="count(played)>0" class="clear-button" mv-action="delete(played)">Clear playlist</button>
 					
 					<datalist id="markidList">
 						<option mv-multiple property="ownerChoice" mv-attribute="value"
@@ -468,7 +468,8 @@
 									<meta property="currentList" mv-multiple mv-value="sort(picks where current,'+resolved','-timestamp')">
 									<meta property="topPicks" mv-multiple mv-value="sort(first(requestLimit,currentList),'-timestamp')">
 
-									<span mv-if="showRequests"><span mv-multiple mv-value="topPicks.label where not(has(label,playedIndex))"></span></span>
+									<span mv-if="showRequests">[topPicks.label where not(has(label,playedIndex))]</span>
+								</td>
 							</tr>
 						</table>
 
@@ -498,7 +499,7 @@
 						</tr>
 					</table>
 
-					<button mv-if="count(declined)>0" id="clear" mv-action="delete(declined)">Clear Declined</button>
+					<button mv-if="count(declined)>0" class="clear-button" mv-action="delete(declined)">Clear Declined</button>
 
 					<meta property="declinedIndex" mv-value="makeIndex(declined.label)">
 
