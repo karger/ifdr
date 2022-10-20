@@ -249,7 +249,7 @@
 
 
 						<div style="display:inline-block;">
-							<input id="request-input" list="dancelist" property="selection" mv-storage="none" size="25" placeholder="Type or choose dance name">
+							<input id="request-input" list="dancelist" autocapitalize="words" property="selection" mv-storage="none" size="25" placeholder="Type or choose dance name">
 							<meta property="selectionPlayed" mv-value="lookup(session.playedIndex,selection) or lookup(session.declinedIndex,selection)">
 							<button id="request-button" mv-action="if(selection,delete(picks where label=selection)),if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed]">[if(selectionPlayed,'played','request')]</button>
 							<button mv-action="set(selection,'')">clear</button>
