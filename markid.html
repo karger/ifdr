@@ -4,8 +4,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
 		<title>IFD Markid</title>
-		<script src="//get.mavo.io/stable/mavo.es5.js"></script>
-		<link rel="stylesheet" href="//get.mavo.io/stable/mavo.css">
+		<script src="//get.mavo.io/mavo.es5.js"></script>
+		<link rel="stylesheet" href="//get.mavo.io/mavo.css">
 		<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -163,6 +163,15 @@
 			</datalist>
 		</div>
 
+		<div hidden mv-app="dancedbApp" mv-storage="none" mv-source="[if(url('session'),'data-markid.csv','none')]" mv-format="csv">
+			<div property="dancedb" mv-multiple>
+				<meta property="label">
+				<meta property="Type">
+				<meta property="Choreographer">
+			</div>
+			<meta property="danceIndex" mv-value=makeIndex(dancedb,"label")>
+		</div>
+
 		<div style="position:relative">
 		<div mv-app="options" mv-storage="local" mv-bar="none" style="float:right" mv-autosave="0">
 		<div mv-if="session.meIsMarkid"><label><input type="checkbox" property="notify">Enable notification of new requests</label><span hidden>[watchNotify(notify)]</span></div>
@@ -233,11 +242,14 @@
 					</div>
 
 					<meta property="thisMinute" mv-value="round($now/60000)*60000">
+					<meta property="sortRule" mv-default="-count">
 					<table class="dance-table [if(session.showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>
 							<th><!--accept button--></th>
 							<th class="dance-label">Dance</th>
-							<th>Count</th>
+							<th mv-action="set(sortRule,'-count')">Count</th>
+							<th mv-action="set(sortRule,'-choreographer')">Choreographer</th>
+							<th mv-action="set(sortRule,'-type')">Type</th>
 							<th style="width: 13ex">
 								<label class="hide-if-[session.hideOptions and !showTimes]"
 									   ><input class="hide-if-[session.hideOptions]"
@@ -245,7 +257,7 @@
 											   mv-default="true" mv-storage="none"
 											   >When</label>
 							</th>
-							<th style="width: [if(showNames,'30ex','8ex')]">
+							<th style="padding-left: 2ex; text-align: left; width: [if(showNames,'30ex','8ex')]">
 								<label class="hide-if-[session.hideOptions and !showNames]"
 									   ><input class="hide-if-[session.hideOptions]" type="checkbox"
 											   property="showNames" mv-default="true" mv-storage="none">Who</label>
@@ -258,7 +270,7 @@
 						</tr>
 
 						<tr class="request [if(played or declined,'played','unplayed')] [if(recent,'recent')]" mv-multiple
-							property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),'-count','+label')">
+							property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),sortRule,'-count','-label')">
 							<td><span mv-if="not(played) and not(declined)">
 												<button title="mark accepted"
 																mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)"
@@ -268,15 +280,20 @@
 																>decline</button>
                     </span>
   							  <meta property="played" mv-value="lookup(session.playedIndex,label)">
-  							  <meta property="declined" mv-value="lookup(session.declinedIndex,label)">
+ 									<meta property="declined" mv-value="lookup(session.declinedIndex,label)">
+									<meta property="metadata" mv-value="lookup(dancedbApp.danceIndex,label)">
 							  <meta property="recent" mv-value="if(timestamp > thisMinute-10*60*1000,1,0)">
-							<td><span property="label"></span>
-							<td class="count-holder"><span property="count"></span>
+							<td><span property="label"></span></td>
+							<td class="count-holder"><span property="count"></span></td>
+							<td>
+								<span property="choreographer" mv-value="metadata.choreographer"></span></td>
+							<td>
+								<span property="type" mv-value="metadata.type"></span></td>
 							<td class="visible-[showTimes]">
 								<meta property="timestamp">
-								<span class="r-time">[duration(thisMinute-timestamp)]</span>
+								<span class="r-time">[duration(thisMinute-timestamp)]</span></td>
 							<td class="hide-if-[!showNames]">
-								<span mv-multiple property="names"></span>
+								<span mv-multiple property="names"></span></td>
 						</tr>
 					</table>
 				</section>
