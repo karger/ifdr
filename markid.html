@@ -263,9 +263,9 @@
 											   property="showNames" mv-default="true" mv-storage="none">Who</label>
 							</th>
 							<th style="text-align: left; width: 6ex">
-								<label class="hide-if-[session.hideOptions and !showSets]"
+								<label class="hide-if-[!session.showSets]"
 									   ><input class="hide-if-[session.hideOptions]" type="checkbox" mv-default="[session.showSets]"
-											   property="showSets" mv-default="true" mv-storage="none">Set</label>
+											   property="showSets" mv-storage="none">Set</label>
 							</th>
 
 						</tr>
@@ -333,7 +333,6 @@
 					<meta property="timeout" mv-value="thisMinute-lookbackTime">  <!--when requests time out-->
 					<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
 					<meta property="nonce">
-					<meta property="showSets" mv-default="[request.showSets]">
 				</div>
 
 				<section id="configure" class="hide-if-[not(util.configure and meIsMarkid)]">
@@ -351,7 +350,8 @@
 					<h4>User Settings</h4>
 					<div><label><input type="checkbox" property="zoom">Require Zoom names</label></div>
 					<div><label><input type="checkbox" property="noCheckout" mv-default="false">Disable checkin/checkout option in request app</label></div>
-
+					<div><label><input type="checkbox" property="showSets" mv-default="false">Let users request a specific set for a dance</label></div>
+					
 					<h4>Markid Settings</h4>
 					<div><label><input type="checkbox" property="hideOptions">Hide markid options</label></div>
 					<div><label><input type="checkbox" property="showMarkid">Show Markid assigned to a dance</label></div>
