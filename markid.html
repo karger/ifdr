@@ -262,6 +262,12 @@
 									   ><input class="hide-if-[session.hideOptions]" type="checkbox"
 											   property="showNames" mv-default="true" mv-storage="none">Who</label>
 							</th>
+							<th style="text-align: left; width: 6ex">
+								<label class="hide-if-[session.hideOptions and !showSets]"
+									   ><input class="hide-if-[session.hideOptions]" type="checkbox" mv-default="[session.showSets]"
+											   property="showSets" mv-default="true" mv-storage="none">Set</label>
+							</th>
+
 						</tr>
 
 						<tr>
@@ -270,7 +276,7 @@
 						</tr>
 
 						<tr class="request [if(played or declined,'played','unplayed')] [if(recent,'recent')]" mv-multiple
-							property="requests" mv-value="sort(mergePicks(session.users where active,util.signal),sortRule,'-count','-label')">
+							property="requests" mv-value="sort(mergePicks(condense(session.users where active,util.signal)),sortRule,'-count','-label')">
 							<td><span mv-if="not(played) and not(declined)">
 												<button title="mark accepted"
 																mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)"
@@ -278,22 +284,24 @@
 												<button mv-if="session.enableDeclines" title="mark declined"
 																mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.declined)"
 																>decline</button>
-                    </span>
+                </span>
   							  <meta property="played" mv-value="lookup(session.playedIndex,label)">
  									<meta property="declined" mv-value="lookup(session.declinedIndex,label)">
 									<meta property="metadata" mv-value="lookup(dancedbApp.danceIndex,label)">
-							  <meta property="recent" mv-value="if(timestamp > thisMinute-10*60*1000,1,0)">
+									<meta property="recent" mv-value="if(timestamp > thisMinute-10*60*1000,1,0)">
 							<td><span property="label"></span></td>
 							<td class="count-holder"><span property="count"></span></td>
 							<td>
 								<span property="choreographer" mv-value="metadata.choreographer"></span></td>
 							<td>
 								<span property="type" mv-value="metadata.type"></span></td>
-							<td class="visible-[showTimes]">
+							<td class="visible-[showTimes]"  style="padding-left: 3ex">
 								<meta property="timestamp">
 								<span class="r-time">[duration(thisMinute-timestamp)]</span></td>
-							<td class="hide-if-[!showNames]">
+							<td class="visible-[showNames]" style="width: [if(showNames,'30ex','8ex')]">
 								<span mv-multiple property="names"></span></td>
+							<td class="hide-if-[!showSets]">
+								<span style="padding-left: 3ex" mv-multiple property="requestedSets"></span></td>
 						</tr>
 					</table>
 				</section>
@@ -325,6 +333,7 @@
 					<meta property="timeout" mv-value="thisMinute-lookbackTime">  <!--when requests time out-->
 					<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
 					<meta property="nonce">
+					<meta property="showSets" mv-default="[request.showSets]">
 				</div>
 
 				<section id="configure" class="hide-if-[not(util.configure and meIsMarkid)]">
@@ -477,6 +486,7 @@
 									<div hidden property="picks" mv-multiple>
 										<meta property="label">
 										<meta property="timestamp">
+										<meta property="requestedSet">
 										<meta property="played" mv-value="!!lookup(session.playedIndex,label)">
 										<meta property="declined" mv-value="!!lookup(session.declinedIndex,label)">
 										<meta property="resolved" mv-value="played or declined">

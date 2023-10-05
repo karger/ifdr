@@ -214,14 +214,16 @@
 	users?.forEach((u) => {
 	    if (u) {
 		let {name, uid, checkInTime, topPicks=[]}=u;
-		topPicks.forEach(({label,timestamp=0}) => {
+		topPicks.forEach(({label,timestamp=0,requestedSet}) => {
 		    if (!requestMap[label]) {
-			requestMap[label] = {label: label, count: 0, timestamp: 0, names: [], uids: {}};
+			requestMap[label] = {label: label, count: 0, timestamp: 0, names: [], requestedSets: [], uids: {}};
 		    }
 		    let r=requestMap[label];
 		    if (!r.uids[uid]) {
 			r.count++;
 			r.names.push(name);
+			if (!!requestedSet) {
+			    r.requestedSets.push(requestedSet) }
 			r.uids[uid]=true;
 			if (r.timestamp < timestamp) {
 			    r.timestamp = timestamp;
@@ -229,6 +231,8 @@
 			if (r.timestamp < checkInTime) {
 			    r.timestamp = checkInTime;
 			}
+		    } else {
+			console.log("duplicate uid!");
 		    }
 		});
 	    }
@@ -298,6 +302,12 @@
 
     rest = function(n, arr=n) {
 	return arr.slice(arguments.length > 1 ? n : 1);
+    }
+
+    warn = function(condition,text) {
+	if (condition) {
+	    console.log(text);
+	}
     }
     
     window.addEventListener('load', ()=> {

@@ -41,6 +41,7 @@
 			.request-list {
 				line-height: 200%;
 			}
+			
 			.break {
 				flex-basis: 100%;
 				height: 0;
@@ -236,7 +237,7 @@
 								  mv-value="mysid and util.meid and checkInTime > (myPushOut || 0)">
 							<div mv-if="session.zoom">Please enter your zoom name: <input property="zoomName" mv-default="[me.name]"></div>
 							<div mv-if="!checkedIn">Click <button mv-action="set(checkInTime,+$now)">Check In</button> to make requests</div>
-							<div mv-if="!session.noCheckout and checkedIn">Click <button mv-action="set(checkInTime,-1)">Check Out</button> to suspend your requests while you're away</div>
+							<div mv-if="!session.noCheckout and checkedIn">Click <button mv-action="set(checkInTime,-1)">Check Out</button> to suspend your requests while you`re away</div>
 						</div>
 					</div>
 				</header>
@@ -265,6 +266,7 @@
 							<meta property="resolved" mv-value="played or declined">
 							<meta property="current" mv-value="timestamp > session.timeout" mv-storage="none">
 							<meta property="eligible" mv-value="current and not(resolved)" mv-storage="none">
+							<meta property="requestedSet" mv-default="[first(filter(topPicks, topPicks.label=label)).requestedSet]" mv-storage="inherit">
 						</div>
 						<meta property="currentList" mv-value="sort(picks where current,'+resolved','-timestamp')">
 						<meta property="oldestCurrent" mv-value=min(currentList.timestamp)>
@@ -274,6 +276,7 @@
 								<button mv-if="count(picks.eligible)>requestLimit" title="Demote request" mv-action="set(picks.timestamp where picks.label=label,oldestCurrent-1), if(checkedIn || noCheckout, set(checkInTime,+$now))">&darr;</button>
 								<button title="Remove request" mv-action="set(picks.timestamp where picks.label=label, session.timeout), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
+								<input  class="hide show-if-[session.showSets]" type="number" placeholder="set" min="1" property="requestedSet" mv-default="[first(filter(picks, picks.label=label)).requestedSet]" style="float: right; width: 3em">
 								<meta property="timestamp">
 								<meta property="resolved">
 							</div>
