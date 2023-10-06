@@ -178,6 +178,7 @@
 				<datalist id="dancelist">
 					<option mv-multiple mv-group property="dance" value="[label]"></option>
 				</datalist>
+				<meta property="danceIndex" mv-value="makeIndex(dance,'label')">
 			</div>
 			
 			<div
@@ -252,7 +253,7 @@
 						<div style="display:inline-block;">
 							<input id="request-input" list="dancelist" autocapitalize="words" property="selection" mv-storage="none" size="25" placeholder="Type or choose dance name">
 							<meta property="selectionPlayed" mv-value="lookup(session.playedIndex,selection) or lookup(session.declinedIndex,selection)">
-							<button id="request-button" mv-action="if(selection,delete(picks where label=selection)),if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed]">[if(selectionPlayed,'played','request')]</button> <
+							<button id="request-button" mv-action="if(selection,delete(picks where label=selection)),if(selection,add(group(label: selection, timestamp: 0+$now),picks)); set(selection,''); if(checkedIn || noCheckout, set(checkInTime,+$now))" disabled="[selectionPlayed]">[if(selectionPlayed,'played','request')]</button> 
 							<button mv-action="set(selection,'')">clear</button>
 						</div>
 
@@ -277,7 +278,7 @@
 								<button mv-if="count(picks.eligible)>requestLimit" title="Demote request" mv-action="set(picks.timestamp where picks.label=label,oldestCurrent-1), if(checkedIn || noCheckout, set(checkInTime,+$now))">&darr;</button>
 								<button title="Remove request" mv-action="set(picks.timestamp where picks.label=label, session.timeout), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
-								<input  class="hide show-if-[session.showSets]" type="number" placeholder="set" min="1" property="requestedSet" mv-default="[lookup(picksIndex,label).requestedSet]" style="float: right; width: 3em">
+								<input  class="hide show-if-[session.showSets && lookup(dances.danceIndex,label).type=='P']" type="number" placeholder="set" min="1" property="requestedSet" mv-default="[lookup(picksIndex,label).requestedSet]" style="float: right; width: 3em">
 								<meta property="timestamp">
 								<meta property="resolved">
 							</div>
