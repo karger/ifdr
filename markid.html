@@ -250,7 +250,7 @@
 							<th mv-action="set(sortRule,'-count')">Count</th>
 							<th mv-action="set(sortRule,'-choreographer')">Choreographer</th>
 							<th mv-action="set(sortRule,'-type')">Type</th>
-							<th style="width: 13ex">
+							<th style="width: 20ex">
 								<label class="hide-if-[session.hideOptions and !showTimes]"
 									   ><input class="hide-if-[session.hideOptions]"
 											   type="checkbox" property="showTimes"
@@ -300,7 +300,7 @@
 								<span class="r-time">[duration(thisMinute-timestamp)]</span></td>
 							<td class="visible-[showNames]" style="width: [if(showNames,'30ex','8ex')]">
 								<span mv-multiple property="names"></span></td>
-							<td class="hide-if-[!showSets]">
+							<td class="visible-[showSets]">
 								<span style="padding-left: 3ex" mv-multiple property="requestedSets"></span></td>
 						</tr>
 					</table>
