@@ -3,8 +3,8 @@
 "1_2_3, Maria",L
 100 Miles,L
 12 Ton (Shteim Esre Ton),L
-16 Malu Lana'ar,C
-16 Malu Lana'ar,P
+16 Malu Lana'ar (C),C
+16 Malu Lana'ar (P),P
 16 Tons (Sixteen Tons),L
 2 Cowboys (Jonfi John),L
 2010 Ze 10,P
@@ -14,8 +14,8 @@ A Chassene,C
 A Chorus Lane (Shurat Hamakhela),L
 A Lidl,C
 A Shtikale Broit,C
-Aba,C
-Aba,C
+Aba (Eli Segal),C
+Aba (Avi Perez),C
 Aba Gadol,C
 Aba Ganu (Yom Keff),P
 Aba Shalom Shabazi,C
@@ -32,19 +32,19 @@ Ach Sheli Mitchaten,C
 Ach Tov Le'israel,C
 Ach Ya Rab (Shiro Shel Sallah),C
 Ach Yakar,C
-Achai Bnei Teman,C
-Achai Bnei Teman,P
-Achake Lecha,C
-Achake Lecha,C
-Achake Lecha,P
+Achai Bnei Teman (C),C
+Achai Bnei Teman (P),P
+"Achake Lecha (C, Benny Levy)",C
+"Achake Lecha (C, Israel Shiker)",C
+Achake Lecha (P),P
 Achare Hashki'a Basade,P
 Acharei Hachagim,C
 Acharei Hahofa'a,P
 Acharei Shalosh Kosiyot,C
 Acharei Shehakol Yigamer,P
 Acharey Hakol At Shir,P
-Acharey Kol Hashanim,P
-Acharey Kol Hashanim,P
+Acharey Kol Hashanim (Itzik Ben Dahan),P
+Acharey Kol Hashanim (Gadi Bitton),P
 Acharit Hayamim,C
 Achat Mikulan (Hachipazon Rachok Mimeni),C
 Achat Sha'alti,C
@@ -71,11 +71,11 @@ Achre Hanetsach,P
 Achrei Shloshim Ze Yofi,P
 Achrey Esrim Shana,P
 Achron Shiraich,C
-Achshav,C
-Achshav,C
-Achshav,C
-Achshav,C
-Achshav,C
+Achshav (Dudu Barzilay),C
+Achshav (Kobi Michaeli),C
+Achshav (Yaron Malihi),C
+Achshav (Sara Kletter),C
+Achshav (American),C
 Achshav Ani Af,C
 Achshav Ani Chozer,C
 Achshav Ani Kan (Chelek Mimeni),C
@@ -114,20 +114,20 @@ Ad Hena,C
 Ad Kama Ahavtich,P
 Ad Klot,P
 Ad Klot Haneshima,C
-Ad Matai,C
-Ad Matai,C
+Ad Matai (Nona Malki),C
+Ad Matai (Yaron Malihi),C
 Ad Matai (Lev Cholech),P
 Ad Matai Elohai,C
 Ad Neshimati Ha'achrona,C
 Ad Olam,P
-Ad Or Haboker,C
-Ad Or Haboker,C
+Ad Or Haboker (Moshe Eskayo),C
+Ad Or Haboker (Yo'av Ashriel),C
 Ad She'achzor,C
 Ad Shebata,P
 Ad Sheharitspa Tipol,C
 Ad Sheharuach,C
-Ad SheHigat,P
-Ad Shehigat,P
+Ad SheHigat (Maayan Manor & Gadi Bitton),P
+Ad Shehigat (Shmulik Gov Ari),P
 Ad Shelo,P
 Ad Shenitorer,C
 Ad She'Ta'azov,P
@@ -146,8 +146,8 @@ Adam Nolad Sachkan,C
 Adam Tsover Zichronot,C
 Adama,C
 Adama Admati,P
-Adama Admati (Al Givot Sheikh Abrek),P
-Adama Admati (Al Givot Sheikh Abrek),P
+Adama Admati (Al Givot Sheikh Abrek) (Dani Dassa),P
+Adama Admati (Al Givot Sheikh Abrek) (Se'adia Amishai),P
 Adama Veshamayim,C
 Adanim,P
 Adaniya,C
@@ -164,17 +164,17 @@ Adios Muchachos,P
 Adir Adirim,C
 Admati,C
 Adon Hakol,C
-Adon Haslichot,C
-Adon Haslichot,C
-Adon Haslichot,P
+"Adon Haslichot (C, Bonny Piha, Yoram Sasson)",C
+"Adon Haslichot (C, Avner Naim)",C
+Adon Haslichot (P),P
 Adon Kimat Ugeveret Kevar (Balada Al Adon Kimat..),
 Adon Menahel,C
-Adon Olam,C
-Adon Olam,C
+Adon Olam (Gadi Bitton),C
+Adon Olam (Shlomo Maman),C
 Adoni HaShofet,P
 Adraba,C
-Af Achat,P
-Af Achat,P
+Af Achat (Eden Giliad Tzaidi),P
+Af Achat (Nourit Grinfeld & Eden Gilad Tzaidi),P
 Af Achat Acheret,P
 Af Echad,P
 Af Pa'am Lo Omer,P
@@ -184,8 +184,8 @@ Af Tsemach,C
 Afa Al Kulam,C
 Afilu (cherev),C
 Afilu She'ahavti,P
-Afilu Shesreifot,P
-Afilu Shesreifot,P
+Afilu Shesreifot (Ran Hirsh),P
+Afilu Shesreifot (Gadi Bitton),P
 Afim Alai,C
 Afous,L
 Afrita,P
@@ -207,9 +207,9 @@ Agala Retuma Lesusim,C
 Agan Hayam Hatichon,C
 Agilei Damar,P
 Agir Halay,C
-Ahalan Vesahalan,C
-Ahalan Vesahalan,C
-Ahalan Vesahalan,LK
+"Ahalan Vesahalan (C, Yaron Malihi)",C
+"Ahalan Vesahalan (C, Shmulik Gov Ari)",C
+Ahalan Vesahalan (LK),LK
 Ahalel Lecha El,C
 Ahava,P
 Ahava (Eifo At Ahavati),P
@@ -223,8 +223,8 @@ Ahava Aza,C
 Ahava Bachoresh,C
 Ahava Bageshem (Hageshem),P
 Ahava Bamidbar,P
-Ahava Bat Esrim,C
-Ahava Bat Esrim,P
+Ahava Bat Esrim (C),C
+Ahava Bat Esrim (P),P
 Ahava Bechat,C
 Ahava Bechol Safa,C
 Ahava Be'eynaich,P
@@ -243,12 +243,12 @@ Ahava Emet Pshuta,P
 Ahava Gdola,P
 Ahava Hamon,C
 Ahava Hi Perach (Ha'ahava Hi Perach),P
-Ahava Iveret,P
-Ahava Iveret,P
+Ahava Iveret (Moshany A. Shemesh),P
+Ahava Iveret (Victor Gabbay),P
 Ahava Kazo,P
 Ahava Kena,P
-Ahava Ktsara,P
-Ahava Ktsara,P
+Ahava Ktsara (Naftaly Kadosh),P
+Ahava Ktsara (Gadi Bitton),P
 Ahava Ktsara-Wh.Chair,PW
 Ahava Lanetsach,P
 Ahava Lanetsach (Ve'at Yafa Nishart Yafa),P
@@ -279,33 +279,33 @@ Ahava Tenatse'ach,C
 Ahava Tseira (Chazara Lamutav),P
 Ahava Yam Tichonit (Laila Yam Yichoni),P
 Ahava Yomyomit,C
-Ahava Zmanit,C
-Ahava Zmanit,
+Ahava Zmanit (C),C
+Ahava Zmanit (),
 Ahava Zo Ahava,C
 Ahava Zo Hapo'enta,P
 Ahavat Aviv,C
 Ahavat Bat Teman (Bat Teman),P
 Ahavat Chayai (Nostalgia),P
-Ahavat Chayay,C
-Ahavat Chayay,P
+Ahavat Chayay (C),C
+Ahavat Chayay (P),P
 Ahavat Chinam,C
 Ahavat Emet,P
-Ahavat Erev,C
-Ahavat Erev,P
+Ahavat Erev (C),C
+Ahavat Erev (P),P
 Ahavat Hachayalim (Shir Ahava Chayali),C
-Ahavat Hadassa,C
-Ahavat Hadassa,C
+Ahavat Hadassa (Eliyahu Gamliel),C
+Ahavat Hadassa (Rivka Sturman),C
 Ahavat Hagvarim,P
 Ahavat Itamar (Ahavat Itamar Ben Avi),C
 Ahavat Kayits,L
 Ahavat Ne'uray,P
 Ahavat Neurim,P
-Ahavat Po'aley Habinyan,C
-Ahavat Po'aley Habinyan,P
+Ahavat Po'aley Habinyan (C),C
+Ahavat Po'aley Habinyan (P),P
 Ahavat Ra'aya,C
 Ahavat Ro'e,P
-Ahavat Shaday,P
-Ahavat Shaday,P
+Ahavat Shaday (Itzik Sa'ada),P
+Ahavat Shaday (Israel Yakovee),P
 Ahavat Shamayim,C
 Ahavat Shlomo Et Shulamit,P
 Ahavat Tsi'on (Shiru Na Hameshorerim),C
@@ -318,30 +318,30 @@ Ahavati Harishona,P
 Ahavati Shavuy,C
 Ahavnu,P
 Ahavot Lirkod,P
-Ahavti Et Yofyech,C
-Ahavti Et Yofyech,P
+Ahavti Et Yofyech (C),C
+Ahavti Et Yofyech (P),P
 Ahavti Otach,P
-"Ahavtiha (Pitom Achshav, Pitom Hayom)",P
-"Ahavtiha (Pitom Achshav, Pitom Hayom)",P
+"Ahavtiha (Pitom Achshav, Pitom Hayom) (Moshany A. Shemesh)",P
+"Ahavtiha (Pitom Achshav, Pitom Hayom) (Israel Shiker)",P
 Ahavuni,P
 Ahaya (Eheye),C
 Ahuv Besayeret Charuv (Yesh Li Ahuv Bes. Charuv),P
-Ahuv Chayai,P
-Ahuv Chayai,
+Ahuv Chayai (P),P
+Ahuv Chayai (),
 Ahuv Libi,P
 Ahuv Sheli (Habibi Ya Nour El Ain),C
 Ahuv Yakar,P
 Ahuva,P
-Ahuva Sheli,C
-Ahuva Sheli,P
-Ahuva Sheli,P
-Ahuva Sheli,P
+Ahuva Sheli (C),C
+"Ahuva Sheli (P, Rafi Ziv)",P
+"Ahuva Sheli (P, Victor Gabbay)",P
+"Ahuva Sheli (P, Dudu Barzilay)",P
 Ahuvat Hamatador,P
-Ahuvat Levavi,C
-Ahuvat Levavi,P
-Ahuvat Levavi,P
-Ahuvati,P
-Ahuvati,P
+Ahuvat Levavi (C),C
+"Ahuvat Levavi (P, Ya'ir Menashe)",P
+"Ahuvat Levavi (P, Chayim Shiryon)",P
+Ahuvati (Ilai Szpiezak),P
+Ahuvati (Victor Gabbay),P
 Ahuvati Bat Chamishim,C
 Ahuvati Yael,P
 Ahuvi,C
@@ -354,38 +354,38 @@ Akordion Yashan,C
 Akut Sheri (Ecute Cheri),P
 Al Ahava,C
 Al Andalus,L
-Al Anfei Shita,P
-Al Anfei Shita,P
+Al Anfei Shita (Marco Ben Shimon),P
+Al Anfei Shita (Eli Ronen),P
 Al Be'er,
 Al Chevel Dak,P
 Al Em Haderech,C
 Al Fuhara,P
 Al Gag Ha'olam,C
-Al Gemali,C
-Al Gemali,P
+Al Gemali (C),C
+Al Gemali (P),P
 Al Gvul Hayam Ha'acharon,C
 Al Hachof Be Saloniki (Salonika),P
-Al Haderech (Shir Haderech),C
-Al Haderech (Shir Haderech),C
-Al Haderech (Shir Haderech),P
-Al Hadvash,P
-Al Hadvash,
-Al Hadvash,
+"Al Haderech (Shir Haderech) (C, Chayim Shiryon)",C
+"Al Haderech (Shir Haderech) (C, Sefi Aviv)",C
+Al Haderech (Shir Haderech) (P),P
+Al Hadvash (P),P
+"Al Hadvash (, Sefi Aviv)",
+"Al Hadvash (, Chaim Livneh)",
 Al Hadvash Ve'al Ha'okets,C
-Al Ha'ir Afot Yonim (Teivat Vezimra Nifredet),P
-Al Ha'ir Afot Yonim (Teivat Vezimra Nifredet),P
+Al Ha'ir Afot Yonim (Teivat Vezimra Nifredet) (Israel Shiker),P
+Al Ha'ir Afot Yonim (Teivat Vezimra Nifredet) (Roni Siman Tov),P
 Al Hamapa,C
 Al Hanisim,C
 Al Har Hamori'a,C
 Al Harasi,L
-Al Harim,C
-Al Harim,
+Al Harim (C),C
+Al Harim (),
 Al Hasafsal,C
 Al Hayam,C
 Al Kanfei Hakesef,C
 Al Kanfei Ruach,C
-Al Kapav Yavi,C
-Al Kapav Yavi,C
+Al Kapav Yavi (Shlomo Maman),C
+Al Kapav Yavi (Levi Bargil),C
 Al Kav Hazinuk,P
 Al Knaf Ha'ahava,P
 Al Kol Ele,C
@@ -398,17 +398,17 @@ Al Na Tishal,P
 Al Na Tivki,P
 Al Na Tomar Li Shalom,P
 Al Neharot Bavel,C
-Al Nevakesh,C
-Al Nevakesh,C
-Al Pi Tnuat Harakavot,C
-Al Pi Tnuat Harakavot,C
+Al Nevakesh (Israel Shabtai),C
+Al Nevakesh (Yaron Elfasy),C
+Al Pi Tnuat Harakavot (Benny Levy),C
+Al Pi Tnuat Harakavot (Yankale Ziv),C
 Al Pisgat Ha'olam (Hop Hop),P
 Al Rosh Hahar,C
 Al Sade Veya'ar,C
 Al Sadeinu (Shir Hasadeh),C
 Al Saf Beitech,P
-Al Saf Daltech,P
-Al Saf Daltech,P
+Al Saf Daltech (Avner Naim),P
+Al Saf Daltech (Naftaly Kadosh),P
 Al Saf Daltech - Wh.Chair,PW
 Al Salsalim,C
 Al Shemesh Veyam,
@@ -421,30 +421,30 @@ Al Tafriu Li Lirkod,C
 Al Tafsik,P
 Al Tagidi Li Bo,P
 Al Ta'iri Et Hachalom,P
-Al Tashlicheini,C
-Al Tashlicheini,C
+Al Tashlicheini (Shmulik Gov Ari),C
+Al Tashlicheini (Benny Levy),C
 Al Te'acher Lavo,C
 Al Te'almi,P
 Al Techabi Oti,P
 Al Tefached Lauf,C
 Al Tegali,P
-Al Telchi,C
-Al Telchi,C
-Al Telchi Li,C
-Al Telchi Li,P
+Al Telchi (Yo'av Ashriel),C
+Al Telchi (Rivka Sturman),C
+Al Telchi Li (C),C
+Al Telchi Li (P),P
 Al Telchi Miriam,C
 Al Telchi Rahok Midai,C
 Al Temaher,P
 Al Teshage'i Oti,C
 Al Teshate Ba'ahava,C
 Al Tevater (Eheye Lach Osher),C
-Al Tevatri,P
-Al Tevatri,P
-Al Tevatri,P
+Al Tevatri (Moshe Telem),P
+Al Tevatri (Chayim Shiryon),P
+Al Tevatri (Yankale Levy),P
 Al Tevatri Alenu,C
 Al Tichasi Ze Lo Ason,C
-Al Tid'ag,C
-Al Tid'ag,P
+Al Tid'ag (C),C
+Al Tid'ag (P),P
 Al Tidagi Li Imma,C
 Al Tig'u Ba'ahava,P
 Al Tihiye Li Gibor,P
@@ -468,14 +468,14 @@ Al Tishpeti Oti,C
 Al Tisregi Lo Sveder,P
 Al Titni Lo,P
 Al Titschak Alay,C
-Al Tityaesh,C
-Al Tityaesh,C
+Al Tityaesh (Eli Ronen),C
+Al Tityaesh (Eli Ronen),C
 Al Tivki,P
 Al Tivki Yalda,P
 Al Tomar,P
 Al Tomar Lanetsach,C
-Al Tomri,P
-Al Tomri,P
+Al Tomri (Victor Gabbay),P
+Al Tomri (Avi Perez),P
 Al Yadil,C
 Ala Salamtek,P
 Alai,C
@@ -494,8 +494,8 @@ Aleinu Ve'al Ohalenu,C
 Alesh (She'at Im Haruach),P
 Alexeia,C
 Aley Giva,P
-Alf Mabruk,C
-Alf Mabruk,L
+Alf Mabruk (C),C
+Alf Mabruk (L),L
 Ali Baba,C
 Ali Li,C
 Alinu Leshabe'ach,C
@@ -514,18 +514,18 @@ Alpayim Shana,C
 Alpayim Ve'eser Ze Eser,C
 Aluf Ha'olam,C
 Aluma Aluma,C
-Alumim,C
-Alumim,P
-Am Echad,C
-Am Echad,L
+Alumim (C),C
+Alumim (P),P
+Am Echad (C),C
+Am Echad (L),L
 Am Echad Lev Echad (Kol Israel),C
 Am Echad Shir Echad,C
-Am Israel Chai,C
-Am Israel Chai,C
-Am Israel Chai,C
-Am Israel Chai,C
-Am Israel Chai,C
-Am Israel Chai,C
+Am Israel Chai (Shulamit Rada),C
+Am Israel Chai (Ilai Szpiezak),C
+Am Israel Chai (Ofer Alfasi),C
+Am Israel Chai (Sara Kletter),C
+Am Israel Chai (Sam (Shmuel) Ashkenazi),C
+Am Israel Chai (Se'adia Amishai),C
 Am Segula,C
 Amalel Shir (Ayuma Behar Hamor),C
 Amarin,C
@@ -550,22 +550,22 @@ Amour Tu Jours (You Make My Heart Go),L
 Amru Li,P
 Amru Lo,C
 Amshich Lindod (Ahava Hamon),C
-Ana,C
-Ana,C
-Ana,C
+Ana (Chen Blum),C
+Ana (Ofer Alfasi),C
+Ana (Moshiko Halevy),C
 Ana Ana,C
 Ana Aref (Azerix),C
 Ana Bachlam Bik,C
 Ana Beko'ach,C
 Ana Delu,C
 Ana Dodi,P
-Ana Eli,C
-Ana Eli,C
+Ana Eli (Roni Siman Tov),C
+Ana Eli (Shmulik Gov Ari),C
 Ana Elohai,
 Ana Halach Dodech (Ana Pana Dodech),P
 Ana Kurdi,C
-Ana Lak,C
-Ana Lak,P
+Ana Lak (C),C
+Ana Lak (P),P
 Ana Magnuna,L
 Ana Pana Dodech,C
 Ana Weyak,C
@@ -575,24 +575,24 @@ Anachnu,C
 Anachnu Haroim,C
 Anachnu Kan,C
 Anachnu Kmo Kulam,P
-Anachnu Ma'aminim,C
-Anachnu Ma'aminim,L
-Anachnu Ma'aminim,PL
-Anachnu Nisharim Ba'arets,L
-Anachnu Nisharim Ba'arets,P
+Anachnu Ma'aminim (C),C
+Anachnu Ma'aminim (L),L
+Anachnu Ma'aminim (PL),PL
+Anachnu Nisharim Ba'arets (L),L
+Anachnu Nisharim Ba'arets (P),P
 Anachnu Po,C
 Anachnu Shneinu Me'oto Hakfar,C
 Anahiya,C
 Anana,C
-Ananim,P
-Ananim,P
+"Ananim (Mishel Cohen, Gil)",P
+Ananim (Shlomo Maman),P
 Anashim Anashim,C
 Anashim Ba'olam,C
 Anashim Ohavim Lashir,C
 Anashim Smechim BeCuba,P
-Anashim Tovim,C
-Anashim Tovim,C
-Anashim Tovim,C
+"Anashim Tovim (Gadi Bitton, Revital Golan)",C
+Anashim Tovim (Uri Grafit),C
+Anashim Tovim (Shlomo Maman),C
 Anatse'ach Itach,P
 Anavai,C
 Anavim,C
@@ -600,13 +600,13 @@ Anavim Metukim,C
 Anavim Yafim Bakayits,P
 Anchnu Shnayim,P
 Aneim Zmirot,C
-Aneni,C
-Aneni,C
+Aneni (Michael Barzelai),C
+Aneni (Avi Levy),C
 Aneni Aneni,C
 Aneni Bashirim,C
 Aneni Na (Aneni Nay Nay),C
-Ani Af,C
-Ani Af,P
+Ani Af (C),C
+Ani Af (P),P
 Ani Af Elayich,C
 Ani Ashir Lach Shir,C
 Ani Atsmi Ve'emuna,C
@@ -618,24 +618,24 @@ Ani Chai,C
 Ani Chay Kesev Bar,C
 Ani Chofshi,C
 Ani Chozer,C
-Ani Chozer Habaita,L
-Ani Chozer Habaita,P
+Ani Chozer Habaita (L),L
+Ani Chozer Habaita (P),P
 Ani Ektof Lach Et Hayare'ach,C
 Ani Esh,P
 Ani Eshtage'a,P
 Ani Eten Lach,P
 Ani Etsbot Lach,P
 Ani Gedalia (Gedalia Reva Ish),P
-Ani Gitara,C
-Ani Gitara,P
+Ani Gitara (C),C
+Ani Gitara (P),P
 Ani Ha'eved,C
 Ani Holech Lama'arav (Holech Lama'arav),P
 Ani Holech Levit Sha'am,PK
 Ani Holech Uva,C
 Ani Hu Zoro,P
 Ani Kam Ve'ozev,C
-Ani Kan Bishvilech,C
-Ani Kan Bishvilech,C
+Ani Kan Bishvilech (Pazit Lahav),C
+Ani Kan Bishvilech (Elad Shtamer),C
 Ani Kashur Elayich,C
 Ani Kmo Dag (Kshe'ani Itach Ani Kmo Dag),C
 Ani kore Bishmech,P
@@ -655,8 +655,8 @@ Ani Lo Yachol (Kvar Lo Yachol),P
 Ani Lo Zamin,C
 Ani Ma'amin,C
 Ani Machur Rak Lach,P
-Ani Mamshich Lashir,C
-Ani Mamshich Lashir,P
+Ani Mamshich Lashir (C),C
+Ani Mamshich Lashir (P),P
 Ani Margish,P
 Ani Mavti'ach,C
 Ani Met,P
@@ -664,8 +664,8 @@ Ani Met Alayich,C
 Ani Met Lada'at,C
 Ani Met Lichiyot,C
 Ani Midbar,P
-Ani Misham,C
-Ani Misham,C
+Ani Misham (Itzik Cohen),C
+Ani Misham (Becca Rausch),C
 Ani Mode,C
 Ani Mode Lach,P
 Ani Nishar,C
@@ -680,12 +680,12 @@ Ani Ohev Otach,P
 Ani Ohev Otach Le'a (Otach Le'a),P
 Ani Ohev Otach Yalda,C
 Ani Ole Liyerushalayim,C
-Ani Ose Li Manginot,C
-Ani Ose Li Manginot,L
-Ani Ose Li Manginot,L
+Ani Ose Li Manginot (C),C
+"Ani Ose Li Manginot (L, Silvio Berlfein)",L
+"Ani Ose Li Manginot (L, Tata F., Alberto Zirlinger)",L
 Ani Ose Li Manginot (Ani Ose Manginot),C
-Ani Rotse,C
-Ani Rotse,P
+Ani Rotse (C),C
+Ani Rotse (P),P
 Ani Rotse Lazuz,L
 Ani Same'ach Bach,P
 Ani Sha'iyach Le'am,C
@@ -694,8 +694,8 @@ Ani Shar Bishvilech,P
 Ani Shar Lach,P
 Ani Shar Lazman,C
 Ani Shata,P
-Ani Shelach,P
-Ani Shelach,P
+Ani Shelach (Gadi Bitton),P
+Ani Shelach (Itzik Lezebnic),P
 Ani Shuv Mitahev,P
 Ani Temani,C
 Ani Ve'at Az,P
@@ -706,34 +706,34 @@ Ani Vehasavta (Savta Banegev),P
 Ani Veshiri,P
 Ani Vesimon Umo'iz Hakatan,C
 Ani Yoda,P
-Ani Yode'a,P
-Ani Yode'a,P
+Ani Yode'a (Orly Setareh),P
+Ani Yode'a (Yaron Ben Simhon),P
 Ani Ze Ani,C
 Ani Zechariya (Zachariya Ben Ezra),C
 Ani Zocher,P
 Ani Zoher,C
-An'im Zmirot (Shir Hakavod),C
-An'im Zmirot (Shir Hakavod),C
+An'im Zmirot (Shir Hakavod) (Avner Naim),C
+An'im Zmirot (Shir Hakavod) (Jonathan Gabay),C
 Anor Anor,C
 Anshei Hadmama,C
-Anshei Hageshem,C
-Anshei Hageshem,P
+Anshei Hageshem (C),C
+Anshei Hageshem (P),P
 Ansi Dize La Novia,C
 Anti Albe,L
 April,P
 Arabica,L
 Arasando (Arrasando),PL
-Arava Arava (Shir Habokrim),C
-Arava Arava (Shir Habokrim),C
-Arava Arava (Shir Habokrim),C
+Arava Arava (Shir Habokrim) (Gabi Swissa),C
+Arava Arava (Shir Habokrim) (Dani Dassa),C
+Arava Arava (Shir Habokrim) (David Paletz),C
 Arayot,P
 Arba Dakot,L
-Arba Lifnot Boker,C
-Arba Lifnot Boker,P
+Arba Lifnot Boker (C),C
+Arba Lifnot Boker (P),P
 Arba Onot,C
 Arba Onot Veshir,P
-Arbaim,C
-Arbaim,C
+Arbaim (Yoni Carr),C
+Arbaim (Shlomo Bachar),C
 Arbaim Veshnayim Yom,P
 Ari Ara,P
 Ari Baba,L
@@ -743,8 +743,8 @@ Aris,C
 Armon Zahav,C
 Aromimcha,P
 Aromimcha Hashem,C
-Artsa Alinu,C
-Artsa Alinu,C
+Artsa Alinu (Yaakov Mariyoma),C
+Artsa Alinu ( ),C
 Artsi (Od Lo Tamu Kol Pileich),C
 Artsi Artsi,C
 Artsi Sheli,C
@@ -755,8 +755,8 @@ Asashi'ana,C
 Ase Imi Chesed,C
 Ase Lema'anacha,C
 Asereje,L
-Ashbi'acha (Kiri'a Yifefia),P
-Ashbi'acha (Kiri'a Yifefia),P
+Ashbi'acha (Kiri'a Yifefia) (Bentzi Tiram),P
+Ashbi'acha (Kiri'a Yifefia) (Yankale Levy),P
 Ashdod,C
 Asher,C
 Asher Bara,C
@@ -767,8 +767,8 @@ Ashira La'Ha'Shem,C
 Ashlayot,C
 Ashlayot Rabot,C
 Ashorer Shir,C
-Ashrei Ha'ish,C
-Ashrei Ha'ish,C
+Ashrei Ha'ish (Moshiko Halevy),C
+Ashrei Ha'ish (Dani Dassa),C
 Ashreichem Israel,C
 Ashrey,
 Ashuri,C
@@ -778,11 +778,11 @@ Asinu Histori'a,C
 Asiti,C
 Aspra Peristeri,C
 Asufim,P
-At,P
-At,P
-At,P
-At Adama,C
-At Adama,C
+At (Yaron Ben Simhon),P
+At (Gadi Bitton),P
+At (Avi Levy),P
+At Adama (Shmulik Gov Ari),C
+At Adama (Rivka Sturman),C
 At Ahavati,P
 At Ani Veharu'ach (At Va'ani Veharu'ach),P
 At Bali Tov,C
@@ -799,13 +799,13 @@ At Ha'achat Sheli,P
 At Hachalom,P
 At Ha'isha Sheli (Haisha Sheli),P
 At Haketsev Shel Chayay,C
-At Halahit Sheli,P
-At Halahit Sheli,U
+At Halahit Sheli (P),P
+At Halahit Sheli (U),U
 At Hamachar Sheli,P
 At Ha'or (Or),C
 At Ha'osher,P
-At Ha'osher Sheli,P
-At Ha'osher Sheli,P
+At Ha'osher Sheli (Moshe Tawily),P
+At Ha'osher Sheli (Avi Perez),P
 At Haperach,P
 At Harei Yoda'at,C
 At Hasiba,P
@@ -819,15 +819,15 @@ At Kmo Shir,C
 At Kol Chayai,C
 At Kvar Lo Iti,P
 At Li Habayit,C
-At Li Or,C
-At Li Or,P
+At Li Or (C),C
+At Li Or (P),P
 At Lo Mevina,P
 At Lo Nisheret Levad,P
 At Lo Ona (Lama Ma),C
 At Lo Po,P
 At Lo Yadat,P
-At Malach,P
-At Malach,P
+At Malach (Avner Naim),P
+At Malach (Moshe Tawily),P
 At Malach -Wh.Chair,PW
 At Matrifa,P
 At Matsila Oti,C
@@ -837,8 +837,8 @@ At Noga'at Beneshama,C
 At Omeret,P
 At Oti Shofetet,C
 At Rak Sheli,C
-At Rechoka,P
-At Rechoka,P
+At Rechoka (Yossi Azani),P
+At Rechoka (Yossi Azani),P
 At Shehalacht,P
 At Sheli Ani Shelach,P
 At Sheli Ani Shelach - Wh.Chair,PW
@@ -846,16 +846,16 @@ At Shigat,C
 At Shir (Acharei Hakol At Shir),P
 At Shoma'at,C
 At Telchi Basade (Ha'omnam),C
-At Va'ani,C
-At Va'ani,P
+At Va'ani (C),C
+At Va'ani (P),P
 At Va'ani Veharu'ach,PT
-At Yafa,C
-At Yafa,P
+At Yafa (C),C
+At Yafa (P),P
 At Yafa (Griz),C
 Ata Achi,C
 Ata Af Pa'am,P
-Ata Belibi,C
-Ata Belibi,CK
+Ata Belibi (C),C
+Ata Belibi (CK),CK
 Ata Ha'ehad,P
 Ata Hakochav,C
 Ata Hamelech,C
@@ -863,17 +863,17 @@ Ata Holech Lishon Mukdam,P
 Ata Imadi,C
 Ata Kadosh,C
 Ata korehLi,C
-Ata Li Erets,P
-Ata Li Erets,P
-Ata Li Erets,P
+"Ata Li Erets (Mali Lipson, Moshe)",P
+Ata Li Erets (Peri Shachaf),P
+Ata Li Erets (Shmulik Gov Ari),P
 Ata Od Yeled,C
 Ata Ose Li Tov,C
 Ata Po Chaser Li,P
 Ata Shebashamaim (Bore Olam),C
 Ata Shenatata (Hadvarim Hayafim Ba'olam),C
 Ata Shomer,C
-Ata Totach,C
-Ata Totach,CK
+Ata Totach (C),C
+Ata Totach (CK),CK
 Ata Ve'ani,P
 Atalef Iver,C
 Atari,C
@@ -882,14 +882,14 @@ Atira Hu,C
 Atsei Hazaftsafot - Wh.Chair,PW
 Atsei Hazaftsafot (Zer Shel Narkasim),P
 Atsey Hagez,C
-Atsey Shitim Omdim,
-Atsey Shitim Omdim,
+Atsey Shitim Omdim (Dvora Lapson),
+Atsey Shitim Omdim (Corinne Chochem),
 Atsmaut,C
 Atuf Berachamim,P
-Av Harachaman,C
-Av Harachaman,C
-Avadim Hayinu,C
-Avadim Hayinu,LK
+Av Harachaman (Ira Weisburd),C
+Av Harachaman (Avi Amsalam),C
+Avadim Hayinu (C),C
+Avadim Hayinu (LK),LK
 Avak Hadrachim,C
 Avak Shel Hachayim,P
 Aval Ahava,P
@@ -902,17 +902,17 @@ Avi (Eynaich Mesaprot),P
 Avi Avi,L
 Avi Hatov Shebashamayim,C
 Avigail,P
-Avinu Malkenu,C
-Avinu Malkenu,C
-Avinu Malkenu,C
+Avinu Malkenu (Israel Shiker),C
+Avinu Malkenu (Israel Yakovee),C
+Avinu Malkenu (Victor Gabbay),C
 Avishag,C
 Aviv,C
 Aviv Balev,P
 Aviv Israeli,C
 Avivim,C
 Avney Hahoshen,L
-Avram Avinu (Avraham Avinu),C
-Avram Avinu (Avraham Avinu),C
+Avram Avinu (Avraham Avinu) (Shmulik Gov Ari),C
+Avram Avinu (Avraham Avinu) (Shlomo Bachar),C
 Avre Tu,C
 Avremale Melamed,C
 Avshalom,C
@@ -926,10 +926,10 @@ Ayala (Ostaj Mi Zbogom Ljubavi),C
 Ayale - King of Israel,C
 Ayeka,C
 Ayelet Ahavim,P
-Ayelet Chen,P
-Ayelet Chen,P
-Ayelet Chen,P
-Ayelet Chen,P
+Ayelet Chen (Nir Dor),P
+Ayelet Chen (Shmulik Gov Ari),P
+Ayelet Chen (Israel Yakovee),P
+Ayelet Chen (Se'adia Amishai),P
 Ayelet Hachen,P
 Ayelet Hashahar (Re'u Be'ori Shezore'ach),C
 Ayuma,C
@@ -950,8 +950,8 @@ Ba Habaita,P
 Ba Haboker,C
 Ba Im Chiyuch,C
 Ba Kalil (Bakalil),L
-Ba La,L
-Ba La,PM
+Ba La (L),L
+Ba La (PM),PM
 Ba La Lirkod,L
 "Ba La, Ba La (Bala Bala)",C
 Ba Lehatsiya Et Libi,P
@@ -975,8 +975,8 @@ Ba'ayara,C
 Baba Kosmi,P
 Babel (Torre De Babel),L
 Babustanim,P
-Baby,L
-Baby,L
+Baby (Chagig Podmaski),L
+Baby (Raanan Mor),L
 Baby Baby,L
 Baby One More Time,L
 Bach Lo Noge'a,P
@@ -991,18 +991,18 @@ Bacholot,P
 Bachom Shel Tel Aviv,C
 Bachorsha,C
 Bachulsha Shelcha,P
-Bachur Bayshan,C
-Bachur Bayshan,P
-Bachur Chadash,C
-Bachur Chadash,C
+Bachur Bayshan (C),C
+Bachur Bayshan (P),P
+Bachur Chadash (Yaron Ben Simhon),C
+Bachur Chadash (Tuvia Tishler),C
 Bachur Ragish,P
 Bachur Same'ach,C
 Bachur Yafe Barchov,P
 Bachuts Yored Ha'Geshem,P
 Backazz,L
 Bada Lata,L
-Badad,C
-Badad,P
+Badad (C),C
+Badad (P),P
 Baderech (Haderech),P
 Baderech Chazara,C
 Baderech Efrata (Rachel),P
@@ -1018,18 +1018,18 @@ Baderech Leveitech,P
 Badma'ot She'at Bocha,P
 Badrachim Shelach,P
 Bagoren Beleyl Levana,P
-Bahafla,C
-Bahafla,C
+Bahafla (Naftaly Kadosh),C
+Bahafla (Maurice Perez),C
 Bahazayot Hakesem,C
-Baila Baila,L
-Baila Baila,L
+"Baila Baila (Nurit Mendelson, Carina Saslavsky, Anne Milgram)",L
+Baila Baila (Carina Saslavsky),L
 Bailamos,PL
-Bailando,L
-Bailando,L
+Bailando (Orly Setareh),L
+Bailando (Gideon Dan),L
 Bakafe Shel Stelios,C
 Bakahal Hachi Gadol,P
-Bakapayim,C
-Bakapayim,C
+Bakapayim (Shmulik Gov Ari),C
+Bakapayim (Benny Levy),C
 Bakerem,C
 Bakramim,C
 Baktum,C
@@ -1045,27 +1045,27 @@ Balada Lashoter,C
 Balada LeDon Kishot,P
 Balada Lenaeivit,U
 Balagan,C
-Balaila,C
-Balaila,P
-Balaila,
+Balaila (C),C
+Balaila (P),P
+Balaila (),
 Balaila Al Hadeshe,P
-Balaila Bachatsot,L
-Balaila Bachatsot,P
+Balaila Bachatsot (L),L
+Balaila Bachatsot (P),P
 Balaila Shekaze,P
 Balaila Uvayom (Ani Ohev Otach),P
 Balalaika,C
 Balbale,C
 Balbeli Oto,C
-Baleilot,C
-Baleilot,P
-Baleilot,P
-Baleilot,P
+Baleilot (C),C
+"Baleilot (P, Avi Levy)",P
+"Baleilot (P, Roni Siman Tov)",P
+"Baleilot (P, Avner Naim)",P
 Baleilot Ani Roked,C
 Balev,P
 Balkan,C
 Ballando (Nuovo Mambo),L
-Balonim,C
-Balonim,P
+Balonim (C),C
+Balonim (P),P
 Bamakom Haze,P
 Bamboleo,L
 Bamboleo Oh Ya Ya,L
@@ -1080,8 +1080,8 @@ Banu Choshech Legaresh,LK
 Banu La'asot Same'ach,C
 Banu Leha'ir Et Ha'ir,C
 Banu Shuv,P
-Bapardes Leyad Hashoket (Bapardes),C
-Bapardes Leyad Hashoket (Bapardes),P
+Bapardes Leyad Hashoket (Bapardes) (C),C
+Bapardes Leyad Hashoket (Bapardes) (P),P
 Bar David David,P
 Bar Yochai,C
 Baraka,C
@@ -1094,12 +1094,12 @@ Barcelona,P
 Barcha Lakibuts,C
 Barcheni,C
 Barchenu,C
-barchi nafshi,C
-Barchi Nafshi,C
-Barchi Nafshi,C
+barchi nafshi (Gadi Bitton),C
+Barchi Nafshi (Eli Ronen),C
+Barchi Nafshi (Giora Kadmon),C
 Barech,C
-Barech Aleinu,C
-Barech Aleinu,C
+Barech Aleinu (Shlomo Maman),C
+Barech Aleinu (Shmulik Gov Ari),C
 Barech Et Ha'adam,C
 Barech Et Ha'olam,C
 Barega Hamachri'a,P
@@ -1115,8 +1115,8 @@ Basadot Hayerukim (Sadot Yerukim),C
 Basadot Shel Hamoshav,P
 Basar VaDam,C
 Baschuna (Rosh Ha'ayin),C
-Baseret Hatamim,P
-Baseret Hatamim,P
+"Baseret Hatamim (Nurit Melamed, Shlomi Mordechai)",P
+Baseret Hatamim (Nurit Melamed),P
 Bashana Haba'a,P
 Bashavil El Habreichot,C
 Bashir Noge'a,P
@@ -1125,14 +1125,14 @@ Bashura Hatachtona,P
 Bashvilim,C
 Bassa Sababa,LK
 Bastav,C
-Bat Arad,C
-Bat Arad,P
+Bat Arad (C),C
+Bat Arad (P),P
 Bat Argaman,C
 Bat Chemed,P
 Bat Chen,P
 Bat Hachen,
-Bat Hadayag,P
-Bat Hadayag,U
+Bat Hadayag (P),P
+Bat Hadayag (U),U
 Bat Hakarmel,P
 Bat Hakfar,C
 Bat Hamidbar,C
@@ -1160,9 +1160,9 @@ Bat Yiftach,P
 Bat Yonim,C
 Batachana,C
 Batata,CK
-Batayelet (Hop Hop),C
-Batayelet (Hop Hop),C
-Batayelet (Hop Hop),C
+Batayelet (Hop Hop) (Yoram Rachmany),C
+Batayelet (Hop Hop) (Yehuda Emanuel),C
+Batayelet (Hop Hop) (Shimon David),C
 Batfilot Sheli,C
 Bati Elecha,C
 Batu'ach,C
@@ -1199,21 +1199,21 @@ Bedi'avad,C
 Bediyuk Kmo Hayare'ach,C
 Bedumiya,C
 Be'elef Ahava,P
-Be'emtsa Hachayim,C
-Be'emtsa Hachayim,P
-Be'er Basade,C
-Be'er Basade,C
+Be'emtsa Hachayim (C),C
+Be'emtsa Hachayim (P),P
+Be'er Basade (Arye Fros),C
+Be'er Basade (Rivka Sturman),C
 Beer Sheva Eiri,C
 Be'erets Ahavati,C
-Be'ezrat Hashem,C
-Be'ezrat Hashem,C
+Be'ezrat Hashem (Shmulik Gov Ari),C
+Be'ezrat Hashem (Shmulik Gov Ari),C
 Beginat Prachim,P
-Behar Hagilbo'a,C
-Behar Hagilbo'a,P
+Behar Hagilbo'a (C),C
+Behar Hagilbo'a (P),P
 Behnaz,C
 Be'ikvotav,P
-Be'ikvotayich,P
-Be'ikvotayich,P
+Be'ikvotayich (Roni Siman Tov),P
+Be'ikvotayich (Shlomo Bachar),P
 Be'ikvotayich Ahtse (Be'ikvotayich),P
 Be'ikvoteicha,L
 Beile Luchya,P
@@ -1273,13 +1273,13 @@ Beklilut,C
 Belaila Kar (At Einech),P
 Belechti Bamidbar,C
 Beleilot Afelim,P
-Beleilot Hakayits Hachamim,C
-Beleilot Hakayits Hachamim,P
+Beleilot Hakayits Hachamim (C),C
+Beleilot Hakayits Hachamim (P),P
 Beleilotai (Shir Leleilotay),P
-Belev Echad,C
-Belev Echad,C
-Belev Echad,C
-Belev Echad,L
+"Belev Echad (C, Avner Naim)",C
+"Belev Echad (C, Shmuel (Vicki) Cohen)",C
+"Belev Echad (C, Yo'av Ashriel)",C
+Belev Echad (L),L
 Belev Haleil,C
 Belev Haya'ar,P
 Belev Kaved,P
@@ -1292,17 +1292,17 @@ Bematos Silon,C
 Bemazal,C
 Bemerchak Negi'a,C
 Ben (Shechav Beni),C
-Ben Adam,C
-Ben Adam,C
-Ben Adam,
+"Ben Adam (C, Sarah Sylvie Kremer)",C
+"Ben Adam (C, Naftaly Kadosh)",C
+Ben Adam (),
 Ben Adam (Kadima Benadam),C
 Ben Basat,C
 Ben Binyamin,C
 Ben Hatov Vehara,P
 Ben Shel Melech,C
 Ben Ya,C
-Ben Yakar Sheli,C
-Ben Yakar Sheli,C
+Ben Yakar Sheli (Naftaly Kadosh),C
+Ben Yakar Sheli (Moshe Pe'er),C
 Benayich,P
 Benenu,C
 Benni Yeled Ra (Yeled Ra),P
@@ -1322,12 +1322,12 @@ Berina Yiktsoru,C
 Beru’ach Kayits,C
 Besabesi,C
 Besade Yarok,P
-Besadot Yerukim,P
-Besadot Yerukim,
+Besadot Yerukim (P),P
+Besadot Yerukim (),
 Besandalim Al Gesher Hayarkon (Shesh Esreh),P
 Besha'a Achat,C
-Besha'a Shekazot,P
-Besha'a Shekazot,P
+Besha'a Shekazot (Reuben Partock),P
+Besha'a Shekazot (Chanan Dadon),P
 Be'shalom Tevorchu,P
 Besheket Besheket,P
 Besheket Kaze,P
@@ -1343,8 +1343,8 @@ Besof Ma'agal,P
 Besorot Tovot,C
 Bestie,L
 Beti Bam,4
-Betikva Lemachar,C
-Betikva Lemachar,C
+Betikva Lemachar (Ya'ir Menashe),C
+Betikva Lemachar (Motti Elfasy),C
 Betoch,C
 Betoch Hakesem,C
 Betoch Halev,C
@@ -1359,13 +1359,13 @@ Betset Chatan,C
 Betset Israel,C
 Betset Israel Mimitsrayim,CK
 Betupim Uvimcholot,C
-Bevakasha Mimech,P
-Bevakasha Mimech,P
+Bevakasha Mimech (Shlomo Maman),P
+Bevakasha Mimech (Avi Perez),P
 Beveiti Hana’ul,C
 Bevo Hazman,C
 Bevo Yomi,C
-Beyachad,C
-Beyachad,C
+Beyachad (Michael Barzelai),C
+Beyachad (Motti Elfasy),C
 Beyachad Latov Velara,P
 Beyamim Ka’ele,C
 Beyom Shishi,P
@@ -1375,9 +1375,9 @@ Bgida,P
 Bi Yadati,C
 Bidiyuk Kmo Sha'at,P
 Bidyuk Kmo Shehi,P
-Bifa'at Hakfar,C
-Bifa'at Hakfar,C
-Bifa'at Hakfar,P
+"Bifa'at Hakfar (C, Moshe Eskayo)",C
+"Bifa'at Hakfar (C, Tzvi Hillman)",C
+Bifa'at Hakfar (P),P
 Bifrot Nevel Veugav,C
 Biglal Ha'ahava,C
 Biglal Ha'ahava (Hakol Biglal Ha'ahava),C
@@ -1393,10 +1393,10 @@ Biktse Hahar,C
 Biktse Hayam,C
 Bikurei Aviv,C
 Bila Yanas,C
-Biladayich,P
-Biladayich,P
-Biladayich,P
-Biladayich,P
+Biladayich (Tamir Scherzer),P
+"Biladayich (Eli Segal, Eli Ronen)",P
+"Biladayich (Beber Shushan, Yuhudit Shushan)",P
+Biladayich (Shlomo Maman),P
 Biladayich Ani Avud (Margish Avud),P
 Biladecha,P
 Bilti Menutsach,C
@@ -1404,8 +1404,8 @@ Bilti Nishkach,C
 Bilti Nishkachat,P
 Bim Bam Bom (Shnei Haverim Yatsu Laderech),CP
 Bimkom Preida,C
-Bimtsiltayim Uvetupim,P
-Bimtsiltayim Uvetupim,PM
+Bimtsiltayim Uvetupim (P),P
+Bimtsiltayim Uvetupim (PM),PM
 Bint Aliman,P
 Binti Nas (Ya Bint E Nass),C
 Binti Nes,C
@@ -1426,11 +1426,11 @@ Bisdot Beit Lechem,P
 Bishvil Ktsat Me'ahavatech (Regaim Shel Ashlayot),P
 Bishvila Ata Melech Ha'olam,C
 Bishvilcha,C
-Bishvilech,P
-Bishvilech,P
+Bishvilech (Victor Gabbay),P
+Bishvilech (Ohad Atia),P
 Bishvilech Notsarti,P
-Bishvili,C
-Bishvili,C
+Bishvili (Shlomo Maman),C
+Bishvili (Yaron Ben Simhon),C
 Bishvili At Nehederet,P
 Bitfila,C
 Biti,P
@@ -1455,8 +1455,8 @@ Bnot Hamidbar (Fatamorgana),C
 Bnot Mire (Bada Era'e Tsoni),P
 Bnot Teyman,C
 Bo,C
-Bo Beshalom,C
-Bo Beshalom,C
+Bo Beshalom (Peri Shachaf),C
+Bo Beshalom (Yo'av Ashriel),C
 Bo Dodi,P
 Bo El Hachatuna,C
 Bo El Hamofa (Fata Morgana),C
@@ -1472,8 +1472,8 @@ Bo Na’uf,L
 Bo Nachzor Habaiyta Beshalom,LK
 Bo Nadlik Taesh,L
 Bo Nered Lakerem,C
-Bo Nipagesh,P
-Bo Nipagesh,P
+Bo Nipagesh (Sharon Elkaslassy),P
+Bo Nipagesh (Chayim Shiryon),P
 Bo Nire (Bo Nireh),P
 Bo Nirkod,P
 Bo Nirkod Halayla,C
@@ -1495,20 +1495,20 @@ Boche El Hakirot,P
 Boche Vegam Tsochek,P
 Bocher Mechadash,P
 Bo'er Bo'er,P
-Bo'i,C
-Bo'i,L
-Bo'i,P
-Bo'i,P
+Bo'i (C),C
+Bo'i (L),L
+"Bo'i (P, Dalia Maktubi, Shlomi Ochayon)",P
+"Bo'i (P, Oren Shmuel)",P
 Bo'i Achake Rak Lach,P
-Bo'I Beshalom,C
-Bo'i Beshalom,C
+Bo'I Beshalom (Gadi Bitton),C
+Bo'i Beshalom (Yaron Elfasy),C
 Bo'i Halaila,P
 Bo'i Ima,C
 Bo'i Iti,P
-Bo'i Kala,C
-Bo'i Kala,C
-Bo'i Kala,C
-Bo'i Kala,P
+"Bo'i Kala (C, Yoram Siman Tov)",C
+"Bo'i Kala (C, Eli Ronen)",C
+"Bo'i Kala (C, Maurice Perez)",C
+Bo'i Kala (P),P
 Bo'i Lagoren,L
 Bo'i Lanu'ach,P
 Bo'i Layam,C
@@ -1517,8 +1517,8 @@ Bo'i Le'Eilat,P
 Bo'i Lirkod,C
 Bo'i Malka,C
 Bo'i Motek,P
-Bo'i Na'ara,C
-Bo'i Na'ara,P
+Bo'i Na'ara (C),C
+Bo'i Na'ara (P),P
 Bo'i Na'ase Lanu Chag,C
 Bo'i Na'ase Shalom,P
 Bo'i Na'azov,P
@@ -1556,8 +1556,8 @@ Bonsoir,C
 Boom Shibom,L
 Bora Dance (Bora Bora),L
 Borat (Eu Vin Acasa Cu Drag),C
-Bore Olam,C
-Bore Olam,C
+Bore Olam (Nurit Melamed),C
+Bore Olam (Shmulik Gov Ari),C
 Bore Olam (Bore Olam),C
 Bore’ach Mike’ev,C
 Boro Boro,L
@@ -1567,19 +1567,19 @@ Bossa Nouveau,L
 Bo'u Bo'u,P
 Bo'u Lefanai,C
 Bo'u Na'amin,C
-Bo'u Nashir Le'erets Yafa,C
-Bo'u Nashir Le'erets Yafa,P
+Bo'u Nashir Le'erets Yafa (C),C
+Bo'u Nashir Le'erets Yafa (P),P
 Bo'u Nirkod (Vamos A Bailar),PL
 Bo'u Venashir,C
 Bo'u Venashira,P
 Bou Venirkod Achshav,P
 Bo'u Venivne,C
-Bracha,C
-Bracha,C
+Bracha (Dudu Barzilay),C
+Bracha (Moshiko Halevy),C
 Brachot LeHavdala,C
 Braham,C
-Brazil Cha,L
-Brazil Cha,P
+Brazil Cha (L),L
+Brazil Cha (P),P
 Bricha,P
 Brit Hashnayim (Hachnasat Chatan Vekala),C
 Brit Olam,P
@@ -1589,8 +1589,8 @@ Buba Mara,L
 Buba Zehava,C
 Bubble It,L
 Bubim Bubot,P
-Buchara Hayafa,C
-Buchara Hayafa,P
+Buchara Hayafa (C),C
+Buchara Hayafa (P),P
 Bucharest,C
 Buki Dalale,C
 Bukra (Hely Meli),C
@@ -1622,9 +1622,9 @@ Chabek Oti,P
 Chabek Oti Le'at,P
 Chabib Galbi,C
 Chabibale (Chavivale),P
-Chabibi,L
-Chabibi,P
-Chabibi,P
+Chabibi (L),L
+"Chabibi (P, Eyal Eliyahu)",P
+"Chabibi (P, Yo'av Ashriel)",P
 Chabki Oti,P
 Chachanela (Aquante Campeon),L
 Chad Gadiya,C
@@ -1638,9 +1638,9 @@ Chag Hagez,C
 Chag Li,C
 Chag Purim,
 Chag Same'ach Ahavat Chayai,P
-Chag Yovel,C
-Chag Yovel,C
-Chag Yovel,C
+Chag Yovel (Avner Naim),C
+Chag Yovel (Shlomo Maman),C
+Chag Yovel (Yo'av Ashriel),C
 Chagiga,C
 Chagiga Bakfar,C
 Chagiga Be Odesa (Marakdim Be Odesa),C
@@ -1654,12 +1654,12 @@ Chagigat Aviv - Wh.Chair,PW
 Chagigat Moledet,C
 Chagigat Ne'urim,P
 Chagigaya,C
-Chai,C
-Chai,C
-Chai,
-Chai,
-Chai Et Ma Sheyesh,C
-Chai Et Ma Sheyesh,C
+"Chai (C, Shmuel (Vicki) Cohen)",C
+"Chai (C, Shlomo Maman)",C
+"Chai (, Avi Eliram)",
+"Chai (, David Swissa)",
+Chai Et Ma Sheyesh (Avi Perez),C
+Chai Et Ma Sheyesh (Moshany A. Shemesh),C
 Chai Lema'anech,P
 Chai Umechayech,C
 Chaki,P
@@ -1682,17 +1682,17 @@ Chalom O Shanayim (Ma Nishar Li),P
 Chalom Tso’ani (Bedema’ot),P
 Chalom Utfila,C
 Chalom Yashan (Al Hakol),C
-Chalomot,C
-Chalomot,C
-Chalomot,P
+"Chalomot (C, Gadi Bitton)",C
+"Chalomot (C, Moshiko Halevy)",C
+Chalomot (P),P
 Chalomot Ha'etmol,C
 Chalomot Mitgashmim (Lifamim Chalomot Mitgashim),C
 Chalomot Shefisfasta,P
 Chalomot Shel Acherim,P
 Chalomot Shel Etmol,P
 Chalon La'ahava,P
-Chalon Mashkif Layam Hatichon,C
-Chalon Mashkif Layam Hatichon,C
+Chalon Mashkif Layam Hatichon (Roni Siman Tov),C
+Chalon Mashkif Layam Hatichon (Effi Tirosh),C
 Chalonot,P
 Cham Baneshama,C
 Chamam Turki,C
@@ -1705,9 +1705,9 @@ Chamishim Drachim Lomar Shalom,L
 Chamishim Shkalim,C
 Chamoti,C
 Chamsa,C
-Chanale Hitbalbela,C
-Chanale Hitbalbela,L
-Chanale Hitbalbela,L
+Chanale Hitbalbela (C),C
+"Chanale Hitbalbela (L, Yaron Elfasy)",L
+"Chanale Hitbalbela (L, Nurit Melamed)",L
 Chananya,C
 Chanita,C
 Chanse La'Shalom,C
@@ -1717,9 +1717,9 @@ Charasho,L
 Charasho Charasho,C
 Charchesh,C
 Charlie,C
-Chasake,C
-Chasake,C
-Chasake,
+"Chasake (C, David Ben David)",C
+"Chasake (C, Sefi Aviv)",C
+Chasake (),
 Chasdei Yerushalayim,P
 Chaser La Pilpel (Pilpel),C
 Chasera Li,P
@@ -1730,16 +1730,16 @@ Chasida Tschora,P
 Chasidance (Hatsemach Tsedek),C
 Chassene Tanz,P
 Chassidei Dagan,C
-Chassidic Dance,C
-Chassidic Dance,PQ
+Chassidic Dance (C),C
+Chassidic Dance (PQ),PQ
 Chassidic Gestures,C
 Chassidic Melodies,C
 Chatan Bar Mitsva,C
 Chatan HaBar Mitsva,C
 Chatan Na'eim,C
-Chatan Vekala,C
-Chatan Vekala,P
-Chatan Vekala,P
+Chatan Vekala (C),C
+"Chatan Vekala (P, Rafi Ziv)",P
+"Chatan Vekala (P, David Edery)",P
 Chatanim,C
 Chatsaeim,C
 Chatsi Adam,P
@@ -1769,47 +1769,47 @@ Chayat Mesibot,L
 Chayav Lamut Alai,C
 Chayayich Vechayay,P
 Chaychi Elai (Milim),P
-Chaychi Li Bashirim,P
-Chaychi Li Bashirim,P
+Chaychi Li Bashirim (Yifat Argaman),P
+Chaychi Li Bashirim (Motti Elfasy),P
 Chaychi Li Shemesh,C
 Chayech El Hachayim,C
 Chayim Gnuvim,C
 Chayim Meshuga'im,C
 Chayim Mishel Atsmi,P
 Chayim Pshutim,C
-Chayim Sheli,C
-Chayim Sheli,C
+Chayim Sheli (Itzik Ben Dahan),C
+Chayim Sheli (Orly Shemesh),C
 Chayim Shlemim,P
 Chayim Yafim (It’s a Beautiful Life),L
 Chaymke Sheli,C
 Chazak,C
 Chazak Gam Biladayich,P
 Chazak Ve'emats (Rak Chazak),C
-Chazaka Meharu'ach,P
-Chazaka Meharu'ach,P
+Chazaka Meharu'ach (Itzik Sa'ada),P
+Chazaka Meharu'ach (Naftaly Kadosh),P
 Chazara Lamutav,P
 Chazon Yechzkel,C
 Chazor Eleyha,P
 Che Che Re Re,L
 Chedva Veshlomik (Habalada Al Chedva Veshlomik),P
-Chedvat Ne'urim,C
-Chedvat Ne'urim,PM
+Chedvat Ne'urim (C),C
+Chedvat Ne'urim (PM),PM
 Chedvat Yomi,C
 Cheerleader,L
-Cheil Parashim,C
-Cheil Parashim,L
+Cheil Parashim (C),C
+Cheil Parashim (L),L
 Chelek Mechayay (Chelek Mimeni),C
 Chelek Mehazman,C
 Chelek Migufi,P
-Chelek Mimeni,C
-Chelek Mimeni,P
-Chelkat Elohim,C
-Chelkat Elohim,P
-Chelkat Elohim,P
-Chemdati,C
-Chemdati,P
-Chemdati,P
-Chemdati,
+Chelek Mimeni (C),C
+Chelek Mimeni (P),P
+Chelkat Elohim (C),C
+"Chelkat Elohim (P, Chana Shuvaly)",P
+"Chelkat Elohim (P, Meir Shem Tov)",P
+Chemdati (C),C
+"Chemdati (P, Israel Yakovee)",P
+"Chemdati (P, Shlomo Maman)",P
+Chemdati (),
 Chen Ha'ahava,P
 Chen Hakochavim,P
 Chen Hatal,C
@@ -1819,8 +1819,8 @@ Cheruti,P
 Chesed,C
 Chesed Matok,P
 Chesed Ne'uraich,P
-Chevle Mashi'ach,C
-Chevle Mashi'ach,P
+Chevle Mashi'ach (C),C
+Chevle Mashi'ach (P),P
 Chevlei Ne'urim,C
 Chi Balla,L
 Chi Ke'esev Bar,C
@@ -1840,16 +1840,16 @@ Chily,C
 Chiorba Romanit (Tsorba Romanit),C
 Chipasti (J'ai Cerche),L
 Chipasti Shirim,C
-Chiribim,P
-Chiribim,P
+Chiribim (Moshiko Halevy),P
+Chiribim (Raaya Spivak),P
 Chishguzim,C
 Chiwawa (Chihuahua),L
 Chiyuch Shel Yeled,C
 Chiyuchim,P
 Chiyuchim Baboker,P
 Chizbat (Tshizbat),C
-Chizri Elay,P
-Chizri Elay,P
+Chizri Elay (Yaron Malihi),P
+Chizri Elay (David Ben Naim),P
 Chizurim,P
 Chodesh Biladayich,P
 Chof Azuv Me'ahavot,C
@@ -1877,8 +1877,8 @@ Cholem Otach (Uvaleilot Ani Cholem Otach),P
 Cholemet,P
 Cholemet Eden,P
 Cholot Lohatim,C
-Cholot Midbar (Tiul Leyli),P
-Cholot Midbar (Tiul Leyli),P
+Cholot Midbar (Tiul Leyli) (Israel Shiker),P
+Cholot Midbar (Tiul Leyli) (Tzvi Hillman),P
 Cholot Nodenim,C
 Chom July August,C
 Chomot Chemar,C
@@ -1888,12 +1888,12 @@ Choneni,C
 Choref,P
 Chori Chori,L
 Choron Turki,C
-Chorshat Ha'ecalyptus,P
-Chorshat Ha'ecalyptus,P
-Chorshat Ha'ecalyptus,
+"Chorshat Ha'ecalyptus (P, Shlomo Maman)",P
+"Chorshat Ha'ecalyptus (P, Shlomo Bachar)",P
+Chorshat Ha'ecalyptus (),
 Choshev Alayich,P
-Choshev Aleha,C
-Choshev Aleha,P
+Choshev Aleha (C),C
+Choshev Aleha (P),P
 Choshevet Al Hapizmon,C
 Chotam Ba'olam,C
 Choveket Olam (Choveket Bachalom),P
@@ -1909,9 +1909,9 @@ Chupchik,C
 Circle From Sarid,PM
 Colombiana,L
 Comina,L
-Comme Ci Comme Ca,C
-Comme Ci Comme Ca,L
-Comme Ci Comme Ca,LK
+Comme Ci Comme Ca (C),C
+Comme Ci Comme Ca (L),L
+Comme Ci Comme Ca (LK),LK
 Como Baila,P
 Como Manana,L
 Cotton Eye Joe,L
@@ -1924,13 +1924,13 @@ Cumbia Semana (Fin De Semana),L
 Da'asa,C
 Da'ase,C
 Daber Elai Bifrachim,P
-Daber Elay Bifrachim,P
-Daber Elay Bifrachim,P
+Daber Elay Bifrachim (Avner Naim),P
+Daber Elay Bifrachim (Shlomo Bachar),P
 Daber Elay Yaldi,C
 Dabri Elay,P
 Dabri Iti,P
-Daddy Cool,L
-Daddy Cool,L
+Daddy Cool (Shalom Amar),L
+Daddy Cool (Mike Yuli),L
 Dadia Bia,C
 Daf Chadash,P
 Dagidi (Tagidi),C
@@ -1955,16 +1955,16 @@ Daniel,C
 Danielle,P
 Dansando Lambada,LK
 Danse,L
-Danza Kuduro,L
-Danza Kuduro,L
+Danza Kuduro (Orly Setareh),L
+Danza Kuduro (Yaron Elfasy),L
 Daraje,C
 Darbashiya,C
 Darkenu,C
 Davar Li Elayich,C
 Davar Matschik Kara Li,P
 David Hamelech Ba Lamesiba,C
-David Melech Israel,C
-David Melech Israel,PM
+David Melech Israel (C),C
+David Melech Israel (PM),PM
 David Vegoliyat,PK
 David Veyehonatan,C
 David Yafe Einayim,C
@@ -1972,8 +1972,8 @@ Davka,C
 Daw Da Hiya,C
 Dayagim,P
 Dayagim (Shir Dayagim),P
-Dayenu,C
-Dayenu,C
+Dayenu (Oren Shmuel),C
+Dayenu (Corinne Chochem),C
 De Ba,C
 De Ladhino,L
 Debka,C
@@ -1986,20 +1986,20 @@ Debka Amit,C
 Debka Argaman,C
 Debka Ariel,C
 Debka Ariella (Yam Shel Ahava),C
-Debka Asaf,C
-Debka Asaf,
+Debka Asaf (C),C
+Debka Asaf (),
 Debka Aviv,C
 Debka Ayil,C
 Debka Ayla (Debka Ela),C
-Debka Baba,C
-Debka Baba,C
+Debka Baba (Barry Avidan),C
+"Debka Baba (Leslie Asaraf, Yosi Cohen)",C
 Debka Balkanit,C
 Debka Bar Or,C
 Debka Bedu'it,C
 Debka Binyamin (RakHora),C
-Debka Bnot Hakfar,C
-Debka Bnot Hakfar,C
-Debka Bnot Hakfar,C
+Debka Bnot Hakfar (Shmuel (Vicki) Cohen),C
+Debka Bnot Hakfar (Moshe Eskayo),C
+Debka Bnot Hakfar (Eliyahu Gamliel),C
 Debka Chabibi,C
 Debka Chag,C
 Debka Chasidit,C
@@ -2018,9 +2018,9 @@ Debka Dikla,C
 Debka Dor,C
 Debka Dror (Dror Yikra),C
 Debka Druz,C
-Debka Eden,C
-Debka Eden,C
-Debka Eden,C
+Debka Eden (Naftaly Kadosh),C
+Debka Eden (Shlomo Maman),C
+Debka Eden (Chilik Jano),C
 Debka Eileen,C
 Debka Eilon (Debka Ayalon),C
 Debka El Arish,C
@@ -2044,8 +2044,8 @@ Debka Hanegbit,C
 Debka Haro'im,C
 Debka HeChalil (Shney Chalilim),C
 Debka Hilit (Hashir Ha'acharon),C
-Debka Hilula,C
-Debka Hilula,C
+Debka Hilula (Israel Shiker),C
+Debka Hilula (Benny Levy),C
 Debka Idan,C
 Debka Inbar (Kmo Ba'agadot),C
 Debka Irit (Simchat Hakatsir),C
@@ -2059,8 +2059,8 @@ Debka Keff,C
 Debka Kna'an,C
 Debka Kochav,C
 Debka Kurdit,C
-Debka La'adama,C
-Debka La'adama,C
+Debka La'adama (Rivka Sturman),C
+Debka La'adama (Yankale Levy),C
 Debka La'emek,C
 Debka Lahat (Another One Bites The Dust),L
 Debka Lahat (Mechol Halahat),L
@@ -2072,8 +2072,8 @@ Debka LeMoshe,C
 Debka Le'oshri,C
 Debka Lev,C
 Debka Levanonit,C
-Debka Leyakir,C
-Debka Leyakir,C
+Debka Leyakir (Shlomo Bachar),C
+Debka Leyakir (Motti Elfasy),C
 Debka Li'el,C
 Debka Lihi,C
 Debka Magen,C
@@ -2101,13 +2101,13 @@ Debka Ofarim,C
 Debka Onot,C
 Debka Or Chayim,C
 Debka Or David (Tsotso Vehapatish),C
-Debka Oud,C
-Debka Oud,C
+Debka Oud (Bentzi Tiram),C
+Debka Oud (Moshe Eskayo),C
 Debka Oz,C
 Debka Pnina,C
 Debka Pshuta,C
-Debka Ra'am,C
-Debka Ra'am,C
+Debka Ra'am (Shmulik Gov Ari),C
+Debka Ra'am (Shlomo Bachar),C
 Debka Rafi'ach,C
 Debka Ramot,C
 Debka Ru'ach,C
@@ -2148,19 +2148,19 @@ Dedi (Hu Yigal Otanu),C
 Deja Vu,P
 Delou Jan (Dilahu Jan),C
 Der Becher,C
-Der Flax Tants,C
-Der Flax Tants,P
+Der Flax Tants (C),C
+Der Flax Tants (P),P
 Derech,P
 Derech - Wh.Chair,PW
 Derech Aruka,P
-Derech Chadasha,C
-Derech Chadasha,C
-Derech Chadasha,C
-Derech Chadasha,P
-Derech Chadasha,P
+"Derech Chadasha (C, Ohad Atia)",C
+"Derech Chadasha (C, Nona Malki)",C
+"Derech Chadasha (C, Meir Shem Tov)",C
+"Derech Chadasha (P, Eyal Ozeri)",P
+"Derech Chadasha (P, Eran Bitton)",P
 Derech El Ha'osher,P
-Derech Erets Hashaked,C
-Derech Erets Hashaked,C
+Derech Erets Hashaked (Moshe Telem),C
+Derech Erets Hashaked (Meir Shem Tov),C
 Derech Hakurkar,C
 Derech Halev,C
 Derech Hameshi,C
@@ -2170,8 +2170,8 @@ Derech Hashirim,P
 Derech Hassimcha,P
 Derech Lachayim,P
 Derech Shir,C
-Derech Yeshana,C
-Derech Yeshana,P
+Derech Yeshana (C),C
+Derech Yeshana (P),P
 Despazaltov,L
 Devek,C
 Dganiya Sheli,C
@@ -2181,16 +2181,16 @@ Diaspora,C
 Didi,L
 Digdugim,P
 Dikar Almachiba,C
-Diki Diki,L
-Diki Diki,L
+"Diki Diki (Oren Ashkenazi, Lena Ashkenazi)",L
+Diki Diki (Oren Ashkenazi),L
 Dilam Bazan,P
 Dimati Hachama,C
 Dimayon Chofshi,P
 Dimdumim,P
 Dina Dina,C
 Dinata Dinata,C
-Dineros (Tavi Ketsat Dineros),P
-Dineros (Tavi Ketsat Dineros),P
+Dineros (Tavi Ketsat Dineros) (Israel Shabtai),P
+Dineros (Tavi Ketsat Dineros) (Nitza Raz),P
 Dira 26,P
 Disco Buzuki,L
 Disco Mizrahit,C
@@ -2199,8 +2199,8 @@ Diwan,C
 Dixie,C
 Diyo Diyo,C
 Dlatot Niftachot,C
-Dma'ot,C
-Dma'ot,P
+Dma'ot (C),C
+Dma'ot (P),P
 Dma'ot Ahava,C
 Dma'ot Shchorot,P
 Dmut Acheret,P
@@ -2219,8 +2219,8 @@ Dona Dona,C
 Don't Leave Me This Way (Al Ta'azvi Oti),L
 Don't Let Me Go,L
 Don't Stop,L
-Dor,C
-Dor,C
+Dor (Israel Shiker),C
+Dor (Boaz Cohen),C
 Dorchei No'am,C
 Dos Amantes,C
 Dos Tsigale,C
@@ -2231,28 +2231,28 @@ Dreydel Tanz,C
 Drishat Shalom (Ru'ach Yam),P
 Drive My Car,L
 Dror,C
-Dror Yikra,C
-Dror Yikra,C
-Dror Yikra,C
-Dror Yikra,PM
+"Dror Yikra (C, Gadi Bitton)",C
+"Dror Yikra (C, Eliyahu Gamliel)",C
+"Dror Yikra (C, Moshe Eskayo)",C
+Dror Yikra (PM),PM
 Du Da Hy,L
 Dublin,L
 Dudayit,C
 Dudu,C
 Duet Parsi Hodi,L
 Duet Preida,P
-Dugit,P
-Dugit,P
+Dugit (Shalom Amar),P
+Dugit (Bentzi Tiram),P
 Dunday,P
 Duni Duniya,C
-Dunya Dunya,C
-Dunya Dunya,P
+Dunya Dunya (C),C
+Dunya Dunya (P),P
 Dunyi'a,C
 Duom Tak Tak,L
 Duvdevan,P
 Dvarim Ktanim,C
-Dvarim Sheratsiti Lomar,C
-Dvarim Sheratsiti Lomar,C
+Dvarim Sheratsiti Lomar (Israel Shiker),C
+Dvarim Sheratsiti Lomar (Israel Shiker),C
 Dvarim Yaffim (Hadvarim Hayafim Ba'olam),C
 Dvarim Yafim Lirot,P
 Dvash Basfatayim,C
@@ -2261,25 +2261,25 @@ Dvash Vechalav,C
 Dynamite Dance,L
 Ech Efshar Shelo,P
 Echad (Echad Mi Yode'a),C
-Echad Mi Yode'a,C
-Echad Mi Yode'a,CK
+Echad Mi Yode'a (C),C
+Echad Mi Yode'a (CK),CK
 Echad Mitoch Kulam,C
 Ecute Cheri (Akut Sheri),P
 Eddy,L
-Eden,L
-Eden,P
-Eden,P
+Eden (L),L
+"Eden (P, Shimon Assor)",P
+"Eden (P, Bentzi Tiram)",P
 Efo Itai,LK
 Efrayim,C
 Efshar Acheret,C
-Egley Tal,C
-Egley Tal,P
+Egley Tal (C),C
+Egley Tal (P),P
 Ego,L
 Ego Trip,P
 Eh Oh,L
 Eh Oh Brazil (Chiclete Com Banana),L
-Eheye Asher Eheye,C
-Eheye Asher Eheye,P
+Eheye Asher Eheye (C),C
+Eheye Asher Eheye (P),P
 Eheye Bechol Makom,P
 Eheye Lach,P
 Ehov,C
@@ -2306,9 +2306,9 @@ Eich Lehasbir Ga'agu'a,C
 Eich Lo Yadati,P
 Eich Masbirim Ga'agu'a,C
 Eich Olam Mamshich Lanu'a,C
-Eich Pitom,C
-Eich Pitom,P
-Eich Pitom,P
+Eich Pitom (C),C
+"Eich Pitom (P, Shlomo Bachar)",P
+"Eich Pitom (P, Yehuda Emanuel)",P
 Eich She'at,P
 Eich She'at Meshaga'at Li Tayom,C
 Eich SheBat,P
@@ -2316,15 +2316,15 @@ Eich Shir Nolad,L
 Eich Ze At,P
 Eich Ze Shekochav,C
 Eid El Yaman,L
-Eifo At,P
-Eifo At,P
-Eifo At Ahuva,P
-Eifo At Ahuva,P
+Eifo At (Gadi Bitton),P
+Eifo At (Yaron Malihi),P
+Eifo At Ahuva (Tuvia Tishler),P
+Eifo At Ahuva (Israel Shiker),P
 Eifo At Hayom,C
 Eifo Ata,L
 Eifo Haprachim Kulam,C
-Eifo Hayamim,C
-Eifo Hayamim,C
+Eifo Hayamim (Oren Ashkenazi),C
+Eifo Hayamim (Yossi Miyara),C
 Eifo Hayit,P
 Eifo Hen Bachurot,LK
 Eifo Hen Habachurot,C
@@ -2336,8 +2336,8 @@ Ein Af Achat Kamoha,
 Ein Ahava,P
 Ein Ani,C
 Ein Davar,C
-Ein Gedi,C
-Ein Gedi,C
+Ein Gedi (Shlomo Bachar),C
+Ein Gedi (Bentzi Tiram),C
 Ein Gvulot,C
 Ein Higayon Ba'ahava,P
 Ein Kamoch,C
@@ -2351,16 +2351,16 @@ Ein Kvar Stam,PK
 Ein La,C
 Ein Lanu Teshuvot,P
 Ein Li Davar,P
-Ein Li Erets Acheret,C
-Ein Li Erets Acheret,C
+Ein Li Erets Acheret (Shlomo Maman),C
+Ein Li Erets Acheret (Benny Levy),C
 Ein Li Ish Milvadi,L
 Ein Li Ko'ach Lamischakim,C
 Ein Li Milim,P
 Ein Li Otcha,P
 Ein Li Sheket,C
 Ein Li Yom,C
-Ein Li Yoter Ma Lomar,P
-Ein Li Yoter Ma Lomar,P
+Ein Li Yoter Ma Lomar (Roni Siman Tov),P
+Ein Li Yoter Ma Lomar (Meir Shem Tov),P
 Ein Makom Acher,P
 Ein Maspik Zman,P
 Ein Mechir La'ahava,C
@@ -2395,9 +2395,9 @@ Eizo Medina,C
 Eizo Min Yalda,C
 Eizo Rakdanit,C
 Eizo Shemesh Mevorechet (Shir Lechet),P
-El Adon,C
-El Adon,C
-El Adon,C
+El Adon (Moshiko Halevy),C
+El Adon (Shlomo Maman),C
+El Adon (David Alfassy),C
 El Adon Al Kol Hama'asim,C
 El Adon Nosach Ashkenaz,C
 El Ali (Debka El Ali),C
@@ -2409,8 +2409,8 @@ El Chayay,C
 El Cuchipe (Kuchita),P
 El Elohei Shamayim,C
 El Ginat Egoz,P
-El Ha'ayin,C
-El Ha'ayin,P
+El Ha'ayin (C),C
+El Ha'ayin (P),P
 El Hachofesh,C
 El Hadag,P
 El Haderech,P
@@ -2420,12 +2420,12 @@ El Hahora,C
 El Hakochavim,
 El Hakramim,C
 El Hamayim,C
-El Hanachal,C
-El Hanachal,C
+El Hanachal (Eli Ronen),C
+El Hanachal (Bentzi Tiram),C
 El Ha'olam Shelach,P
-El Ha'or,C
-El Ha'or,C
-El Ha'or,
+"El Ha'or (C, Dudu Barzilay)",C
+"El Ha'or (C, Israel Shiker)",C
+El Ha'or (),
 El Hapeleg,C
 El Hasade,
 El Hayam,C
@@ -2439,15 +2439,15 @@ El'ad Yarad El Hayarden,P
 Elaich Ba,C
 Elat Ha'ahava (Ella),C
 Elay,C
-Elayich,P
-Elayich,P
+Elayich (Dudu Barzilay),P
+Elayich (Nir Dor),P
 Elayich Hatama,P
 Elayich Moledet (Hasiri Tsel),C
 Elayich Tfilati,C
 Elayich Umimech,P
-Ele Chamda Libi,C
-Ele Chamda Libi,C
-Ele Chamda Libi,C
+Ele Chamda Libi (Raaya Spivak),C
+Ele Chamda Libi (Eyal Bar Kayma (Eyal Levy)),C
+Ele Chamda Libi (Shlomo Bachar),C
 Ele Hachayim,P
 Elech Itach (Kmo Tsipor),P
 Elecha Ekra Ya,C
@@ -2458,14 +2458,14 @@ Elef Laila,C
 Elef Laila Velaila,P
 Elef Layla Velayla,C
 Elef Mechazrim,C
-Elef Neshikot,C
-Elef Neshikot,P
-Elef Neshikot,P
+Elef Neshikot (C),C
+"Elef Neshikot (P, Maurice Perez)",P
+"Elef Neshikot (P, Shalom Amar)",P
 Elef Pe'amim,C
 Elef Shir,C
 Elef Yadayim,PL
-Elem Chamudot,C
-Elem Chamudot,P
+Elem Chamudot (C),C
+Elem Chamudot (P),P
 Elem Chen,C
 Elem Ve'alma - Wh.Chair,PW
 Elem Ve'alma (Manginat Hatso'ani),P
@@ -2476,8 +2476,8 @@ Eli Shebashamayim,C
 Eli Sheli,C
 Eli Ya,P
 Eliezer Ben Yehuda,C
-Elilat Ha'agam,C
-Elilat Ha'agam,C
+Elilat Ha'agam (Marco Ben Shimon),C
+Elilat Ha'agam (Yaron Ben Simhon),C
 Elinor,P
 Eliran,L
 Eliya,C
@@ -2487,13 +2487,13 @@ Eliyahu Hanavi,C
 Ella,P
 Ella Ella,P
 Ella Ella - Wh.Chair,PW
-Elohai,C
-Elohai,P
+Elohai (C),C
+Elohai (P),P
 Elohai Ad Matai,C
 Elohai She'Ba'Shameim,C
 Elohey Tsion (Rak Eleicha Elohai),P
-Elohim Natan Lecha,C
-Elohim Natan Lecha,C
+Elohim Natan Lecha (Shirley Smith),C
+Elohim Natan Lecha (Oren Shmuel),C
 Elohim Shebashamayim,C
 Elohim Ta'ase Shenigdal,C
 Elohim Ten Li Ko'ach,U
@@ -2502,17 +2502,17 @@ Elokim Sheli,C
 Em Achat Erets Achat,C
 Emanuel,C
 Emek Dotan,C
-Emek Haprachim,C
-Emek Haprachim,C
-Emek Haprachim,P
+"Emek Haprachim (C, Yosef Mehaleil)",C
+"Emek Haprachim (C, Bentzi Tiram)",C
+Emek Haprachim (P),P
 Emek Sheli,P
 Emet Achat,P
 Emtsa Halaila Bakfar,C
 Emtsa September,C
 Emtsa Shum Makom,C
-Emuna,C
-Emuna,C
-Emuna,P
+"Emuna (C, Orly Goldshtein)",C
+"Emuna (C, Shmulik Gov Ari)",C
+Emuna (P),P
 En De Troua - Hamesiba,L
 Enatsel (Anatsel),C
 Enayim Mul Enayim,P
@@ -2522,10 +2522,10 @@ Enigma,C
 Equador,L
 Erets Achat,C
 Erets Acheret,C
-Erets Ahuva,C
-Erets Ahuva,C
-Erets Ahuva,C
-Erets Ahuva,C
+Erets Ahuva (Moshiko Halevy),C
+Erets Ahuva (Roni Siman Tov),C
+Erets Ahuva (Motti Elfasy),C
+Erets Ahuva (Shlomo Bachar),C
 Erets Avuda,C
 Erets Bereshit,P
 Erets Bereshit - Wh.Chair,PW
@@ -2536,8 +2536,8 @@ Erets Gagu'a,C
 Erets Hachidot,C
 Erets Hatsabar,C
 Erets Israel,C
-Erets Israel Yafa,C
-Erets Israel Yafa,P
+Erets Israel Yafa (C),C
+Erets Israel Yafa (P),P
 Erets Ktana,C
 Erets Lanu,C
 Erets Lev,C
@@ -2547,53 +2547,53 @@ Erets Me'usheret,C
 Erets Mezameret,C
 Erets Moledet Erets Bo'eret,C
 Erets Muvtachat,P
-Erets Nehederet,C
-Erets Nehederet,C
+Erets Nehederet (Avner Naim),C
+Erets Nehederet (Moti Menachem),C
 Erets Shel Prachim,C
 Erets Shivat Haminim,C
 Erets Tropit Yafa (Yesh Li),P
-Erets Zavat Chalav,C
-Erets Zavat Chalav,C
-Erets Zavat Chalav,
-Erev Ba,C
-Erev Ba,C
+"Erets Zavat Chalav (C, Dani Dassa)",C
+"Erets Zavat Chalav (C, Eliyahu Gamliel)",C
+Erets Zavat Chalav (),
+Erev Ba (Rivka Sturman),C
+Erev Ba (Yo'av Ashriel),C
 Erev Bachermon,P
 Erev Bli Telefon,P
 Erev Chag,C
-Erev Erev (Zug O Peret),C
-Erev Erev (Zug O Peret),C
+Erev Erev (Zug O Peret) (Israel Shiker),C
+Erev Erev (Zug O Peret) (Shlomo Bachar),C
 Erev Hachag (Chozeret ErevHachag),C
-Erev Kachol Amok,P
-Erev Kachol Amok,P
+Erev Kachol Amok (Eyal Bar Kayma (Eyal Levy)),P
+Erev Kachol Amok (Dede Luski),P
 Erev Kaits Cham,P
-Erev Ka'its Veyonim,P
-Erev Ka'its Veyonim,P
+"Erev Ka'its Veyonim (Mali Lipson, Moshe)",P
+Erev Ka'its Veyonim (Sefi Aviv),P
 Erev Mul Hagilad,P
 Erev Mul Kochav (Kochavim Lo Meshakrim),P
 Erev Nigunim,P
 Erev Rad Al Kfar,P
-Erev Shabbat,C
-Erev Shabbat,C
-Erev Shach,P
-Erev Shach,P
-Erev Shach,P
-Erev Shach,P
-Erev Shach,P
-Erev Shel Shoshanim (Yarus),L
-Erev Shel Shoshanim (Yarus),L
-Erev Shel Shoshanim (Yarus),P
-Erev Shel Shoshanim (Yarus),P
-Erev Shel Shoshanim (Yarus),P
+Erev Shabbat (Avner Naim),C
+Erev Shabbat (Shmulik Gov Ari),C
+Erev Shach (Shlomo Maman),P
+Erev Shach (Tzvi Hillman),P
+Erev Shach (Bentzi Tiram),P
+Erev Shach (Rivka Sturman),P
+Erev Shach (Tzvi Fridhaber),P
+"Erev Shel Shoshanim (Yarus) (L, Shlomo Bachar)",L
+"Erev Shel Shoshanim (Yarus) (L, Raaya Spivak)",L
+"Erev Shel Shoshanim (Yarus) (P, Eliyahu Gamliel)",P
+"Erev Shel Shoshanim (Yarus) (P, Dani Dassa)",P
+"Erev Shel Shoshanim (Yarus) (P, Tzvi Hillman)",P
 Erev Shuk,P
 Erev Tov,C
 Erev Yom Shishi (Rikud Shabat),C
 Erkod Lema'anech,P
-Esa Einai,C
-Esa Einai,C
+Esa Einai (Ira Weisburd),C
+Esa Einai (Shmulik Gov Ari),C
 Esa Otach (Osa Otach),P
 Esev Bar (Ma'agal),C
-Esh,C
-Esh,P
+Esh (C),C
+Esh (P),P
 Esh Ali,C
 Esh Be'enayich,C
 Esh Bi Yokedet,P
@@ -2603,34 +2603,34 @@ Esh Ha'ahava,P
 Esh Hachayim,C
 Esh Vazemer,C
 Eshal,C
-Eshal Elohai,C
-Eshal Elohai,C
+Eshal Elohai (Shlomo Bachar),C
+Eshal Elohai (Moshiko Halevy),C
 Eshalech,P
 Eshebo,C
-Eshet Chayil,C
-Eshet Chayil,C
-Eshet Chayil,C
-Eshet Chayil,P
-Eshet Chayil,P
+"Eshet Chayil (C, Chagit Fuchs)",C
+"Eshet Chayil (C, Sara Kletter)",C
+"Eshet Chayil (C, Avi Perez, Victor Gabbay)",C
+"Eshet Chayil (P, Israel Shiker)",P
+"Eshet Chayil (P, Moshiko Halevy)",P
 Eshet Chayil Sheli,P
 Eshet Lot,C
-Eshkolit,P
-Eshkolit,
-Eshkolit,
-Eshkolit,
+Eshkolit (P),P
+"Eshkolit (, Sefi Aviv)",
+"Eshkolit (, Peri Shachaf)",
+"Eshkolit (, Ze'ev Chavatzelet)",
 Eshmera Shabbat (Shir Shabbat),P
 Eshmor Alaeich,P
 Eskabukim Lele,C
 Espaniola,P
-Espera (La Nave Del Olvido ),P
-Espera (La Nave Del Olvido ),P
+Espera (La Nave Del Olvido ) (Chayim Ochayon),P
+Espera (La Nave Del Olvido ) (Chayim Ochayon),P
 Esperanza,P
 Essof Et Hama'asim,C
 Estader Levad,P
 Et Ashir,C
 Et Dodim,P
-Et Dodim Kala,C
-Et Dodim Kala,P
+Et Dodim Kala (C),C
+Et Dodim Kala (P),P
 Et Dodim Kala Fantasy,C
 Et Eshan,C
 Et Hageshem (Anachnu Lo Tsrichim),C
@@ -2642,8 +2642,8 @@ Et Mi At Ohevet,P
 Et Ratson,P
 Et She'ahava Nafshi,P
 Et Ya'ale Yare'ach,C
-Eten Bamidbar,C
-Eten Bamidbar,C
+Eten Bamidbar (Yankale Levy),C
+Eten Bamidbar (Rivka Sturman),C
 Eten Hakol Bishvilech (Hakol Bishvilech),P
 Eten Lach Shanim,P
 Etgar,C
@@ -2652,19 +2652,19 @@ Ets Alon,C
 Ets Chayim Hee,C
 Ets Hakochavim,C
 Ets Hamishalot,C
-Ets Harimon,C
-Ets Harimon,P
-Ets Harimon,P
+Ets Harimon (C),C
+"Ets Harimon (P, Moshe Eskayo)",P
+"Ets Harimon (P, Gurit Kadman)",P
 Ets Hashikma,C
 Ets Hatapu'ach,P
-Ets Hazayit,C
-Ets Hazayit,C
+Ets Hazayit (Moti Ben Ya'akov),C
+Ets Hazayit (Shmulik Gov Ari),C
 Ets Shatul Al Mayim,C
 Ets Zaken Ba'arava,
 Etsba’ot Shokolad,P
 Etse Li Hachuka,C
-Etse Li Hashuka,LK
-Etse Li HaShuka,LK
+Etse Li Hashuka (Chen Shporen),LK
+Etse Li HaShuka (Levi Bar Gil),LK
 Etslech Ba'olam,P
 Etslech Kmo Tamid,P
 Etsleinu Bachatser (Orchim Lakayits),C
@@ -2674,23 +2674,23 @@ Etslenu Bashchuna,C
 Etsli Hakol Beseder,P
 Eved Avraham,C
 Even Al Even,C
-Everybody,L
-Everybody,L
-Everybody,L
+Everybody (Levi Bargil),L
+Everybody (Lital Luski),L
+Everybody (Eyal Malach),L
 Ey Hatal,P
 Ey Sham,C
-Ey Sham Babika,C
-Ey Sham Babika,C
+Ey Sham Babika (Gert-Jan Van Ammerkate),C
+Ey Sham Babika (Moshe Cafri),C
 Ey Sham Balev,C
-Ez Vakeves,L
-Ez Vakeves,P
+Ez Vakeves (L),L
+Ez Vakeves (P),P
 Ezkor Et Haderech,C
 Ezrach Barchov,P
 Faith,L
 Fake ID,L
 Falafel (Shir Hafalafel),P
-Fame,L
-Fame,L
+Fame (Chen Shporen),L
+Fame (Clear Mind Inc.),L
 Fanan,C
 Fantasia,P
 Farahtini (Parachtani),C
@@ -2715,9 +2715,9 @@ Footloose (Slapping Leather),L
 Freestyle Festival,LK
 Frelach Shell Tras,
 Fresh,L
-Freylach,C
-Freylach,C
-Freylach,C
+Freylach (Barry Avidan),C
+Freylach (Shmulik Gov Ari),C
+Freylach (Fred Berk),C
 Friends,L
 Fuego,L
 Fuga Ktana,C
@@ -2726,14 +2726,14 @@ Fusae Ko,C
 Ga'agu'a,C
 Ga'agu'a Baru'ach,C
 Ga'agu'a Insofi,C
-Ga'agu'ai,C
-Ga'agu'ai,P
+Ga'agu'ai (C),C
+Ga'agu'ai (P),P
 Ga'agu'ai Lega'agu'im,P
 Ga'agu'ay Chalom,P
-Ga'agu'im,C
-Ga'agu'im,C
-Ga'agu'im,PM
-Ga'agu'im,
+"Ga'agu'im (C, Moshiko Halevy)",C
+"Ga'agu'im (C, Gert-Jan Van Ammerkate)",C
+Ga'agu'im (PM),PM
+Ga'agu'im (),
 Ga'agu'im Baneshama (Ish Lo Yire Oti Bocha),P
 Ga'agu'im Ladimiyon,C
 Ga'agu'im Le'Aba,C
@@ -2773,9 +2773,9 @@ Gan Ha'eden Ha'asur (Nachash Ha'ir),C
 Gan Hashikmim,P
 Gan Hashikmim - Wh.Chair,PW
 Gan Hastav,C
-Gan Naul,C
-Gan Naul,P
-Gan Naul,P
+Gan Naul (C),C
+"Gan Naul (P, Barry Avidan)",P
+"Gan Naul (P, David Paletz)",P
 Gan Naul (Ahava Gan Naul Hi),P
 Gan Sagur,L
 Gan Shel Shoshanim,C
@@ -2790,17 +2790,17 @@ Gavriel,P
 Geshem Ahava,C
 Geshem Al Hamayim,P
 Geshem Al Panai,C
-Geshem Bemay,CK
-Geshem Bemay,P
+Geshem Bemay (CK),CK
+Geshem Bemay (P),P
 Geshem Bo,C
 Geshem Sheyavo,P
-Geshem Yored,C
-Geshem Yored,P
+Geshem Yored (C),C
+Geshem Yored (P),P
 Gesher Tsar Me'od,C
 Get Funky,L
 Get Lucky,L
-Ge'ula,C
-Ge'ula,C
+"Ge'ula (Oren Ashkenazi, Eli Segal)",C
+Ge'ula (Rafi Ziv),C
 Ge'ulim (Eshal Elohai),P
 Gever Lalaila (A Man After Midnight),L
 Gever Le'enyan,P
@@ -2823,10 +2823,10 @@ Goblin,C
 Goca Dunya,C
 Gogli Gogli,P
 Going Down To Cairo,L
-Golani Sheli,C
-Golani Sheli,C
-Golden Boy,L
-Golden Boy,LK
+Golani Sheli (Gadi Bitton),C
+Golani Sheli (Yehuda Emanuel),C
+Golden Boy (L),L
+Golden Boy (LK),LK
 Gole Gandom - Perach Hachita,C
 Gole Sangam,C
 Gonev Halevavot (Thief of Hearts),L
@@ -2845,8 +2845,8 @@ Ha'achat Mibein Kulan,P
 Ha'agurim,C
 Ha'ahat sheli,P
 Ha'ahava Ha'atsuva Hake’uva,C
-Ha'ahava Hayeshana,P
-Ha'ahava Hayeshana,P
+Ha'ahava Hayeshana (Roni Siman Tov),P
+Ha'ahava Hayeshana (Gadi Bitton),P
 Ha'ahava Hayeshana Sheli,P
 Ha'ahava Hi Elohit,C
 Ha'ahava Sheli,P
@@ -2854,8 +2854,8 @@ Ha'ahava Shelo Zo'at Lo Hahava Sheli,P
 Ha'ahavot Hayeshanot,P
 Ha'alma,P
 Ha'alma (Hayo Hayta Alma),P
-Ha'amini Yom Yavo,C
-Ha'amini Yom Yavo,C
+Ha'amini Yom Yavo (Yoni Carr),C
+Ha'amini Yom Yavo (Moshe Tawily),C
 Ha'amiti,C
 Ha'arets Hamuvtachat,C
 Ha'arpad (Danca Do Vampiro),L
@@ -2877,8 +2877,8 @@ Haben Yakir Li,C
 Habet Bi Ahuvi,P
 Habib Galbi,C
 Habibi Ya Le Le,L
-Habilbul,L
-Habilbul,P
+Habilbul (L),L
+Habilbul (P),P
 Habiti Mi Chazar,P
 Haboker (Haboker at Holechet),P
 Haboker Ya'ale,C
@@ -2889,19 +2889,19 @@ Hachalom Sheli,
 Ha'Chamtsan Sheli (Chamtsan),P
 Hachan Shel Otman,C
 Hachaticha Merechov Panorama (Rechov Panorama),P
-Hachatuna,C
-Hachatuna,P
+Hachatuna (C),C
+Hachatuna (P),P
 Hachayal Sheli Chazar,C
 Hachayim,C
-Hachayim Ha'acherim,C
-Hachayim Ha'acherim,C
-Hachayim Ha'acherim,P
+"Hachayim Ha'acherim (C, Avi Perez)",C
+"Hachayim Ha'acherim (C, Shmulik Gov Ari)",C
+Hachayim Ha'acherim (P),P
 Hachayim Hayafim,C
 Hachayim Hem Rikud,P
 Hachayim Lakchu Oti,C
 Hachayim Shelanu Tutim,
-Hachayim Yafim,C
-Hachayim Yafim,C
+Hachayim Yafim (Ilan Benedict),C
+Hachayim Yafim (Rafi Ziv),C
 Hachevra Lehaganat Hateva,C
 Hachi Israeli,L
 Hachi Karov,P
@@ -2909,14 +2909,14 @@ Hachi Karov Elayich,C
 Hachi Rachok,P
 Hachi Tova Ba'olam,P
 Hachi Yafa,P
-Hachinanit,P
-Hachinanit,P
+Hachinanit (Yankale Levy),P
+Hachinanit (David Edery),P
 Hachita Tsomachat Shuv,P
 Hachiyuch Shebeinayich,C
 Hachlafot,U
-Hachnisini Tachat Knafech,C
-Hachnisini Tachat Knafech,P
-Hachnisini Tachat Knafech,P
+Hachnisini Tachat Knafech (C),C
+"Hachnisini Tachat Knafech (P, Gadi Bitton)",P
+"Hachnisini Tachat Knafech (P, Motti Elfasy)",P
 Hachol Yizkor (Machol Yizkor),C
 Hacholmim Achar Hashemesh,P
 Hachoref Male Ga'agu'im,C
@@ -2924,15 +2924,15 @@ Haci Bari,P
 Haci Karov,C
 Hada Lack Ya Binti,C
 Hadar,C
-Hadarim,C
-Hadarim,P
+Hadarim (C),C
+Hadarim (P),P
 Hadassa Esther,P
 Hadavar Ha'amiti,P
 Hadavar Haba,L
 Hadayag,P
 Hadegel Sheli,C
-Haderech Aruka,C
-Haderech Aruka,P
+Haderech Aruka (C),C
+Haderech Aruka (P),P
 Haderech El Hakfar (Baderech El Hakfar),C
 Haderech Habaita,C
 Haderech Habrucha,U
@@ -2951,15 +2951,15 @@ Haduni,C
 Hadvarim Hachi Pshutim,C
 Hadwaja (Chadoza),C
 Ha'elim Hachadashim,P
-Ha'emek Hu Chalom,C
-Ha'emek Hu Chalom,C
+Ha'emek Hu Chalom (Moshiko Halevy),C
+Ha'emek Hu Chalom (David Edery),C
 Ha'ets Ha'atik,C
 Ha'ets Hu Gavoha,C
 Hafanana,L
-Hafinali,L
-Hafinali,L
-Hafinjan,C
-Hafinjan,
+Hafinali (Chanan Cohen),L
+Hafinali (Orly Setareh),L
+Hafinjan (C),C
+Hafinjan (),
 Hafla,C
 Hafla Parsit,C
 Hafuch,C
@@ -2979,8 +2979,8 @@ Hagitara,P
 Hagiva Porachat,C
 Hagola Hashkula,C
 Hagshama Atsmit,P
-Hagva'ot Hakchulot,C
-Hagva'ot Hakchulot,P
+Hagva'ot Hakchulot (C),C
+Hagva'ot Hakchulot (P),P
 Hagvarim Bochim Balaila,C
 Hagvul Hu Hashamayim,C
 Hahar Hayarok,C
@@ -3003,9 +3003,9 @@ Ha'im Odech Yafa,P
 Ha'im Taskimi,C
 Ha'ir,C
 "Hair (Se'ar, Zumbai Adoma )",L
-Ha'ir Be'afor,C
-Ha'ir Be'afor,C
-Ha'ir Be'afor,P
+"Ha'ir Be'afor (C, Rivka Sturman)",C
+"Ha'ir Be'afor (C, Moshe Eskayo)",C
+Ha'ir Be'afor (P),P
 Ha'ir Hazot (Ba'ir Hazot),P
 Ha'ish Hahu,C
 Ha'ish Haze,P
@@ -3020,8 +3020,8 @@ Hakatar Mibe'er Sheva,CK
 Hakatar Mibe'er Sheva (Hakatar),C
 Hakayits Chalaf,C
 Hake'ev Haze,P
-Hakerem,C
-Hakerem,P
+Hakerem (C),C
+Hakerem (P),P
 Haketsev Shel Chayay (At Haketsev Shel Chayay),P
 Hakina,C
 Hakinor,C
@@ -3033,8 +3033,8 @@ Hako'ach Be'ahavatech,P
 Hako'ach Shebalev,C
 Hakochav (Saper Li Kochav),C
 Hakochav Migush Dan,C
-Hakochav Sheli,C
-Hakochav Sheli,P
+Hakochav Sheli (C),C
+Hakochav Sheli (P),P
 Hakol Ad Kan,P
 Hakol Be'ahava,P
 Hakol Beseder,C
@@ -3047,8 +3047,8 @@ Hakol Hafuch,C
 Hakol Hishtana Li,P
 Hakol Itach Dvash,P
 Hakol Kvar Shelach,C
-Hakol Letova,LK
-Hakol Letova,P
+Hakol Letova (LK),LK
+Hakol Letova (P),P
 Hakol Mazkir Otach,P
 Hakol Me'ahava,C
 Hakol Mehakol,C
@@ -3058,22 +3058,22 @@ Hakol Od Lefanay,C
 Hakol Od Yistader,C
 Hakol Omed Bamakom,P
 Hakol Over,P
-Hakol Patu'ach,C
-Hakol Patu'ach,C
+Hakol Patu'ach (Yankale Levy),C
+Hakol Patu'ach (Avner Naim),C
 Hakol Sagur,C
 Hakol Tov,P
 Hakol Zahav,C
 Hakolot Shel Pireus (Pireus),C
 Hakorason Sheli (Korason),P
-Hakormim,P
-Hakormim,P
-Hakormim,
+"Hakormim (P, Yo'av Ashriel)",P
+"Hakormim (P, Moshe Eskayo)",P
+Hakormim (),
 Hakos Hakchula,P
 Hakotsrim,P
 Hakshivi Lakol,P
 Haktanot Shebaktanot,C
-Haktantana Hismika (Tsipor Hayofi),C
-Haktantana Hismika (Tsipor Hayofi),P
+Haktantana Hismika (Tsipor Hayofi) (C),C
+Haktantana Hismika (Tsipor Hayofi) (P),P
 Hala,C
 Halachta Li Chaver (Hu Chazar Bitshuva),C
 Halaila,
@@ -3102,51 +3102,51 @@ Haleli Or,P
 Haleli Yerushalayim,C
 Halellu,C
 Halelot Bichna'an,C
-Halelu,C
-Halelu,C
+Halelu (Yaron Ben Simhon),C
+Halelu (Shlomo Bachar),C
 Halelu Et Hadonai,C
 Halelu Haleluya,L
 Halelu Hazemer,C
-Haleluya,C
-Haleluya,C
-Haleluya,C
-Haleluya,C
-Haleluya,C
-Haleluya,C
-Haleluya,C
-Haleluya,LM
+"Haleluya (C, Boaz Cohen)",C
+"Haleluya (C, Meir Shem Tov)",C
+"Haleluya (C, Robin Starr)",C
+"Haleluya (C, Gadi Bitton)",C
+"Haleluya (C, Shlomo Bachar)",C
+"Haleluya (C, Marco Ben Shimon)",C
+"Haleluya (C, Bentzi Tiram)",C
+Haleluya (LM),LM
 Haleluya Betsiltslei Shama (Haleluya),C
 Haleluya Legal,C
 Haleluya Leshabat,C
 Haleluya Leshalom,C
 Haleluya Leshalom (Haleluya),C
 Haleluya shabbat Shalom,C
-Halev,C
-Halev,C
+Halev (Gadi Bitton),C
+Halev (Batya Kronenberg),C
 Halev Hapatu'ach,P
 Halev Nitpas,C
 Halev Patsu'a,P
 Ha'Lev Shel Eima,L
 Halev Shel Ha'olam,C
-Halev Sheli,C
-Halev Sheli,C
-Halev Sheli,P
+"Halev Sheli (C, Nurit Melamed)",C
+"Halev Sheli (C, Chayim Tzemach)",C
+Halev Sheli (P),P
 Halev Tsame,C
 Halev Vehama'ayan,C
 Halev Yodei'a,P
-Halevai,C
-Halevai,P
+Halevai (C),C
+Halevai (P),P
 Halevai Alay,C
-Halha,C
-Halha,C
+Halha (Chanan Cohen),C
+Halha (Avi Levy),C
 Halicha (Walk - Holiday Rap),L
 Halil Bamidbar (Shir Amami),C
 Halila Chatuna,C
 Halla,C
 Halleluhu,C
 Hallo,L
-Halo Noda,P
-Halo Noda,P
+Halo Noda (Shmulik Gov Ari),P
+Halo Noda (Oren Shmuel),P
 Halochem,L
 Halvai Shekvar Yavo,C
 Hamachar,P
@@ -3169,8 +3169,8 @@ Hamangina Sheli,P
 Hamasa Miyam El Yam,C
 Hamashi'ach,
 Hamatilda Sheli,P
-Hamavdil,C
-Hamavdil,L
+Hamavdil (C),C
+Hamavdil (L),L
 Hamavdil Bein Kodesh Lechol,C
 HaMazal,P
 Hamazalot,P
@@ -3189,8 +3189,8 @@ Hamesiba Shel Hachaim,C
 Hamesiba Sheli,C
 Hametsiut Shelach,P
 Hamifras Shel Baru'ach,C
-Hamilim Hachaserot,C
-Hamilim Hachaserot,P
+Hamilim Hachaserot (C),C
+Hamilim Hachaserot (P),P
 Hamischak Nigmar,P
 Hamistikanim Hasinim (Ma'avir Daf),P
 Hamitsad,C
@@ -3199,10 +3199,10 @@ hamizrach hatichon,C
 Hamo'aviya,C
 Hamshorer,P
 Hana'arim Hasapanim,C
-Hana'ava Babanot,C
-Hana'ava Babanot,P
-Hana'ava Babanot,P
-Hana'ava Babanot,P
+Hana'ava Babanot (C),C
+"Hana'ava Babanot (P, Dani Dassa)",P
+"Hana'ava Babanot (P, Shauli Rosenfeld)",P
+"Hana'ava Babanot (P, Simcha Levine)",P
 Hanachash Began Eden,LK
 Hanahar,C
 Hanamal,C
@@ -3217,15 +3217,15 @@ Haneshama (Ma Ma Ma!),C
 Hanesharim,C
 Haneshika,P
 Haneshika Harishona,P
-Hanesicha Hashvuya,C
-Hanesicha Hashvuya,C
+Hanesicha Hashvuya (Yaron Elfasy),C
+Hanesicha Hashvuya (Benny Levy),C
 Hanesicha Sheli,P
-Hanesicha Veharu'ach,C
-Hanesicha Veharu'ach,C
-Hanesicha Veharu'ach,C
+Hanesicha Veharu'ach (Moshany A. Shemesh),C
+Hanesicha Veharu'ach (Sefi Aviv),C
+Hanesicha Veharu'ach (Bentzi Tiram),C
 Hanetsach Hu Katsar,P
-Hane'urim Ha'avudim,P
-Hane'urim Ha'avudim,P
+Hane'urim Ha'avudim (Rafi Ziv),P
+Hane'urim Ha'avudim (Shmulik Gov Ari),P
 Hanevel,P
 Hanichi Li,C
 Hanigun,C
@@ -3242,30 +3242,30 @@ Hanshama Bekirbi,C
 Ha'olam Hametukan,P
 Ha'olam Same'ach,C
 Ha'omnam (Al Telchi Basadeh),C
-Ha'or,C
-Ha'or,P
+Ha'or (C),C
+Ha'or (P),P
 Ha'or Min Heharim,C
 Ha'or Sheba’enayim,P
 Ha'or Shebiktse Hamisdaron,C
 Ha'or Yizrach,P
-Ha'ore'ach,C
-Ha'ore'ach,C
+Ha'ore'ach (Shmulik Gov Ari),C
+Ha'ore'ach (Itzchak Atira),C
 Ha'orot Hazolgim,P
 Ha'oto Sheli Hayofi Shelach,C
 Hapa'am,P
 Haparpar (Parpar),P
 Hapatent Miteyman,C
-Hapaytan (Tikvot Yamai),P
-Hapaytan (Tikvot Yamai),U
-Haperach Begani,P
-Haperach Begani,P
+Hapaytan (Tikvot Yamai) (P),P
+Hapaytan (Tikvot Yamai) (U),U
+Haperach Begani (Bentzi Tiram),P
+Haperach Begani (Yehuda Emanuel),P
 Haperach Halavan,C
 Hapetsa Shegaram Ha'osher,P
 Hapetsa Shegaram Ha'Osher-Wh.Chair,PW
 Hapilpel (Rak Halaila),P
 Hapitsa Shebalev,C
-Happy,L
-Happy,L
+Happy (Yaron Elfasy),L
+Happy (Chen Shporen),L
 Happy Birthday,LK
 Hapri Shelach,P
 Hapruta Vehayare'ach,P
@@ -3287,8 +3287,8 @@ Harbe Zman,P
 Harbi Tovech,P
 Hardufim,P
 Harechov Hagadol,C
-Harei At Mekudeshet Li,P
-Harei At Mekudeshet Li,P
+Harei At Mekudeshet Li (Boaz Cohen),P
+"Harei At Mekudeshet Li (David Dassa, Orly Setareh)",P
 Harei Gilad,C
 Hareni Mekabel,C
 Harikud Ha'achron Sheli,P
@@ -3301,8 +3301,8 @@ Harikud Shel Pnina,C
 Harikud Sheli,
 Harimon,P
 Harishona,P
-Harishut,C
-Harishut,P
+Harishut (C),C
+Harishut (P),P
 Harmoni'a Le'olam,
 Harmonica,C
 Haro’e Bashoshanim,P
@@ -3326,9 +3326,9 @@ Haser De'aga Milibcha,C
 Hashabat Kvar Nichneset,C
 Hashabat Shelanu,C
 Hashabat Sheli,C
-Hashachar,C
-Hashachar,C
-Hashachar,C
+Hashachar (Dani Dassa),C
+Hashachar (Shlomo Bachar),C
+Hashachar (Motti Elfasy),C
 Hashaked,C
 Hashana,C
 Hashana Hachadasha Sheli,C
@@ -3337,8 +3337,8 @@ Hashcharchoret Mehanach.,P
 Hasheket Shel Shabat,P
 Hashemesh,C
 Hashemesh Tizrach La'ahava,C
-Hashevach La'el,C
-Hashevach La'el,C
+Hashevach La'el (Israel Shiker),C
+Hashevach La'el (Israel Yakovee),C
 Hashir Al Erets Sinai,C
 Hashir Al Ha'arets,C
 Hashir Ha'acharon,U
@@ -3349,16 +3349,16 @@ Hashir Shehu Shar Li Bageshem,P
 Hashir Shel Aba,C
 Hashir Shel Miriam,C
 Hashir Shelach,P
-Hashir Shelanu,C
-Hashir Shelanu,C
-Hashir Shelanu,C
+Hashir Shelanu (Nir Dor),C
+Hashir Shelanu (Yom Tov Ochayon),C
+Hashir Shelanu (Chana Nitzan),C
 Hashir Sheli,C
 Hashir Shelo He'azti Lashir,P
 Hashir Shelo Nigmar,C
 Hashir Sheyavi Lacha Ahava,P
 Hashirim Ha'ele,
-Hashivenu,C
-Hashivenu,C
+Hashivenu (Elad Shtamer),C
+Hashivenu (Elad Shtamer),C
 Hashkedi'ot,C
 Hashkini Yayin,P
 Hashkiya Basede (Acharei Hashkiya Basedeh),C
@@ -3371,8 +3371,8 @@ Hashvi'i Beseptember,P
 Hasimcha Shebetochi,C
 Hasimcha Shelanu,C
 Hasimcha Sheli (At Hasimcha Sheli),P
-Hasimla Has'gula,P
-Hasimla Has'gula,P
+Hasimla Has'gula (Chayim Shiryon),P
+Hasimla Has'gula (Marco Ben Shimon),P
 Hasimla Hatchelet,P
 Hasod,P
 Hasod (Sod),P
@@ -3383,17 +3383,17 @@ Hata'am Shenishar,P
 Hatachana Hayeshana,C
 Hatango Sheli (Habalada Al Tonio),P
 Hatavass Hazahav,C
-Hatchala Chadasha,P
-Hatchala Chadasha,P
+Hatchala Chadasha (Avi Mosaiyev),P
+Hatchala Chadasha (Edo Israely),P
 Hatchalot,P
 Hatelefon,L
-Hatikva,C
-Hatikva,C
+Hatikva (Amir Katz),C
+Hatikva ( ),C
 Hatikva Chozeret Lalev,C
 Hatikva Leshalom,C
 Hatinasei Li Ahuva,P
-Hatishma Koli,C
-Hatishma Koli,P
+Hatishma Koli (C),C
+Hatishma Koli (P),P
 Hatishmach Lashay (Shai),P
 Hatmunot Sheba'albom,C
 Hatmunot Sheba'album,C
@@ -3405,40 +3405,40 @@ Hatschok Shehaya Lach Baenayim,P
 Hatschok Shel Ela (Shabbat Bachalon),C
 Hatschok Shelach,C
 Hatsel Ve'ani,C
-Hatso'ani,C
-Hatso'ani,C
+Hatso'ani (Ira Weisburd),C
+Hatso'ani (Naftaly Kadosh),C
 Hatso'ani Hazaken,P
 Hatso'anim,C
-Hatsrif Hakatan,P
-Hatsrif Hakatan,P
+Hatsrif Hakatan (Uri Grafit),P
+Hatsrif Hakatan (Sefi Aviv),P
 Hatsrif Harau'a (Hatsrif Hakatan),P
 Hatssiltsulim,C
 Hatustus (Pushbike Song),L
 Ha'ud Sheli,C
 Ha'ud Vehatarbuka,C
 Hava Levenim,
-Hava Nagila,C
-Hava Nagila,C
-Hava Nagila,C
-Hava Nagila,L
-Hava Nagila,P
+"Hava Nagila (C, Jeff Subeck)",C
+"Hava Nagila (C, Yo'av Ashriel)",C
+"Hava Nagila (C, Moshe Eskayo)",C
+Hava Nagila (L),L
+Hava Nagila (P),P
 Hava Nashira (Bo'u Venashira),P
 Hava Netse Bemachol,P
 Havals Ha'acharon,L
 Havals Harishon,P
-Havals Hasheini,P
-Havals Hasheini,P
+Havals Hasheini (Ya'ir Harel),P
+Havals Hasheini (Yo'av Ashriel),P
 Have Alenu,C
 Have Fun Go Mad,L
 Havelay Ha'olam Haze,C
 Havered,C
-Havtachot,C
-Havtachot,C
+Havtachot (Asher Ellazam),C
+Havtachot (Oren Ashkenazi),C
 Havu Kankan,C
 Havu Lanu Yayin,C
 Havu Levenim,C
-Havu Zemer,C
-Havu Zemer,C
+Havu Zemer (Avner Naim),C
+Havu Zemer (Tzvi Fridhaber),C
 Haya Chalom (Mashehu Etslenu Hishtabesh),P
 Haya Hu Afor,P
 Haya Kedai,P
@@ -3446,9 +3446,9 @@ Haya Kedai 2,P
 Hayachtsan Shel Hamedina,C
 Hayad Hachama,C
 Hayadata Et Haderech,C
-Hayafa Banashim,C
-Hayafa Banashim,C
-Hayafa Banashim,PM
+"Hayafa Banashim (C, Yaron Malihi)",C
+"Hayafa Banashim (C, Shlomo Bachar)",C
+Hayafa Banashim (PM),PM
 Hayam Ha'acharon (Al Gvul Hayam Ha'acharon),P
 Hayam Shaket (Sherak Hiye Hayam Shaket),C
 Hayamim Haba'im (Hanesharim),C
@@ -3474,19 +3474,19 @@ Hayom At Shona,P
 Hayom Efshar Lashir,PT
 Hayom Haba,P
 Hayom Harat Olam,C
-Hayom Hayom,C
-Hayom Hayom,
+Hayom Hayom (C),C
+Hayom Hayom (),
 Hayom Haze (Hayom Hayom),C
-Hayoshevet Baganim,C
-Hayoshevet Baganim,C
-Hayoshevet Baganim,L
-Hayoshevet Baganim,P
-Hayoshevet Baganim,P
-Hayoshevet Bashura Harishona,P
-Hayoshevet Bashura Harishona,P
+"Hayoshevet Baganim (C, Tzvi Hillman)",C
+"Hayoshevet Baganim (C, Ayalah Goren)",C
+Hayoshevet Baganim (L),L
+"Hayoshevet Baganim (P, Yankale Levy)",P
+"Hayoshevet Baganim (P, Moshe Eskayo)",P
+Hayoshevet Bashura Harishona (Barry Avidan),P
+Hayoshevet Bashura Harishona (Roni Siman Tov),P
 Hayta Bechaf Yadi (Hi Hayta Bechaf Yadi),P
-Hayu Leilot,P
-Hayu Leilot,P
+Hayu Leilot (Avner Naim),P
+Hayu Leilot (Moshiko Halevy),P
 Hayu Yamim Chaver (Shuli Ha'or),P
 Hazevuv Vehazira,P
 Hazman Ose Et Shelo,C
@@ -3496,8 +3496,8 @@ Hazmana Lachatuna,C
 Hazmana Lechatuna,P
 Hazmana Lemachol,C
 Hazon Hertsel,C
-Hazorim Bedima,C
-Hazorim Bedima,C
+Hazorim Bedima (Shmulik Gov Ari),C
+Hazorim Bedima (Benny Levy),C
 Hazug Haze,L
 He Omeret,P
 Hechalil,C
@@ -3519,14 +3519,14 @@ Hertsel (Herzl),C
 Hevenu Shalom,C
 Hevi'ani El Beit Hayayin,C
 Hevley Ha'olam Haze,C
-Hey,P
-Hey,P
+Hey (Rafi Ziv),P
+Hey (Shlomo Maman),P
 Hey Baby,L
 Hey Daroma,C
 Hey Hey,L
 Hey Yo Ya,C
-Heya Heya,C
-Heya Heya,P
+Heya Heya (C),C
+Heya Heya (P),P
 Heychan Yediday (Imru Li Heychan Yediday),P
 Heye Chazak,C
 Heye Iti,C
@@ -3544,11 +3544,11 @@ Hi Lo Nirdemet,P
 Hi Lo Tashuv,C
 Hi Lo Tavo,P
 Hi Lo Tavo (Yanu'ar),P
-Hi Lo Yada'at Ma Over Alai,C
-Hi Lo Yada'at Ma Over Alai,P
+Hi Lo Yada'at Ma Over Alai (C),C
+Hi Lo Yada'at Ma Over Alai (P),P
 Hi Meshag'at,C
-Hi Rak Rotsa Lirkod,C
-Hi Rak Rotsa Lirkod,LK
+Hi Rak Rotsa Lirkod (C),C
+Hi Rak Rotsa Lirkod (LK),LK
 Hi Rokedet,C
 Hi She'amda,C
 Hi Tikach Otcha (He Tikach Otcha),P
@@ -3565,22 +3565,22 @@ Hinach Yafa,C
 Hinach Yafa Rayatti,P
 Hine Achalela,P
 Hine Ani Kuli Shelach,C
-Hine Hastav Avar,C
-Hine Hastav Avar,P
+Hine Hastav Avar (C),C
+Hine Hastav Avar (P),P
 Hine Hi Ba'a,C
 Hine Hine,C
 Hine Hine Kuli Shelcha,PM
-Hine Lo Yanum,C
-Hine Lo Yanum,C
-Hine Lo Yanum,C
-Hine Lo Yanum,C
-Hine Ma Tov,C
-Hine Ma Tov,C
-Hine Ma Tov,L
+Hine Lo Yanum (Amnon Amram),C
+Hine Lo Yanum (American),C
+Hine Lo Yanum (Dani Dassa),C
+Hine Lo Yanum (Shlomo Bachar),C
+"Hine Ma Tov (C, Shlomo Bachar)",C
+"Hine Ma Tov (C, Rivka Sturman)",C
+Hine Ma Tov (L),L
 Hine Moshi'ach Ba,C
 Hine Shana Overet,C
-Hine Yamim Ba'im,C
-Hine Yamim Ba'im,P
+Hine Yamim Ba'im (C),C
+Hine Yamim Ba'im (P),P
 Hine Ze Ba,LK
 Hineini Kan,C
 Hineni Matshir Bazot,P
@@ -3604,9 +3604,9 @@ Hitkadamti,P
 Hitmakrut,C
 Hitmazgut,C
 Hitoreri,C
-Hitrag'ut,P
-Hitrag'ut,P
-Hitrag'ut,
+"Hitrag'ut (P, Se'adia Amishai)",P
+"Hitrag'ut (P, Yo'av Ashriel)",P
+Hitrag'ut (),
 Hivtacht,P
 Hizdamnut Achat,P
 Hizdamnut Shniya,P
@@ -3619,14 +3619,14 @@ Holech Adam,C
 Holech Adam 2,C
 Holech Al Mayim,C
 Holech Kadima,C
-Holech Le'ibud,C
-Holech Le'ibud,C
-Holech Lesham,C
-Holech Lesham,L
-Holech Uva (Ya Sala'am),C
-Holech Uva (Ya Sala'am),C
-Holech Uva (Ya Sala'am),P
-Holech Uva (Ya Sala'am),
+Holech Le'ibud (Nurit Melamed),C
+Holech Le'ibud (Victor Gabbay),C
+Holech Lesham (C),C
+Holech Lesham (L),L
+"Holech Uva (Ya Sala'am) (C, Ya'ir Menashe)",C
+"Holech Uva (Ya Sala'am) (C, Moshe Eskayo)",C
+Holech Uva (Ya Sala'am) (P),P
+Holech Uva (Ya Sala'am) (),
 Holech Veshar,P
 Holechet Elayich,C
 Holechet Eleicha,P
@@ -3636,11 +3636,11 @@ Homi'a,C
 Homiya Sheli,C
 Hop Chazak,C
 Hopa Hopa,L
-Hora,C
-Hora,C
-Hora,C
-Hora,C
-Hora,P
+"Hora (C, Barry Avidan)",C
+"Hora (C, David Alfassy)",C
+"Hora (C, Shlomo Maman)",C
+"Hora (C, Yankale Levy)",C
+Hora (P),P
 Hora Acheret,C
 Hora Adama,C
 Hora Afek,C
@@ -3684,8 +3684,8 @@ Hora Hitva'adut,C
 Hora Ilan,C
 Hora Inbal,C
 Hora Israel,C
-Hora Israel (Ein Kvar Derech Chazara),C
-Hora Israel (Ein Kvar Derech Chazara),C
+Hora Israel (Ein Kvar Derech Chazara) (Mishael Barzilay),C
+Hora Israel (Ein Kvar Derech Chazara) (David Alfassy),C
 Hora Israelit,C
 Hora Itim (Itim),C
 Hora Keff,C
@@ -3732,12 +3732,12 @@ Hora Oz,C
 Hora Pa'am (Pa'am Pa'am Pa'am),C
 Hora Perach (Moher Prachim),C
 Hora Rotem,C
-Hora Secharchoret,C
-Hora Secharchoret,C
+Hora Secharchoret (Raaya Spivak),C
+Hora Secharchoret (Etti Kadmi),C
 Hora Secharchoret (Lo Al Shecher),P
 Hora Sfaradit (Hora Gil),C
-Hora Shalhevet,C
-Hora Shalhevet,C
+Hora Shalhevet (Israel Shiker),C
+Hora Shalhevet (Shlomo Bachar),C
 Hora Shalom,C
 Hora Shani,C
 Hora Sheli,C
@@ -3753,8 +3753,8 @@ Hora Ts'chok (Shir Hatshok),C
 Hora Yam (Ilu),C
 Hora Yamit,C
 Hora Yayin,C
-Hora Yehudit,C
-Hora Yehudit,C
+Hora Yehudit (Didi Dosh),C
+Hora Yehudit (David Ben Naim),C
 Hora Yerushalayim (Lashanan Haba'a),C
 Hora Yisur,C
 Hora Yovel,C
@@ -3787,13 +3787,13 @@ If I Had A Hammer,C
 Ilan,C
 Ilarie,L
 Ilu Kol Ha'ohavim,P
-Ilu Tsiporim,C
-Ilu Tsiporim,PL
+Ilu Tsiporim (C),C
+Ilu Tsiporim (PL),PL
 Ilu Yacholti (Ima),C
 Im Ani Ohevet,C
 Im At Adayin Ohevet Oti,P
-Im At Holechet,C
-Im At Holechet,P
+Im At Holechet (C),C
+Im At Holechet (P),P
 Im Ata Rak Basviva,C
 Im Ata Tsair Balev,C
 Im Ba Lach,C
@@ -3801,14 +3801,14 @@ Im Ba'arazim,P
 Im Balaila,C
 Im Betoch Ha'esh,C
 Im Ein Ani Li Mi Li,C
-Im Eshkachech Yerushalayim,C
-Im Eshkachech Yerushalayim,C
-Im Eshkachech Yerushalayim,C
+Im Eshkachech Yerushalayim (Elad Shtamer),C
+Im Eshkachech Yerushalayim (Yaron Malihi),C
+Im Eshkachech Yerushalayim (Israel Shiker),C
 Im Eshmera Shabbat,C
 Im Ha'olam,C
 Im Ha'olam Yithapech,C
-Im Hashachar,C
-Im Hashachar,P
+Im Hashachar (C),C
+Im Hashachar (P),P
 Im Hatof Vehachalil,C
 Im Hazman,C
 Im Hupalnu,C
@@ -3818,12 +3818,12 @@ Im Lo (Lau Ma Al Mahaba),C
 Im Lo Elech Achshav,C
 Im Lo Lihiyot Shelach,P
 Im Lo Matti Etmol,C
-Im Lo Ted'i Lach,P
-Im Lo Ted'i Lach,PM
+Im Lo Ted'i Lach (P),P
+Im Lo Ted'i Lach (PM),PM
 Im Milim,C
-Im Ninalu,L
-Im Ninalu,L
-Im Ninalu,L
+Im Ninalu (Tzion Nuriel),L
+Im Ninalu (Eliyahu Gamliel),L
+Im Ninalu (Israel Yakovee),L
 Im Rak Efshar,C
 Im Rak Tagidi,P
 Im Rak Tagidi Ken,C
@@ -3833,8 +3833,8 @@ Im Rak Tavoi,P
 Im Rak Tavoi Bechamesh,P
 Im Rotsim,C
 Im Tachzor,C
-Im Tagidu,P
-Im Tagidu,
+Im Tagidu (P),P
+Im Tagidu (),
 Im Tavo,P
 Im Tavo'i,P
 Im Techaki Li,P
@@ -3842,16 +3842,16 @@ Im Techfetsa,C
 Im Telchi,P
 Im Telech,P
 Im Tirtsi Lada'at,C
-Im Tirzi,C
-Im Tirzi,P
+Im Tirzi (C),C
+Im Tirzi (P),P
 Im Tohavi Oti,P
 I'm Walking,L
 Im Yertse Hashem,C
 Im Yesh Gan Eden,C
 Im Yipol Goralech,C
-Ima,C
-Ima,C
-Ima,P
+"Ima (C, Naftaly Kadosh)",C
+"Ima (C, Eli Segal)",C
+Ima (P),P
 Ima Aba Vekol Hashar,C
 Ima Adama,C
 Ima Adama (Adama),P
@@ -3861,23 +3861,23 @@ Ima Ma'amina,C
 Ima Madu'a (Ima),C
 Ima Mi'Teman,C
 Ima Poloniya,C
-Ima Sheli,C
-Ima Sheli,
+Ima Sheli (C),C
+Ima Sheli (),
 Ima Ve'aba,C
 Ima Yekara,C
 "Ima, Tipa shel or",C
 Imale Ve'abale,C
-Imi Imi,C
-Imi Imi,P
-Imi Imi,
+Imi Imi (C),C
+Imi Imi (P),P
+Imi Imi (),
 Imi Yoladeti,C
 Imperia,C
 Imri Hapa'am Ken (Ken Ken),P
 Imri Li,P
 Imri Li Ahuva (Imri Li ),P
 Inbal,P
-Inbalim,C
-Inbalim,P
+Inbalim (C),C
+Inbalim (P),P
 Indiya (India),C
 Infi'el,P
 Inshalla,C
@@ -3886,9 +3886,9 @@ Inta Omri,C
 Inyan Shel Zman,C
 Ir Agada (Yesh Ir),C
 Ir Ktana,P
-Ir Levana,P
-Ir Levana,P
-Ir Levana,
+"Ir Levana (P, Tuvia Tishler)",P
+"Ir Levana (P, Shoshana Kopelevitch)",P
+Ir Levana (),
 Ir Namal,C
 Ir Shalom,C
 Ir Va'em (Jerusalem),C
@@ -3896,39 +3896,39 @@ Irish Bar,L
 Irisim,C
 Ish Hamapuchiyot,C
 Ish Sichi,C
-Ish Yakar,C
-Ish Yakar,C
+Ish Yakar (Efraim Weinberg),C
+Ish Yakar (Meir Amsalam),C
 Ish Yakar Sheli (Morocan Line Dance),L
 Isha Al Hachof (Tora Pou Pas Stin Xenitia),C
 Isha Levada Bamidbar,P
 Isha Meusheret,P
 Isha Mihashamayim,C
 Isha Ne'emana,P
-Isha Sheli,P
-Isha Sheli,P
-Isha Tso'ani'a (Shir Shel Pa'am),P
-Isha Tso'ani'a (Shir Shel Pa'am),P
+Isha Sheli (Yaron Carmel),P
+Isha Sheli (Tzidki Arami),P
+Isha Tso'ani'a (Shir Shel Pa'am) (Naftaly Kadosh),P
+Isha Tso'ani'a (Shir Shel Pa'am) (Avi Perez),P
 Isha Vegam Yalda,P
-Isha Yafa,L
-Isha Yafa,L
-Isha Yafa,P
-Isha Yafa,P
+"Isha Yafa (L, Eli Segal)",L
+"Isha Yafa (L, Vardit Bar-Nes)",L
+"Isha Yafa (P, Gadi Bitton)",P
+"Isha Yafa (P, Chayim Shiryon)",P
 Isha Yafa Sheli,P
-Israel,C
-Israel,C
-Israel,C
+Israel (Dudu Barzilay),C
+Israel (Nurit Melamed),C
+Israel (Amnon Eilat),C
 Israel Ahuvati,C
 Israel Balev,C
 Israel Hayafa (Anshei Hatsait),C
-Israel Sheli,C
-Israel Sheli,LK
+Israel Sheli (C),C
+Israel Sheli (LK),LK
 Israel Sheli Chogeget,C
 Israeli Disco,C
 Israelit,C
 Israpiko,C
 Istanbul,C
-Itach,P
-Itach,
+Itach (P),P
+Itach (),
 Itach Ad Sof Hazman,P
 Itach Ani Ha'eis,P
 Itach Be'ahava,P
@@ -3936,8 +3936,8 @@ Itach Biladaich,P
 Itach Halaila,P
 Itach Letamid,P
 Itach O Biladayich,P
-Itcha Lalechet,P
-Itcha Lalechet,P
+Itcha Lalechet (Eyal Bar Kayma (Eyal Levy)),P
+Itcha Lalechet (Israel Shiker),P
 Itcha Ze Le'echov,P
 Iti At Yafa (Bay Mir Bist Du Shein),P
 Iti Milvanon,P
@@ -3958,8 +3958,8 @@ Jama Bamidbar,C
 Janania (Chananya),C
 Janantani,C
 Jankele,C
-Jayho (Jai Ho),L
-Jayho (Jai Ho),L
+Jayho (Jai Ho) (Tzlil Elfasy),L
+Jayho (Jai Ho) (Ilan Benedict),L
 Jayran,C
 Jealousy (Jalousie),P
 Jeopardy,L
@@ -3980,8 +3980,8 @@ Kabbalat Shabbat (Lecha Dodi),C
 Kabel,L
 Kabli Oti,P
 Kabukim Lele,C
-Kach Elohim Bara Otanu,P
-Kach Elohim Bara Otanu,P
+Kach Elohim Bara Otanu (Yoram Sasson),P
+Kach Elohim Bara Otanu (Itzik Lezebnic),P
 Kach Hakol Be'ahava,C
 Kach Haya Kach Yihiye,C
 Kach Lecha Eisha,P
@@ -4027,11 +4027,11 @@ Kama,C
 Kama Ahava,P
 Kama Ahava Yesh Baneshama,P
 Kama Ahava Yesh Be'einayich (Laila Mechushaf),C
-Kama Ahavnu,C
-Kama Ahavnu,P
-Kama At Yafa,C
-Kama At Yafa,P
-Kama At Yafa,P
+Kama Ahavnu (C),C
+Kama Ahavnu (P),P
+Kama At Yafa (C),C
+"Kama At Yafa (P, Yaron Malihi)",P
+"Kama At Yafa (P, Gadi Bitton)",P
 Kama At Yafa Kshe'at Tsocheket,C
 Kama At Yoda'at,P
 Kama Chaser,P
@@ -4084,8 +4084,8 @@ Karov Elaich,P
 Karov Elayich,P
 Karov Et Libech,P
 Karov Lalev,P
-Karov Lanechama,P
-Karov Lanechama,P
+Karov Lanechama (Naftaly Kadosh),P
+Karov Lanechama (Sefi Aviv),P
 Kartis Lekivun Echad,C
 Kashe Li,C
 Kashkaval,C
@@ -4105,9 +4105,9 @@ Kayits Asa Li Tov,C
 Kayits Israeli,C
 Kchi Et Libi,P
 Kchi Lach,C
-Kchi Oti,C
-Kchi Oti,P
-Kchi Oti,P
+Kchi Oti (C),C
+"Kchi Oti (P, Gadi Bitton)",P
+"Kchi Oti (P, Yaron Malihi)",P
 Kchi Oto,P
 Kdushat Hashabat,C
 Ke Me Kieras,L
@@ -4121,31 +4121,31 @@ Kedat Moshe Ve'Israel,P
 Kedey She'elech,P
 Ke'ev Rosh,C
 Kefel,C
-Keff Temani,C
-Keff Temani,P
+Keff Temani (C),C
+Keff Temani (P),P
 Ke'ilu Sof,P
 Keitsat Merakdin,C
-Keivan She'ein Lada'at,P
-Keivan She'ein Lada'at,P
+Keivan She'ein Lada'at (Avi Perez),P
+Keivan She'ein Lada'at (Sefi Aviv),P
 Kelim Shluvim,P
 Ken Achshav,C
 Ken Bakodesh,C
 Ken Ken (Imri Hapa'am Ken),P
 Ken Ken At Yafa (At Yafa),C
 Ken Latsipor,
-Ken Shel Ahava,P
-Ken Shel Ahava,U
-Ken Yovdu,C
-Ken Yovdu,C
+Ken Shel Ahava (P),P
+Ken Shel Ahava (U),U
+Ken Yovdu (Gurit Kadman),C
+Ken Yovdu (Sara Levi Tanai),C
 Kerachem Av Al Banim,C
 Kerem Teyman,P
-Keren Or,C
-Keren Or,C
+Keren Or (Gadi Bitton),C
+Keren Or (Shlomo Bachar),C
 Keren Or (Keren Or Chama),P
 Keren Or Ktana,C
 Keren Rishona,P
-Keren Shachar (Keren Ya'ar),C
-Keren Shachar (Keren Ya'ar),P
+Keren Shachar (Keren Ya'ar) (C),C
+Keren Shachar (Keren Ya'ar) (P),P
 Keren Shemesh,C
 Keren Shemesh (Alni Bat Almavet),C
 Kereshme,C
@@ -4166,12 +4166,12 @@ Kesi,L
 Kessem Hamizrach,P
 Kessem Kalanit La'ad,P
 Kessem Midbari,C
-Kessem Shel Yam Kineret,C
-Kessem Shel Yam Kineret,
+Kessem Shel Yam Kineret (C),C
+Kessem Shel Yam Kineret (),
 Kessem Shir,C
 Kessem Temani,P
-Ketem Hapri,C
-Ketem Hapri,L
+Ketem Hapri (C),C
+Ketem Hapri (L),L
 Ketero,C
 Ketse Hayom,C
 Ketsev Hachayim,P
@@ -4185,25 +4185,25 @@ Ki Cholat Ahava,P
 Ki El Aser Telchi,P
 Ki Eleicha (Anim Zmirot),PC
 Ki Eshmera,C
-Ki Eshmera Shabbat,C
-Ki Eshmera Shabbat,C
+Ki Eshmera Shabbat (Shlomo Maman),C
+Ki Eshmera Shabbat (Moshiko Halevy),C
 Ki Hirbeita,C
 Ki Hivshilu Eshkolot,C
 Ki Ki Ri Bu,
 Ki Lecha,C
 Ki Le'olam Chasdo,C
 Ki Mi Tsiyon,C
-Ki Rav Lehoshi'a,C
-Ki Rav Lehoshi'a,P
-Ki Tavo'u El Ha'arets,L
-Ki Tavo'u El Ha'arets,PL
-Ki Tavo'u El Ha'arets,PM
+Ki Rav Lehoshi'a (C),C
+Ki Rav Lehoshi'a (P),P
+Ki Tavo'u El Ha'arets (L),L
+Ki Tavo'u El Ha'arets (PL),PL
+Ki Tavo'u El Ha'arets (PM),PM
 Ki Tinam,P
 Ki Yadata,C
 Kichlot Yeyni,
 Kikar Hamedina ( Kikar Hamedinah),C
-Kimat,C
-Kimat,P
+Kimat (C),C
+Kimat (P),P
 Kimat Kvar Noge'a,C
 Kimat Shehitragalti,C
 Kim'at Shir Ahava,P
@@ -4219,20 +4219,20 @@ Kino's Dance,C
 Kintot Hayom,C
 Kipodim,C
 Kirya,C
-Kirya Yefefiya,C
-Kirya Yefefiya,C
-Kirya Yefefiya,P
-Kirya Yefefiya,P
+"Kirya Yefefiya (C, Israel Shiker)",C
+"Kirya Yefefiya (C, Moshiko Halevy)",C
+"Kirya Yefefiya (P, Sefi Aviv)",P
+"Kirya Yefefiya (P, Yankale Levy)",P
 Kishe'ani Mitahev,P
 Kishlomo Et Shulamit,P
 Kismei Hadarbuka,C
 Kismei Shaul (Shaul Veba'alat Ha'ov),C
 Kiss Kiss,L
-Kissufim,C
-Kissufim,PC
+Kissufim (C),C
+Kissufim (PC),PC
 Kivsahti,C
-Kivun Acher,C
-Kivun Acher,P
+Kivun Acher (C),C
+Kivun Acher (P),P
 Kleizmer,C
 Klik (Haklik),C
 Klilat Hod,P
@@ -4242,13 +4242,13 @@ Klum Lo Taim,P
 Klum Lo Ya'atsor,P
 Kmo Achshav,C
 Kmo Az,P
-Kmo Balada,C
-Kmo Balada,P
-Kmo BeRio,L
-Kmo BeRio,LK
+Kmo Balada (C),C
+Kmo Balada (P),P
+Kmo BeRio (L),L
+Kmo BeRio (LK),LK
 Kmo Chalom,C
-Kmo Dag (Ani Kmo Dag),C
-Kmo Dag (Ani Kmo Dag),P
+Kmo Dag (Ani Kmo Dag) (C),C
+Kmo Dag (Ani Kmo Dag) (P),P
 Kmo Galgal (Shir Ahava),P
 Kmo Hagalim (Ein Davar),C
 Kmo Haru'ach (Lifamim),C
@@ -4261,8 +4261,8 @@ Kmo Me'Esh,P
 Kmo Pa'am,P
 Kmo Shalechet,P
 Kmo She'ani Ohev Otach,P
-Kmo She'at,P
-Kmo She'at,P
+Kmo She'at (Chayim Shiryon),P
+Kmo She'at (Eli Ronen),P
 Kmo She'ata Ohev,P
 Kmo She'ata Yode'a,P
 Kmo Shebateva,C
@@ -4291,8 +4291,8 @@ Kochav Ne'elam,C
 Kochav Nofel (Shir Bedu’i),C
 Kochav Shel Layla,C
 Kochavi,C
-Kochavim,C
-Kochavim,P
+Kochavim (C),C
+Kochavim (P),P
 Kochavim Balaila,U
 Kochavim Lo Meshakrim,P
 Kochavim Notsezim,P
@@ -4305,11 +4305,11 @@ Kokus,P
 Kol Barama,C
 Kol Boker,P
 Kol Chayai,C
-Kol Dodi,C
-Kol Dodi,C
-Kol Dodi,L
-Kol Echad,C
-Kol Echad,P
+"Kol Dodi (C, Ze'ev Chavatzelet)",C
+"Kol Dodi (C, Rivka Sturman)",C
+Kol Dodi (L),L
+Kol Echad (C),C
+Kol Echad (P),P
 Kol Echad Yachol,P
 Kol Galgal,C
 Kol Ha'anashim Hasmechim,C
@@ -4317,8 +4317,8 @@ Kol ha'atchalot,C
 Kol Habachurim (Habachurim Hachi Tovim),C
 Kol Habanot (2nd),C
 Kol Habesorot,P
-Kol Hachalomot,P
-Kol Hachalomot,P
+Kol Hachalomot (Gadi Bitton),P
+Kol Hachalomot (Oren Ashkenazi),P
 Kol Haderech,P
 Kol Haderech Chazara,C
 Kol Hadror (Kumi Tsei),P
@@ -4330,15 +4330,15 @@ Kol Halaila (Eich),P
 Kol Halaila Nirkod,C
 Kol Hama'alot,C
 Kol Hamedina,C
-Kol Hamilim,P
-Kol Hamilim,P
+Kol Hamilim (DJ Niedober),P
+Kol Hamilim (Meir Shem Tov),P
 Kol Hanachalim Zormim Leyam,P
-Kol Hanechalim (Shir Stav),C
-Kol Hanechalim (Shir Stav),P
+Kol Hanechalim (Shir Stav) (C),C
+Kol Hanechalim (Shir Stav) (P),P
 Kol Haneshama,C
-Kol Ha'olam,C
-Kol Ha'olam,C
-Kol Ha'olam,P
+"Kol Ha'olam (C, Andrias Bibar)",C
+"Kol Ha'olam (C, Naftaly Kadosh, Eitan Aloush)",C
+Kol Ha'olam (P),P
 Kol Ha'olam Kulo (Miksha Achat Zahav),C
 Kol Hashavu'a Lach,C
 Kol Haslichot Sheli,P
@@ -4346,13 +4346,13 @@ Kol Hatov Haya Sheli,P
 Kol Hatsiporim,C
 Kol Hayeter Holef,C
 Kol Hayom,P
-Kol Hazman,C
-Kol Hazman,L
+Kol Hazman (C),C
+Kol Hazman (L),L
 Kol Kach Ksuma,P
 Kol Kach Mitga'ge'a,C
 Kol Kach Mukar,P
-Kol Kach Yafa,C
-Kol Kach Yafa,P
+Kol Kach Yafa (C),C
+Kol Kach Yafa (P),P
 Kol Kach Yaffe Lach,P
 Kol Ma Shebikashti,C
 Kol Ma Shekadam,C
@@ -4366,18 +4366,18 @@ Kol Mimidronot,C
 Kol Mishehu,P
 Kol Mukar,P
 Kol Nedarai,C
-Kol Od,C
-Kol Od,C
-Kol Od,C
-Kol Od,P
-Kol Od,P
+"Kol Od (C, Tuvia Tishler)",C
+"Kol Od (C, Moshiko Halevy)",C
+"Kol Od (C, Naftaly Kadosh)",C
+"Kol Od (P, Itzik Sa'ada)",P
+"Kol Od (P, Beber Shushan)",P
 Kol Od Haner Dolek,C
 Kol Orlogin,P
 Kol Otam Zmanim,P
 Kol Pa'am Mechadash,P
 Kol Pa'aminim,C
-Kol Rina Vishu'a,L
-Kol Rina Vishu'a,P
+Kol Rina Vishu'a (L),L
+Kol Rina Vishu'a (P),P
 Kol Sason Vekol Simcha,C
 Kol Sha'a Neshika,P
 Kol Shana,C
@@ -4388,8 +4388,8 @@ Kol Tse'adav,C
 Kol Yachol,C
 Kol Yom,C
 Kol Yom Ani Kan Bishvilech,C
-Kol Yom Matchila Shana,C
-Kol Yom Matchila Shana,C
+Kol Yom Matchila Shana (Eli Ronen),C
+Kol Yom Matchila Shana (Motti Elfasy),C
 Kol Yom Nolad Shetachzeri,P
 Kol Yom Yoter,P
 Kol Zikaron,C
@@ -4404,8 +4404,8 @@ Koparoche,L
 Kora Kora,PL
 Korason,P
 Korason-Wh.Chair,PW
-Kore Hazemer,C
-Kore Hazemer,P
+Kore Hazemer (C),C
+Kore Hazemer (P),P
 Kore Lach,P
 Korim Lanu Lalechet,C
 Kos Shel Yayin,P
@@ -4427,22 +4427,22 @@ Ksheacher,P
 Kshe'ani Itach,C
 Kshe'ani Mitahev,P
 Kshe'at Atsuva,P
-Kshe'at Bocha At Lo Yafa,C
-Kshe'at Bocha At Lo Yafa,L
+Kshe'at Bocha At Lo Yafa (C),C
+Kshe'at Bocha At Lo Yafa (L),L
 Kshe'at Halacht,P
 Kshe'at Iti,P
 Kshe'at Ito,P
 Kshe'at Lo Al Yadi,C
 Kshe'at Noga'at Bi,P
-Kshe'at Omeret Lo,P
-Kshe'at Omeret Lo,P
+Kshe'at Omeret Lo (Itzik Sa'ada),P
+Kshe'at Omeret Lo (Shlomo Maman),P
 Kshe'at Rokedet,P
 Kshe'at Rokedet (Keshe'at Megaredet),P
 Kshe'at Shava Elay,C
 Kshe'at Shoteket,P
 Kshe'at Tsocheket,P
-Kshe'at Yotset Larechov,C
-Kshe'at Yotset Larechov,C
+Kshe'at Yotset Larechov (Tuvia Tishler),C
+Kshe'at Yotset Larechov (Sefi Aviv),C
 Kshe'ata,P
 Kshe'ata Bakarmiel,C
 Kshe'ata Ze Ani,P
@@ -4483,8 +4483,8 @@ Ktsat Meshuga'at,L
 Ktsat Mozar (Omer Hakol),P
 Ktse Hayom,C
 Kubayo (Un Gaou a Oran),L
-Kukuriku,L
-Kukuriku,L
+Kukuriku (Adi Weinberg Lerch & Sharon Elkaslassy),L
+Kukuriku (Yaron Elfasy),L
 Kul She Kalam,C
 Kulam Al Hashulchan,C
 Kulam Be'elat,C
@@ -4502,9 +4502,9 @@ Kum Ben Adam,C
 Kum Kum,C
 Kum Vehitalech Ba'arets,C
 Kum Vehithalech,C
-Kuma Echa,C
-Kuma Echa,C
-Kuma Echa,P
+"Kuma Echa (C, Dvora Lapson)",C
+"Kuma Echa (C, Rivka Sturman)",C
+Kuma Echa (P),P
 Kumi,C
 Kumi Lach (Achoti),C
 Kumi Lach (Ra'ayati),P
@@ -4517,14 +4517,14 @@ Kumu Vena'ale,C
 Kurdi Nash,C
 Kurdion (Oyla Menoyla),C
 Kutonet Pasim (Kutnot Pasim),P
-Kvar Acharei Chatsot,C
-Kvar Acharei Chatsot,C
-Kvar Acharei Chatsot,C
+Kvar Acharei Chatsot (Yaakov Sheharabani),C
+Kvar Acharei Chatsot (Shlomo Bachar),C
+Kvar Acharei Chatsot (Rivka Sturman),C
 Kvar Avru Hashanim,C
 Kvar Lo Nihiye Yoter,P
 Kvarnit (Hakvarnit),C
-Kvish Hachof,C
-Kvish Hachof,LK
+Kvish Hachof (C),C
+Kvish Hachof (LK),LK
 Kwaka,PK
 La Boheme,P
 La Cucaracha (La Kukaracha),L
@@ -4545,12 +4545,12 @@ Lach Be'ahava,P
 Lach Hashir,C
 Lach Meirim,C
 Lach Na'ara (Lech Na Re'e),C
-Lach Yerushalayim,C
-Lach Yerushalayim,P
+Lach Yerushalayim (C),C
+Lach Yerushalayim (P),P
 Lacha Hakinneret,P
 Lacha Hashir,C
-Lachatuna Halachti,C
-Lachatuna Halachti,P
+Lachatuna Halachti (C),C
+Lachatuna Halachti (P),P
 Lachayim Yesh Ta'am,C
 Lachazor,P
 Lachazor Habaita (Habaita Lachazor),C
@@ -4570,12 +4570,12 @@ Laila,P
 Laila Ba'arava,P
 Laila Badarom,P
 Laila Bechof Achziv,P
-Laila Bekahir,C
-Laila Bekahir,C
+Laila Bekahir (Gert-Jan Van Ammerkate),C
+Laila Bekahir (Yankale Levy),C
 Laila Bli Miklat,U
 Laila Gashum,P
-Laila Laila,C
-Laila Laila,P
+Laila Laila (C),C
+Laila Laila (P),P
 Laila Laila (Tni Yadech Li),P
 Laila Ma Bel,P
 Laila Meshageya,C
@@ -4583,15 +4583,15 @@ Laila Mileilot,C
 Laila Ratov,C
 Laila Shel Prechot,P
 Laila Shel Prichot,P
-Laila Tov,P
-Laila Tov,P
-Laila Tov,P
-Laila Tov,P
+Laila Tov (Moshe Telem),P
+Laila Tov (Shlomo Bachar),P
+Laila Tov (Shmulik Gov Ari),P
+Laila Tov (Elli Falach),P
 Laila Tov Le'ahava,C
 Laila Zoher,C
 Lakachat Et Yadi Beyadech,
-Lakotsrim Heidad,P
-Lakotsrim Heidad,P
+Lakotsrim Heidad (Gurit Kadman),P
+Lakotsrim Heidad (David Edery),P
 Lakum Baboker,
 Lakum Vela'amod,C
 Lakum Velalechet,P
@@ -4604,9 +4604,9 @@ Lalechet Be'orech,P
 Lalechet El (Habalada Al Hedva Veshmulik),C
 Lalechet Im Ha'or,P
 Lalechet O Lehisha'er,C
-Lalechet Shevi Acharayich,P
-Lalechet Shevi Acharayich,P
-Lalechet Shevi Acharayich,
+"Lalechet Shevi Acharayich (P, Amnon Eilat)",P
+"Lalechet Shevi Acharayich (P, Shlomo Bachar)",P
+Lalechet Shevi Acharayich (),
 Lalechet Yad Beyad,C
 Lama,P
 Lama Achshav,P
@@ -4620,8 +4620,8 @@ Lama Lanu Lirdof,C
 Lama Li,C
 Lama Li Lama Lach,P
 Lama Libech Kmo Kerach,C
-Lama Lidog Hayom,P
-Lama Lidog Hayom,P
+Lama Lidog Hayom (Roni Siman Tov),P
+Lama Lidog Hayom (Shlomo Bachar),P
 Lama Lo Ra'iti,C
 Lama Ma,P
 Lama Tamid At,P
@@ -4631,9 +4631,9 @@ Lama Ze Magi'a Li,C
 Lama Ze Tivki,P
 Lamdeni Elohai,C
 Lamdi Oti,P
-Lamenatse'ach,P
-Lamenatse'ach,P
-Lamenatse'ach,PT
+"Lamenatse'ach (P, Yankale Levy)",P
+"Lamenatse'ach (P, Shlomo Bachar)",P
+Lamenatse'ach (PT),PT
 Lamenatse'ach Shir Mizmor,C
 Lamidbar (Lech Lamidbar),C
 Lamrot Hakol,C
@@ -4648,8 +4648,8 @@ Lanetsach Bni,C
 Lanetsach Ohavim,P
 Lanetsach Tseirim,C
 Lanetsach Yachad,C
-Lanu Hako'ach,C
-Lanu Hako'ach,P
+Lanu Hako'ach (C),C
+Lanu Hako'ach (P),P
 Laregel Na'ale (Kapaim Layotser),C
 LaShachaf,C
 Lashana Haba'a,P
@@ -4671,17 +4671,17 @@ Latet Lach Ahava,C
 Latet Ulekabel Be'ahava,C
 Latet Velakachat,C
 Latinos,L
-Latsafon Be'ahava,C
-Latsafon Be'ahava,C
+Latsafon Be'ahava (Yaakov Sheharabani),C
+Latsafon Be'ahava (Eli Ronen),C
 Latset Laderech (Ten Li Ko'ach),C
 Latset Latset,C
-Latsvi Yesh Be'aya,C
-Latsvi Yesh Be'aya,P
+Latsvi Yesh Be'aya (C),C
+Latsvi Yesh Be'aya (P),P
 Latuz Latuz (Laruts Laruts),P
-Lauf,C
-Lauf,C
-Lauf Itach,P
-Lauf Itach,PL
+Lauf (Efrat Vardi),C
+Lauf (Shmulik Gov Ari),C
+Lauf Itach (P),P
+Lauf Itach (PL),PL
 La'uf Rachok,C
 Layalda Baya'ar,P
 Layam,C
@@ -4709,41 +4709,41 @@ Le'an Noshevet Haru'ach,C
 Le'an Shelo Telchi,P
 Le'artsenu Ba'aviv,C
 Le'artsi Be'ahava (At Va'ani Noladnu Betashach),P
-Le'artsi Yesh Yom Huledet,C
-Le'artsi Yesh Yom Huledet,P
+Le'artsi Yesh Yom Huledet (C),C
+Le'artsi Yesh Yom Huledet (P),P
 Le'at,P
-Le'at Le'at,P
-Le'at Le'at,P
+Le'at Le'at (Raanan Mor),P
+Le'at Le'at (Roni Siman Tov),P
 Le'atsmecha,C
 Le'atsmi Bilvad,P
 Lebinyamin Amar,C
 Lech El Hateva,C
 Lech Im Ha'ahava,C
-Lech Lamidbar (Lamidbar),C
-Lech Lamidbar (Lamidbar),C
+Lech Lamidbar (Lamidbar) (Roni Siman Tov),C
+Lech Lamidbar (Lamidbar) (Tova Tsimble),C
 Lech Lech Lamidbar,C
 Lech Lisfat Hayam,P
 Lech Ma'arava (Hakivun Ma'arav - Go West),L
-Lecha Dodi,C
-Lecha Dodi,C
-Lecha Dodi,C
-Lecha Dodi,P
-Lecha Dodi,
+"Lecha Dodi (C, Ilai Szpiezak)",C
+"Lecha Dodi (C, Shlomo Bachar)",C
+"Lecha Dodi (C, Yo'av Ashriel)",C
+Lecha Dodi (P),P
+Lecha Dodi (),
 Lecha Eli,C
 Lecha Haleluya (Haleluya),C
 Lecha Karati,C
 Lecha Shiran (Lach Shiran),C
 Lecha Ve'alecha (Tsemer),P
 Lecha Yahav (Lecha Yaldi),P
-Lechabek Otach,P
-Lechabek Otach,P
+Lechabek Otach (Yaron Malihi),P
+Lechabek Otach (Moshiko Halevy),P
 Lechabib,C
 Lechaye Ha'ahava,P
 Lechayech,C
 Lechayei Ha'am Haze,C
-Lechayim,C
-Lechayim,C
-Lechayim,C
+Lechayim (Noam Ben Lulu & Tamir Scherzer),C
+Lechayim (Arthur Lerer),C
+Lechayim (Roni Siman Tov),C
 Lechem Ha'ohavim,C
 Lechi Acharai,P
 Lechi Acharai Bamidbar,P
@@ -4752,8 +4752,8 @@ Lechisha Balaila,P
 Lechof Yarden,C
 Lechol Adam Kochav,P
 Lechol Adam Mala'ch,C
-Lechol Adam Yesh Shir,C
-Lechol Adam Yesh Shir,P
+Lechol Adam Yesh Shir (C),C
+Lechol Adam Yesh Shir (P),P
 Lechol Echad Yesh,P
 Lechu Neranena (Shir Shabbat),C
 Ledaber,C
@@ -4766,12 +4766,12 @@ Le'ehov Kmo Gadol,P
 Leehov Mechadash,C
 Le'et Erev,C
 Le'eynaich Hakchulot,C
-Lefelach Harimon,C
-Lefelach Harimon,PM
+Lefelach Harimon (C),C
+Lefelach Harimon (PM),PM
 Lefeta,P
 Legalgel Chalom,C
-Leha'amin,C
-Leha'amin,C
+Leha'amin (Sharon Elkaslassy),C
+Leha'amin (Osnat Sandrusi),C
 Leha'anik Lach Ahava,P
 Lehabed Baruach,C
 Lehagid Lecha Shalom,P
@@ -4786,16 +4786,16 @@ Le'hipared,P
 Le'hishtageya,C
 Le'hishtatot (Lehishtatot Lefa'amim),P
 Lehitkarev,P
-Le'hitra'ot,P
-Le'hitra'ot,P
+Le'hitra'ot (Avi Perez),P
+Le'hitra'ot (Moti Ben Ya'akov),P
 Le'hitra'ot Matok,
 Lehiyot Zamar,C
 Lehodot Lecha Hashem,C
 Leil Aviv,P
 Leil Chalom (Siyamti Milu'im),P
 Leil Chanaya,C
-Leil Emesh,P
-Leil Emesh,P
+Leil Emesh (Yo'av Ashriel),P
+Leil Emesh (Shalom Amar),P
 Leil Galil,P
 Leil Stav,P
 Leil Stav - Wh.Chair,PW
@@ -4815,9 +4815,9 @@ Lelotai,P
 Lema'an Achai,C
 Lema'an Tsion,C
 Lema'ana,PM
-Lema'anech,C
-Lema'anech,C
-Lema'anech,P
+"Lema'anech (C, Michael Barzelai & Sharon Elkaslassy)",C
+"Lema'anech (C, Ilan Benedict)",C
+Lema'anech (P),P
 Lema'anech Lehitorer,P
 Lemargelotecha,P
 Lemepalsei Netivot,C
@@ -4828,16 +4828,16 @@ Lenatse'ach Mechadash,C
 Le'Natse'ach Me'Chadash,C
 Le'olam,P
 Le'olam - Wh.Chair,PW
-Le'olam Lo Me'uchar,C
-Le'olam Lo Me'uchar,C
-Le'olam Lo Me'uchar,C
-Le'or Chiyuchech,C
-Le'or Chiyuchech,P
+Le'olam Lo Me'uchar (Avner Naim),C
+Le'olam Lo Me'uchar (Shmulik Gov Ari),C
+Le'olam Lo Me'uchar (Chayim Shiryon),C
+Le'or Chiyuchech (C),C
+Le'or Chiyuchech (P),P
 Le'or Yare'ach,C
-Le'orech Hashdera,C
-Le'orech Hashdera,P
-Le'orech Hatayelet,C
-Le'orech Hatayelet,C
+Le'orech Hashdera (C),C
+Le'orech Hashdera (P),P
+Le'orech Hatayelet (Teme Kernerman),C
+Le'orech Hatayelet (Chanan Dadon),C
 Le'orech Hayam (Elohai),C
 Lesachek Baregashot,C
 Lesaper Lach Inyan,P
@@ -4858,14 +4858,14 @@ Lev Tso'ani,C
 Lev Zahav,C
 Levad,P
 Levad Yoshevet,C
-Levadi,C
-Levadi,P
+Levadi (C),C
+Levadi (P),P
 Levantando Las Manos,L
-Levav Enosh,C
-Levav Enosh,P
+Levav Enosh (C),C
+Levav Enosh (P),P
 Li At Ahuva,P
-Li Lach,C
-Li Lach,P
+Li Lach (C),C
+Li Lach (P),P
 Li Shani,U
 Li Shtai Eynayim,C
 Li Velach,P
@@ -4874,13 +4874,13 @@ Li'am,C
 Li'at Li Li'at (Boom Boom),L
 Libech Noge'a,P
 Libeinu halaila,P
-Libi,C
-Libi,P
+Libi (C),C
+Libi (P),P
 Libi Bamidbar,C
 Libi Batsafon,C
 Libi Er,C
-Libi Itach,P
-Libi Itach,P
+Libi Itach (Eli Segal),P
+Libi Itach (Avi Perez),P
 Libi Libi,P
 Libi Od Ohev,P
 Libi Yotse Elayich,P
@@ -4894,8 +4894,8 @@ Lidiya Halohetet,P
 Lifa'mim,C
 Life,L
 Lifnei She'at Holechet (Ahuva Sheli),P
-Lifnei Sheyigamer,C
-Lifnei Sheyigamer,P
+Lifnei Sheyigamer (C),C
+Lifnei Sheyigamer (P),P
 Lifnei Ve'acharei,C
 Lifney Kama Dakot,P
 Lifney Shenifradim (Ad Hapa'am Haba'a),C
@@ -4916,8 +4916,8 @@ Lili Sheli,P
 Limbo,L
 Limon Limonero,P
 Limonana,C
-Linda,L
-Linda,L
+Linda (Gadi Bitton),L
+Linda (Yaron Elfasy),L
 Linda Eh,L
 Linda Hey,L
 Linshom,C
@@ -4973,8 +4973,8 @@ Lo Lakachat Lalev,P
 Lo Lakachti Lalev,P
 Lo Lakachti Shum Davar,C
 Lo Lehitya'esh,C
-Lo Levad,C
-Lo Levad,P
+Lo Levad (C),C
+Lo Levad (P),P
 Lo Lihiyot Levad,C
 Lo Mala'ach Velo Mushlam,P
 Lo Malachim,C
@@ -4985,10 +4985,10 @@ Lo Memaher,P
 Lo Meshachrer,P
 Lo Meshane Li,L
 Lo Me'uchar,C
-Lo Mevater,C
-Lo Mevater,C
-Lo Mevater,C
-Lo Mevater,P
+"Lo Mevater (C, Sagi Azran)",C
+"Lo Mevater (C, Yaron Malihi)",C
+"Lo Mevater (C, Mali Lipson, Moshe)",C
+Lo Mevater (P),P
 Lo Mevater Al Hachalom,C
 Lo Mevateret,C
 Lo Mevin Ma Kara Lach,P
@@ -5005,15 +5005,15 @@ Lo Normali,P
 Lo Normaly (Biglalech),P
 Lo Nutka Hashalshelet,C
 Lo Otseret,C
-Lo Ozev Et Ha'ir,P
-Lo Ozev Et Ha'ir,P
+Lo Ozev Et Ha'ir (Yoram Sasson),P
+Lo Ozev Et Ha'ir (Nir Dor),P
 Lo Pa'am Baka'its,P
 Lo Pashut Lihyot Pashut,C
 Lo Rak Biglal,P
 Lo Rotsa Michtavim,P
 Lo Shacharti Sham Klum,P
-Lo Sharti Lach Artsi,C
-Lo Sharti Lach Artsi,C
+Lo Sharti Lach Artsi (David Ben David),C
+Lo Sharti Lach Artsi (Moshiko Halevy),C
 Lo Tamid Pashut,P
 Lo Tedi Dima,C
 Lo Tedi Kama,C
@@ -5032,31 +5032,31 @@ Lo Yode'a,P
 Lo Yoter Mishir,P
 Lo Ze Hayom,P
 Loca (Loka),L
-Lochemet,P
-Lochemet,P
+Lochemet (Ilanit Ben Meir),P
+Lochemet (Rafi Ziv),P
 Lochesh Beleilotaich,P
 Lochesh Lach,P
 Locomotion,L
 Logem (Logem Logem),
 Lo'i,P
 Loke'ach Et Hazman,C
-Lolita,P
-Lolita,P
+Lolita (Chayim Ochayon),P
+Lolita (Eli Segal),P
 Lombelico Del Mondo,L
 Loquita,L
 Love Boat,L
 Love Boy,C
 Love Generation (Feel the Love),L
-Lu,C
-Lu,P
+Lu (C),C
+Lu (P),P
 Lu Haiti,P
 Lu Haiti Yachol,P
 Lu Hayit Hana'ara,C
 Lu Hayiti Pirat,C
 Lu Hayiti Rosh Memshala,L
 Lu Hayiti Rothschild,C
-Lu Yehi,C
-Lu Yehi,C
+Lu Yehi (Gadi Bitton),C
+Lu Yehi (Ron Nistal),C
 Luchot Habrit,C
 Luci'a,P
 Luli'an Besarkasti,P
@@ -5067,13 +5067,13 @@ Luna Park,LK
 Luna Sefardita,C
 Ma Asita Bachaim,C
 Ma Asita Li,P
-Ma At Margisha,P
-Ma At Margisha,P
+Ma At Margisha (Sagi Azran),P
+Ma At Margisha (Shlomo Maman),P
 Ma At Omeret,P
 Ma Ata Over,C
-Ma Avarech,P
-Ma Avarech,P
-Ma Avarech,
+"Ma Avarech (P, Moshe Eskayo)",P
+"Ma Avarech (P, Dani Dassa)",P
+Ma Avarech (),
 Ma Baleilot,C
 Ma Barosh Sheli,P
 Ma Chashuv Hayom,C
@@ -5082,9 +5082,9 @@ Ma Haya Li,C
 Ma Hayiti Ose Biladayich,C
 Ma Hi Emuna,C
 Ma Hu Ose La,C
-Ma Kara,C
-Ma Kara,C
-Ma Kara,C
+Ma Kara (Chana Nitzan),C
+Ma Kara (Sefi Aviv),C
+Ma Kara (Yoram Sasson),C
 Ma Kore,C
 Ma Kore Itach,C
 Ma Kore Li (Al Lo Yoda'at Ma korehLi),C
@@ -5094,8 +5094,8 @@ Ma Lach,P
 Ma Lach Yalda,P
 Ma Nashim Rotsot,P
 Ma Natata Li,C
-Ma Navu,C
-Ma Navu,C
+Ma Navu (Rivka Sturman),C
+Ma Navu (Raaya Spivak),C
 Ma Nishar Li,C
 Ma Nishar Lo,C
 Ma Nizkarta Bi,P
@@ -5127,11 +5127,11 @@ Ma Tsarich Ben Adam,C
 Ma Vie,L
 Ma Yafim Haleilot Bikna'an,C
 Ma Yakar Hasdecha,C
-Ma Yihiye,C
-Ma Yihiye,P
+Ma Yihiye (C),C
+Ma Yihiye (P),P
 Ma Yihiye Tagidi,C
-Ma Yihiye Yihiye,L
-Ma Yihiye Yihiye,PL
+Ma Yihiye Yihiye (L),L
+Ma Yihiye Yihiye (PL),PL
 Ma Yotse Lecha Mize,C
 Ma Ze Ole Lecha Lachalom,C
 Ma Zot Ahava (Hachnisini Tachat Knafech),P
@@ -5154,14 +5154,14 @@ Mabrouka,
 Mabruk,C
 Mabruk Aleikum,L
 Mach Mach,C
-Machar,P
-Machar,PMKT
+Machar (P),P
+Machar (PMKT),PMKT
 Machar (Tnu Li Lehenot),C
 Machar Hashemesh Tizrach,C
 Machar Yagi'a Bechatsot,C
 Macher Le'at,P
-Machmad Levavi,C
-Machmad Levavi,C
+Machmad Levavi (Israel Yakovee),C
+Machmad Levavi (Bentzi Tiram),C
 Machmal Nafshi,P
 Machol Amami Turki,C
 Machol Avraham (Radio Ramala),C
@@ -5206,8 +5206,8 @@ Magnet Shel Balagan,P
 Mahapecha Shel Simcha,LK
 Mahen Hamilim,C
 Makarena,L
-Makat Shemesh,C
-Makat Shemesh,LK
+Makat Shemesh (C),C
+Makat Shemesh (LK),LK
 Make Al Chet,P
 Makeba,L
 Makom Acher,P
@@ -5222,22 +5222,22 @@ Mala,L
 Mala Lemala,L
 Mala Mala (Muzika),C
 Malabi,C
-Malach,C
-Malach,P
+Malach (C),C
+Malach (P),P
 Malach Sheli,P
 Malach Shomer,P
 Malachei Hashalom,C
 Malachi Hakatan,C
-Malachim,C
-Malachim,C
+Malachim (Shmulik Gov Ari),C
+Malachim (Mona Goldstein),C
 Malachim Bashamayim,P
 Malachim Bashamayim (Malachim),C
 Malachim Be Tel Aviv,C
 Malachit,C
 Malchei Hamlachim,C
-Malchut Hachermon,P
-Malchut Hachermon,P
-Malchut Hachermon,P
+Malchut Hachermon (Eli Noy),P
+Malchut Hachermon (Avner Naim),P
+Malchut Hachermon (Eli Ronen),P
 Maldita Luna,P
 Male Be'osher,P
 Male Kos Yayin Adom,C
@@ -5255,10 +5255,10 @@ Malkat Hayofi,P
 Malkat Ksamim,C
 Malkat Shirai,U
 Malkhutcha,C
-Malu Asameinu Bar,C
-Malu Asameinu Bar,P
-Mama,C
-Mama,C
+Malu Asameinu Bar (C),C
+Malu Asameinu Bar (P),P
+Mama (Victor Gabbay),C
+Mama (Yossi Rozilio),C
 Mama Diali,C
 Mama Mia,C
 Mama Sheli,C
@@ -5266,10 +5266,10 @@ Mama Ya Chilweh,LK
 Mamaliga,C
 Mambo Mambo,L
 Mambo No. 5,L
-Mami,C
-Mami,C
-Mami,P
-Mami,P
+"Mami (C, Michael Barzelai)",C
+"Mami (C, Yoram Sasson)",C
+"Mami (P, Sagi Azran)",P
+"Mami (P, Sagi Azran)",P
 Mami (Lafalta),L
 Mami Bali,C
 Mamri Lemala,C
@@ -5277,34 +5277,34 @@ Mamri'im,C
 Mamshicha Mikan,C
 Mandolina,C
 Mandoline,C
-Mangina,C
-Mangina,C
-Mangina,C
-Mangina,PK
-Mangina Ktana,C
-Mangina Ktana,C
+"Mangina (C, Ilan Swisa)",C
+"Mangina (C, Dudu Barzilay)",C
+"Mangina (C, Avi Levy)",C
+Mangina (PK),PK
+Mangina Ktana (Oren Ashkenazi),C
+Mangina Ktana (Jack Ochayon),C
 Mangina Shelo Chozeret,C
 Manginat Chayay,C
 Manginat Hadror (Shir Hamagen Vehameri),C
 Manginat Ha'osher,C
 Manginat Haru'ach,C
-Manginot,C
-Manginot,C
+Manginot (Motti Elfasy),C
+Manginot (Shlomo Maman),C
 Manginot Shelach,C
 "Mango, Banana Velimon (Mango Banana)",P
 Ma'or Enay,C
 Ma'oryan,C
 Ma'oz (Ma'oz Chor Nina),C
-Ma'oz Tsur,CK
-Ma'oz Tsur,
+Ma'oz Tsur (CK),CK
+Ma'oz Tsur (),
 Mapat Halev,C
 Mar Narkis,C
 Mara'e Shel Yeled,C
 Marakesh,C
 Mar'e Nehedar,P
 Mared Meitar,C
-Marganit (Ho Marganit),P
-Marganit (Ho Marganit),P
+Marganit (Ho Marganit) (Avner Naim),P
+Marganit (Ho Marganit) (Shoshana Dudai),P
 Margarita,P
 Margish,C
 Margish Batu'ach,P
@@ -5313,8 +5313,8 @@ Margish Et Ze,C
 Margish Itach,P
 Margish Kachol,P
 Marhaba,C
-Marhaba Bikom,C
-Marhaba Bikom,C
+Marhaba Bikom (Meir Shem Tov),C
+Marhaba Bikom (Gadi Bitton),C
 Maria,L
 "Maria 1,2,3",L
 Marina - Wh.Chair,PW
@@ -5330,11 +5330,11 @@ Marsh Lachablan,C
 Martsipan (Nina),C
 Maryuma,L
 Mas Que Tu Amigo,P
-Masa,C
-Masa,LK
+Masa (C),C
+Masa (LK),LK
 Masa Bein Kochavim (Balada Bein Kochavim),P
-Masa Chayai,C
-Masa Chayai,C
+Masa Chayai (Eli Segal),C
+Masa Chayai (Shlomo Maman),C
 Masa El Hachofesh,C
 Masach Ashan,P
 Masat Nafshi,C
@@ -5349,13 +5349,13 @@ Mashehu Chayav Likrot,C
 Mashehu Katan Vetov,C
 Mashehu Matok,C
 Mashehu Naim Laneshama,C
-Mashehu Tov,C
-Mashehu Tov,P
+Mashehu Tov (C),C
+Mashehu Tov (P),P
 Mashehu Tov Omed Likrot,C
 Mashi'ach,C
-Mashi'ach (Moshi'ach),C
-Mashi'ach (Moshi'ach),C
-Mashi'ach (Moshi'ach),C
+"Mashi'ach (Moshi'ach) (Ian, Ame Arroyo)",C
+Mashi'ach (Moshi'ach) (Eyal Bar Kayma (Eyal Levy)),C
+Mashi'ach (Moshi'ach) (Yehuda Emanuel),C
 Mashi'ach (Mosi'ach),L
 Mashi'ach Hazaken,C
 Masmerim Venotsot,P
@@ -5366,9 +5366,9 @@ Matai,C
 Matai Kvar Nedaber,P
 Matai Lachzor,P
 Matai Tigdal,LK
-Matana,C
-Matana,C
-Matana,P
+"Matana (C, Ariane Butel)",C
+"Matana (C, Gil Shimon)",C
+Matana (P),P
 Matana - Wh.Chair,PW
 Matanat Shamayim,P
 Matanot Behizdamnut,CK
@@ -5382,15 +5382,15 @@ Matchilim Mechadash,C
 Matnat Hashem,U
 Matnat Shamayim,C
 Matok Hatapu'ach,P
-Matok Matok,C
-Matok Matok,P
+Matok Matok (C),C
+Matok Matok (P),P
 Matos Kachol,C
 Matsati Ba'aron,C
 Matsav Ru'ach,C
 Matsil Oti Kol Yom,C
 Matslichim (Matsli'ach Moshi'ach),C
-Mattai,C
-Mattai,C
+Mattai (Oren Bachar),C
+Mattai (Meir Shem Tov),C
 Mavani,C
 Mavti'ach,P
 Mawal International,C
@@ -5404,11 +5404,11 @@ Mayim Metukim,P
 Mayim Mipi Habe'er (Ha'arets Hatova),C
 Mayim Rabim,P
 Mayim Shketim Chodrim,P
-Mazal,P
-Mazal,P
-Mazal tov,C
-Mazal Tov,C
-Mazal Tov,P
+Mazal (Tamar Epstein & Federico Brunstein),P
+Mazal (Shlomo Maman),P
+"Mazal tov (C, Yaron Ben Simhon, Dudu Barzilay)",C
+"Mazal Tov (C, Yo'av Ashriel)",C
+Mazal Tov (P),P
 Mazal Tov Yisrael,C
 Mazalot,C
 Mazkir Lach Ktsat Oti,P
@@ -5423,8 +5423,8 @@ Me'az Halacht,P
 Me'az Noladet,P
 Me'az She'anu Yachad,P
 Mechake,P
-Mechake Lecha,P
-Mechake Lecha,P
+Mechake Lecha (Shmulik Gov Ari),P
+Mechake Lecha (Israel Shiker),P
 Mechake Lesiman,P
 Mechake Lihiyot Melech,L
 Mechamemet Et Halev (Kmo She'at),P
@@ -5443,8 +5443,8 @@ Mechol Hacharavot,C
 Mechol Hacherev,C
 Mechol Hadayagim (Shir Hadayagim),P
 Mechol Hadvash (Dvash),C
-Mechol Hagat,P
-Mechol Hagat,PM
+Mechol Hagat (P),P
+Mechol Hagat (PM),PM
 Mechol Hakerem (Mechol Hayain),P
 Mechol Halahat,C
 Mechol Hamezeg (Shir Hamezeg),C
@@ -5477,9 +5477,9 @@ Me'ever Hayam,C
 Me'ever Lagader,C
 Me'ever Lakatuv,P
 Me'ever Lamasach,C
-Me'ever Lanahar,C
-Me'ever Lanahar,C
-Me'ever Lanahar,P
+"Me'ever Lanahar (C, Shmulik Gov Ari)",C
+"Me'ever Lanahar (C, Eliyahu Gamliel)",C
+Me'ever Lanahar (P),P
 Mefached Alayich,C
 Megadim Lere'I,P
 Megale Otach Halaila,P
@@ -5504,8 +5504,8 @@ Melech Basukka,C
 Melech Echad,C
 Melech Habrichot,P
 Melech Hamigrash (Chole Al Kadurregel),C
-Melech Ha'olam,C
-Melech Ha'olam,C
+Melech Ha'olam (Rafi Ziv),C
+Melech Ha'olam (Nurit Melamed),C
 Melech Israel,C
 Melech Melech,C
 Melech Ozer,C
@@ -5514,8 +5514,8 @@ Melodi,P
 Melody,L
 Memidbar Lemidbar,P
 Men In Black,L
-Menagen,C
-Menagen,C
+Menagen (Yaron Elfasy),C
+Menagen (Elad Shtamer),C
 Menagen Otach,P
 Menagen Ve'Shar,C
 Menagev Lach T'adma'ot (Lenagev Lach Et Hadma'ot),P
@@ -5523,15 +5523,15 @@ Menasim,C
 Menatsachat Bachayim,P
 Me'ohav,C
 Me'ohav Ad Hashamayim,C
-Me'ohav Al Hamirpeset,P
-Me'ohav Al Hamirpeset,P
+Me'ohav Al Hamirpeset (Sefi Aviv),P
+Me'ohav Al Hamirpeset (Avi Perez),P
 Me'ohav Bach,P
 Me'ohav Bach Ad Dma'ot,P
 Me'ohav Bageshem (Quijote),P
 Me'ohav Kol Halaila,P
 Me'ohav Midai,P
-Merachef Baru'ach,C
-Merachef Baru'ach,C
+Merachef Baru'ach (Shlomo Maman),C
+Merachef Baru'ach (Danny Uziel),C
 Merachok,P
 Merci,C
 Mered Ne'urim,P
@@ -5554,43 +5554,43 @@ Metim Me'ahava,P
 Metofefet,C
 Metsiut Acheret,P
 Metsi'ut Yafa,P
-Metuka Sheli,C
-Metuka Sheli,P
+Metuka Sheli (C),C
+Metuka Sheli (P),P
 Metuka Veraka (Raka U'Metuka),C
 Metukim,C
-Me'uchar Miday,P
-Me'uchar Miday,P
+"Me'uchar Miday (Denise Borgi, Ami Evenchaim)",P
+Me'uchar Miday (Naftaly Kadosh),P
 Me'ushar,C
-Me'usharim,C
-Me'usharim,C
+Me'usharim (Ariane Butel),C
+Me'usharim (Ohad Atia),C
 Me'usheret,C
 Mevakshim Chayim,P
 Mevarech Hashanim,C
 Mevin Et Ze,P
 Mevorechet,C
-Mexico,C
-Mexico,L
-Mezare Israel,C
-Mezare Israel,PT
+Mexico (C),C
+Mexico (L),L
+Mezare Israel (C),C
+Mezare Israel (PT),PT
 Mezeg Ha'avir,P
 Mi Adir,C
 Mi Amar,
 Mi Amor,P
 Mi Amore,L
-Mi Ani,C
-Mi Ani,C
+Mi Ani (Tamar Epstein),C
+Mi Ani (Yom Tov Ochayon),C
 Mi Ani Hayom,C
 Mi At,P
-Mi Barechev Mi Baregel,C
-Mi Barechev Mi Baregel,
+Mi Barechev Mi Baregel (C),C
+Mi Barechev Mi Baregel (),
 Mi Chica,L
 Mi Ha'ish,C
 Mi Hashokolad,C
 Mi Kamocha,C
 Mi Ke'amcha (Mi Kamocha),C
-Mi Li Yiten,C
-Mi Li Yiten,L
-Mi Li Yiten,P
+Mi Li Yiten (C),C
+Mi Li Yiten (L),L
+Mi Li Yiten (P),P
 Mi Lo Yavo,C
 Mi Meyaleil (Erets Israel),C
 Mi Ohev Et Hashabat,CK
@@ -5605,16 +5605,16 @@ Mi Tirzi She'ehiye,P
 Mi Yada Shekach Yihiye,C
 Mi Yagid Lach Lo,C
 Mi Yatsil Otanu,C
-Mi Yemalel,C
-Mi Yemalel,
+Mi Yemalel (C),C
+Mi Yemalel (),
 Mi Yesh Lo Riva Kazot,P
 Mi Yimtsa Li,C
 Mi Yishmor Alenu,C
 Mi Yiten,C
 Mi Yiten Ve'amen,C
 Mi Yitneni Of (Shirat Hanoded),C
-Mi Yivne Bayit,P
-Mi Yivne Bayit,U
+Mi Yivne Bayit (P),P
+Mi Yivne Bayit (U),U
 Mi Yode'a,P
 Mi Yohav Otach Kamoni,C
 Mi Zot,P
@@ -5623,25 +5623,25 @@ Mi'Bni,L
 Micha'ela,P
 Michal Sheli,P
 Michtav,P
-Michtav Ahava,P
-Michtav Ahava,P
+Michtav Ahava (Itzik Sa'ada),P
+Michtav Ahava (Eli Ronen),P
 Michtav Bachol,P
 Michtav Katan,P
-Midbar,C
-Midbar,C
+Midbar (Oren Ashkenazi),C
+Midbar (Israel Yakovee),C
 Midbar Mayim Vaesh,C
 Midbar Medaber,C
 Midbar Veyam,P
 Middle East,L
 Miflas Matsav Haru'ach,P
-Mifrats Shlomo,C
-Mifrats Shlomo,
+Mifrats Shlomo (C),C
+Mifrats Shlomo (),
 Migavoha,C
-Migdalor,P
-Migdalor,P
+Migdalor (David Edery),P
+Migdalor (Eli Ronen),P
 Migdalor Belevavi,P
-Mikan,P
-Mikan,P
+Mikan (Yaron Malihi),P
+Mikan (Avi Amsalam),P
 Mikarov,C
 Mikdash Ha'ahava (Mikdash Ahava),C
 Mikol Ahavati,C
@@ -5649,19 +5649,19 @@ Mikol Ha'acherot,P
 Mikol Ha'ahavot,P
 Mikol Halev,P
 Mikol Otam Hapizmonim,C
-Mikol Pirchey Mor,P
-Mikol Pirchey Mor,P
+Mikol Pirchey Mor (Shlomo Maman),P
+Mikol Pirchey Mor (Shlomo Maman),P
 Miktsav BeMarokayit,C
 Miktsav Emanuel (Sar Sari),C
 Miktsavela,C
 Mila Pshuta,C
 Mila Shel Gever,C
 Mila Sheli,C
-Mila Tova,C
-Mila Tova,C
-Mila Tova,C
-Mila Ve'od Mila,C
-Mila Ve'od Mila,P
+Mila Tova (Tamir Shalev),C
+Mila Tova (Shlomo Maman),C
+Mila Tova (Robin Starr),C
+Mila Ve'od Mila (C),C
+Mila Ve'od Mila (P),P
 Milemala,C
 Milev Adama,CK
 Milev El Lev,C
@@ -5704,8 +5704,8 @@ Mis'chak Hadma'ot,P
 Mis'chak Hane'urim,P
 Mis'chakim,C
 Misgav,C
-Mishaela,C
-Mishaela,
+Mishaela (C),C
+Mishaela (),
 Mishahu Acher,C
 Mishal (Debka Mishal),C
 Mishamayim,C
@@ -5714,8 +5714,8 @@ Mishehu Ahavti (Ma Haperach),P
 Mishehu Bi Yeled,C
 Mishehu Choshev,P
 Mishehu Holech Tamid - Wh.Chair,PW
-Mishehu Holech Tamid Iti,P
-Mishehu Holech Tamid Iti,P
+Mishehu Holech Tamid Iti (Jonathan Gabay),P
+Mishehu Holech Tamid Iti (Chayim Shiryon),P
 Mishehu Iti Kan,C
 Mishehu Mashehu,P
 Mishehu Ohev Otach,P
@@ -5730,8 +5730,8 @@ Mishtolelet Bchuts,C
 Mishu Dofek Badelet,C
 Miss Music,C
 Mistapek Bema Sheyesh,C
-Mistovev,C
-Mistovev,C
+Mistovev (Gadi Bitton),C
+Mistovev (Naftaly Kadosh),C
 Mistovevet Baleilot,C
 Mistovevet Lach (Shuv At Mistovevet Lach),P
 Mitachat La'adama,C
@@ -5746,9 +5746,9 @@ Miteyman Leisrael,
 Mitga'aga'at Otcha,P
 Mitga'agat,P
 Mitga'age'a,C
-Mitga'agei'a,C
-Mitga'agei'a,C
-Mitga'agei'a,P
+"Mitga'agei'a (C, Yaron Malihi)",C
+"Mitga'agei'a (C, Yardena Leib, Maytal Leib)",C
+Mitga'agei'a (P),P
 Mitkarev,P
 Mitoch Tmimut,C
 Mitof Letof (Debka Mitof Letof),C
@@ -5759,16 +5759,16 @@ Mitragesh Mimech,P
 Mitria Beshnayim,P
 Mitriya Lishnayim (Shneinu Yachad),P
 Mitsad America'i (America Promenade),PM
-Mitshalot,C
-Mitshalot,C
+Mitshalot (Naftaly Kadosh),C
+Mitshalot (Yoram Rachmany),C
 Mitsta'er,C
 Mitsva Tanz (Rikud Mitsva),P
 Mix Morokai (Bled Mix),C
 Mizmor Laila (Keren Or),C
 Mizmor Leamor,C
-Mizmor LeDavid,C
-Mizmor LeDavid,C
-Mizmor LeDavid,C
+Mizmor LeDavid (Elad Shtamer),C
+Mizmor LeDavid (Tuvia Tishler),C
+Mizmor LeDavid (Moshiko Halevy),C
 Mizmor LeGilad,C
 Mizmor Lenichochei Chatsir,C
 Mizmor Leshabbat,C
@@ -5780,17 +5780,17 @@ Mizmor Shir (Tov Lehodot),C
 Mizmor Shiru Ladonay,C
 Mizmorei Nevochim,C
 Mizmorim (Mizmor Ledavid),C
-Mizrach Ma'arav,C
-Mizrach Ma'arav,C
+Mizrach Ma'arav (Nir Dor),C
+Mizrach Ma'arav (Moshiko Halevy),C
 Mle'at Ahava,P
 Mmbop,L
 Mocher Garinim,C
 Mocher Prachim (Hora Perach),PT
 Moda Ani (Moda Ani),C
-Mode ani,C
-Mode Ani,C
-Mode Ani,C
-Mode Ani,P
+"Mode ani (C, Nurit Melamed)",C
+"Mode Ani (C, Sharon Elkaslassy)",C
+"Mode Ani (C, Yaron Elfasy)",C
+Mode Ani (P),P
 Mode Ani Lefaneicha,C
 Mojo Mambo,L
 Mon Amour,C
@@ -5804,18 +5804,18 @@ Morasha,C
 More Lechayim,C
 More Nevochim,C
 Morenita,PL
-Morenu,C
-Morenu,C
-Mori (Hamori),C
-Mori (Hamori),C
+Morenu (Shmulik Gov Ari),C
+Morenu (Sefi Aviv),C
+Mori (Hamori) (Didi Dosh),C
+Mori (Hamori) (Itzik Biton),C
 Mori Se'adi'a,C
 Moridim Et Hayare'ach,C
-Moshe,C
-Moshe,C
+Moshe (Israel Shiker),C
+Moshe (Yaron Ben Simhon),C
 Moshe Bateva,PK
 Moshi Tanas,C
-Motek,C
-Motek,P
+Motek (C),C
+Motek (P),P
 Motek Al Telchi,C
 Motek Lo Lidog (Ein Lach Ma Lidog),P
 Motek Sheli (Nini Kanji),P
@@ -5855,10 +5855,10 @@ Na'alayim (Nagni Gitara),P
 Na'ale Lirushalayim,C
 Na'ale Na'ale,C
 Na'ale Yerushalayim,C
-Na'ama,P
-Na'ama,P
-Na'ama,P
-Na'ama,P
+Na'ama (Peri Shachaf),P
+Na'ama (Marco Ben Shimon),P
+Na'ama (Bentzi Tiram),P
+Na'ama (Motti Elfasy),P
 Na'ana,P
 Na'ane La'el,P
 Na'ara,P
@@ -5867,8 +5867,8 @@ Na'ara Bemishkafaim,P
 Na'ara Mamash Otsar,C
 Na'ara Mi Eiyei Yavan,C
 Na'ara Misfarad,P
-Na'ara Ushma Kinneret,P
-Na'ara Ushma Kinneret,
+Na'ara Ushma Kinneret (P),P
+Na'ara Ushma Kinneret (),
 Na'arat Hachalomot,C
 Na'ari Ahuvi,P
 Na'ari Beyam Beito,P
@@ -5881,17 +5881,17 @@ Nachal Nachal,C
 Nachal Yam,C
 Nachamuni,C
 Nachash (Shir Hapazam),C
-Nachon At Yafa,P
-Nachon At Yafa,P
+Nachon At Yafa (Inat Cohen),P
+Nachon At Yafa (Israel Shiker),P
 Nachon Lehayom,C
 Nachon She'at Kan (Ahava),P
 Nad Ilan,C
 Nad Ilan (Tapuch Hinani),C
 Nad Ned,U
-Nadam Kol Off,C
-Nadam Kol Off,P
-Nadia,C
-Nadia,P
+Nadam Kol Off (C),C
+Nadam Kol Off (P),P
+Nadia (C),C
+Nadia (P),P
 Nadlik Beyachad Ner,C
 Nadnedi,C
 Nafalti Kamti,C
@@ -5901,13 +5901,13 @@ Nafshi Homa (Debka Esh),C
 Nafshi Kalta,C
 Nagat Li Baneshama,C
 Nagen Li Meitar,C
-Nagen Li Yarden,C
-Nagen Li Yarden,U
+Nagen Li Yarden (C),C
+Nagen Li Yarden (U),U
 Nagen Orpheos (Orfeus),P
 Nagni Eiti,P
-Nagni Gitara,C
-Nagni Gitara,C
-Nagni Gitara,P
+"Nagni Gitara (C, Amnon Sha'uli)",C
+"Nagni Gitara (C, David Ben David)",C
+Nagni Gitara (P),P
 Nagni Harmonica,C
 Nagni Kineret,C
 Nahar,P
@@ -5915,16 +5915,16 @@ Naim Me'od,L
 Na'im Me'od Lo'ai,L
 Nama Yaffo,C
 Names Mimech,C
-Namesta,LK
-Namesta,LK
+Namesta (Levi Bar Gil),LK
+Namesta (Chen Shporen),LK
 Namid Pnei Yetomim,C
 Namshich Et Hachalom (Itach Ani Nishar),P
 Namut Alik,C
 Nanu Ney,C
-Naomi (Ani Cholem Al Naomi),C
-Naomi (Ani Cholem Al Naomi),L
-Naomi (Ani Cholem Al Naomi),L
-Naomi (Ani Cholem Al Naomi),L
+Naomi (Ani Cholem Al Naomi) (C),C
+"Naomi (Ani Cholem Al Naomi) (L, Shlomo Bachar)",L
+"Naomi (Ani Cholem Al Naomi) (L, Yo'av Ashriel)",L
+"Naomi (Ani Cholem Al Naomi) (L, Bentzi Tiram)",L
 Nargila,L
 Narkisim,C
 Nash Didan,C
@@ -5944,8 +5944,8 @@ Natat Leha'amin,C
 Natata Li (Harbe Nachat),C
 Natata Li Ota,P
 Natati Ets,L
-Natati Lach Chayai,C
-Natati Lach Chayai,
+Natati Lach Chayai (C),C
+Natati Lach Chayai (),
 Natati Oti El Ha'ir,P
 Natchil Mechadash,C
 Nauf Bishnayim (Olam Shel Chalomot),C
@@ -5986,8 +5986,8 @@ Neimat Stav,C
 Neimat Targil Boker,L
 Nepal,C
 Ner Al Hachalon,P
-Nerot Shabat,C
-Nerot Shabat,C
+Nerot Shabat (Moshiko Halevy),C
+Nerot Shabat (Yoram Rachmany),C
 Neshama Sheli,C
 Neshel Hanachash,C
 Neshichat Ha'ir,C
@@ -5998,8 +5998,8 @@ Neshika Shel Esh,P
 Neshika Turkit (Turkish Kiss),L
 Neshikat Shalhevet (Neshika Shel Or),P
 Neshikot Ahava,C
-Neshima,C
-Neshima,P
+Neshima (C),C
+Neshima (P),P
 Neshima Amuka,C
 Neshima Aruka,P
 Nesicha,C
@@ -6023,14 +6023,14 @@ New York New York,L
 Nichnast Li Lalev,P
 Nichtav Lach (Nichtav Elaich),P
 Nifnuf Shel Zro'ot,C
-Nifradnu Kach,P
-Nifradnu Kach,P
+Nifradnu Kach (Liran Zecharya Amir & Gadi Bitton),P
+Nifradnu Kach (Yehuda Sabag),P
 Niga El Hachalom,C
 Nigmar,C
-Nigun,C
-Nigun,PM
-Nigun Atik (Zemer Atik),C
-Nigun Atik (Zemer Atik),P
+Nigun (C),C
+Nigun (PM),PM
+Nigun Atik (Zemer Atik) (C),C
+Nigun Atik (Zemer Atik) (P),P
 Nigun Balev,P
 Nigun Bein Hashmashot,C
 Nigun Chadash,C
@@ -6041,22 +6041,22 @@ Nigun Lenachche,C
 Nigun Neshama,C
 Nigun Nigunim,C
 Nigun Romani,C
-Nigun Same'ach,C
-Nigun Same'ach,P
+Nigun Same'ach (C),C
+Nigun Same'ach (P),P
 Nigun Shebalev (Hanigun Shebalev),C
-Nigun Simcha,C
-Nigun Simcha,C
+Nigun Simcha (Shulamit Rada),C
+Nigun Simcha (Israel Shabtai),C
 Niguna Alma,C
 Niguna Shel Hashchuna,P
 Niguna Shel Shlomit,C
-Nigunim,C
-Nigunim,P
-Nigunim,P
-Nigunim,P
+Nigunim (C),C
+"Nigunim (P, Mali Lipson, Moshe)",P
+"Nigunim (P, Yo'av Ashriel)",P
+"Nigunim (P, Bentzi Tiram)",P
 Niguno Shel Berel,C
-Niguno Shel Uri,C
-Niguno Shel Uri,C
-Niguno Shel Uri,U
+"Niguno Shel Uri (C, Hagai Ramati)",C
+"Niguno Shel Uri (C, Shlomo Maman)",C
+Niguno Shel Uri (U),U
 Niguno Shel Yossi,PM
 Nijad,C
 Nimna Mimech,P
@@ -6067,8 +6067,8 @@ Nirim,C
 Nirkod,C
 Nirkod Kulanu (Shana Tova),C
 Nirkod Lashalom,C
-Nirkod Nishkach,C
-Nirkod Nishkach,P
+Nirkod Nishkach (C),C
+Nirkod Nishkach (P),P
 Nirkod Nismach,C
 Nirvana Parsit,C
 Nischaf Bama’agal,C
@@ -6078,8 +6078,8 @@ Nishba Lach,P
 Nishba Lach Kan,P
 Nishba Leyerushalayim (Ani Nishba Lach ),C
 Nishbati Lecha Yaldi,C
-Nisheret Le'olam,P
-Nisheret Le'olam,P
+Nisheret Le'olam (Dudu Barzilay),P
+Nisheret Le'olam (Dudu Barzilay),P
 Nishkach Meha'olam,C
 Nishmat Kol Chai,C
 Nishmati,P
@@ -6090,9 +6090,9 @@ Nitpalela,C
 Nitsacht Iti Hakol,P
 Nitsachti,C
 Nitsaney Shalom,P
-Nitsanim Niru Va'arets,C
-Nitsanim Niru Va'arets,C
-Nitsanim Niru Va'arets,P
+"Nitsanim Niru Va'arets (C, Tzvi Fridhaber)",C
+"Nitsanim Niru Va'arets (C, Yo'av Ashriel)",C
+Nitsanim Niru Va'arets (P),P
 Nitschonot,C
 Nitsmadnu,C
 Nitsots Ha'ahava,C
@@ -6116,8 +6116,8 @@ Noladeti Lashalom,P
 Normali,C
 Nosa'at Layavan,C
 Nose'a Elayich,C
-Nostalgia,C
-Nostalgia,P
+Nostalgia (C),C
+Nostalgia (P),P
 Noten Lach Ahava,C
 Notsa Ktana Yafa,P
 Nu'ach,P
@@ -6126,19 +6126,19 @@ Nur (Debka),C
 Nur Eini,C
 Nure Nure (Nora Nora),C
 O She'ata Shar O Shelokchim,C
-O Sheken O Shelo,P
-O Sheken O Shelo,P
+O Sheken O Shelo (Avi Perez),P
+O Sheken O Shelo (Yankale Ziv),P
 O Tarzan,C
 Od,C
 Od Achazor,C
 Od Ashir Va'anagen,C
-Od Chozer Hanigun,C
-Od Chozer Hanigun,C
-Od Daka,P
-Od Daka,P
+Od Chozer Hanigun (Tamir Scherzer),C
+Od Chozer Hanigun (Tuvia Tishler),C
+Od Daka (Ofer Alfasi),P
+"Od Daka (Mali Lipson, Moshe)",P
 Od Echad Sheshar Lach,P
-Od Evnech Venivnet,C
-Od Evnech Venivnet,C
+Od Evnech Venivnet (Naftaly Kadosh),C
+Od Evnech Venivnet (Avi Perez),C
 Od Evnech Yerushalayim,C
 Od Ktsat,P
 Od Laila,C
@@ -6148,19 +6148,19 @@ Od Me'at,P
 Od Me'at Shabbat,C
 Od Me'at Yachlof,C
 Od Mechake,P
-Od Nagi'a,C
-Od Nagi'a,C
-Od Nagi'a,L
-Od Nagi'a,P
-Od Nagi'a,P
+"Od Nagi'a (C, Eli Segal, Sefi Aviv)",C
+"Od Nagi'a (C, Shlomo Bachar)",C
+Od Nagi'a (L),L
+"Od Nagi'a (P, Sefi Aviv)",P
+"Od Nagi'a (P, Chayim Shiryon)",P
 Od Nashuv,C
 Od Nashuv Machar,C
 Od Nipagesh,P
 Od Nipagesh - Wh.Chair,PW
 Od Pa'am,C
 Od Pa'am Achat,P
-Od Rikud,C
-Od Rikud,L
+Od Rikud (C),C
+Od Rikud (L),L
 Od Shabat,C
 Od Shana,C
 Od Shana Chalfa,C
@@ -6187,27 +6187,27 @@ Ode Adonai,C
 Ode Lecha,C
 Ode Le'Eli,C
 Ode Ode,C
-Ode Ya,C
-Ode Ya,C
+Ode Ya (Moshiko Halevy),C
+Ode Ya (Sefi Aviv),C
 Odecha,C
 Odeli'a (Sulam Ya'akov),C
 Odeli'a Sheli (Odeli'a),P
 Odeni Yalda,C
 Odot Chava,C
 Ofarim,C
-Ofra,P
-Ofra,P
-Ofra,PL
-Ofra,
-Ofra,
+"Ofra (P, Israel Shiker)",P
+"Ofra (P, Yoram Rachmany)",P
+Ofra (PL),PL
+"Ofra (, Chaim Livneh)",
+"Ofra (, Gabi Gabay)",
 Oh! Carol,L
 Ohav Otach,P
 Ohav Otach Balaila,P
 Ohev,P
 Ohev Aval Mtsiuti,C
 Ohev Lihiyot Babayit,C
-Ohev Otach,C
-Ohev Otach,P
+Ohev Otach (C),C
+Ohev Otach (P),P
 Ohev Otach Ad Hashemayim,P
 Ohev Otach Chazak,P
 Ohev Otach Kacha,P
@@ -6231,15 +6231,15 @@ Olam Hafuch,C
 Olam Male Ahava (At Iti Bechol Daka),C
 Olam Nifla,L
 Olam Shalem,C
-Olam Shel Yeladim,C
-Olam Shel Yeladim,C
+Olam Shel Yeladim (Shlomo Maman),C
+Olam Shel Yeladim (Itzik Ben Dahan),C
 Olam Yafe Vechadash,C
 Olama,C
 Old Pop in the Oak,L
-Ole Ole,C
-Ole Ole,C
-Ole Ole,L
-Ole Ole,
+"Ole Ole (C, Oshrat Lupo)",C
+"Ole Ole (C, Moshe Eskayo)",C
+Ole Ole (L),L
+Ole Ole (),
 Ole Pasodoble,P
 Oliver Shanti,L
 Olle Olle,C
@@ -6250,37 +6250,37 @@ Omed Kan Levadi,C
 Omer,C
 Omer Beshtika,P
 Omer Chakol,P
-Omer Lecha Toda,C
-Omer Lecha Toda,C
+Omer Lecha Toda (Nurit Melamed),C
+Omer Lecha Toda (Chana Shuvaly),C
 Omid,C
 Omrim,C
-Omrim Yeshna Erets,C
-Omrim Yeshna Erets,C
-Omrim Yeshna Erets,C
+Omrim Yeshna Erets (Gadi Bitton),C
+Omrim Yeshna Erets (Nir Dor),C
+Omrim Yeshna Erets (Amir Sela),C
 Onat Hatsiporim,C
 One Day (Waving Flag),L
-Oneg Shabbat,C
-Oneg Shabbat,C
+Oneg Shabbat (Bentzi Tiram),C
+Oneg Shabbat (Dani Dassa),C
 Oneg Shabbat (Shir Shabat),C
 Oniya Mul Hachof,
 Onot,C
 Op,P
 Opa (Hopa),C
 Opa Tsupa,C
-Or,C
-Or,C
+Or (Elad Shtamer),C
+Or (Shlomo Maman),C
 Or Ariel,C
 Or Bachadarim,C
 Or Balayla,C
 Or Chadash,P
 Or Chadash (Tahapachot),C
-Or Gadol,C
-Or Gadol,L
-Or Ha'ahava,P
-Or Ha'ahava,P
+Or Gadol (C),C
+Or Gadol (L),L
+Or Ha'ahava (Oren Halaly),P
+Or Ha'ahava (Ran Hirsh),P
 Or Hachaim,C
-Or Haganuz,C
-Or Haganuz,P
+Or Haganuz (C),C
+Or Haganuz (P),P
 Or Lagoyim,C
 Or Leili,C
 Or Leili (Dai Lake'ev),C
@@ -6289,8 +6289,8 @@ Or LeIsrael,C
 Or Panas,C
 Or Shivat Hayamim,C
 Or Sovev,C
-Or Veyerushalayim,C
-Or Veyerushalayim,CK
+Or Veyerushalayim (C),C
+Or Veyerushalayim (CK),CK
 Or Yare'ach Meshuga,C
 Or Yekarot,C
 Oranim (Hora),C
@@ -6298,8 +6298,8 @@ Orcha Yafati,P
 Orchot Midbar,C
 Ore'ach Ba'olam,C
 Ori Or,C
-Orianna,C
-Orianna,C
+Orianna (Shimon Assor),C
+Orianna (Sefi Aviv),C
 Orka,C
 Orot,C
 Orot Adumim,L
@@ -6310,19 +6310,19 @@ Orot shabbat (Shir Shabbat),C
 Orot Ve'ashan (Halaila),C
 Osa Li Same'ach,P
 Osa Li Tayom,C
-Ose Li Et Hayom,C
-Ose Li Et Hayom,P
+Ose Li Et Hayom (C),C
+Ose Li Et Hayom (P),P
 Ose Li Tov,C
-Ose Shalom,C
-Ose Shalom,C
+Ose Shalom (Shlomo Maman),C
+Ose Shalom (Teme Kernerman),C
 Ose Shalom (Ha'ose Shalom),C
 Osef Od Ga'agu'a,P
 Osefet Regaim,P
-Osher,C
-Osher,C
+Osher (Elad Perl),C
+Osher (Shlomo Bachar),C
 Osher (Osher Ba Rak Im Kashe),P
-Osher Ba Veholech,C
-Osher Ba Veholech,C
+Osher Ba Veholech (Dror Davidi),C
+Osher Ba Veholech (Dror Davidi & Gadi Bitton),C
 Osher Katan,C
 Osher Rachok,C
 Oshrat,C
@@ -6338,8 +6338,8 @@ Otach Vekafe,P
 Otcha,P
 Oto Hamabat,P
 Ototo,C
-Otsar Sheli,C
-Otsar Sheli,C
+Otsar Sheli (Menashe Perez),C
+Otsar Sheli (Ohad Atia),C
 Otsar Sheli (Hakala Melstanbul),C
 Overet Muli,C
 Overet Orach,C
@@ -6352,8 +6352,8 @@ Ozan,L
 Ozevet Et Tel Aviv,C
 Ozi Vezimrat Ya,C
 Ozi Vezimrat Ya (Uzi),C
-Ozreni El Chay,C
-Ozreni El Chay,C
+Ozreni El Chay (Eliyahu Gamliel),C
+Ozreni El Chay (Avner Naim),C
 Pa Bailar,L
 Pa'am,P
 Pa'am Achat,C
@@ -6365,8 +6365,8 @@ Pa'am Haiynu,P
 Pa'am Hayu Sham Prachim,C
 Pa'am Le'ehov,C
 Pa'am Pa'am,P
-"Pa'am Tori, Pa'am Torech",P
-"Pa'am Tori, Pa'am Torech",P
+"Pa'am Tori, Pa'am Torech (Shlomo Maman)",P
+"Pa'am Tori, Pa'am Torech (Yankale Ziv)",P
 Pa'ame Ge'ula,C
 Pa'amei Tamuz,C
 Pa'amey Aviv,P
@@ -6382,8 +6382,8 @@ Palavra,P
 Pam Pam (Shiru Lashemesh),C
 Pamela,P
 Pana Hageshem,C
-Panas Bashalechet,C
-Panas Bashalechet,P
+Panas Bashalechet (C),C
+Panas Bashalechet (P),P
 Panas Echad Barchov,C
 Panasey Ha'ir (Panasey Ha'ir Dolkim Adayin),C
 Panasim,P
@@ -6418,12 +6418,12 @@ Pele Tivi,C
 Perach (Hayiti Began Eden),P
 Perach Al Hahar,C
 Perach Ba'aviv,P
-Perach Bamidbar,C
-Perach Bamidbar,P
+Perach Bamidbar (C),C
+Perach Bamidbar (P),P
 Perach Bashmama (Perach Bashmamah),P
 Perach Begani,P
-Perach Halilach,P
-Perach Halilach,P
+Perach Halilach (Yo'av Ashriel),P
+Perach Halilach (Shlomo Maman),P
 Perach Harimon,C
 Perach Leili,P
 Perach Min Hagan,P
@@ -6433,8 +6433,8 @@ Perach Shel Or,P
 Perach Sheli,P
 Perach Yayin,P
 Perach Zahav,C
-Pesek Zman,C
-Pesek Zman,C
+Pesek Zman (Oren Bachar),C
+Pesek Zman (Tzlil Shuker),C
 Peter Pan,U
 Petra (Nosa'at Lepetra),C
 Peugeot 92,C
@@ -6521,16 +6521,16 @@ Rachamei Shamaeim,C
 Rachamim,P
 Rachamim Lev Ha'olam,C
 Rachavat Harikudim,P
-Rachel,P
-Rachel,P
-Rachel,P
+Rachel (Baruch Cohen),P
+Rachel (Shlomo Bachar),P
+Rachel (Dani Dassa),P
 Rachman Rachem (Rachamon Rachem),P
 Rachok Karov (Karov Rachok),P
 Rachok Mikulam,P
 Rachok Rachok,P
-Rad Halaila,C
-Rad Halaila,C
-Rad Halaila,C
+Rad Halaila (Barry Avidan),C
+Rad Halaila (Yo'av Ashriel),C
+Rad Halaila (Dani Dassa),C
 Radio Ramalla,C
 Rafenu Venirafe,C
 Rafsoda,C
@@ -6541,8 +6541,8 @@ Raiti Bach Isha,P
 Raiti Bachalom,C
 Raiti Be'eynaich,P
 Rak Ahava,P
-Rak Ahava Tavi Ahava,C
-Rak Ahava Tavi Ahava,L
+Rak Ahava Tavi Ahava (C),C
+Rak Ahava Tavi Ahava (L),L
 Rak Al Atsmi,P
 Rak Al Tagid,P
 Rak Aluma (Rak Aluma Li Achat),C
@@ -6554,8 +6554,8 @@ Rak Be Israel,C
 Rak Beinatayim,C
 Rak Beyachad Nenatse'ach,C
 Rak Bishvilcha,C
-Rak Chiyuch Echad,P
-Rak Chiyuch Echad,P
+Rak Chiyuch Echad (Ya'ir Harel),P
+Rak Chiyuch Echad (Avner Naim),P
 Rak Ehevini,P
 Rak Elayich,C
 Rak Elayich Halev Rotse,C
@@ -6568,9 +6568,9 @@ Rak Etmol Nolda,C
 Rak Hahatchala,C
 Rak Haketsev Medaber,C
 Rak Hed Kolech (Shir Hayona),P
-Rak Itach,P
-Rak Itach,P
-Rak Itach,P
+Rak Itach (Yossi Azani),P
+Rak Itach (Victor Gabbay),P
+Rak Itach (Tuvia Tishler),P
 Rak Kan,C
 Rak Ketsat,C
 Rak Leima,C
@@ -6591,11 +6591,11 @@ Rak Tov Al Ha'olam,C
 Rakadnu Kol Halayla,P
 Rakafot,P
 Rakavot,P
-Rakefet,C
-Rakefet,C
-Rakefet,C
-Rakefet,C
-Rakefet,P
+"Rakefet (C, Avi Levy)",C
+"Rakefet (C, Dani Dassa)",C
+"Rakefet (C, Shlomo Bachar)",C
+"Rakefet (C, Raaya Spivak)",C
+Rakefet (P),P
 Rakefet Hasela (Rakefet),C
 Rakevet Achrona,P
 Rakevet Aza Ashkelon,C
@@ -6628,8 +6628,8 @@ Rechavi'a,C
 Rechev Esh,C
 Rechov Hayarkon,L
 Red Rose Tango,P
-Rega,C
-Rega,P
+Rega (C),C
+Rega (P),P
 Rega Echad Shel Netsach,P
 Rega Gadol,P
 Rega Levad,C
@@ -6642,9 +6642,9 @@ Rega Shel Osher,P
 Rega Shel Sheket,P
 Rega Yalda,P
 Regabiti (Regabity),L
-Regaim,C
-Regaim,P
-Regaim,P
+Regaim (C),C
+"Regaim (P, David Ben Naim)",P
+"Regaim (P, Israel Shiker)",P
 Regaim Arukim,C
 Rega'im Shel Osher,P
 Regalo,L
@@ -6667,8 +6667,8 @@ Reidat Adama,L
 Reiyach Menta,C
 Reiyach Menta (Menta),C
 Remazim,C
-Remez,P
-Remez,P
+Remez (Avi Perez),P
+Remez (Meir Shem Tov),P
 Renanim,PM
 Requiem,L
 Reshet Hashvilim (Lechad Hahayalim),P
@@ -6695,8 +6695,8 @@ Rikud Chatuna,C
 Rikud Chazak,C
 Rikud Chushani,P
 Rikud Eileen,C
-Rikud Hachatuna,P
-Rikud Hachatuna,P
+Rikud Hachatuna (Levi Bargil),P
+Rikud Hachatuna (Kaptson Clamentine),P
 Rikud Hachayim,P
 Rikud Hacowboy,P
 Rikud Ha'esh,C
@@ -6734,19 +6734,19 @@ Rikud Ne'urim,P
 Rikud Obsession,P
 Rikud Romanti,P
 Rikud Russi,PK
-Rikud Same'ach,C
-Rikud Same'ach,C
-Rikud Same'ach,L
+"Rikud Same'ach (C, Yair Ankri)",C
+"Rikud Same'ach (C, Dani Dassa)",C
+Rikud Same'ach (L),L
 Rikud Simcha,C
 Rikud Sof Hame'a,C
 Rikudei Am Ba,C
 Rikudi,C
 Rikusalsa,L
 Rikutango,P
-Rina,P
-Rina,P
-Rio De Janero,P
-Rio De Janero,P
+Rina (Tuvia Tishler),P
+Rina (Corinne Chochem),P
+Rio De Janero (Asher Ellazam),P
+Rio De Janero (Shlomo Maman),P
 Rishonim,P
 Riverdance,L
 Ro'a Be'einecha,P
@@ -6755,13 +6755,13 @@ Ro'at Hatson,C
 Rock 'n' Roll,P
 Rock 'n' Roll 2,P
 Rodef Smalot,P
-Ro'e Vero'a,C
-Ro'e Vero'a,C
-Ro'e Vero'a,P
-Ro'e Vero'a,P
+"Ro'e Vero'a (C, Leah Bergstein)",C
+"Ro'e Vero'a (C, Yankale Levy)",C
+"Ro'e Vero'a (P, Eliyahu Gamliel)",P
+"Ro'e Vero'a (P, Yo'av Ashriel)",P
 Roga,C
-Roim Rachok Roim Shakuf,C
-Roim Rachok Roim Shakuf,C
+Roim Rachok Roim Shakuf (Dudu Barzilay),C
+Roim Rachok Roim Shakuf (Gadi Bitton),C
 Rokdim Al Hamayim,C
 Rokdim Tsmudim,P
 Rokdim Vesharim,C
@@ -6782,20 +6782,20 @@ Romeio,P
 Rona,C
 Rondo Lepurim,L
 Roni,PL
-Roni Bat Tsion,C
-Roni Bat Tsion,C
+Roni Bat Tsion (Teme Kernerman),C
+Roni Bat Tsion (Leah Bergstein),C
 Roni Li (Hora),C
 Roni Vesimchi Bat Tsion,C
 Ronu Tsadikim,P
 Rosa Rosa,PC
 Rose,P
 Rosh Berosh,C
-Rosh Ha'ayin,C
-Rosh Ha'ayin,P
+Rosh Ha'ayin (C),C
+Rosh Ha'ayin (P),P
 Rosh Katan,P
 Rotsa Lehishaer,P
-Rotsa Lirkod,C
-Rotsa Lirkod,CK
+Rotsa Lirkod (C),C
+Rotsa Lirkod (CK),CK
 Rotsa Shalom,C
 Rotse Lada'at,P
 Rotse Lehiyot (Wannabe),L
@@ -6804,30 +6804,30 @@ Rotse Lomar Toda,C
 Rotse Shetachzeri,P
 Rov Brachot (Rav Brachot),C
 Rov Hasha'ot,P
-Roza Roza,C
-Roza Roza,P
+Roza Roza (C),C
+Roza Roza (P),P
 Ru'ach Ahava,P
 Ru'ach Al Dyuna,C
-Ru'ach Atsuv,C
-Ru'ach Atsuv,P
+Ru'ach Atsuv (C),C
+Ru'ach Atsuv (P),P
 Ru'ach Aviv,P
 Ru'ach Kayits,C
 Ru'ach Marokait (Ma Yavi Ito Haru'ach),C
 Ru'ach Mizrachit,
 Ruach Ruach,C
 Ru'ach Shtut,C
-Ru'ach Stav,C
-Ru'ach Stav,P
+Ru'ach Stav (C),C
+Ru'ach Stav (P),P
 Ru'ach Tsfonit,C
 "Ru'ach Tsfonit (Ru'ach Tsfonit, Ruch Deromit)",C
 Ru'ach Va'esh (Sanie Cu Zurgalai),P
 Ruchot,P
 Ruchot Milchama,C
-Ruti,P
-Ruti,P
+Ruti (Shmulik Gov Ari),P
+Ruti (Victor Gabbay),P
 Rutsi Im Halev,L
-Rutsi Ktana,C
-Rutsi Ktana,C
+Rutsi Ktana (Gadi Bitton),C
+Rutsi Ktana (Miri Akuni),C
 Rutsi Shmulik,L
 Sa Vyunom Ya Khozhu,C
 Saba,C
@@ -6837,19 +6837,19 @@ Sababa,C
 Sabado (Sabe Deus),P
 Sabaya,C
 Sabres Kar,P
-Sachaf,C
-Sachaf,C
+Sachaf (Israel Shiker),C
+Sachaf (Naftaly Kadosh),C
 Sachbi,C
 Sadot Bageshem,P
 Sadot Shebaemek,C
 Sadot Shel Irisim,C
-Sadot Shel Teirutsim,P
-Sadot Shel Teirutsim,P
+Sadot Shel Teirutsim (Aviv Ben Ishay),P
+Sadot Shel Teirutsim (Naftaly Kadosh),P
 Sadot Shel Terutsim,P
 Sa'eni,C
 Sa'eni Betof,P
-Sa'eni Imcha Bemachol,P
-Sa'eni Imcha Bemachol,P
+Sa'eni Imcha Bemachol (Yossi Abuhav),P
+Sa'eni Imcha Bemachol (Moshe Telem),P
 Saenu (Lamidbar Sa'einu),C
 Safart,C
 Sagarnu Ma'agal,C
@@ -6860,9 +6860,9 @@ Saharane,C
 Saharoret,C
 Sakin Balev,C
 Salach (Mashi'ach Hazaken),PM
-Salam,C
-Salam,C
-Salam,L
+"Salam (C, Michael Barzelai)",C
+"Salam (C, Israel Shabtai)",C
+Salam (L),L
 Salam (Ya Salam),C
 Salam Salam,C
 Salamati,C
@@ -6880,8 +6880,8 @@ Samba Bishnayim,P
 Samba Le'or Kochavim,P
 Samballero (Mueve Mueve),L
 Samchem,C
-Same'ach,C
-Same'ach,C
+Same'ach (Shmulik Gov Ari),C
+Same'ach (Eli Segal),C
 Same'ach Al Halev,C
 Same'ach Al Halev (Tse Hasiman),C
 Same'ach Bachatuna (Hatuna),P
@@ -6895,13 +6895,13 @@ Sapari (Bat Teyman),C
 Sapari LaShoshana,C
 Saper Al Ahava,P
 Saper Li,
-Saper Li Kochav,C
-Saper Li Kochav,P
+Saper Li Kochav (C),C
+Saper Li Kochav (P),P
 Sapri Li Ahuva,C
 Sapri Tama,C
-Sar Hamemuna,C
-Sar Hamemuna,C
-Sar Hamemuna,P
+"Sar Hamemuna (C, Israel Yakovee)",C
+"Sar Hamemuna (C, David Edery)",C
+Sar Hamemuna (P),P
 Sara,P
 Sara Shara,C
 Sarale,C
@@ -6916,14 +6916,14 @@ Sderot Ha'ahava,P
 Se Me Olivido Tu Nombre,PL
 Se Ugdi,C
 Se'ara,C
-Se'arat Regashot,C
-Se'arat Regashot,P
+Se'arat Regashot (C),C
+Se'arat Regashot (P),P
 Seduced (I Want to be Seduced),L
 Segalis,C
 Segol,
 Sei Tu,L
-Se'i Yona,C
-Se'i Yona,P
+Se'i Yona (C),C
+Se'i Yona (P),P
 Sekapu,L
 Selibabi,L
 Semel Ahava (Imri Li),P
@@ -6931,9 +6931,9 @@ Sememen,L
 Senili,C
 Senin Janina,C
 Seniora,C
-Seniorita,L
-Seniorita,P
-Seniorita,P
+Seniorita (L),L
+"Seniorita (P, Moshe Shem Tov)",P
+"Seniorita (P, Maurice Perez)",P
 Seniorita Veseniora,P
 September Heat (Chom September),L
 Serenada Lach,P
@@ -6946,8 +6946,8 @@ Set Me Free,C
 Sfat Haguf,P
 Sfaton Adom,P
 Sfaton Adom #2,P
-Sfinat Hazichronot,C
-Sfinat Hazichronot,P
+Sfinat Hazichronot (C),C
+Sfinat Hazichronot (P),P
 Sfinath Midbar,C
 Sfinoteha,C
 Sfira Le'achor,C
@@ -6968,16 +6968,16 @@ Shabat Shalom,C
 Shabazi,U
 Shabbat,C
 Shabbat Hamalka,
-Shabbat Malka,C
-Shabbat Malka,L
-Shabbat Matana,C
-Shabbat Matana,C
-Shabbat Menucha,C
-Shabbat Menucha,P
+Shabbat Malka (C),C
+Shabbat Malka (L),L
+Shabbat Matana (Uri Krieser),C
+Shabbat Matana (Fredie Cohen),C
+Shabbat Menucha (C),C
+Shabbat Menucha (P),P
 Shabbat Merechavi'a,C
 Shabbat Re'im (Dror Yikra),C
-Shabbat Shalom,C
-Shabbat Shalom,CK
+Shabbat Shalom (C),C
+Shabbat Shalom (CK),CK
 Shabbat Shel Chassadim,C
 Shabechi Tsion,C
 Shabechi Yerushalayim,C
@@ -7003,12 +7003,12 @@ Shalechet Beyarok (Ani Etsba Et Hashalechet Berok),P
 Shalhevet,C
 Shali'ach Rats Barechov,L
 Shalna Alicha (Shalna mi po nimtsa),C
-Shalom,C
-Shalom,C
+Shalom (Robin Starr),C
+Shalom (Moshe Eskayo),C
 Shalom Ahuvati (Adios Querida),P
 Shalom Al Israel,L
-Shalom Aleychem,C
-Shalom Aleychem,C
+Shalom Aleychem (Amnon Sha'uli),C
+Shalom Aleychem (Bentzi Tiram),C
 "Shalom Aleynu (Sala'am, Yavo Shalom)",C
 Shalom Alichem,C
 Shalom Ba'olam,C
@@ -7019,8 +7019,8 @@ Shalom Lach Erets Nehederet,C
 Shalom Lach Yaldonet (Shalom Lach Moledet),C
 Shalom Lach Yona,P
 Shalom Lecha Dodi,C
-Shalom Leven Dodi,C
-Shalom Leven Dodi,
+Shalom Leven Dodi (C),C
+Shalom Leven Dodi (),
 Shalom Levo Shabbat,C
 Shalom Liyerushalayim,C
 Shalom Olam,C
@@ -7029,8 +7029,8 @@ Shalom Rav Shuvech,C
 Shalom Shabazi,C
 Shalom V'bye,L
 Shalom Ve Ahava (Ten Shalom),C
-Shalosh Ahavotay,P
-Shalosh Ahavotay,P
+Shalosh Ahavotay (Ya'ir Harel),P
+Shalosh Ahavotay (Amram Yedidya),P
 Shalosh Arba La'avoda,C
 Shalosh Balaila,C
 Shalosh Tsatsafot,P
@@ -7038,41 +7038,41 @@ Shalosh Ve'od Shalosh,
 Shalva,P
 Shalvat Ha'emek,C
 Sham Bagan,P
-Sham Be'erets Israel,P
-Sham Be'erets Israel,P
+Sham Be'erets Israel (Dvora Lapson),P
+Sham Be'erets Israel (American),P
 Sham Harei Golan (Kineret),C
 Shama,C
 Shamaim Kchulim,P
 Shamati Shimacha,C
-Shamayim,C
-Shamayim,C
+Shamayim (Chen Shporen),C
+Shamayim (Rafi Ziv),C
 Shamim Levanim,P
 Shamor Vezachor (Lecha Dodi),C
 Shana Chadasha,C
-Shana Tova,C
-Shana Tova,C
+Shana Tova (Shlomo Maman),C
+Shana Tova (Chagit Fuchs),C
 Shanti,C
 Shar,C
 Shar Ba'ambataya,C
 Shar Baru'ach,C
 Shar Chatsi Yovel,C
 Shar La Mehalev,P
-Shar Lach,P
-Shar Lach,P
+Shar Lach (Eran Bitton),P
+Shar Lach (Rafi Ziv),P
 Shar Ve'ohev,C
-Shara Barchovot,P
-Shara Barchovot,P
+Shara Barchovot (Yoram Sasson),P
+Shara Barchovot (Victor Gabbay),P
 Sharim Lach Moledet (Mechura Lahava),C
 Sharkiya,C
-Sharm A Sheich,C
-Sharm A Sheich,C
+Sharm A Sheich (Dani Dassa),C
+Sharm A Sheich (Rivka Sturman),C
 Sharon Bellav,L
 Sharona,P
 Shati'ach Parsi,C
 Shav Ani Ela'ich,P
-Shav El Admati,C
-Shav El Admati,C
-Shav El Admati,C
+Shav El Admati (Gabi Sadeh),C
+Shav El Admati (Motti Elfasy),C
+Shav El Admati (Motti Gabi),C
 Shav Elayich,P
 Shavim,C
 Shavnu (Shir Hame'ah),C
@@ -7092,17 +7092,17 @@ Shecharchoret,P
 Shechora Ani (Shchora Venava),P
 Shechora Sheli,P
 Shechunat Shabazi,P
-Shedemati,C
-Shedemati,P
-She'eriyot Shel Hachayim,C
-She'eriyot Shel HaChayim,C
+Shedemati (C),C
+Shedemati (P),P
+She'eriyot Shel Hachayim (Gadi Bitton),C
+She'eriyot Shel HaChayim (Nurit Melamed),C
 Shehashemesh,C
 Shehashemesh Ta'avor Alay,C
 Shehecheyanu,
 Shehehiyanu Vekiymanu,C
 Sheizaf,C
-Sheket,C
-Sheket,P
+Sheket (C),C
+Sheket (P),P
 Sheket Halaila,
 Shekol Ha'olam Yeda,P
 Shelach,P
@@ -7120,8 +7120,8 @@ Shelo Ye'almu Hadvarim Hayafim,C
 Shelo Yigamer,C
 Shelo Yigamer Li Halaila,P
 Shema Israel,C
-Shemesh,C
-Shemesh,P
+Shemesh (C),C
+Shemesh (P),P
 Shemesh Aduma,C
 Shemesh Bashamayim,C
 Shemesh Boker,P
@@ -7145,12 +7145,12 @@ Shetedi,P
 Shetehi Lemishmeret Shalo,C
 Shev Itanu Be'afula,P
 Sheva Ba'erev,P
-Shevach La'el,C
-Shevach La'el,P
+Shevach La'el (C),C
+Shevach La'el (P),P
 Shevet Achim (Hine Ma Tov),C
-Shevet Achim Ve'achayot,C
-Shevet Achim Ve'achayot,CK
-Shevet Achim Ve'achayot,L
+Shevet Achim Ve'achayot (C),C
+Shevet Achim Ve'achayot (CK),CK
+Shevet Achim Ve'achayot (L),L
 Shevi Acharayich,C
 Sheya'ale Ha'or,C
 Sheyavo,P
@@ -7162,12 +7162,12 @@ Sheyehiye Lach Tov,C
 Sheyihey Lanu Tov,P
 Sheyihye Bemazal,C
 Sheyipatach Hasha'ar,C
-Shibolet Basade,P
-Shibolet Basade,P
-Shiboley Paz,C
-Shiboley Paz,C
-Shiboley Paz,C
-Shiboley Paz,C
+Shibolet Basade (Sara Levi Tanai),P
+Shibolet Basade (Yonatan Karmon),P
+Shiboley Paz (Shoshana Dudai),C
+Shiboley Paz (Rivka Sturman),C
+Shiboley Paz (Moshe Eskayo),C
+Shiboley Paz (Yo'av Ashriel),C
 Shibolim (Chad Mecherev),P
 Shiga'on Ha'ahava (Sajani ),P
 Shigra Mefo'eret,C
@@ -7175,8 +7175,8 @@ Shikor,C
 Shikor Al Hamirpeset,P
 Shikor Baleilot,C
 Shikor Me'ahava,P
-Shikor Velo Miyayin,C
-Shikor Velo Miyayin,C
+Shikor Velo Miyayin (Israel Shiker),C
+Shikor Velo Miyayin (Barry Avidan),C
 Shikuy Ahava No 9 (Love potion No. 9),L
 Shilchi Oto,P
 Shilgiya,C
@@ -7196,10 +7196,10 @@ Shinu'yey Mezeg Ha'avir,P
 Shir,C
 Shir Ahava,P
 Shir Ahava (Nigun Atik),P
-Shir Ahava Bedu'i,C
-Shir Ahava Bedu'i,P
-Shir Ahava Bishvilech,P
-Shir Ahava Bishvilech,PK
+Shir Ahava Bedu'i (C),C
+Shir Ahava Bedu'i (P),P
+Shir Ahava Bishvilech (P),P
+Shir Ahava Bishvilech (PK),PK
 Shir Ahava chayali,C
 Shir Ahava Lechayal,P
 Shir Ahava Lerodus,C
@@ -7218,8 +7218,8 @@ Shir Atsuv Same'ach,C
 Shir Aviv,C
 Shir Banim,C
 Shir Bechirot,P
-Shir Bedu'i,C
-Shir Bedu'i,C
+Shir Bedu'i (Yaron Malihi),C
+Shir Bedu'i (David Ben Naim),C
 Shir Beshem,C
 Shir Chayai,C
 Shir Chayal,C
@@ -7234,8 +7234,8 @@ Shir Ha'amelim,C
 Shir Ha'aviv,LK
 Shir Habachurim,P
 Shir Habamblik,LK
-Shir Hachatuna,P
-Shir Hachatuna,P
+Shir Hachatuna (Levi Bargil),P
+Shir Hachatuna (Moshe Eskayo),P
 Shir Hachatuna (Hora Chatuna),C
 Shir Hachevel Vehadli,P
 Shir Hafrecha,L
@@ -7263,8 +7263,8 @@ Shir Ha'osher,C
 Shir Ha'otiyot,CK
 Shir Hare'ut,C
 Shir Hashayara (Shuv Yotse Hazemer),C
-Shir Hashirim,C
-Shir Hashirim,P
+Shir Hashirim (C),C
+Shir Hashirim (P),P
 Shir Hashirim (Shir Hashirim Besha'ashu'im),P
 Shir Hashirim Sheli,C
 Shir Hashkufim,LK
@@ -7272,14 +7272,14 @@ Shir Hashuk,C
 Shir Hatarta,L
 Shir Hayalla,C
 Shir Hayayin (Hachayim Hem Yayin),C
-Shir Hayona,C
-Shir Hayona,P
+Shir Hayona (C),C
+Shir Hayona (P),P
 Shir Israeli,C
 Shir Israeli Chadash,C
 Shir Itanu Et Hahufa Ha'ado.,L
 Shir Kavod,C
-Shir Klulot (Achoti Kala),P
-Shir Klulot (Achoti Kala),P
+Shir Klulot (Achoti Kala) (Gadi Bitton),P
+Shir Klulot (Achoti Kala) (Amir Sela),P
 Shir La’almonit,C
 Shir Lach,P
 Shir Laderech,C
@@ -7292,8 +7292,8 @@ Shir Lanu,P
 Shir Lashalom,C
 Shir Lashcharchoret (Lashcharchoret),P
 Shir Lashira,P
-Shir Lashirim,C
-Shir Lashirim,C
+Shir Lashirim (Avi Levy),C
+Shir Lashirim (Shmulik Gov Ari),C
 Shir Le Yom Chulin,P
 Shir Le’Asaf (Prichat Hapecan),C
 Shir Le'acco,C
@@ -7305,11 +7305,11 @@ Shir Lechol Adam,C
 Shir Lechol Et,C
 Shir Le'eli'av,C
 Shir Le'erev Hag (Shir Le'erev Hachag),P
-Shir Lehe'achzut Ktana,C
-Shir Lehe'achzut Ktana,C
-Shir Lema'anech,P
-Shir Lema'anech,P
-Shir Lema'anech,P
+Shir Lehe'achzut Ktana (Eli Ronen),C
+Shir Lehe'achzut Ktana (Motti Elfasy),C
+Shir Lema'anech (Victor Gabbay),P
+Shir Lema'anech (Eyal Bar Kayma (Eyal Levy)),P
+Shir Lema'anech (Ya'ir Ankri),P
 Shir Lemazkeret,P
 Shir Le'ofir,C
 Shir Le'ofra,C
@@ -7321,8 +7321,8 @@ Shir Me'ahava,P
 Shir Megaresh Et Hachoshech,C
 Shir Mehalev,P
 Shir Mekomi,P
-Shir Mikol Halev,C
-Shir Mikol Halev,P
+Shir Mikol Halev (C),C
+Shir Mikol Halev (P),P
 Shir Milev Boke'a,C
 Shir Mizmor,C
 Shir Mizmor (Lamnatse'ach Shir Mizmor),C
@@ -7333,23 +7333,23 @@ Shir Nostalgia,U
 Shir Ole Me'emek,L
 Shir Pashut,C
 Shir Prati,C
-Shir Preyda,C
-Shir Preyda,C
+Shir Preyda (Moshiko Halevy),C
+Shir Preyda (Shlomo Maman),C
 Shir Rechov,C
-Shir Roim,C
-Shir Roim,C
+Shir Roim (Meir Shem Tov),C
+Shir Roim (Ruth Motes),C
 Shir Ronu Na,
-Shir Same'ach,C
-Shir Same'ach,C
-Shir Same'ach,C
-Shir Same'ach,C
-Shir Shabbat,C
-Shir Shabbat,C
+Shir Same'ach (Yo'av Ashriel),C
+Shir Same'ach (Shmulik Gov Ari),C
+Shir Same'ach (Giora Kadmon),C
+Shir Same'ach (Gil Ophir),C
+Shir Shabbat (Moshe Telem),C
+Shir Shabbat (Amnon Sha'uli),C
 Shir Shabbat Teymani,
 Shir Shalechet Aduma (Shir Argaman),C
 Shir She'af,C
-Shir Shir,C
-Shir Shir,C
+Shir Shir (Maurice Perez),C
+Shir Shir (American),C
 Shir Siyum (Kvar Hasha'a Me'uheret),C
 Shir Stav,P
 Shir Tikva (Shir Hatikva),C
@@ -7374,11 +7374,11 @@ Shirey Erets Ahavati,C
 Shirey Yaldut,U
 Shiri,C
 Shiri Li,P
-Shiri Li Achoti,P
-Shiri Li Achoti,P
+Shiri Li Achoti (Israel Shabtai),P
+Shiri Li Achoti (Dani Dassa),P
 Shiri Li Gitara,C
-Shiri Li Kineret,C
-Shiri Li Kineret,C
+Shiri Li Kineret (Shlomo Maman),C
+Shiri Li Kineret (Sefi Aviv),C
 Shiri Li Nechmedet,C
 Shiri Li Od,C
 Shiri Nehederet,P
@@ -7391,8 +7391,8 @@ Shiro Shel Aba (Yibane Hamikdash),C
 Shiro Shel Shafshaf,C
 Shiro Shel Tsanchan,C
 Shiru,C
-Shiru Hashir,C
-Shiru Hashir,C
+Shiru Hashir (Leah Bergstein),C
+Shiru Hashir (Yonatan Karmon),C
 Shiru Ladonai,P
 Shiru La'el,C
 Shiru Lamelech,C
@@ -7415,16 +7415,16 @@ Shkeydim Vetsimukim (Pgisha Le Ein Kets),P
 Shki'a,L
 Shki'a Bamidbar,C
 Shki'a Dromit,P
-Shki'a Vruda (Erev Ironi),C
-Shki'a Vruda (Erev Ironi),P
+Shki'a Vruda (Erev Ironi) (C),C
+Shki'a Vruda (Erev Ironi) (P),P
 Shkufim,P
 Shlach Li Ko'ach,C
 Shlach Li Mlahac,C
 Shlal Sharav (Tam HasharaL Hagadol),C
 Shlamim (Et Ma Sheyesh Li),C
 Shlemim,P
-Shlomit Bona Suka,C
-Shlomit Bona Suka,P
+Shlomit Bona Suka (C),C
+Shlomit Bona Suka (P),P
 Shlosha Halonot,C
 Shlosha Tranim La'oniya (Mifrasei Tsachav),C
 Shlosha Yamim,P
@@ -7437,13 +7437,13 @@ Shma Bekoli,C
 Shma Ben Yakar,C
 Shma Elohai (Keshehalev Ko'ev),C
 Shma Ha'el,C
-Shma Israel,C
-Shma Israel,C
+Shma Israel (Shmulik Gov Ari),C
+Shma Israel (Moshiko Halevy),C
 Shma Kolenu,C
 Shma Legeshem (Hine Geshem Ba),P
 Shma Yisrael Lashem,C
-Shmor Alay,C
-Shmor Alay,C
+Shmor Alay (Victor Gabbay),C
+Shmor Alay (Sharon Elkaslassy),C
 Shmor Lecha Chalom Katan,C
 Shmor Li Eli,C
 Shmulke's Nigun,
@@ -7457,13 +7457,13 @@ Shnayim Ba'olam,P
 Shnayim Ochazim Bach,C
 Shnayim Sheyoshvim,P
 Shnayim Shnayim,C
-Shnei Chalilim,C
-Shnei Chalilim,C
+Shnei Chalilim (Roni Siman Tov),C
+Shnei Chalilim (Maurice Perez),C
 Shnei Kochavim,P
 Shnei Kolot (Lashir Itach),P
-Shnei Olamot,P
-Shnei Olamot,P
-Shnei Olamot,P
+Shnei Olamot (Avner Naim),P
+Shnei Olamot (Levi Bargil),P
+Shnei Olamot (Gadi Bitton),P
 Shnei Plagim,C
 Shnei Sakei Sheyna,P
 Shnei Shoshanim,P
@@ -7484,8 +7484,8 @@ Shoshanat Midbar (Desert Rose),L
 Shoshanat Pla'eim,C
 Shoshanat Sfarad,P
 Shoshanat Teman,C
-Shoshanat Ya'akov,P
-Shoshanat Ya'akov,P
+Shoshanat Ya'akov (Ami Evenchaim),P
+Shoshanat Ya'akov (Raaya Spivak),P
 Shoshanim Atsuvot,P
 Shoshanim Shel Pecham,P
 Shote Hakfar,C
@@ -7494,8 +7494,8 @@ Shovach Yonim,P
 Shover Et Harosh (Shover Tarosh),C
 Shover Shtika,P
 Shoveret Galim,P
-Shoveret Levavot,C
-Shoveret Levavot,P
+Shoveret Levavot (C),C
+Shoveret Levavot (P),P
 Shovevut,P
 Shtayim Balaila,P
 Shtayim Ve'esrim,L
@@ -7504,17 +7504,17 @@ Shtey Ahavot,C
 Shtey Ahayot,P
 Shtey Alamot (Tsarot Tovot),P
 Shtey Eynayich Ele,U
-Shtey Gitarot,P
-Shtey Gitarot,P
-Shtey Gitarot,P
+Shtey Gitarot (Eli Ronen),P
+Shtey Gitarot (Moshe Lichtenstein),P
+Shtey Gitarot (Yom Tov Ochayon),P
 Shtey Yonim,C
 Shtey Zamarot,P
 Shtikat Hayam,
 Shtreimel,C
 Shtu Adarim (Me'emek Legivah),P
 Shu Chilwe,CK
-Shu'alim Ketanim,C
-Shu'alim Ketanim,PMT
+Shu'alim Ketanim (C),C
+Shu'alim Ketanim (PMT),PMT
 Shuffle Boogie Soul (Honky Tonk),L
 Shufni (Haviv Huvani),C
 Shuj Shuj Zemer,C
@@ -7539,22 +7539,22 @@ Shuv Le'ehov,P
 Shuv Me'ashenet,P
 Shuv Yachdav,
 Shuv Yotse Hazemer,P
-Shuva Elay,C
-Shuva Elay,C
+Shuva Elay (Bentzi Tiram),C
+Shuva Elay (Judy Alter),C
 Shuva Habaita,C
 Shuva Hashem,C
 Shuva Shel Natasha,P
 Shuvi Bat Yerushalayim,C
 Shuvi El Beyti,P
 Shuvi Harmonika,C
-Shuvi Hashulamit,C
-Shuvi Hashulamit,C
-Shuvi Hashulamit,P
+"Shuvi Hashulamit (C, Shmulik Gov Ari)",C
+"Shuvi Hashulamit (C, Moshiko Halevy)",C
+Shuvi Hashulamit (P),P
 Shuvi Layam,P
 Shuvi Leveitech,C
 Shuvi Shuvi,C
-Shuvi Yefeyfiya,P
-Shuvi Yefeyfiya,P
+Shuvi Yefeyfiya (Avner Naim),P
+Shuvi Yefeyfiya (Shlomo Maman),P
 Shvatim,C
 Shvil Ba'emek,C
 Shvil Chadash,C
@@ -7583,24 +7583,24 @@ Silsul Israeli,C
 Silsulim,C
 Silverio,PL
 Sim,P
-Sim Shalom,C
-Sim Shalom,C
+Sim Shalom (Yaron Elfasy),C
+Sim Shalom (Marco Ben Shimon),C
 Sima,C
 Siman She'ani Ohev (Ze Siman),C
-Siman She'ata Tsa'ir,L
-Siman She'ata Tsa'ir,P
+Siman She'ata Tsa'ir (L),L
+Siman She'ata Tsa'ir (P),P
 Siman Shehachoref Kvar Kan,C
 Siman She'od Lo Higanu (Simanim),P
 Siman Tov Umazal Tov,C
 Simaney Derech,P
 Simaney Hazman,P
-Simanim,C
-Simanim,P
-Simanim,P
+Simanim (C),C
+"Simanim (P, Gadi Bitton)",P
+"Simanim (P, Marco Ben Shimon)",P
 Simanim Shel Derech,C
 Simanim Shel Ohavim,P
-Simcha,C
-Simcha,P
+Simcha (C),C
+Simcha (P),P
 Simcha Gdola,C
 Simcha Gdola (Hamesiba Shel Hachayim),C
 Simcha Parsit,C
@@ -7611,35 +7611,35 @@ Simchat Hahora,C
 Simchat Hakatsir,C
 Simchat Hamachol,P
 Simchat Hanigun,C
-Simchat He'amel (Hora Simchat He'amel),C
-Simchat He'amel (Hora Simchat He'amel),C
+Simchat He'amel (Hora Simchat He'amel) (Moshe Eskayo),C
+Simchat He'amel (Hora Simchat He'amel) (Rivka Sturman),C
 Simchat Karela,C
 Simchat Klulot,C
-Simchat Ne'urim,C
-Simchat Ne'urim,P
+Simchat Ne'urim (C),C
+Simchat Ne'urim (P),P
 Simchat Yerushalayim(Lashana Haba'a Biy'reshalaim),C
 Simchat Yomi (Hora),C
 Simchati,P
 Simchi Aniya,C
-Simchu Na,C
-Simchu Na,C
-Simchu Na,P
+"Simchu Na (C, Dani Dassa)",C
+"Simchu Na (C, Moshe Eskayo)",C
+Simchu Na (P),P
 Simchu Na (Hachassida),P
 Simeni Kechotam,C
 Simi Yadech,
 Simlat Klulot,C
 Simlatech Hasegula,P
 Simlatech Hashzura,P
-Simona Midimona,C
-Simona Midimona,C
-Simona Midimona,
+"Simona Midimona (C, Meir Shem Tov)",C
+"Simona Midimona (C, Motti Elfasy)",C
+Simona Midimona (),
 Simtat Ha'ohavim,C
 Simtat Ha'ohavim (Elef Yadayim),P
 Sinai,U
 Sinanari,C
 Sinderala (Cinderela),P
-Sinderella (Cinderella),C
-Sinderella (Cinderella),C
+Sinderella (Cinderella) (Ze'ev Benedict),C
+Sinderella (Cinderella) (Avi Amsalam),C
 Sing Haleluya,L
 Sipur Acher,C
 Sipur Ahava Shel Malach,C
@@ -7650,17 +7650,17 @@ Sipur Chayai,C
 Sipur Machur,P
 Sipur Romanti,P
 Sipur Shehaya,P
-Sipur Shel Ahava,C
-Sipur Shel Ahava,P
+Sipur Shel Ahava (C),C
+Sipur Shel Ahava (P),P
 Sipur Yashan,P
 Sir Duke,P
 Sirta Mosh (Binti Nas),C
 Sirtaki,C
 Sisler-Amet,C
-Sisu Et Yerushalayim,C
-Sisu Et Yerushalayim,C
-Sisu Et Yerushalayim,C
-Sisu Et Yerushalayim,P
+"Sisu Et Yerushalayim (C, David Paletz)",C
+"Sisu Et Yerushalayim (C, Moshe Eskayo)",C
+"Sisu Et Yerushalayim (C, Jonathan Gabay)",C
+Sisu Et Yerushalayim (P),P
 Sisu Vesimchu Besimchat Tora,P
 Sisu Vesisu,
 Sivan,P
@@ -7682,11 +7682,11 @@ Snoopy (Draging The Line),L
 Sod,C
 Sod Ha'ahava,P
 Sod Ha'ahava (Historia de un Amor),P
-Sod Hamazalot,P
-Sod Hamazalot,P
+Sod Hamazalot (Amnon Sha'uli),P
+Sod Hamazalot (Shmulik Gov Ari),P
 Sod Hamazalot (Mazalot),C
-Sodcha,P
-Sodcha,P
+Sodcha (Israel Shabtai),P
+Sodcha (Raanan Mor),P
 Sodcha - Wh.Chair,PW
 Sodot,C
 Sodot Chayai,P
@@ -7707,8 +7707,8 @@ Sof Lasipur,P
 Sof Shavu'a,C
 Sof Shavu'a BeParis,P
 Sof Sof,P
-Sofi'a,L
-Sofi'a,LK
+Sofi'a (L),L
+Sofi'a (LK),LK
 Sofo Shel Ka'its,P
 Sofrim Et Hakupa,C
 Sokrates Superstar,L
@@ -7722,16 +7722,16 @@ Soul Man (Ish Neshama),L
 Southern Soul Bounce,L
 Sovev Alay,C
 Sovev Galgal,C
-Sovevuni,P
-Sovevuni,P
-Sovevuni,P
+Sovevuni (Dani Dassa),P
+Sovevuni (Hapoel Yerushalayim),P
+Sovevuni (Zeira),P
 Sovevuni (Hora Tov),C
 Sponja,C
 Srufa Alav Lanetsach,L
 Srutim,L
 Stakel Li Ba'einayim,C
-Stam,LK
-Stam,P
+Stam (LK),LK
+Stam (P),P
 Stam Yom Shel Chol,C
 Status Me'ohav,P
 Stav,P
@@ -7740,8 +7740,8 @@ Stav Bachalonot,P
 Stav Israeli,P
 Stav Lavan,P
 Stav Levan - Wh.Chair,PW
-Stirat Lechi,C
-Stirat Lechi,C
+Stirat Lechi (Yankale Levy),C
+Stirat Lechi (Sefi Aviv),C
 Story Shel Festigal,LK
 Subeme La Radio,L
 Suddenly,L
@@ -7749,8 +7749,8 @@ Suddenly You Love Me,P
 Suenos,L
 Suerte,C
 Suf,C
-Sufa,C
-Sufa,P
+Sufa (C),C
+Sufa (P),P
 Sug Shel Ahava,C
 Sugar Sugar,L
 Sukar,C
@@ -7778,8 +7778,8 @@ Ta'amini Be'atsmech,P
 Ta'ane La,P
 Ta'anugot (Fania),C
 Ta'atu'ey Laila,P
-Taba,C
-Taba,
+Taba (C),C
+Taba (),
 Taba'at Hazahav,P
 Tabakira,C
 Tabiti Bi,P
@@ -7807,8 +7807,8 @@ Tagidi Li Isha,C
 Tagidi Li Od Pa'am,P
 Tagidi Lo,P
 Tagidi Salachti,P
-Tagidi Shetov,C
-Tagidi Shetov,U
+Tagidi Shetov (C),C
+Tagidi Shetov (U),U
 Tagidi Yalla,C
 Tagidu La,C
 Tahargi Oti,P
@@ -7823,8 +7823,8 @@ Tali Tali,P
 Taltalim,C
 Taltalim (Taltalim Shchorim),C
 Taltelei Zahav,P
-Tam Velo Nishlam,C
-Tam Velo Nishlam,P
+Tam Velo Nishlam (C),C
+Tam Velo Nishlam (P),P
 Tama Temima,P
 Tamagutci,L
 Tamar,C
@@ -7841,13 +7841,13 @@ Tamid Haben Shel Aba,C
 Tamid Iti,P
 Tamid Lakum,C
 Tamid Mitga'agat,C
-Tamid Ola Hamangina,C
-Tamid Ola Hamangina,C
+Tamid Ola Hamangina (Shlomo Bachar),C
+Tamid Ola Hamangina (Shmulik Gov Ari),C
 Tamid Otam,C
 Tamid Tishari,P
 Tanake,C
-Tango Achshav (Lash'charchoret),P
-Tango Achshav (Lash'charchoret),P
+Tango Achshav (Lash'charchoret) (Mike Varon),P
+Tango Achshav (Lash'charchoret) (Roni Siman Tov),P
 Tango Ahava,P
 Tango Dudaim,P
 Tango Elisheva,P
@@ -7863,15 +7863,15 @@ Tango Sheleg Yored (Sheleg Yored ),P
 Tango Tel Aviv,P
 Tango Toranut,P
 Tango Yaffa Yarkoni,P
-Tapuchim Utamarim,P
-Tapuchim Utamarim,P
-Tapuchim Utamarim,P
+Tapuchim Utamarim (David Dassa),P
+"Tapuchim Utamarim (M. Tibi, S. Yasdi)",P
+Tapuchim Utamarim (Itzik Ben Dahan),P
 Tarantella (Israeli Tarantella),P
 Tarantella Galil (Leil Galil),P
 Tarantella Israelit,P
 Tarantella Yekev,C
-Tarbuka (Darbuka),C
-Tarbuka (Darbuka),C
+Tarbuka (Darbuka) (Shmulik Gov Ari),C
+Tarbuka (Darbuka) (Dede Luski),C
 Targil Temani,C
 Tari Lo Chamsa (Chamsa),C
 Tarimu,L
@@ -7909,14 +7909,14 @@ Tegali Li,C
 Tegali Li Lama,C
 Tehi Malach,P
 Tehila,C
-Tel Aviv,C
-Tel Aviv,C
-Tel Aviv,P
-Tel Aviv,
+"Tel Aviv (C, Shlomo Bachar)",C
+"Tel Aviv (C, Israel Shabtai)",C
+Tel Aviv (P),P
+Tel Aviv (),
 Tel Aviv (Ya Habibi),C
 Tel Aviv Balaila,C
-Tel Aviv Kmo Paris,P
-Tel Aviv Kmo Paris,P
+Tel Aviv Kmo Paris (Naftaly Kadosh),P
+"Tel Aviv Kmo Paris (Ayelet, Dror Bukai)",P
 Tel Aviv Ze Ani Ve'at,P
 Tel Giborim,C
 Telavi Oti,P
@@ -7948,9 +7948,9 @@ Ten Ten,C
 Tena'anei Oti,C
 Tene (Tene Shel Tut),C
 Tennessee Walts Supreme,L
-Tequila,L
-Tequila,L
-Tequila,L
+Tequila (Liat Mendelsberg),L
+Tequila (Roselien Buys),L
+Tequila (Chilik Carmeli),L
 Terminal 3,C
 Teta'aru Lachem,C
 Tevorchi Artsi (Tevorchi),C
@@ -7969,8 +7969,8 @@ Tfila Leshalom,C
 Tfila She'avakesh,C
 Tfilat Adam,C
 Tfilat Av,C
-Tfilat Haderech,C
-Tfilat Haderech,C
+Tfilat Haderech (Yaron Ben Simhon),C
+Tfilat Haderech (Moshiko Halevy),C
 Tfilat Hashachar,C
 Tfilat Michal,P
 Tfilat Toda,C
@@ -8019,22 +8019,22 @@ Tipot Shel Osher,C
 Tirashrash,C
 Tirbahu Vetisadu,C
 Tiri Ma Avart,C
-Tirkedi,C
-Tirkedi,C
-Tirkedi,C
-Tirkedi,C
+Tirkedi (Itzik Ben Dahan),C
+Tirkedi (Yaron Ben Simhon),C
+Tirkedi (Gadi Bitton),C
+Tirkedi (Sefi Aviv),C
 Tirkedi Et Halaila,L
 Tirkedi Iti,P
 Tirkedi Iti (Chizur Gorali),C
 Tirkedi Tirkedi,C
-Tirkedu,C
-Tirkedu,C
-Tirkedu,CK
+"Tirkedu (C, Gadi Bitton)",C
+"Tirkedu (C, Yael Yaakovee)",C
+Tirkedu (CK),CK
 Tirkod,P
 Tirkod Ita Halaila,P
 Tirosh Same'ach,C
-Tirza Yafa,P
-Tirza Yafa,P
+Tirza Yafa (Shlomo Maman),P
+Tirza Yafa (Eli Ronen),P
 Tirzi Bi,P
 Tirzi Bi -Wh.Chair,PW
 Tisa 5325,C
@@ -8042,8 +8042,8 @@ Tisha'ari Od Ktsat,P
 Tishan Yeled,C
 Tishmeri Al Hachalom,P
 Tishmeru Al Atsmechem,C
-Tishmor Al Ha'olam Yeled (Shmor Al Ha'olam Yeled),C
-Tishmor Al Ha'olam Yeled (Shmor Al Ha'olam Yeled),C
+Tishmor Al Ha'olam Yeled (Shmor Al Ha'olam Yeled) (Israel Shiker),C
+Tishmor Al Ha'olam Yeled (Shmor Al Ha'olam Yeled) (Naftaly Kadosh),C
 Tistakli Aleynu,P
 Titen Laprachim,C
 Tityaches Alai,L
@@ -8054,8 +8054,8 @@ Tiyul Beke'ef (Kach Chalom),C
 Tiyul Bekirkara,C
 Tiyul Bemagdir Latsmachim,C
 Tiyul Leili,P
-Tiyul Leili (Cholot Midbar),P
-Tiyul Leili (Cholot Midbar),P
+Tiyul Leili (Cholot Midbar) (Yoram Rachmany),P
+Tiyul Leili (Cholot Midbar) (Eli Ronen),P
 Tizaher Mimena,L
 Tizkor,PL
 Tizrok Layam,C
@@ -8065,9 +8065,9 @@ Tmuna,P
 Tmuna Shvura,P
 Tmunat Matsav,C
 Tmunat Reka,C
-Tni Chibuk Yaldonet,C
-Tni Chibuk Yaldonet,C
-Tni Chibuk Yaldonet,
+"Tni Chibuk Yaldonet (C, Victor Gabbay)",C
+"Tni Chibuk Yaldonet (C, Victor Gabbay)",C
+Tni Chibuk Yaldonet (),
 Tni Labechi Lifrots,P
 Tni Lalechet,P
 Tni Leatsmech Lihiyot Yafa,C
@@ -8077,10 +8077,10 @@ Tni Li Ahava,L
 Tni Li Avir,P
 Tni Li Et Hako'ach,C
 Tni Li Et Halev,P
-Tni Li Et Yadech,P
-Tni Li Et Yadech,P
-Tni Li Et Yadech,P
-Tni Li Et Yadech,P
+Tni Li Et Yadech (Moshe Tawily),P
+Tni Li Et Yadech (Effi Tirosh),P
+Tni Li Et Yadech (Shoshana Dudai),P
+Tni Li Et Yadech (Marco Ben Shimon),P
 Tni Li Ktsat Mimech,P
 Tni Li Lalechet,P
 Tni Li Le'ehov Otach,P
@@ -8090,8 +8090,8 @@ Tni Li Od,P
 Tni Li Rega,P
 Tni Li Siba,P
 Tni Li Siman,C
-Tni Li Yad,P
-Tni Li Yad,P
+Tni Li Yad (Yoni Carr),P
+Tni Li Yad (Shlomo Bachar),P
 Tni Lo (Tni Lo Et Halev),C
 Tni Lo Perach,P
 Tni Siman,P
@@ -8110,8 +8110,8 @@ To Veneto,L
 Tochanim,C
 Tochihi Li,C
 Tocho Ratsuf Ahava,C
-Toda,C
-Toda,C
+Toda (Nurit Melamed),C
+Toda (Yossi Abuhav),C
 Toda Al Neshama,C
 Toda Anashim Tovim,C
 Toda La’el,C
@@ -8135,28 +8135,28 @@ Too Funky,L
 Tora Ora,C
 Torat Moshe,C
 Torero,L
-Toro,L
-Toro,L
+Toro (Eitan Krol),L
+Toro (Orly Setareh),L
 Torona,P
 Torture,L
 Tov Kaze,C
 Tov la Gam Kshera,P
 Tov La Vegam Ra,P
 Tov Lach Ito,P
-Tov Lalechet Badrachim,C
-Tov Lalechet Badrachim,C
+Tov Lalechet Badrachim (Sefi Aviv),C
+Tov Lalechet Badrachim (Shlomo Maman),C
 Tov Shebat,P
 Tov Shebatem (Kama Tov Shebatem),C
 Tov Shetsiltsalta Haboker,P
 Tovat Hachen,C
 Tovim Hashnayim (Ki Tovim Dodecha),C
-Toy,L
-Toy,LK
+Toy (L),L
+Toy (LK),LK
 Tripel,P
 Troika,P
 Tsa'ad Kadima,P
-Tsa'ad Teymani,C
-Tsa'ad Teymani,P
+Tsa'ad Teymani (C),C
+Tsa'ad Teymani (P),P
 Tsa'ada,C
 Tsa'adat Hasimcha,C
 Tsa'adi,P
@@ -8169,10 +8169,10 @@ Tsahala,C
 Tsahalat Chassidim,C
 Tsama Lecha Nafshi,C
 Tsama Shchora,C
-Tsama Tsama,C
-Tsama Tsama,C
-Tsame,C
-Tsame,P
+Tsama Tsama (Elli Falach),C
+Tsama Tsama (Yo'av Ashriel),C
+Tsame (C),C
+Tsame (P),P
 Tsame Elaich,P
 Tsame Elayich,P
 Tsana (Sanah),C
@@ -8186,11 +8186,11 @@ Tschorat Kanaf,C
 Tse Mize,C
 Tse'adim,C
 Tse'adim (Electric Slide),L
-Tse'i El Hachalon,C
-Tse'i El Hachalon,C
-Tse'i El Hachalon,C
-Tse'i El Hachalon,P
-Tse'i El Hachalon,P
+"Tse'i El Hachalon (C, Yankale Ziv)",C
+"Tse'i El Hachalon (C, Ya'ir Bino)",C
+"Tse'i El Hachalon (C, Benny Levy)",C
+"Tse'i El Hachalon (P, Naftaly Kadosh)",P
+"Tse'i El Hachalon (P, Yoram Sasson)",P
 Tse'i El Ha'olam,P
 Tsel Bamidbar,C
 Tsel Ets Tamar,C
@@ -8201,36 +8201,36 @@ Tsel Um'ey Be'er,C
 Tsemed Ayalot,C
 Tsemed Basade,C
 Tsemed Chemed,P
-Tsena Tsena,C
-Tsena Tsena,C
+Tsena Tsena (Motti Elfasy),C
+Tsena Tsena (Dvora Lapson),C
 Tseva Lachayim,L
 Tsido Ha'acher,P
 Tsif Tsif Me'al Haratsif,P
 Tsil Lach,P
 Tsil Yetse'ad,
-Tsiltsulei Pa'amonim,C
-Tsiltsulei Pa'amonim,C
+Tsiltsulei Pa'amonim (Shmulik Gov Ari),C
+Tsiltsulei Pa'amonim (Gadi Bitton),C
 Tsiltsulei Shema,C
 Tsima'on,P
-Tsion Tamati,C
-Tsion Tamati,C
+Tsion Tamati (Yo'av Ashriel),C
+Tsion Tamati (Eliyahu Gamliel),C
 Tsion Tsion,C
 Tsipor Avuda Bayadaich,P
-Tsipor Hanefesh,C
-Tsipor Hanefesh,P
+Tsipor Hanefesh (C),C
+Tsipor Hanefesh (P),P
 Tsipor Hanefesh (Yesh Makom Bashamayim),P
 Tsipor Ktana,P
 Tsipor Ktana Mechpeset Ken,C
-Tsipor Metorefet (Kmo Tsipor Metorefet),P
-Tsipor Metorefet (Kmo Tsipor Metorefet),P
+Tsipor Metorefet (Kmo Tsipor Metorefet) (Nir Dor),P
+Tsipor Metorefet (Kmo Tsipor Metorefet) (Siman Tov Sfaradi),P
 Tsipor Nodedet,P
 Tsipor Zahav,C
 Tsipor Zara,C
 Tsiporey Nedod,C
 Tsiporim Nodedot,C
 Tsiv'ei Hazman,P
-Tsiyuney Haderech (shirat hanoded),C
-Tsiyuney Haderech (shirat hanoded),C
+Tsiyuney Haderech (shirat hanoded) (Motti Elfasy),C
+Tsiyuney Haderech (shirat hanoded) (Yo'av Ashriel),C
 Tsiyurim Bachalon,C
 Tslil Chalil,C
 Tslil Ha'emek (Plains),C
@@ -8257,20 +8257,20 @@ Tsrif Yashan,P
 Tsur Chassidi (Tsur Mishelo Achalnu),C
 Tsur Eli,C
 Tsur Manti,C
-Tsur Mishelo,C
-Tsur Mishelo,C
+Tsur Mishelo (Dani Dassa),C
+Tsur Mishelo (Yankale Levy),C
 Tsvaim,P
 Tu Boquita,L
 Tu Recuerdo,L
-Tudo Bom,L
-Tudo Bom,LK
+Tudo Bom (L),L
+Tudo Bom (LK),LK
 Tulsa Time,L
 Tumbalalayka,C
 Tunisai,C
 Turki'a,C
 Turn Me On,L
-Tush Push,L
-Tush Push,L
+Tush Push (Yoni Carr),L
+Tush Push (American),L
 Tuti Tuti,U
 Tutim,C
 Tutimtechno (Tutim),L
@@ -8294,8 +8294,8 @@ Ulai Machar,C
 Ulai Nishtok,P
 Ulai Yagi'a Yom,P
 Ulai Yavo Malach,C
-Ulai Ze Haru'ach,P
-Ulai Ze Haru'ach,P
+Ulai Ze Haru'ach (Chayim Shiryon),P
+Ulai Ze Haru'ach (Amnon Eilat),P
 Ulay Hapa'am,P
 Ulay Nedaber,P
 Ulay Od Kayits,C
@@ -8306,14 +8306,14 @@ Unicorn,L
 Uno Dos Tres,L
 Uptown Func,L
 Ura Amcha,P
-Ura Dor,C
-Ura Dor,C
+Ura Dor (Itzik Sa'ada),C
+Ura Dor (Maurice Perez),C
 Ura Israel,C
 Uri Bat Tsion,C
 Uri Hayakar,C
-Uri Tsafon,C
-Uri Tsafon,
-Uri Tsafon,
+Uri Tsafon (C),C
+"Uri Tsafon (, Dani Dassa)",
+"Uri Tsafon (, Yo'av Ashriel)",
 Uri Tsion,C
 Uri Ur,C
 Ushpelo (Oshpelo),C
@@ -8322,8 +8322,8 @@ Utsu Etsa,C
 Uvaleilot (Ve'ech Shelo),PM
 Uvanu Batim,P
 Uvau Ha'ovdim,L
-Uvne Yerushalayim,C
-Uvne Yerushalayim,C
+Uvne Yerushalayim (Teme Kernerman),C
+Uvne Yerushalayim (Bentzi Tiram),C
 Uvyom Hashabbat,C
 Uzi (Ozi),C
 Valentino,C
@@ -8340,8 +8340,8 @@ Vals Hakinorot,P
 Vals Hanigun,P
 Vals Hapa'amonim,P
 Vals Hashoshanim,P
-Vals La'ohavim,P
-Vals La'ohavim,P
+Vals La'ohavim (Yo'av Ashriel),P
+Vals La'ohavim (Moshiko Halevy),P
 Vals Lashalom,P
 Vals Latikva,C
 Vals Le Miya-Ar,C
@@ -8358,8 +8358,8 @@ Vamos A Bilar (Esta Vida Nueva),L
 Vatikach Miryam,C
 Vayenikehu,C
 Vayenikehu (Dvash Mesela),C
-Vayiven Uziyahu,C
-Vayiven Uziyahu,C
+Vayiven Uziyahu (Yonatan Karmon),C
+Vayiven Uziyahu (Rivka Sturman),C
 Vayomer Bayom Hahu,C
 V'chititu,C
 Ve Et Libi (Veet Libi),C
@@ -8368,8 +8368,8 @@ Ve'achshav At Kol Kach Rechoka,P
 Ve'ad Dor Vador,C
 Ve'afilu Behastara,C
 Ve'ahavta,C
-Ve'ahavta Lere'acha,C
-Ve'ahavta Lere'acha,
+Ve'ahavta Lere'acha (C),C
+Ve'ahavta Lere'acha (),
 Ve'ahavta Lere'acha Kamocha,C
 Ve'amok Hayam,P
 Ve'ani Kore Lach,P
@@ -8382,13 +8382,13 @@ Ve'az Tavo Ahava,C
 Ve'az Tavoi,P
 Ve'az Telchi,P
 Vecherev Ein Ledavid,
-Vedavid Yefe Einayim,C
-Vedavid Yefe Einayim,C
+Vedavid Yefe Einayim (Ya'ir Menashe),C
+Vedavid Yefe Einayim (Benny Levy),C
 Ve'erastich Li,P
 Vegam Im Ha'olam Ithapech,C
 Veha'emet,C
-Veha'er Eineinu,C
-Veha'er Eineinu,C
+Veha'er Eineinu (Eli Segal),C
+Veha'er Eineinu (Shmulik Gov Ari),C
 Vehashem Mitsion Yishag,C
 Vehasimla Halevana,C
 Vehave Alinu,C
@@ -8420,17 +8420,17 @@ Verak Itach,P
 Verano Azul,L
 Veratsiti Shetedai,C
 Vered Bar,P
-Vesamachta Bechagecha,C
-Vesamachta Bechagecha,PM
+Vesamachta Bechagecha (C),C
+Vesamachta Bechagecha (PM),PM
 Veshachanti,C
-Vesharnu Kach,C
-Vesharnu Kach,C
+Vesharnu Kach (Peter Leipnik),C
+Vesharnu Kach (Moti Ben Ya'akov),C
 Veshavu Banim,C
-Veshuv Itchem,C
-Veshuv Itchem,C
+Veshuv Itchem (Jonathan Gabay),C
+Veshuv Itchem (Shlomo Bachar),C
 Veta'aminu Li (Hu Lo Kol Kach Chacham),C
-Vetamu Chatayim (Tamu Chataim Min Ha'arets),C
-Vetamu Chatayim (Tamu Chataim Min Ha'arets),C
+Vetamu Chatayim (Tamu Chataim Min Ha'arets) (Yehuda Emanuel),C
+Vetamu Chatayim (Tamu Chataim Min Ha'arets) (Motti Elfasy),C
 Vetavo Aleychem Habracha,C
 Veten Bracha,
 Ve'ulai,C
@@ -8473,22 +8473,22 @@ Ya Habib (Debka Ya Habib),C
 "Ya Halali, Ya Mali",C
 Ya Hizali,P
 Ya Ismael (Wa Ismael),C
-Ya Jama'a,C
-Ya Jama'a,P
+Ya Jama'a (C),C
+Ya Jama'a (P),P
 Ya Jamila,C
 Ya Leil,C
 Ya Mama,C
-Ya Mishlati,C
-Ya Mishlati,C
+Ya Mishlati (Gabi Tiram),C
+Ya Mishlati (Gil Shimon),C
 Ya Mori,P
 Ya Rabi,C
 Ya Rait,C
 Ya Raya (Yahariya),C
 Ya Ribon,C
-Ya Ribon Olam,C
-Ya Ribon Olam,C
-Ya Sala'am,C
-Ya Sala'am,L
+Ya Ribon Olam (Ira Weisburd),C
+Ya Ribon Olam (Maurice Perez),C
+Ya Sala'am (C),C
+Ya Sala'am (L),L
 Ya Tab Tab,L
 Ya Teir,P
 Ya Watani,C
@@ -8501,8 +8501,8 @@ Ya'ala Ya'ala,C
 Ya'alat Chen,P
 Ya'ale Veyavo,C
 Ya'asu Lanu Kavod,C
-Yachad,C
-Yachad,P
+Yachad (C),C
+Yachad (P),P
 Yachad (Kol Haderech),C
 Yachad (Shir La'ahava),C
 Yachad Beyachad,C
@@ -8512,8 +8512,8 @@ Yachad Kol Halaila,C
 Yachad Letamid,P
 Yachad Nenaze'ach,C
 Yachad Shivtey,U
-Yachad Shnayim,C
-Yachad Shnayim,P
+Yachad Shnayim (C),C
+Yachad Shnayim (P),P
 Yachdav El Hamachar,P
 Yad Beyad,P
 Yad Beyad Ohazim,C
@@ -8526,8 +8526,8 @@ Ya'eli (Le Ya'eli),P
 Ya'eni Huna (Huna Huna),L
 Yafa At - Wh.Chair,PW
 Yafa At (At yafa),P
-Yafa At Li,C
-Yafa At Li,C
+Yafa At Li (Naftaly Kadosh),C
+Yafa At Li (Amir Katz),C
 Yafa At Ra’iti,P
 Yafa Bachalon,P
 Yafa Belavan,P
@@ -8535,8 +8535,8 @@ Yafa Kalevana,P
 Yafa Kamoha Lo Hiyta,P
 Yafa Kmo Tamid,P
 Yafa Sha'a Achat Kodem,P
-Yafa Sheli,C
-Yafa Sheli,P
+Yafa Sheli (C),C
+Yafa Sheli (P),P
 Yafa Sheli (Old Version),P
 Yafati (Shir Mispar Shmoneh),P
 Yafe Lach Lihyot Me'usheret,P
@@ -8552,8 +8552,8 @@ Yakinton,C
 Yakir Gilberto (Asa Branca),L
 Yakir Menachem,C
 Yalda Avuda,P
-Yalda Ktana,P
-Yalda Ktana,P
+Yalda Ktana (Avi Levy),P
+Yalda Ktana (Boaz Cohen),P
 Yalda Ktana Bamezach,C
 Yalda Shel Av,C
 Yalda Shel Karmel,C
@@ -8571,15 +8571,15 @@ Yaldati Sheli (Or),C
 Yalday Hayare'ach,C
 Yaldi,C
 Yaldi Sheli,C
-Yaldonet,P
-Yaldonet,P
+Yaldonet (Yaron Ben Simhon),P
+Yaldonet (Israel Shiker),P
 Yaldut Nishkachat,C
 Yaldut Shel Pa'am,
 Yalel Ha'awa,C
 Yali Mashi,C
 Yalkuti (Yalkuti Hifshalti),C
-Yalla,C
-Yalla,C
+Yalla (Israel Shiker),C
+Yalla (Effi Tirosh),C
 Yalla Bo’i,P
 Yalla Lech Habaita Moti,C
 Yalla Leharim,L
@@ -8635,8 +8635,8 @@ Yashanti Etslech (Tiyul Bechinam),P
 Yashkef (Yashkef Elohim),C
 Yashkef Elohim,C
 Yasimcha,C
-Yasin Aleik,C
-Yasin Aleik,P
+Yasin Aleik (C),C
+Yasin Aleik (P),P
 Yasmin,C
 Yass (Yasisu Chassidim),C
 Yassas (Yiorti Ton Zeibekidon),C
@@ -8657,8 +8657,8 @@ Yechezkel,L
 Yechida Ra'aya,C
 Yedi'a,C
 Yedid,C
-Yedid Nefesh,C
-Yedid Nefesh,L
+Yedid Nefesh (C),C
+Yedid Nefesh (L),L
 Yedidi Hashachchata,C
 Ye'esof Zeru'im,P
 Yefat Teyman,U
@@ -8672,8 +8672,8 @@ Yehuda,L
 Yehudi Same'ach,C
 Yehye Tov,C
 Yeladim Shel Hachayim,C
-Yeladim Ze Simcha,C
-Yeladim Ze Simcha,P
+Yeladim Ze Simcha (C),C
+Yeladim Ze Simcha (P),P
 Yeladot Gdolot,P
 Yeled Aba Ve'ima,C
 Yeled Ahuv Sheli,C
@@ -8681,15 +8681,15 @@ Yeled Ba El Ha'olam,C
 Yeled Basadot,P
 Yeled Hasade,C
 Yeled Katan,C
-Yeled Me'ohav,C
-Yeled Me'ohav,C
-Yeled Me'ohav,P
+"Yeled Me'ohav (C, Renata Schilis)",C
+"Yeled Me'ohav (C, Lahakat Adama)",C
+Yeled Me'ohav (P),P
 Yeled Milchama,C
 Yeled Shel Aba,C
 Yeled Shel Ima,C
 Yeled Shel Shemesh,C
-Yeled Sheli,C
-Yeled Sheli,C
+Yeled Sheli (Itzik Ben Dahan),C
+Yeled Sheli (Marco Ben Shimon),C
 Yeled Tov,C
 Yeled Tov Yerushalayim,C
 Yelilat Haru'ach,P
@@ -8702,29 +8702,29 @@ Yemei Hatom,C
 Yemei Huledet,P
 Yemenite Blues,C
 "Yemina, Smola",C
-Yerach Dvash,C
-Yerach Dvash,C
+Yerach Dvash (Naftaly Kadosh),C
+Yerach Dvash (Avner Naim),C
 Yeruka (Hoi Yeruka),P
 Yerushalaim,C
-Yerushalayim,C
-Yerushalayim,C
-Yerushalayim,C
-Yerushalayim,C
+Yerushalayim (Gadi Bitton),C
+Yerushalayim (Gadi Bitton),C
+Yerushalayim (Avi Perez),C
+Yerushalayim (Yehuda Emanuel),C
 Yerushalayim Bat Melech,C
 Yerushalayim Ha'acheret,C
 Yerushalayim Shebalev,C
 Yerushalayim Shel Mata U'Ma'ala,C
-Yerushalayim Shel Zahav,C
-Yerushalayim Shel Zahav,P
+Yerushalayim Shel Zahav (C),C
+Yerushalayim Shel Zahav (P),P
 Yerushalayim Sheli,C
 Yerushalem,C
 Yerushalmi Shekamocha,C
 Yesh Ba Mashehu,P
 Yesh Bach Hakol,P
 Yesh Becha Hakol,C
-Yesh Bi Ahava,P
-Yesh Bi Ahava,P
-Yesh Bi Ahava,P
+Yesh Bi Ahava (Israel Shabtai),P
+Yesh Bi Ahava (Avi Perez),P
+Yesh Bi Ahava (Shmulik Gov Ari),P
 Yesh Bi Emuna,C
 Yesh Bi Od Ko'ach,P
 Yesh Bi Or,C
@@ -8751,61 +8751,61 @@ Yesh Li Chulsha Lerakdanim,P
 Yesh Li Et Haderech,C
 Yesh Li Et Hako'ach,C
 Yesh Li Et Halaila,C
-Yesh Li Gan,C
-Yesh Li Gan,C
-Yesh Li Gan,C
-Yesh Li Gan,C
-Yesh Li Gan,P
-Yesh Li Gan,P
-Yesh Li Otach,C
-Yesh Li Otach,P
+"Yesh Li Gan (C, Israel Shiker)",C
+"Yesh Li Gan (C, Shimon David)",C
+"Yesh Li Gan (C, Shlomo Bachar)",C
+"Yesh Li Gan (C, Moshiko Halevy)",C
+"Yesh Li Gan (P, Eliyahu Gamliel)",P
+"Yesh Li Gan (P, Shlomo Bachar)",P
+Yesh Li Otach (C),C
+Yesh Li Otach (P),P
 Yesh Li Oti,C
 Yesh Li Oti (Ver.2),C
 Yesh Li Regaim,C
 Yesh Li Shir She'af,C
 Yesh Li Tikva (Yesh Li Chalom),P
-Yesh Li Tsipor Ktana Balev,C
-Yesh Li Tsipor Ktana Balev,LK
-Yesh Li Tsipor Ktana Balev,P
-Yesh Li Tsipor Ktana Balev,P
+Yesh Li Tsipor Ktana Balev (C),C
+Yesh Li Tsipor Ktana Balev (LK),LK
+"Yesh Li Tsipor Ktana Balev (P, David Dassa)",P
+"Yesh Li Tsipor Ktana Balev (P, Shoshana Dudai)",P
 Yesh Li Tsiporim Barosh,C
 Yesh Li Yom Huledet,C
 Yesh Makom,P
 Yesh Makom Rachok,C
-Yesh Mesiba,C
-Yesh Mesiba,C
+Yesh Mesiba (Maurice Perez),C
+Yesh Mesiba (Orly Setareh),C
 Yesh Mi SheMechake,P
 Yesh Milim,C
-Yesh Prachim,C
-Yesh Prachim,C
+Yesh Prachim (Sefi Aviv),C
+Yesh Prachim (Amnon Sha'uli),C
 Yesh Regaim,P
 Yesh Rega'im,C
 Yesh Sham Bama,C
 Yesh Tikva,C
 Yesh Velif'amim,P
 Yesh Ve'omrim Anashim,C
-Yesh Yamim,P
-Yesh Yamim,P
-Yeshnan Banot,C
-Yeshnan Banot,C
-Yeshnan Banot,P
+Yesh Yamim (Dudu Barzilay),P
+Yesh Yamim (Sagi Azran),P
+"Yeshnan Banot (C, Amnon Eilat)",C
+"Yeshnan Banot (C, Amir Katz)",C
+Yeshnan Banot (P),P
 Yesusum Midbar,P
-Yevarechecha Hashem,C
-Yevarechecha Hashem,C
-Yeverechecha,C
-Yeverechecha,C
+Yevarechecha Hashem (Eli Ronen),C
+Yevarechecha Hashem (Nurit Melamed),C
+Yeverechecha (Dani Dassa),C
+Yeverechecha (Giora Kadmon),C
 Yevorach Hayom (Rikud Hakotsrim),C
 Yeyn Moledet,C
 Yhiye Li Tov,C
 Yibane Hamikdash (Shiro Shel Aba),C
 Yiftachi,C
 Yigdal,C
-Yihiye Beseder,C
-Yihiye Beseder,L
+Yihiye Beseder (C),C
+Yihiye Beseder (L),L
 Yihiye Beseder (Milim Umachshavot),P
 Yihiye Lanu Hakol,C
-Yihiye Lanu Tov,C
-Yihiye Lanu Tov,P
+Yihiye Lanu Tov (C),C
+Yihiye Lanu Tov (P),P
 Yihiye Rak Tov,U
 Yimloch Hashem,C
 Yira Ami,P
@@ -8814,16 +8814,16 @@ Yishakeni,P
 Yishakeyni (Yshkeni),C
 Yishtabach Shemo,C
 Yiska,C
-Yismach Chatani,C
-Yismach Chatani,C
-Yismechu Hashamayim,C
-Yismechu Hashamayim,C
+Yismach Chatani (Oren Bachar),C
+Yismach Chatani (Sefi Aviv),C
+Yismechu Hashamayim (Shlomo Bachar),C
+Yismechu Hashamayim (Rivka Sturman),C
 Yisrael Yisrael,C
 Yisrael Yisrael (Israel Israel),C
 Yitgadal Shimcha (Yitgadal Veyitkadash),C
-Yo Ya,C
-Yo Ya,CK
-Yo Ya,L
+Yo Ya (C),C
+Yo Ya (CK),CK
+Yo Ya (L),L
 Yodfat,C
 Yoducha Ra'ayonay,C
 Yofi'ach Bashirim,C
@@ -8841,14 +8841,14 @@ Yom Echad Lo Hayom,C
 Yom Echad Tevakshi,P
 Yom Echad Ulai,C
 Yom El Achad,C
-Yom Ezkera,C
-Yom Ezkera,C
+Yom Ezkera (Moshiko Halevy),C
+Yom Ezkera (Yoni Carr),C
 Yom Gadol,L
 Yom Hashabbat,C
 Yom Hashishi,C
-Yom Huledet,C
-Yom Huledet,C
-Yom Huledet,P
+"Yom Huledet (C, Victor Gabbay)",C
+"Yom Huledet (C, Naftaly Kadosh)",C
+Yom Huledet (P),P
 Yom Huledet (Happy Birthday),L
 Yom Kadosh,L
 Yom Kaze,C
@@ -8864,13 +8864,13 @@ Yom Velaila (Mama),C
 Yom Ve'od Yom,C
 Yom Yavo,L
 Yom Yulad Bo Shir,C
-Yoman Massa,C
-Yoman Massa,C
+Yoman Massa (Yossi Miyara),C
+Yoman Massa (Yossi Miyara),C
 Yona Levana,P
 Yona Tama (Shir Hayona Vehashoshan),P
-Yonati,C
-Yonati,C
-Yonati,C
+Yonati (Israel Yakovee),C
+Yonati (Rafi Ziv),C
+Yonati (Rivka Sturman),C
 Yonati Halevana (Ma'amin Baru'ach),P
 Yonati Tamati,P
 Yored Ha'erev,C
@@ -8886,8 +8886,8 @@ Yoter Midai,C
 Yoter Miday Shanim,C
 Yoter Mize,L
 Yoter Tov Lislo'ach,P
-Yotse El Haderech (Yotse Li El Haderech),C
-Yotse El Haderech (Yotse Li El Haderech),P
+Yotse El Haderech (Yotse Li El Haderech) (C),C
+Yotse El Haderech (Yotse Li El Haderech) (P),P
 Yotse Laderech (Yotse El Haderech),PL
 Yotse La'or,C
 You Should Be Dancing (Tsarich),L
@@ -8925,38 +8925,38 @@ Ze Harega (Michtav Le'achi),C
 Ze Hayom,P
 Ze Hayom (Odecha Ki Aniteni),C
 Ze Hazemer,C
-Ze Hazman,C
-Ze Hazman,C
-Ze Hazman,C
-Ze Hazman,P
+"Ze Hazman (C, Andre Schor)",C
+"Ze Hazman (C, Ronit, Shachar Fuks)",C
+"Ze Hazman (C, Ran Hirsh)",C
+Ze Hazman (P),P
 Ze Hazman Hanachon #2,C
 Ze Hazman Hanachon (Tirkedi Iti),C
-Ze Hazman Lislo'ach,C
-Ze Hazman Lislo'ach,C
+Ze Hazman Lislo'ach (Sefi Aviv),C
+Ze Hazman Lislo'ach (Moshe Eskayo),C
 Ze Ko’ev,C
 Ze Kore,C
 Ze Laze,C
-Ze Lo Ani,C
-Ze Lo Ani,C
-Ze Lo At,P
-Ze Lo At,P
+Ze Lo Ani (Ilan Benedict),C
+Ze Lo Ani (Ilan Benedict),C
+Ze Lo At (Avi Levy),P
+Ze Lo At (Avi Levy),P
 Ze Lo Ba Bekalut,C
 Ze Lo Bidiuk Ga'agu'a,P
 Ze Lo Chalom,C
 Ze Lo Mistader Li,C
 Ze Lo Nigmar,C
 Ze Lo Nora,P
-Ze Lo Ose Li Klum,C
-Ze Lo Ose Li Klum,C
+Ze Lo Ose Li Klum (Naftaly Kadosh),C
+Ze Lo Ose Li Klum (Meir Amsalam),C
 Ze Loke'ach Rak Daka (It Takes Only A Minute),L
 Ze Ma Shenishar,P
 Ze Ma Sheyesh (Ze Ma Shenishar),P
 Ze Matchil,P
 Ze Matchil Betsa'ad,C
-Ze Me'halev,C
-Ze Me'halev,P
-Ze Muzar,C
-Ze Muzar,C
+Ze Me'halev (C),C
+Ze Me'halev (P),P
+Ze Muzar (Victor Gabbay),C
+"Ze Muzar (Mali Lipson, Moshe)",C
 Ze Od Yikre,C
 Ze Od Ykre,C
 Ze Rak Ata,P
@@ -8984,9 +8984,9 @@ Zemer Lach,C
 Zemer Lachag (Chag Li),C
 Zemer Le'afula,
 Zemer Malka,C
-Zemer Nuge (Hatishma koli),C
-Zemer Nuge (Hatishma koli),P
-Zemer Nuge (Hatishma koli),
+Zemer Nuge (Hatishma koli) (C),C
+Zemer Nuge (Hatishma koli) (P),P
+Zemer Nuge (Hatishma koli) (),
 Zemer Shalosh Hatshuvot,P
 Zemer Shav,P
 Zemer Shekaze,C
@@ -8997,9 +8997,9 @@ Zer Kotsim (Kmo Balada),P
 Zer Shel Ga'agu'im,C
 Zer Shel Shoshanim (Imri Li Ken),P
 Zer Shirim,P
-Zichronot,C
-Zichronot,C
-Zichronot,C
+Zichronot (Tuvia Tishler),C
+Zichronot (Amnon Sha'uli),C
+Zichronot (Shlomo Bachar),C
 Zichronot Ahava,P
 Zichronot Bakerem,
 Zichronot Ha'ahava (Michtav Ahava),P
@@ -9018,8 +9018,8 @@ Zingwalla,C
 Zirat Chayay,P
 Ziv Ze,C
 Zivchu Zivchey Tsedek,C
-Zman Ahava,C
-Zman Ahava,P
+Zman Ahava (C),C
+Zman Ahava (P),P
 Zman Emet,P
 Zman Laila,P
 Zman Lechayech (Quiero Ser),P
@@ -9043,12 +9043,12 @@ Zohar Badeshe - Wh.Chair,PW
 Zohi Artsi (Tsu Artsi),C
 Zohi Darki,C
 Zohi Rosh Ha'ayin,C
-Zohi Yaffo,P
-Zohi Yaffo,P
+Zohi Yaffo (Naftaly Kadosh),P
+Zohi Yaffo (Israel Shiker),P
 Zohi Yafo,LK
-Zorba,L
-Zorba,L
-Zorba,L
+Zorba (Ira Weisburd),L
+Zorba (Kobi Michaeli),L
+Zorba (Shlomo Bachar),L
 Zorba Hayevani,LK
 Zorna,C
 Zot Ahava,P
@@ -9058,8 +9058,8 @@ Zot Ha'emet,C
 Zot Lo Ahava,C
 Zot Sheme'al Lametsupe,P
 Zot Yerushalayim,P
-Zricha,C
-Zricha,C
+Zricha (Daniela Welch),C
+Zricha (Daniela Welch),C
 Zug Mishamayim,C
 Zumba Hasta Que Salga El Sol,L
 Zuz Mitsad Letsad,C
