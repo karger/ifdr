@@ -107,10 +107,10 @@
 					<meta property="myTeach" mv-value="has(name,mine.teach.label)">
 					<button mv-if="myLearn" mv-action="delete(proposal,mine.learn)"
 									class="active" >Learn</button>
-					<button mv-if="!myLearn" mv-action="add(proposal,learn)">Learn</button>
+					<button mv-if="!myLearn" mv-action="add(proposal,mine.learn)">Learn</button>
 					<span property="name"></span>
-					<button mv-if="!myTeach" mv-action="add(proposal,teach)">Teach</button>
-					<button mv-if="myTeach" mv-action="delete(proposal,teach)"
+					<button mv-if="!myTeach" mv-action="add(proposal,mine.teach)">Teach</button>
+					<button mv-if="myTeach" mv-action="delete(proposal,mine.teach)"
 									class="active">Teach</button>
 				</div>
 			</div>
