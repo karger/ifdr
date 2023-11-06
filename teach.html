@@ -105,12 +105,12 @@
 				<div class="container" mv-list-item>
 					<meta property="myLearn" mv-value="has(name,mine.learn.label)">
 					<meta property="myTeach" mv-value="has(name,mine.teach.label)">
-					<button mv-if="myLearn" mv-action="delete(proposal,mine.learn)"
+					<button mv-if="myLearn" mv-action="delete(name,mine.learn where label=name)"
 									class="active" >Learn</button>
-					<button mv-if="!myLearn" mv-action="add(proposal,mine.learn)">Learn</button>
+					<button mv-if="!myLearn" mv-action="add(name,mine.learn)">Learn</button>
 					<span property="name"></span>
-					<button mv-if="!myTeach" mv-action="add(proposal,mine.teach)">Teach</button>
-					<button mv-if="myTeach" mv-action="delete(proposal,mine.teach)"
+					<button mv-if="!myTeach" mv-action="add(name,mine.teach)">Teach</button>
+					<button mv-if="myTeach" mv-action="delete(name,mine.teach where label=name)"
 									class="active">Teach</button>
 				</div>
 			</div>
