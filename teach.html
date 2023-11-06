@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>IFD Communiteach</title>
+		<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+		<link rel="manifest" href="manifest.json">
+		<link rel="stylesheet" href="https://get.mavo.io/v0.3.0/mavo.css">
+		<script src="https://get.mavo.io/v0.3.0/mavo.es5.js"></script>
+		<script src="https://firebase-plugin.netlify.app/src/mavo-firebase-firestore.js"></script>
+		<script defer src="teach.js"></script>
+		<link href="style.css" rel="stylesheet">
+		<style mv-app="styling">
+			.await-mavo {
+					[if(!display.ready,"display: none")]
+			}
+		</style>
+		<style>
+			.container {
+					max-width: 60ex;
+					display: grid;
+					grid-template-columns: 8ex 1fr 8ex;
+					column-gap: 1ex;
+			}
+			.container [mv-list-item] {
+					display: contents;
+			}
+			.hide-if-true {
+					display: none;
+			}
+			.active {
+					background-color: lightgreen;
+					color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="display: none" mv-app="danceDB" mv-storage="none" mv-source="ifd.csv" mv-format="csv">
+			<datalist mv-list id="dancelist">
+				<option mv-list-item mv-group property="dance" value="[label]"></option>
+			</datalist>
+		</div>
+
+		<div mv-app="mine" id="mine"
+			mv-plugins="firebase-firestore"
+			mv-storage-options="auth"
+			mv-bar="status login logout save "
+			mv-autosave="1"
+			mv-storage="firebase://mavo-cd7c3/ifd-teach/"
+			mv-storage-filename="[userId]"
+			mv-storage-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
+
+		<meta property="userId" content="[$user.info.uid or 0]" />
+
+		<h2>IFD Teach-in</h2>
+
+			<div id="search">
+				<h3>Search</h3>
+				<div class="container">
+					<button mv-action="add(group(label: selection),learn), set(selection,'')">Learn</button>
+					<input id="request-input" list="dancelist" autocapitalize="words" property="selection" mv-storage="none" placeholder="Type or choose dance name">
+					<button mv-action="add(group(label: selection),teach), set(selection,'')">Teach</button>
+				</div>
+			</div>
+
+			<meta property="session" mv-value="maryland" mv-storage="inherit">
+			<meta property="name" mv-value="$user.info.displayName"
+						mv-storage="inherit">
+			
+			<div mv-list="learn" mv-initial-items="0"
+					 class="hide-if-[count(learn) == 0]">
+				<h3>Learn</h3>
+
+				<div class="container"  mv-list-item>
+					<button mv-action="delete(learn)">X</button>
+					<span property="label"></span>
+				</div>
+			</div>
+
+			<div mv-list="teach" mv-initial-items="0"
+					 class="hide-if-[count(teach) == 0]">
+				<h3>Teach</h3>
+				<div class="container" mv-list-item>
+						<span></span>
+						<span property="label"></span>
+						<button mv-action="delete(teach)">X</button>
+				</div>
+			</div>
+		</div>
+
+
+		<div mv-app="all" id="all"
+				 mv-bar="none"
+				 mv-source="firebase://mavo-cd7c3/ifd-teach"
+				 mv-source-query="where('session','==','maryland')"
+				 mv-source-options="realtime"
+				 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
+
+			<h3 class="hide-if-[count(proposal) == 0]">Proposed Dances</h3>
+			<div id="proposal" mv-list="proposal" mv-value="sort(unique(list($items.data.teach.label,$items.data.learn.label)))"
+					 class="hide-if-[count(proposal) == 0]">
+				<div class="container" mv-list-item>
+					<meta property="myLearn" mv-value="has(name,mine.learn.label)">
+					<meta property="myTeach" mv-value="has(name,mine.teach.label)">
+					<button mv-if="myLearn" mv-action="delete(proposal,mine.learn)"
+									class="active" >Learn</button>
+					<button mv-if="!myLearn" mv-action="add(proposal,learn)">Learn</button>
+					<span property="name"></span>
+					<button mv-if="!myTeach" mv-action="add(proposal,teach)">Teach</button>
+					<button mv-if="myTeach" mv-action="delete(proposal,teach)"
+									class="active">Teach</button>
+				</div>
+			</div>
+		</div>
+			
+	</body>
+</html>
