@@ -22,6 +22,9 @@
 			body {
 					max-width: 80ex;
 			}
+			.taken-true {
+					color: grey;
+			}
 			.container {
 					padding-bottom: 0.5ex;
 					max-width: 60ex;
@@ -35,6 +38,9 @@
 			.hide-if-true {
 					display: none;
 			}
+			.hide:not(.show-if-true) {
+					display:none
+			}
 			.active {
 					background-color: lightgreen;
 					color: white;
@@ -42,9 +48,16 @@
 			[mv-app] button.mv-add {
 					display: none;
 			}
+			.name-list-item:not(:last-child)::after {
+					content: ", "
+			}
 		</style>
 	</head>
 	<body>
+		<div mv-app="config" mv-storage="none">
+			<meta property="assign" mv-value="url('assign')==1">
+		</div>
+
 		<div style="display: none" mv-app="danceDB" mv-storage="none" mv-source="ifd.csv" mv-format="csv">
 			<datalist mv-list id="dancelist">
 				<option mv-list-item mv-group property="dance" value="[label]"></option>
@@ -52,29 +65,32 @@
 		</div>
 
 		<div mv-app="mine" id="mine"
-			mv-storage-options="auth"
-			mv-bar="status login logout"
-			mv-autosave="1"
-			mv-storage="firebase://mavo-cd7c3/ifd-teach/"
-			mv-storage-filename="[userId]"
-			mv-storage-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
+				 mv-storage-options="auth"
+				 mv-bar="status login logout"
+				 mv-autosave="1"
+				 mv-storage="firebase://mavo-cd7c3/ifd-teach/"
+				 mv-storage-filename="[userId]"
+				 mv-storage-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
 
-		<meta property="userId" content="[$user.info.uid or 0]" />
+			<meta property="userId" content="[url('user') || $user.info.uid or 0]" />
 
-		<h2>IFD CommuniTeach</h2>
+			<h2>IFD CommuniTeach</h2>
 
-		<details>
-			<summary>Click for Instructions</summary>
-		This app can be used to select dances for the planned "community teach" event.
-			Using the search box, you can select dances you'd like to learn
-			and dances you'd be willing and able to teach.  You can see them listed, and remove them, in the sections below.
-			Beneath those lists, you can see a list of all dances proposed by others,
-			including your own.
-			Browsing those can remind you of some other dances that you'd
-			like to learn or teach.
-			You can add them from there, or remove the ones already in your lists.
+			<details>
+				<summary>Click for Instructions</summary>
+				This app can be used to select dances for the planned "community teach" event.
+				Using the search box, you can select dances you'd like to learn
+				and dances you'd be willing and able to teach.
+				You can see them listed, and remove them, in the sections below.
+				You can drag to order the dances you've chosen by
+				Beneath those lists, you can see a list of all dances proposed by others,
+				including your own.
+				Browsing those can remind you of some other dances that you'd
+				like to learn or teach.
+				You can add them from there, or remove the ones already in your lists.
+			
 			</details>
-			<div id="search">
+			<div id="search" class="hide-if-[config.assign]">
 				<h3>Search</h3>
 				<div class="container">
 					<button mv-action="add(group(label: selection),learn), set(selection,'')">Learn</button>
@@ -84,12 +100,12 @@
 			</div>
 
 			<meta property="session" mv-value="maryland" mv-storage="inherit">
-			<meta property="name" mv-value="$user.info.displayName"
+			<meta property="name" mv-value="url('user') || $user.info.displayName"
 						mv-storage="inherit">
 			
 			<div mv-list="learn" mv-initial-items="0"
 					 mv-mode="edit" mv-item-bar="none"
-					 class="hide-if-[count(learn) == 0]">
+					 class="hide show-if-[!config.assign && (count(learn) != 0)]">
 				<h3>Learn</h3>
 				<div class="container"  mv-list-item mv-mode="read">
 					<button mv-action="delete(learn)">X</button>
@@ -100,26 +116,26 @@
 
 			<div mv-list="teach" mv-initial-items="0"
 					 mv-mode="edit" mv-item-bar="none"
-					 class="hide-if-[count(teach) == 0]">
+					 class="hide show-if-[!config.assign && (count(teach) != 0)]">
 				<h3>Teach</h3>
 				<div class="container" mv-list-item mv-mode="read">
 						<span></span>
 						<meta property="label">
-						<label class="mv-drag-handle">[label]</span></label>
+						<label class="mv-drag-handle">[label]</label>
 						<button mv-action="delete(teach)">X</button>
 				</div>
 			</div>
 		</div>
-
 
 		<div mv-app="all" id="all"
 				 mv-bar="none"
 				 mv-source="firebase://mavo-cd7c3/ifd-teach"
 				 mv-source-query="where('session','==','maryland')"
 				 mv-source-options="realtime"
+				 class="hide show-if-[(!config.assign) && (count(proposal) != 0)]"
 				 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
 
-			<h3 class="hide-if-[count(proposal) == 0]">Proposed Dances</h3>
+			<h3>Proposed Dances</h3>
 			<div id="proposal" mv-list="proposal" mv-value="sort(unique(list($items.data.teach.label,$items.data.learn.label)))"
 					 class="hide-if-[count(proposal) == 0]">
 				<div class="container" mv-list-item>
@@ -135,6 +151,76 @@
 				</div>
 			</div>
 		</div>
+
+		<div mv-app="assign" id="assign"
+				 mv-if="config.assign"
+				 mv-bar="none"
+				 mv-source="firebase://mavo-cd7c3/ifd-teach"
+				 mv-source-query="where('session','==','maryland')"
+				 mv-source-options="realtime"
+				 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
+			<h3>Assign</h3>
+
+			<div mv-list="assignments" mv-initial-items="0">
+				<div mv-list-item>
+					<button mv-action="delete(assignments)">X</button> <span property="dance"></span>: <span property="teacher"></span>
+				</div>
+			</div>
 			
+			<div mv-list="teachable" mv-value="group_by(teachings.teach,teachings.teach.label)">
+				<div mv-list-item>
+					<h5 class="taken-[!has(label,assignments.dance)]">[label]</h5>
+					<div>Teach:
+						<span mv-list="teachers" mv-value="sort($items,'+index').name">
+							<span mv-list-item
+										class="name-list-item taken-[has(teachers,assignments.teacher)]"
+										mv-action="delete(filter(assignments, assignments.teacher=teachers)), add(group(teacher: teachers, dance: label), assignments)"></span>
+						</span>
+					</div>
+					<div>Learn:
+						<span mv-list="learners" 
+									mv-value="sort(learn where learn.label=label, '+index')">
+							<span mv-list-item class="name-list-item taken-[!ischoice]">
+								<meta property="name">
+								[name]</span>
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="hide show-if-[url('debug')=1]">
+				<h4>Teach</h4>
+				<div mv-list property="teachings" mv-value="$items.data">
+					<div mv-list-item>
+						<meta property="name1" mv-alias="name">
+						<div property="teach" mv-list>
+							<div mv-list-item>
+								<span property="name" mv-value="name1"></span>
+								<span property="label"></span>
+								<span property="index" mv-value="$index"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<h4>Learn</h4>
+				<div mv-list property="learnings" mv-value="$items.data">
+					<div mv-list-item>
+						<h5 property="name1" mv-alias="name"></h5>
+						<div>choice: <span property="choice" mv-value="first(learn where taught).label"></span></div>
+						<div property="learn" mv-list>
+							<div mv-list-item>
+								<span property="name" mv-value="name1"></span>
+								<span property="label"></span>
+								<span property="taught" mv-value="has(label,assignments.dance)"></span>
+								<span property="ischoice" mv-value="choice=label"></span>
+								<span property="index" mv-value="$index"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
 	</body>
 </html>
