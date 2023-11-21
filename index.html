@@ -201,12 +201,12 @@
 					
 					<ol mv-if="util.help">
 						<h2>Help</h2>
-						<li>Log in at the top (optional Google login is used only for security; nothing is tracked)</li>
+						<li mv-if="!util.meid">Log in at the top (optional Google login is used only for security; nothing is tracked)</li>
 						<li mv-if="!url('session')">Choose a session</li>
-						<li mv-if="!session.noCheckout">Click the Check in button to let the Markid know you're dancing</li>
+						<li mv-if="!session.noCheckout">Click the Check in button to let the Markid know you&apos;re dancing</li>
 						<li>Pick dances in the search box, and click the <button>request</button> button</li>
 						<li>Click the <button>X</button> to remove a pick
-						<li>You can also copy other people's picks, by clicking on the <button>+</button> beside the dance name
+						<li>You can also upvote other people&apos;s picks, by clicking on the <button>+</button> beside the dance name
 						<li mv-if="!session.noCheckout">Check out if you step away, so they don't play your requests at the wrong time.  Your requests will be saved, but they won't show in the request list until you check in again.</li>
 					</ol>
 

@@ -188,14 +188,14 @@
 
 					<ol mv-if="util.help">
 						<h2>Help</h2>
-						<li>Choose your session using the dropdown and click <button>Go to Session</button></li>
-						<li>Sign in at the top</li>
+						<li mv-if="!url('session')">Choose your session using the dropdown and click <button>Go to Session</button></li>
+						<li mv-if="!util.me.uid">Log in at the top</li>
 						<li>Look over the requests</li>
 						<li>Click <button>accept</button> next to each request you play or queue up, so it will be marked played.</li>
-						<li>If you click play by mistake, just click the <button>X</button> in the list of <b>Played</b> dances</li>
-						<li>There is a checkbox to let you include the dances you've already played in the same list, and another to see who requested each dance.
+						<li>If you click accept by mistake, just click the <button>X</button> in the list of <b>Played</b> dances to undo</li>
+						<li>There is a checkbox to let you include the dances you&apos;ve already played in the same list, and another to see who requested each dance.
 						<li>Below that is a list of folks currently checked in to your session.  You can check them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
-						<li>There is a checkbox to let you manage markidim (add new ones who will be able to run this playlist app) and also to show requests by individual.
+						<li>The list of folks also has a checkbox to let you see requests by individual.
 					</ol>
 					
 
