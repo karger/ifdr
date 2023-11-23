@@ -167,7 +167,7 @@
 				</div>
 			</div>
 			
-			<div mv-list="teachable" mv-value="group_by(teachings.teach,teachings.teach.label)">
+			<div mv-list="teachable" mv-value="group_by(teachTuples.teach,teachTuples.teach.label)">
 				<div mv-list-item>
 					<h5 class="taken-[!has(label,assignments.dance)]">[label]</h5>
 					<div>Teach:
@@ -189,8 +189,8 @@
 			</div>
 
 			<div class="hide show-if-[url('debug')=1]">
-				<h4>Teach</h4>
-				<div mv-list property="teachings" mv-value="$items.data">
+				<h4>TeachTuples</h4>
+				<div mv-list property="teachTuples" mv-value="$items.data">
 					<div mv-list-item>
 						<meta property="name1" mv-alias="name">
 						<div property="teach" mv-list>
