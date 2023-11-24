@@ -8,8 +8,8 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 		<link rel="manifest" href="manifest.json">
-		<link rel="stylesheet" href="https://get.mavo.io/v0.2.3/mavo.css">
-		<script src="https://get.mavo.io/v0.2.3/mavo.es5.js"></script>
+		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
+		<script src="https://get.mavo.io/mavo.es5.js"></script>
 		<script defer src="ifd.js"></script>
 		<link href="style.css" rel="stylesheet">
 		<style>
@@ -121,14 +121,13 @@
 	<body class="logged-out">
 
 		<main>
-			<div mv-app="util" mv-storage="none"
-				 mv-firebase="auth"
+			<div mv-app="util"
+				 mv-source-options="auth"
 				 mv-plugins="firebase-firestore"
 				 mv-autosave="1"
 				 mv-bar="status login logout"
 				 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
-				 mv-storage="none"
-				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				 class="[if(user.checkedIn,'ifdr-active','ifdr-inactive')]"
 				 >
 				<div class="mv-bar mv-ui">
@@ -183,12 +182,12 @@
 			
 			<div
 				mv-app="user"
-				mv-firebase="realtime skip-unsaved-data-warning"
+				mv-storage-options="realtime skip-unsaved-data-warning"
 				mv-bar="none"
 				mv-plugins="firebase-firestore sort"
 				mv-autosave="2"
 				mv-storage="[util.userStorage]"
-				mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				mv-storage-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<div hidden>
 					[watchUsers(mysid,if(mysid='test' || !session.lookbackTime,365*24*60*60*100,session.lookbackTime),util.useFavorites)]
@@ -336,12 +335,11 @@
 
 			<div mv-if="user.mysid"
 				 mv-app="session"
-				 mv-firebase="realtime skip-unsaved-data-warning"
+				 mv-storage-options="realtime skip-unsaved-data-warning"
 				 mv-plugins="firebase-firestore"
-				 mv-storage="none"
 				 mv-bar="none"
-				 mv-source="[user.sessionStorage]"
-				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				 mv-storage="[user.sessionStorage]"
+				 mv-storage-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				 >
 				<meta property="pushOutTimes" mv-multiple mv-initial-items="0">
 				<meta property="pushOutIndex" mv-value="makeIndex(pushOutTimes,'uid')">
