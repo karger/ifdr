@@ -4,8 +4,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
 		<title>IFD Markid</title>
-		<script src="//get.mavo.io/0.2.3/mavo.es5.js"></script>
-		<link rel="stylesheet" href="//get.mavo.io/0.2.3/mavo.css">
+		<script src="//get.mavo.io/mavo.es5.js"></script>
+		<link rel="stylesheet" href="//get.mavo.io/mavo.css">
 		<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -49,6 +49,9 @@
 				float: right;
 			}
 			span[mv-multiple]:not(:last-child):after {
+				content: ", "
+			}
+			span[mv-list-item]:not(:last-child):after {
 				content: ", "
 			}
 			section {
@@ -158,8 +161,8 @@
 
 		<!--dance list-->
 		<div hidden mv-app="dances" mv-storage="none" mv-source="[if(url('session'),'ifd.csv','none')]" mv-format="csv">
-			<datalist id="dancelist">
-				<option mv-multiple mv-group property="dance" value="[label]"></option>
+			<datalist id="dancelist" mv-list="dances">
+				<option mv-group mv-list-item value="[label]"></option>
 			</datalist>
 		</div>
 
@@ -298,10 +301,10 @@
 							<td class="visible-[showTimes]"  style="padding-left: 3ex">
 								<meta property="timestamp">
 								<span class="r-time">[duration(thisMinute-timestamp)]</span></td>
-							<td class="visible-[showNames]" style="width: [if(showNames,'30ex','8ex')]">
-								<span mv-multiple property="names"></span></td>
-							<td class="visible-[showSets]">
-								<span style="padding-left: 3ex" mv-multiple property="requestedSets"></span></td>
+							<td class="visible-[showNames]" style="width: [if(showNames,'30ex','8ex')]" mv-list property="names">
+								<span mv-list-item></span></td>
+							<td class="visible-[showSets]" mv-list property="requestedSets">
+								<span style="padding-left: 3ex" mv-list-item></span></td>
 						</tr>
 					</table>
 				</section>
@@ -321,10 +324,10 @@
 					[setSignal('sig'&'nal')]
 					[watchUsers(requests.mysid,lookbackTime,(search(url(),'favorites')>0))]
 					[watchSessions(lookbackTime)]
-					<div mv-multiple property="markidim" mv-initial-items="0">
+					<div mv-list="markidim" mv-initial-items="0">
 						<meta property="uid"> <meta property="name">
 					</div>
-					<meta mv-multiple property="markidUids" mv-value="markidim.uid" mv-storage="inherit">
+					<meta mv-list property="markidUids" mv-value="markidim.uid" mv-storage="inherit">
 					<meta property="meIsMarkid" mv-value="has(util.me.uid,markidUids) or url('markid')='' or requests.mysid='test'">
 					<div property="pushOutTimes" mv-multiple mv-initial-items="0">
 						<meta property="uid">
@@ -375,20 +378,20 @@
 						<option value="date">specific date/time</option>
 					</select>
 					<span mv-if="lookbackChoice='week'">
-					  <input type="datetime-local" property="weekdayChoice" type="datetime-local" mv-default="[thisMinute-2*24*60*60*1000]">
+					  <input mv-attr-type="'datetime-local'" property="weekdayChoice" mv-default="[datetime(thisMinute-2*24*60*60*1000)]">
 					  [weekday(weekdayChoice,'name')]s at [time(weekdayChoice)]
 					  <meta property="weekMs" mv-value="7*24*60*60*1000">
 					  <meta property="weekTimeout" mv-value="weekdayChoice+weekMs*floor((thisMinute-weekdayChoice)/weekMs)"> 
 					</span> 
 					<span  mv-if="lookbackChoice='date'">
-					  <input type="datetime-local"
+					  <input mv-attr-type="'datetime-local'"
 						 property="customStart"
-						 mv-default="[$startup-7*24*60*60*1000]"
+						 mv-default="[datetime($startup-7*24*60*60*1000)]"
 						 mv-storage="inherit">
 					</span>
 					<meta property="lookbackTime" mv-value="if(lookbackChoice='date',thisMinute-customStart,if(lookbackChoice='week',thisMinute-weekTimeout,lookbackChoice))" mv-storage="inherit">
 
-					<div>Max requests per user: <input property="requestInput" type="number" min="0" max="1000"></div>
+					<div>Max requests per user: <input property="requestInput" mv-attr-type="'number'" min="0" max="1000"></div>
 					<meta property="requestLimit" mv-value="if(requestInput='',100,requestInput)" mv-storage="inherit">
 					<div> <label><input type="checkbox" property="showPlayed">Include accepted dances in Requests list</label></div>
 					<div><input type="checkbox" property="enableDeclines"> Dances can be declined</div>
@@ -396,10 +399,12 @@
 				  <section>
 				    <h3>Markidim</h3>
 				    <table>
-				      <tr mv-multiple mv-value="markidim">
-					<td><button mv-action="delete(markidim where uid=uid)">X</button></td>
-					<td><meta property="uid"><span property="name"></span></td>
-				      </tr>
+							<tbody mv-list mv-value="markidim">
+								<tr mv-list-item mv-group>
+									<td><button mv-action="delete(markidim where uid=uid)">X</button></td>
+									<td><meta property="uid"><span property="name"></span></td>
+								</tr>
+							</tbody>
 				    </table>
 				  </section>
 				  <section>
@@ -416,7 +421,7 @@
 
 					<table class="dance-table">
 						<tr mv-if="count(played)>0"><th></th><th class="dance-label">Dance</th><th class="hide-if-[!showMarkid]">Assigned markid</th><th hidden>Notes</th></tr>
-						<tr class="playlist [if(myPlay and showMarkid,'my-play')]" mv-multiple property="played" mv-initial-items="0">
+						<tr mv-multiple class="playlist [if(myPlay and showMarkid,'my-play')]" property="played" mv-initial-items="0">
 							<td><button mv-action="delete($this)">X</button></td>
 							<td><span property="label"></span>
 								<meta property="timestamp">
