@@ -110,11 +110,11 @@
 
 		<!--login/utility-->
 		<div mv-app="util" mv-storage="none"
-			 mv-firebase="auth realtime skip-unsaved-data-warning"
+			 mv-source-options="auth realtime skip-unsaved-data-warning"
 			 mv-plugins="firebase-firestore"
 			 mv-bar="status login logout"
 			 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
-			 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+			 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 			 >
 			<div class="mv-bar mv-ui">
 				<button class="mv-login show-logged-out">Sign in using Google (secure)</button>
@@ -317,12 +317,14 @@
 
 			<div class="hide-if-[not(mysid)]"
 				 mv-app="session" mv-bar="none"
-				 mv-firebase="realtime skip-unsaved-data-warning"
+					 mv-storage-options="realtime skip-unsaved-data-warning"
+					 mv-source-options="realtime skip-unsaved-data-warning"
 				 mv-plugins="firebase-firestore sort"
 				 mv-autosave="2"
 				 mv-source="[util.sessionStore]"
 				 mv-storage="[if(util.me.uid,util.sessionStore,'')]"
-				 mv-firebase-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
+				 mv-storage-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				 style="display:contents"
 				 >
 				<div style="display:none">
