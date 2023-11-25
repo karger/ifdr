@@ -253,28 +253,6 @@
 	oldRequestMap = requestMap;
 	return Object.values(requestMap);
     }
-    
-    let sessions=[];
-    watchSessions = function() {
-	watchSessions?.unsubscribe?.()
-	firebaseReady.then(() => {
-	    let count=0;
-	    watchSessions.unsubscribe = firebase.firestore().collection('ifdr-session').onSnapshot(shot=>{
-		sessions = [];
-		shot.forEach(doc => {
-		    let s=doc.data();
-		    s.id = doc.id;
-		    sessions.push(s);
-		    sessions.sort((a,b) => a.name > b.name);
-		});
-		signal();
-	    });
-	});
-    }
-
-    getSessions = function() {
- 	return JSON.parse(JSON.stringify(sessions));
-    }
 
     makeIndex = function(list,key) {
 	let map={};

@@ -6,6 +6,7 @@
 		<title>IFD Markid</title>
 		<script src="//get.mavo.io/mavo.es5.js"></script>
 		<link rel="stylesheet" href="//get.mavo.io/mavo.css">
+		<script src="https://firebase-plugin.netlify.app/src/mavo-firebase-firestore.js"></script>
 		<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -108,6 +109,20 @@
 	</head>
 	<body>
 
+		<div hidden
+				 mv-app="sessionList"
+				 mv-bar="none"
+				 mv-source="firebase://mavo-cd7c3/ifdr-session"
+				 mv-source-query
+				 mv-source-options="realtime"
+				 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
+			<div property="$items" mv-list>
+				<div mv-list-item>
+					<span property="name" mv-value="data.name"></span>
+				</div>
+			</div>
+		</div>
+		
 		<!--login/utility-->
 		<div mv-app="util" mv-storage="none"
 			 mv-source-options="auth realtime skip-unsaved-data-warning"
@@ -188,7 +203,7 @@
 				 mv-plugins="sort" style="display:contents">
 				<!--header-->
 				<section id="heading">
-					<meta property="sessions" mv-value="getSessions(util.signal)">
+					<meta property="sessions" mv-value="sessionList.$items">
 					<meta property="mysid" mv-value="url('session')">
 
 					<ol mv-if="util.help">
@@ -207,7 +222,7 @@
 					<form id="session-select" method="get" action="markid.html">
 						<select property="nextSession" name="session">
 							<option value="" selected="[!url('session')]">Choose a session</option>
-							<optgroup mv-list mv-value="getSessions(util.signal)">
+							<optgroup mv-list mv-value="sessionList.$items">
 								<option mv-group mv-list-item value="[id]"  selected="[id=url('session')]">[name]</option>
 							</optgroup>
 						</select>
@@ -330,7 +345,6 @@
 				<div style="display:none">
 					[setSignal('sig'&'nal')]
 					[watchUsers(requests.mysid,lookbackTime,(search(url(),'favorites')>0))]
-					[watchSessions(lookbackTime)]
 					<div mv-list="markidim" mv-initial-items="0">
 						<meta property="uid"> <meta property="name">
 					</div>

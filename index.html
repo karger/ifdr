@@ -10,6 +10,7 @@
 		<link rel="manifest" href="manifest.json">
 		<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
 		<script src="https://get.mavo.io/mavo.es5.js"></script>
+		<script src="https://firebase-plugin.netlify.app/src/mavo-firebase-firestore.js"></script>
 		<script defer src="ifd.js"></script>
 		<link href="style.css" rel="stylesheet">
 		<style>
@@ -121,6 +122,20 @@
 	<body class="logged-out">
 
 		<main>
+			<div mv-app="sessionList"
+					 style="display: none";
+					 mv-bar="none"
+					 mv-source="firebase://mavo-cd7c3/ifdr-session"
+					 mv-source-query
+					 mv-source-options="realtime"
+					 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
+				<div property="$items" mv-list>
+					<div mv-list-item>
+						<span property="name" mv-value="data.name"></span>
+					</div>
+				</div>
+			</div>
+			
 			<div mv-app="util"
 				 mv-source-options="auth"
 				 mv-plugins="firebase-firestore"
@@ -165,10 +180,9 @@
 				<meta property="meid" mv-value="url('meid') || if(useNameLogin,nameLoginData.name,getUid(signal))">
 				<meta property="path" mv-value="if(useFavorites,'ifdr-favorite','ifdr-user')">
 				<meta property="userStorage" mv-value="if(meid,'https://mavo-cd7c3.firebaseio.com/' & path & '/' & meid,'none')">
-				<meta property="sessions" mv-value="getSessions(signal)">
+				<meta property="sessions" mv-value="sessionList.$items">
 				<div hidden>
 					[setSignal('sig'&'nal')]
-					[watchSessions()]
 					[watchLoginState(meid)]
 				</div>
 			</div>
