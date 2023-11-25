@@ -14,7 +14,7 @@
     Promise.all([Mavo.inited,firebaseReady]).then(([m,fb])=> {
 	let session = Mavo.get(document.querySelector('[mv-app=session]'));
 	afterNap(()=>{console.log('woke '+(new Date()).toLocaleTimeString()); session.load()})
-	fb.auth().onAuthStateChanged(signal);
+//	fb.auth().onAuthStateChanged(signal);
     });
 
     let requestInput = document.getElementById("request-input")
@@ -146,52 +146,6 @@
 	}
     }
     
-    let users = []
-    watchUsers = function(sid, backTime, favorites) {
-	deepEqual = function(u,v) {
-	    return JSON.stringify(u) == JSON.stringify(v);
-	}
-	firebaseReady.then(() => {
-	    sid = Mavo.value(sid);
-
-	    function parseQuery(querySnapshot) {
-		let requestMap = {}
-		, oldUsers = users;
-
-		users = [];
-		
-		querySnapshot.forEach(function(doc) {
-		    let uid = doc.id;
-		    let {name, checkInTime, picks, zoomName} = doc.data();
-		    if (uid) {
-			users.push({uid: uid, name: name, checkInTime: checkInTime, picks: picks, zoomName: zoomName});
-		    }
-		});
-		if (!deepEqual(users,oldUsers)) {
-//		    sendNotify("Requests have changed");
-		}
-//		mergePicks(users, true);  //hack to overcome background update failure in mavo
-		signal();
-		return 0;
-	    };
-
-	    firebaseReady.then(() => {
-		watchUsers?.unsubscribe?.();
-
-		if (!sid || !Number.isInteger(1*backTime)) return;
-		
-		let query = firebase.firestore().collection(favorites==true ? 'ifdr-favorite' :'ifdr-user')
-		    .where('mysid','==',sid)
-		    .where('checkInTime','>',Date.now()-1*backTime); //prune ancient checkins
- 		watchUsers.unsubscribe = query.onSnapshot(parseQuery);
-	    });
-	    return [];
-	})
-    };
-
-    getUsers = function() {
-	return users;
-    }
 
     let oldPlayMap = {};
     watchPlaylist = function(playlist) {
@@ -297,3 +251,14 @@
     });
 })();
 
+(async function () {
+    await Mavo.ready;
+    
+    Mavo.DOMExpression.special.event("$user", {
+	type: "mv-login mv-logout",
+				update: (evt) => {
+						signal();
+						return evt.backend.user
+				}
+    });
+})();

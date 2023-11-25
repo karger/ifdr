@@ -228,7 +228,7 @@
 				mv-storage-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<div hidden>
-					[watchUsers(mysid,if(mysid='test' || !session.lookbackTime,365*24*60*60*1000,session.lookbackTime),util.useFavorites)]
+					<!--[watchUsers(mysid,if(mysid='test' || !session.lookbackTime,365*24*60*60*1000,session.lookbackTime),util.useFavorites)]-->
 					[watchFont(fontSize)]
 				</div>
 				<meta property="requestLimit" mv-value="session.requestLimit or 1000">
@@ -369,7 +369,11 @@
 						</tr>
 						<tbody mv-list="requests" mv-value="sort(mergePicks(session.users where active,util.signal,picks),'-count','+label')">
 							<tr class="request [if(lookup(session.playedIndex,label) or lookup(session.declinedIndex,label),'played','unplayed')]">
-								<td><button mv-class="show-logged-in" title="add request" mv-if="user.checkedIn and not(mine) and not(played)" mv-action="add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">+</button>
+								<td><button mv-class="show-logged-in" title="add request"
+														mv-if="user.checkedIn and not(mine) and not(played)"
+														mv-action="add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">
+										+
+									</button>
 								<td class="r-label"><span property="label"></span>
 								<td class="r-count"><span property="count"></span>
 									<meta property="played">
