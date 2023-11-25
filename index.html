@@ -201,12 +201,11 @@
 
 				<meta id="signal" property="signal">
 				<meta property="useFavorites" mv-value="search(url(),'favorites')>0">
-				<meta property="meid" mv-value="url('meid') || if(useNameLogin,nameLoginData.name,getUid(signal))">
+				<meta property="meid" mv-value="url('meid') || if(useNameLogin,nameLoginData.name,$user.info.uid)">
 				<meta property="path" mv-value="if(useFavorites,'ifdr-favorite','ifdr-user')">
 				<meta property="userStorage" mv-value="if(meid,'https://mavo-cd7c3.firebaseio.com/' & path & '/' & meid,'none')">
 				<meta property="sessions" mv-value="sessionList.$items">
 				<div hidden>
-					[setSignal('sig'&'nal')]
 					[watchLoginState(meid)]
 				</div>
 			</div>
@@ -262,7 +261,7 @@
 						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
 					<meta property="checkInTime" mv-default="[$startup]">
 					<meta property="me" mv-group
-						  mv-value="if(util.useNameLogin,util.nameLoginData,getProfile(signal))">
+						  mv-value="if(util.useNameLogin,util.nameLoginData,$user.data)">
 					<meta property="name" mv-value="if(me,me.name,'unnamed user')" mv-storage="inherit">
 					<meta property="email" mv-value="if(me,me.email)" mv-storage="inherit">
 

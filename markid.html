@@ -11,7 +11,7 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 		<link rel="manifest" href="manifest.json">
-		<script src="ifd.js"></script>
+		<script defer src="ifd.js"></script>
 		<link href="style.css" rel="stylesheet">
 		<style>
 			body {
@@ -130,8 +130,11 @@
 				 mv-source-query="[query]"
 				 mv-source-options="realtime"
 				 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
-			<meta property="sid" mv-value="url('session')">
-			<meta property="query" content="where('mysid','==','[sid]').where('checkInTime','>',[$startup-(session.lookbackTime || 365*24*60*60*100)])">
+			<div property="localSid" mv-value="url('session')"></div>
+			<meta property="prefix" content="where('mysid','==','">
+			<meta property="suffix" content="').where('checkInTime','>',[$startup-(session.lookbackTime || 365*24*60*60*100)])">
+			<meta property="query" mv-value="prefix & url('session') & suffix">
+			<meta property="aquery" content="where('mysid','==','[localSid]').where('checkInTime','>',[$startup-(session.lookbackTime || 365*24*60*60*100)])">
 			<div property="$items" mv-list>
 				<div mv-list-item>
 					<meta property="data">
@@ -172,7 +175,7 @@
 			<meta property="help" mv-value="0">
 			<meta property="configure">
 			<meta id="signal" property="signal">
-			<div property="me" mv-value="if(useNameLogin,nameLoginData,getProfile(signal))">
+			<div property="me" mv-value="if(useNameLogin,nameLoginData,$user.data)">
 				<meta property="uid"> <meta property="name">
 			</div>
 			<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
@@ -317,8 +320,8 @@
 						</tr>
 
 						<tr>
-							<td><button mv-action="add(group(label: playSelection, timestamp: +$now, markid: util.me.name),session.played); set(playSelection,'')">accept</button>
-							<td><input list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
+							<td><button id="request-button" mv-action="add(group(label: playSelection, timestamp: +$now, markid: util.me.name),session.played); set(playSelection,'')">accept</button>
+							<td><input id="request-input" list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
 						</tr>
 
 						<tbody mv-list property="requests" mv-value="sort(mergePicks(condense(session.users where active,util.signal)),sortRule,'-count','-label')">
@@ -367,8 +370,6 @@
 				 style="display:contents"
 				 >
 				<div style="display:none">
-					[setSignal('sig'&'nal')]
-					<!--[watchUsers(requests.mysid,lookbackTime,(search(url(),'favorites')>0))]-->
 					<div mv-list="markidim" mv-initial-items="0">
 						<meta property="uid"> <meta property="name">
 					</div>

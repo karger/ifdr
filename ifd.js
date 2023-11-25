@@ -1,20 +1,8 @@
 (function () {
-
-    firebaseReady = new Promise((resolve,reject) => {
-	(function loop () {
-            if ((typeof(firebase) != "undefined") &&
-		(firebase?.apps?.length > 0)) {
-		resolve(firebase);
-            } else {
-		setTimeout(loop, 100)
-            }
-	})();
-    });
     
-    Promise.all([Mavo.inited,firebaseReady]).then(([m,fb])=> {
-	let session = Mavo.get(document.querySelector('[mv-app=session]'));
-	afterNap(()=>{console.log('woke '+(new Date()).toLocaleTimeString()); session.load()})
-//	fb.auth().onAuthStateChanged(signal);
+    Mavo.inited.then((m) => {
+		let session = Mavo.get(document.querySelector('[mv-app=session]'));
+		afterNap(()=>{console.log('woke '+(new Date()).toLocaleTimeString()); session.load()})
     });
 
     let requestInput = document.getElementById("request-input")
@@ -55,26 +43,6 @@
 	}
 	setInterval(inner, 100);
     }
-    
-    let signal = function () {
-	if (signal.ready) {
-	    signal.ready=false;
-	    setTimeout(() => {
-		console.log('signal');
-		signal.node?.render(signal.counter++);
-		signal.ready=true;
-	    },
-		       1000);
-	}
-    }
-
-    signal.counter=0;
-    signal.ready=true;
-
-    setSignal = function(id) {
-	signal.node = Mavo.Node.get(document.getElementById(Mavo.value(id)));
-	return signal.counter;
-    }
 
     watchLoginState = function(uid) {
 	if (Mavo.value(uid)) {
@@ -83,42 +51,6 @@
 	} else {
 	    document.body.classList.remove('logged-in');
 	    document.body.classList.add('logged-out');
-	}
-    }
-    
-    getUid = function() {
-	try {
-	    return firebase.auth().currentUser.uid;
-	}
-	catch (e) {
-	    return undefined;
-	}
-    }
-
-    getProfile = function() {
-	try {
-	    let u = firebase.auth().currentUser; 
-	    return {uid: u.uid, name: u.displayName, photo: u.photoURL, email: u.email}
-	}
-	catch (e) {
-	    return undefined;
-	}
-    }
-
-    updateURLParam = function(name,value,title) {
-	var u = new URL(window.location);
-	var s = url.searchParams;
-	s.set(name,value);
-	url.search=s.toString;
-	history.pushState("",title,url);
-    }
-    
-    username = function() {
-	try {
-	    return firebase.auth().currentUser.displayName;
-	}
-	catch (e) {
-	    return "";
 	}
     }
 
@@ -145,22 +77,7 @@
 	    }, 4000);*/
 	}
     }
-    
 
-    let oldPlayMap = {};
-    watchPlaylist = function(playlist) {
-	let playMap = {};
-	playlist.forEach(item => {playMap[item.label]=item});
-	for (const label in playMap) {
-	    if (playMap[label].note != oldPlayMap?.[label]?.note) {
-		sendNotify("New note on " + label + ": " + playMap[label].note);
-	    }
-	    if (playMap[label]?.markid && (playMap[label]?.markid  != oldPlayMap?.[label]?.markid)) {
-		sendNotify(label + " assigned to " + playMap[label].markid);
-	    }
-	}
-	oldPlayMap = playMap;
-    }
     
     let oldRequestMap = {};
     mergePicks = function(users, notify) {
@@ -255,7 +172,7 @@
     await Mavo.ready;
     
     Mavo.DOMExpression.special.event("$user", {
-	type: "mv-login mv-logout",
+				type: "mv-login mv-logout",
 				update: (evt) => {
 						return evt.backend.user
 				}
