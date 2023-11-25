@@ -135,7 +135,31 @@
 					</div>
 				</div>
 			</div>
-			
+
+			<div mv-app="userList"
+					 style="display: none";
+					 mv-bar="none"
+					 mv-source="firebase://mavo-cd7c3/ifdr-user"
+					 mv-source-query="[query]"
+					 mv-source-options="realtime"
+					 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
+				<meta property="queryPlan" content="where('mysid','==','[user.mysid]').where('checkInTime','>',[$startup-(session.lookbackTime || 365*24*60*60*100)])">
+				<meta property="query" content="[if(user.mysid && session.lookbackTime, queryPlan, '')]">
+				<div property="$items" mv-list>
+					<div mv-list-item>
+						<meta property="data">
+						<meta property="id">
+						<div property="users">
+							<meta property="uid" content="[id]">
+							<meta property="name" mv-value="data.name">
+							<meta property="zoomName" mv-value="data.zoomName">
+							<meta property="checkInTime" mv-value="data.checkInTime">
+							<meta property="picks" mv-value="data.picks">
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div mv-app="util"
 				 mv-source-options="auth"
 				 mv-plugins="firebase-firestore"
@@ -204,7 +228,7 @@
 				mv-storage-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				>
 				<div hidden>
-					[watchUsers(mysid,if(mysid='test' || !session.lookbackTime,365*24*60*60*100,session.lookbackTime),util.useFavorites)]
+					[watchUsers(mysid,if(mysid='test' || !session.lookbackTime,365*24*60*60*1000,session.lookbackTime),util.useFavorites)]
 					[watchFont(fontSize)]
 				</div>
 				<meta property="requestLimit" mv-value="session.requestLimit or 1000">
@@ -331,6 +355,8 @@
 					</div>
 				</section>
 
+
+				
 				<section class="show-if-[!!user.mysid]">
 					<h2>Everyone&apos;s Picks</h2>
 						<div> <label><input type="checkbox" property="showPlayed"> Show resolved</label></div>
@@ -375,7 +401,7 @@
 				<meta property="timeout" mv-value="thisMinute-lookbackTime">  <!--when requests time out-->
 				
 				<div hidden mv-list="users"  class="[if(not(active),'inactive','')]"
-					 mv-value="getUsers(util.signal)">
+					 mv-value="userList.users"> <!--getUsers(util.signal)-->
 					<!--mv-value="testing.users"-->
 					<meta property="uid">
 					<meta property="pushOut" mv-value="lookup(pushOutIndex,uid)">
