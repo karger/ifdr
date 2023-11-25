@@ -257,7 +257,6 @@
     Mavo.DOMExpression.special.event("$user", {
 	type: "mv-login mv-logout",
 				update: (evt) => {
-						signal();
 						return evt.backend.user
 				}
     });

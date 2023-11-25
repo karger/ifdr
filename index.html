@@ -371,13 +371,12 @@
 							<tr class="request [if(lookup(session.playedIndex,label) or lookup(session.declinedIndex,label),'played','unplayed')]">
 								<td><button mv-class="show-logged-in" title="add request"
 														mv-if="user.checkedIn and not(mine) and not(played)"
-														mv-action="add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">
-										+
-									</button>
+														mv-action="delete(filter(user.picks, user.picks.label=label)), add(group(label: label, timestamp: 0+$now),user.picks); if(checkedIn,set(checkInTime,+$now))">
+										+</button>
 								<td class="r-label"><span property="label"></span>
 								<td class="r-count"><span property="count"></span>
 									<meta property="played">
-									<meta property="mine" mv-value="has(label,user.picks.label)">
+									<meta property="mine" mv-value="has(label,user.topPicks.label)">
 							</tr>
 						</tbody>
 					</table>
