@@ -167,10 +167,12 @@
 		</div>
 
 		<div hidden mv-app="dancedbApp" mv-storage="none" mv-source="[if(url('session'),'data-markid.csv','none')]" mv-format="csv">
-			<div property="dancedb" mv-multiple>
+			<div property="dancedb" mv-list>
+				<div mv-list-item>
 				<meta property="label">
 				<meta property="Type">
 				<meta property="Choreographer">
+				</div>
 			</div>
 			<meta property="danceIndex" mv-value=makeIndex(dancedb,"label")>
 		</div>
@@ -205,7 +207,9 @@
 					<form id="session-select" method="get" action="markid.html">
 						<select property="nextSession" name="session">
 							<option value="" selected="[!url('session')]">Choose a session</option>
-							<option mv-group mv-multiple value="[id]" mv-value="getSessions(util.signal)" selected="[id=url('session')]">[name]</option>
+							<optgroup mv-list mv-value="getSessions(util.signal)">
+								<option mv-group mv-list-item value="[id]"  selected="[id=url('session')]">[name]</option>
+							</optgroup>
 						</select>
 						<input type="submit" value="Go to Session">
 					</form>
@@ -278,8 +282,8 @@
 							<td><input list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
 						</tr>
 
-						<tr class="request [if(played or declined,'played','unplayed')] [if(recent,'recent')]" mv-multiple
-							property="requests" mv-value="sort(mergePicks(condense(session.users where active,util.signal)),sortRule,'-count','-label')">
+						<tbody mv-list property="requests" mv-value="sort(mergePicks(condense(session.users where active,util.signal)),sortRule,'-count','-label')">
+						<tr mv-list-item class="request [if(played or declined,'played','unplayed')] [if(recent,'recent')]">
 							<td><span mv-if="not(played) and not(declined)">
 												<button title="mark accepted"
 																mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.played)"
@@ -306,6 +310,7 @@
 							<td class="visible-[showSets]" mv-list property="requestedSets">
 								<span style="padding-left: 3ex" mv-list-item></span></td>
 						</tr>
+						</tbody>
 					</table>
 				</section>
 			</div>
@@ -329,7 +334,7 @@
 					</div>
 					<meta mv-list property="markidUids" mv-value="markidim.uid" mv-storage="inherit">
 					<meta property="meIsMarkid" mv-value="has(util.me.uid,markidUids) or url('markid')='' or requests.mysid='test'">
-					<div property="pushOutTimes" mv-multiple mv-initial-items="0">
+					<div property="pushOutTimes" mv-list mv-initial-items="0">
 						<meta property="uid">
 						<meta property="time" type="number">
 					</div>
@@ -421,7 +426,8 @@
 
 					<table class="dance-table">
 						<tr mv-if="count(played)>0"><th></th><th class="dance-label">Dance</th><th class="hide-if-[!showMarkid]">Assigned markid</th><th hidden>Notes</th></tr>
-						<tr mv-multiple class="playlist [if(myPlay and showMarkid,'my-play')]" property="played" mv-initial-items="0">
+						<tbody mv-list property="played" mv-initial-items="0">
+						<tr mv-list-item class="playlist [if(myPlay and showMarkid,'my-play')]">
 							<td><button mv-action="delete($this)">X</button></td>
 							<td><span property="label"></span>
 								<meta property="timestamp">
@@ -430,14 +436,14 @@
 								<input class="pending-delete" list="markidList"
 									   property="markid"></td>
 							<td mv-mode="edit"><span property="notes" mv-mode="edit"></span></td>
+							</tbody>
 						</tr>
 					</table>
 
 					<button mv-if="count(played)>0" class="clear-button" mv-action="delete(played)">Clear playlist</button>
 					
-					<datalist id="markidList">
-						<option mv-multiple property="ownerChoice" mv-attribute="value"
-								mv-value="markidim.name" value="[ownerChoice]"></option>
+					<datalist id="markidList" property="ownerChoice" mv-list mv-value="markidim.name" >
+						<option mv-list-item mv-attribute="value"></option>
 					</datalist>
 
 					<meta property="playedIndex" mv-value="makeIndex(played.label)">
@@ -465,9 +471,9 @@
 								<th><label class="hide-if-[hideOptions and !showRequests]"
 										   ><input class="hide-if-[hideOptions]" type="checkbox"
 												   mv-default="[hideOptions]" mv-storage="none"
-												   property="showRequests">Requests</label></th>
-							<tr property="users" mv-multiple class="users [if(active,'','inactive')]"
-								mv-value="sort(getUsers(util.signal),'-checkInTime')">
+															 property="showRequests">Requests</label></th>
+								<tbody property="users" mv-list mv-value="sort(getUsers(util.signal),'-checkInTime')">
+							<tr mv-list-item class="users [if(active,'','inactive')]">
 								<td>
 								  <span>
                     <meta property="uid">
@@ -488,7 +494,7 @@
 								</td>
 								<td><span mv-if="showActivity and active">[duration(thisMinute-checkInTime)] ago</span></td>
 								<td>
-									<div hidden property="picks" mv-multiple>
+									<div hidden property="picks" mv-list>
 										<meta property="label">
 										<meta property="timestamp">
 										<meta property="requestedSet">
@@ -497,19 +503,22 @@
 										<meta property="resolved" mv-value="played or declined">
 										<meta property="current" mv-value="timestamp > session.timeout">
 									</div>
-									<meta property="currentList" mv-multiple mv-value="sort(picks where current,'+resolved','-timestamp')">
-									<meta property="topPicks" mv-multiple mv-value="sort(first(requestLimit,currentList),'-timestamp')">
+									<meta property="currentList" mv-list mv-value="sort(picks where current,'+resolved','-timestamp')">
+									<meta property="topPicks" mv-list mv-value="sort(first(requestLimit,currentList),'-timestamp')">
 
 									<span mv-if="showRequests">[topPicks.label where not(has(label,playedIndex))]</span>
 								</td>
 							</tr>
+							</tbody>
 						</table>
 
-						<div property="toPushOut" mv-multiple mv-value="users where checkInTime > 0" mv-storage="none">
+						<div property="toPushOut" mv-list mv-value="users where checkInTime > 0">
+							<div mv-list-item>
 							<meta property="myuid" mv-value="uid">
 							<div property="container">
 								<meta property="uid" mv-value="myuid">
 								<meta property="time" mv-value="+$now">
+							</div>
 							</div>
 						</div>
 						<button mv-if="count(toPushOut)>0" mv-action="set(pushOutTimes,toPushOut.container)">Check All Out</button>
@@ -524,11 +533,13 @@
 
 					<table class="dance-table">
 						<tr mv-if="count(declined)>0"><th></th><th class="dance-label">Dance</th></tr>
-						<tr class="playlist" mv-multiple property="declined" mv-initial-items="0">
+						<tbody mv-list property="declined" mv-initial-items="0">
+						<tr mv-list-item="declined" class="playlist">
 							<td><button mv-action="delete($this)">X</button></td>
 							<td><span property="label"></span>
 								<meta property="timestamp">
 						</tr>
+						</tbody>
 					</table>
 
 					<button mv-if="count(declined)>0" class="clear-button" mv-action="delete(declined)">Clear Declined</button>
