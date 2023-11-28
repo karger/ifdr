@@ -172,12 +172,14 @@
 						style="order: 4" mv-action="set(help,!help)"
 						>Help</button>
 			</div>
-			<div hidden>[watchLoginState(me.uid)]</div>
 
 			<meta property="help" mv-value="0">
 			<meta property="configure">
 			<meta id="signal" property="signal">
-			<div property="me" mv-value="if(useNameLogin,nameLoginData,$user.data)">
+			<div property="namedUser" mv-value="$user.info">
+				<meta property="name" mv-value="displayName">
+			</div>
+			<div property="me" mv-value="if(useNameLogin,nameLoginData,namedUser)">
 				<meta property="uid"> <meta property="name">
 			</div>
 			<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
@@ -285,6 +287,39 @@
 					</div>
 				</section>
 
+
+				<!--Experiment-->
+				<div mv-list property="buildRequests" mv-value="(session.users where active)">
+					<div mv-list-item>
+						<div mv-list property="topPicks">
+							<meta property="pickerUid" mv-value="uid">
+							<meta property="pickerName" mv-value="name">
+							<meta property="pickerCheckIn" mv-value="checkInTime">
+							<!--remember to add functionality to deal with duplicate requests and request sets-->
+						</div>
+					</div>
+				</div>
+
+				<div property="tuples" mv-list mv-value="group_by(buildRequests.topPicks,buildRequests.topPicks.label)">
+					<div mv-list-item>
+						<meta property="$value">
+						<div property="$items" mv-list>
+							<meta property="pickerUid">
+							<meta property="pickerName">
+							<meta property="pickerCheckIn">
+							<meta property="timestamp" mv-alias="rTimestamp">
+						</div>
+						<div property="condensedPicks" mv-list>
+							<div mv-list-item>
+								<meta property="label" mv-value="$value">
+								<meta property="timestamp" mv-value="max(max($items.pickerCheckin),$items.rTimestamp)">
+								<meta property="count" mv-value="count($items)">
+								<meta property="names" mv-list mv-value="$items.pickerName">
+								<meta property="uids" mv-list mv-value="$items.pickerUid">
+							</div>
+						</div>
+					</div>
+				</div>
 				
 				<!--Requests-->
 				<section class="hide-if-[!mysid or !session.meIsMarkid]">
@@ -326,7 +361,7 @@
 							<td><input id="request-input" list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
 						</tr>
 
-						<tbody mv-list property="requests" mv-value="sort(mergePicks(condense(session.users where active,util.signal)),sortRule,'-count','-label')">
+						<tbody mv-list property="requests" mv-value="sort(condensedPicks,sortRule,'-count','-label')">
 						<tr mv-list-item class="request [if(played or declined,'played','unplayed')] [if(recent,'recent')]">
 							<td><span mv-if="not(played) and not(declined)">
 												<button title="mark accepted"
@@ -360,7 +395,7 @@
 			</div>
 
 			<div class="hide-if-[not(mysid)]"
-				 mv-app="session" mv-bar="none"
+					 mv-app="session" mv-bar="none"
 					 mv-storage-options="realtime skip-unsaved-data-warning"
 					 mv-source-options="realtime skip-unsaved-data-warning"
 				 mv-plugins="firebase-firestore sort"

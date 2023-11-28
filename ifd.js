@@ -78,53 +78,6 @@
 	}
     }
 
-    
-    let oldRequestMap = {};
-    mergePicks = function(users, notify) {
-	let requestMap = {}, newRequests=[];
-	users?.forEach((u) => {
-	    if (u) {
-		let {name, uid, checkInTime, topPicks=[]}=u;
-		topPicks.forEach(({label,timestamp=0,requestedSet}) => {
-		    if (!requestMap[label]) {
-			requestMap[label] = {label: label, count: 0, timestamp: 0, names: [], requestedSets: [], uids: {}};
-		    }
-		    let r=requestMap[label];
-		    if (!r.uids[uid]) {
-			r.count++;
-			r.names.push(name);
-			if (!!requestedSet) {
-			    r.requestedSets.push(requestedSet) }
-			r.uids[uid]=true;
-			if (r.timestamp < timestamp) {
-			    r.timestamp = timestamp;
-			}
-			if (r.timestamp < checkInTime) {
-			    r.timestamp = checkInTime;
-			}
-		    } else {
-			console.log("duplicate uid!");
-		    }
-		});
-	    }
-	});
-	for (const dance in requestMap) {
-	    delete dance.uids;
-	    if (!oldRequestMap[dance]) {
-		newRequests.push(dance);
-	    }
-	}
-	if (notify) {
-	    if (newRequests.length == 1) {
-		sendNotify("new request: " + newRequests[0]);
-	    } else if (newRequests.length > 1) {
-		sendNotify("new requests: " + newRequests.join(", "));
-	    }
-	}
-	oldRequestMap = requestMap;
-	return Object.values(requestMap);
-    }
-
     makeIndex = function(list,key) {
 	let map={};
 	if (key) { //indexing objects
@@ -158,6 +111,7 @@
 	    console.log(text);
 	}
     }
+
     
     window.addEventListener('load', ()=> {
 	document.body.addEventListener('focusin', (e)=> {
@@ -167,6 +121,17 @@
 	});
     });
 })();
+
+document.body.addEventListener("mv-login",() => {
+	document.body.classList.remove('logged-out');
+	document.body.classList.add('logged-in');
+});
+
+document.body.addEventListener("mv-logout",() => {
+	document.body.classList.remove('logged-in');
+	document.body.classList.add('logged-out');
+});
+
 
 (async function () {
     await Mavo.ready;

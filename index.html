@@ -229,6 +229,20 @@
 				<div hidden>
 					<!--[watchUsers(mysid,if(mysid='test' || !session.lookbackTime,365*24*60*60*1000,session.lookbackTime),util.useFavorites)]-->
 					[watchFont(fontSize)]
+					<div mv-list property="checkins">
+						<div mv-list-item>
+					  <span property="checkinSession"></span>
+					  <span property="time"></span>
+						</div>
+					</div>
+					<div property="nosession" mv-storage="none">
+					  <span property="checkinSession" mv-value="none"></span>
+					  <span property="time"></span>
+					</div>
+					<div property="checkin" mv-value="if(mysid,condense(checkins where session=mysid),nosession)">
+					  <span property="checkinSession"></span>
+					  <span property="time"></span>
+					</div>
 				</div>
 				<meta property="requestLimit" mv-value="session.requestLimit or 1000">
 				<div class="break"></div>
@@ -259,7 +273,7 @@
 					<meta property="publicWrite" mv-value="util.useNameLogin" mv-storage="inherit">
 					<meta property="sessionStorage"
 						  mv-value="if(mysid,'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & mysid,'none')">
-					<meta property="checkInTime" mv-default="[$startup]">
+					<meta property="checkInTime" mv-value="checkin.time" mv-storage="inherit">
 					<meta property="me" mv-group
 						  mv-value="if(util.useNameLogin,util.nameLoginData,$user.data)">
 					<meta property="name" mv-value="if(me,me.name,'unnamed user')" mv-storage="inherit">
@@ -297,6 +311,7 @@
 
 						<div mv-if="user.mysid and not util.favorites">If it's <span class="played">crossed out</span>, it's been accepted or declined.</div>
 
+						<button mv-action="set(picks.requestedSet,0)">Cleanup</button>
 						<div hidden mv-list="picks" mv-initial-items="0">
 							<div mv-list-item>
 							<span property="label"></span>
@@ -306,7 +321,7 @@
 							<meta property="resolved" mv-value="played or declined">
 							<meta property="current" mv-value="timestamp > session.timeout" mv-storage="none">
 							<meta property="eligible" mv-value="current and not(resolved)" mv-storage="none">
-							<meta property="requestedSet" mv-default="[lookup(topPicksIndex,label).requestedSet]" mv-storage="inherit">
+							<meta property="requestedSet" mv-default="[1*(lookup(topPicksIndex,label).requestedSet) || 0]" mv-storage="inherit">
 							</div>
 						</div>
 						<meta property="picksIndex" mv-value="makeIndex(picks,'label')">
@@ -318,7 +333,7 @@
 								<button mv-if="count(picks.eligible)>requestLimit" title="Demote request" mv-action="set(picks.timestamp where picks.label=label,oldestCurrent-1), if(checkedIn || noCheckout, set(checkInTime,+$now))">&darr;</button>
 								<button title="Remove request" mv-action="set(picks.timestamp where picks.label=label, session.timeout), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
-								<input  class="hide show-if-[session.showSets && lookup(dances.danceIndex,label).type=='P']" mv-attr-type="'number'" placeholder="set" min="1" property="requestedSet" mv-default="[lookup(picksIndex,label).requestedSet]" style="float: right; width: 3em">
+								<input  class="hide show-if-[session.showSets && lookup(dances.danceIndex,label).type=='P']" mv-attr-type="'number'" placeholder="set" min="1" property="requestedSet" mv-default="[1*(lookup(picksIndex,label).requestedSet) || 0]" style="float: right; width: 3em">
 								<meta property="timestamp">
 								<meta property="resolved">
 							</div>
@@ -354,6 +369,38 @@
 					</div>
 				</section>
 
+				<!--Experiment-->
+				<div hidden mv-list property="buildRequests" mv-value="(session.users where active)">
+					<div mv-list-item>
+						<div mv-list property="topPicks">
+							<meta property="pickerUid" mv-value="uid">
+							<meta property="pickerName" mv-value="name">
+							<meta property="pickerCheckIn" mv-value="checkInTime">
+							<!--remember to add functionality to deal with duplicate requests and request sets-->
+						</div>
+					</div>
+				</div>
+
+				<div hidden property="tuples" mv-list mv-value="group_by(buildRequests.topPicks,buildRequests.topPicks.label)">
+					<div mv-list-item>
+						<meta property="$value">
+						<div property="$items" mv-list>
+							<meta property="pickerUid">
+							<meta property="pickerName">
+							<meta property="pickerCheckIn">
+							<meta property="timestamp" mv-alias="rTimestamp">
+						</div>
+						<div property="condensedPicks" mv-list>
+							<div mv-list-item>
+								<meta property="label" mv-value="$value">
+								<meta property="timestamp" mv-value="max(max($items.pickerCheckin),$items.rTimestamp)">
+								<meta property="count" mv-value="count($items)">
+								<meta property="names" mv-list mv-value="$items.pickerName">
+								<meta property="uids" mv-list mv-value="$items.pickerUid">
+							</div>
+						</div>
+					</div>
+				</div>
 
 				
 				<section class="show-if-[!!user.mysid]">
@@ -366,7 +413,7 @@
 							<th>Dance</th>
 							<th>Count</th>
 						</tr>
-						<tbody mv-list="requests" mv-value="sort(mergePicks(session.users where active,util.signal,picks),'-count','+label')">
+						<tbody mv-list="requests" mv-value="sort(condensedPicks,'-count','+label')">
 							<tr class="request [if(lookup(session.playedIndex,label) or lookup(session.declinedIndex,label),'played','unplayed')]">
 								<td><button mv-class="show-logged-in" title="add request"
 														mv-if="user.checkedIn and not(mine) and not(played)"
