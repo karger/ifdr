@@ -29,10 +29,9 @@
 		    document.getElementById("request-button").click();
 		}
 	    }
-	}
-			 );
+	});
     }
-
+		
     let afterNap = function(f, nap = 10000) {
 	let lastTime = Date.now();
 	let inner = function() {
@@ -76,7 +75,7 @@
 		n.close();
 	    }, 4000);*/
 	}
-    }
+    };
 
     makeIndex = function(list,key) {
 	let map={};
@@ -122,16 +121,26 @@
     });
 })();
 
+/*
 document.body.addEventListener("mv-login",() => {
-	document.body.classList.remove('logged-out');
-	document.body.classList.add('logged-in');
+    document.body.classList.remove('logged-out');
+    document.body.classList.add('logged-in');
 });
 
 document.body.addEventListener("mv-logout",() => {
-	document.body.classList.remove('logged-in');
-	document.body.classList.add('logged-out');
+    document.body.classList.remove('logged-in');
+    document.body.classList.add('logged-out');
 });
+*/
 
+document.getElementById("topPicks")
+    ?.addEventListener("focusout", (e) => {
+	let id = e.target.getAttribute('data-target')
+	, node = document.getElementById(id)
+	, mavo = Mavo.Node.get(node);
+	mavo.render(event.target.value);
+    });
+		      
 
 (async function () {
     await Mavo.ready;

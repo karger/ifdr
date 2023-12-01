@@ -216,7 +216,7 @@
 				</datalist>
 				<meta property="danceIndex" mv-value="makeIndex(dance,'label')">
 			</div>
-			
+
 			<div
 				mv-app="user"
 				mv-storage-options="realtime skip-unsaved-data-warning"
@@ -311,7 +311,6 @@
 
 						<div mv-if="user.mysid and not util.favorites">If it's <span class="played">crossed out</span>, it's been accepted or declined.</div>
 
-						<button mv-action="set(picks.requestedSet,0)">Cleanup</button>
 						<div hidden mv-list="picks" mv-initial-items="0">
 							<div mv-list-item>
 							<span property="label"></span>
@@ -321,19 +320,25 @@
 							<meta property="resolved" mv-value="played or declined">
 							<meta property="current" mv-value="timestamp > session.timeout" mv-storage="none">
 							<meta property="eligible" mv-value="current and not(resolved)" mv-storage="none">
-							<meta property="requestedSet" mv-default="[1*(lookup(topPicksIndex,label).requestedSet) || 0]" mv-storage="inherit">
+							<!--<meta property="requestedSet" id="requested-set-[idify(label)]" mv-default="[1*(lookup(topPicksIndex,label).requestedSet)]" mv-storage="inherit"-->
+							<meta property="requestedSet" id="requested-set-[idify(label)]" mv-storage="inherit">
 							</div>
 						</div>
 						<meta property="picksIndex" mv-value="makeIndex(picks,'label')">
 						<meta property="currentList" mv-value="sort(picks where current,'+resolved','-timestamp')">
 						<meta property="oldestCurrent" mv-value=min(currentList.timestamp)>
 						
-						<div class="request-list" mv-list="topPicks" mv-value="sort(first(requestLimit,currentList),'-timestamp')">
+						<div id="topPicks" class="request-list" mv-list="topPicks" mv-value="sort(first(requestLimit,currentList),'-timestamp')">
 							<div class="[if(resolved,'played','unplayed')]" mv-list-item>
 								<button mv-if="count(picks.eligible)>requestLimit" title="Demote request" mv-action="set(picks.timestamp where picks.label=label,oldestCurrent-1), if(checkedIn || noCheckout, set(checkInTime,+$now))">&darr;</button>
 								<button title="Remove request" mv-action="set(picks.timestamp where picks.label=label, session.timeout), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
-								<input  class="hide show-if-[session.showSets && lookup(dances.danceIndex,label).type=='P']" mv-attr-type="'number'" placeholder="set" min="1" property="requestedSet" mv-default="[1*(lookup(picksIndex,label).requestedSet) || 0]" style="float: right; width: 3em">
+								<input  class="hide show-if-[session.showSets && lookup(dances.danceIndex,label).type=='P']"
+												mv-attr-type="number"
+												placeholder="set" min="1"
+												mv-default="[lookup(picksIndex,label).requestedSet]"
+												data-target="requested-set-[idify(label)]"
+												style="float: right; width: 3em">
 								<meta property="timestamp">
 								<meta property="resolved">
 							</div>
