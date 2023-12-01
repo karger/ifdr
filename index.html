@@ -333,7 +333,8 @@
 								<button mv-if="count(picks.eligible)>requestLimit" title="Demote request" mv-action="set(picks.timestamp where picks.label=label,oldestCurrent-1), if(checkedIn || noCheckout, set(checkInTime,+$now))">&darr;</button>
 								<button title="Remove request" mv-action="set(picks.timestamp where picks.label=label, session.timeout), if(checkedIn || noCheckout, set(checkInTime,+$now))">X</button>
 								<span property="label"></span>
-								<input  class="hide show-if-[session.showSets && lookup(dances.danceIndex,label).type=='P']"
+								<input  property="nextRequest"
+												class="hide show-if-[session.showSets && lookup(dances.danceIndex,label).type=='P']"
 												mv-attr-type="number"
 												placeholder="set" min="1"
 												mv-default="[lookup(picksIndex,label).requestedSet]"

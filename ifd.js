@@ -1,3 +1,5 @@
+//load as defer script
+
 (function () {
     
     Mavo.inited.then((m) => {
@@ -111,27 +113,13 @@
 	}
     }
 
-    
-    window.addEventListener('load', ()=> {
-	document.body.addEventListener('focusin', (e)=> {
-	    if (e.target.matches('.pending-delete')) {
-		e.target.select();
-	    }
-	});
-    });
 })();
 
-/*
-document.body.addEventListener("mv-login",() => {
-    document.body.classList.remove('logged-out');
-    document.body.classList.add('logged-in');
+document.body.addEventListener('focusin', (e)=> {
+    if (e.target.matches('.pending-delete')) {
+	e.target.select();
+    }
 });
-
-document.body.addEventListener("mv-logout",() => {
-    document.body.classList.remove('logged-in');
-    document.body.classList.add('logged-out');
-});
-*/
 
 document.getElementById("topPicks")
     ?.addEventListener("focusout", (e) => {
