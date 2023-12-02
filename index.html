@@ -47,27 +47,6 @@
 				flex-basis: 100%;
 				height: 0;
 			}
-			#name-login {
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				padding: 2em;
-				border: 2px solid black;
-				max-width: 40em;
-				background: white;
-				border-radius: 10px;
-				z-index: 10;
-			}
-			#name-login input {
-				padding: 3px;
-				margin: 3px;
-				border: 2px solid;
-				border-radius: 3px;
-			}
-			#name-login:not(.show-name-login) {
-				display: none;
-			}
 			body {
 				display: flex;
 				min-height: 98vh;
@@ -175,6 +154,9 @@
 					<button class="mv-login show-logged-out">Sign in using Google (secure)</button>
 					<button class="show-logged-out"
 							mv-action="set(showNameLogin,true)">Enter my name (insecure), or </button>
+					<button class="show-logged-in" mv-if="[useNameLogin && nameLoginData.name]"
+									mv-action="set(useNameLogin, false)">
+						Log out [nameLogInData.name]</button>
 					<button class="help" style="order: 3" mv-action="set(help,!help)">Help</button>
 				</div>
 
@@ -183,7 +165,7 @@
 				<meta property="useNameLogin" mv-default="[false]">
 				<div property="nameLoginData" id="name-login"
 					 mv-storage="local"
-					 class="[if(showNameLogin,'show-name-login')]">
+					 class="hide show-if-[showNameLogin]">
 					<div><b>Warning</b>: requests set up this way will not be secure; anyone will be able to modify them.  If you want a secure account, login with google.</div>
 					<div>Full name: <input style="width: 20em" property="name"
 										   ></div>

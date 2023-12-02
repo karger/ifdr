@@ -10,16 +10,13 @@
     border-radius: 10px;
     z-index: 10;
 }
-[mv-bar="none"] .mv-bar {
-    display: none;
-}
 #name-login input {
     padding: 3px;
     margin: 3px;
     border: 2px solid;
     border-radius: 3px;
 }
-.logged-out .show-logged-in {
+[mv-bar="none"] .mv-bar {
     display: none;
 }
 .hide:not(.show-if-true) {

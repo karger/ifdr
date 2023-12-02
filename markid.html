@@ -60,6 +60,9 @@
 				max-width: 80em;
 			}
 			/*requests*/
+			[mv-app="session"], [mv-app="requests"] {
+					display: contents;
+			}
 			.dance-table {
 				margin-left: 1em;
 			}
@@ -107,7 +110,7 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body class="logged-out">
 
 		<div hidden
 				 mv-app="sessionList"
@@ -161,22 +164,29 @@
 			 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 			 >
 			<div class="mv-bar mv-ui">
+				<div class="mv-status" mv-if="useNameLogin && nameLoginData.name">[nameLoginData.name]</div>
+				<button class="show-logged-in" mv-if="useNameLogin && nameLoginData.name"
+								mv-action="set(useNameLogin, false)">Log out</button>
 				<button class="mv-login show-logged-out">Sign in using Google (secure)</button>
 				<button mv-if="session.openMarkid && session.anonymousMarkid"
 						class="show-logged-out"
 						mv-action="set(showNameLogin,true)"
 						>Enter name (insecure), or </button>
-				<button mv-if="session.meIsMarkid" style="order: 3" mv-action="set(configure,!configure)"
+				<button mv-if="session.meIsMarkid && me.name" style="order: 3" mv-action="set(configure,!configure)"
+								class="show-logged-in"
 						>Configure session</button>
 				<button class="help"
 						style="order: 4" mv-action="set(help,!help)"
 						>Help</button>
 			</div>
 
+			<div style="display:none">[watchLoginState(me.name)]</div>
+			
 			<meta property="help" mv-value="0">
 			<meta property="configure">
 			<meta id="signal" property="signal">
 			<div property="namedUser" mv-value="$user.info">
+				<meta property="displayName">
 				<meta property="name" mv-value="displayName">
 			</div>
 			<div property="me" mv-value="if(useNameLogin,nameLoginData,namedUser)">
@@ -188,7 +198,7 @@
 				<meta property="useNameLogin" mv-default="[false]">
 				<div property="nameLoginData" id="name-login"
 					 mv-storage="local"
-					 class="hide hide-if-[!showNameLogin]">
+					 class="hide show-if-[showNameLogin]">
 					<div>Full name: <input style="width: 20em" property="name"
 										   ></div>
 					<meta property="uid" mv-value="name">
@@ -231,7 +241,7 @@
 		
 		<main>
 		  <div mv-app="requests" mv-storage="none" mv-bar="none"
-				 mv-plugins="sort" style="display:contents">
+					 mv-plugins="sort">
 				<!--header-->
 				<section id="heading">
 					<meta property="sessions" mv-value="sessionList.$items">
@@ -323,7 +333,7 @@
 				</div>
 				
 				<!--Requests-->
-				<section class="hide-if-[!mysid or !session.meIsMarkid]">
+				<section class="hide-if-[!mysid or !session.meIsMarkid] show-logged-in">
 					<div>
 						<h2>Requests</h2>
 					</div>
@@ -395,7 +405,7 @@
 				</section>
 			</div>
 
-			<div class="hide-if-[not(mysid)]"
+			<div class="show-logged-in hide-if-[not(mysid)]"
 					 mv-app="session" mv-bar="none"
 					 mv-storage-options="realtime skip-unsaved-data-warning"
 					 mv-source-options="realtime skip-unsaved-data-warning"
@@ -405,8 +415,7 @@
 				 mv-storage="[if(util.me.uid,util.sessionStore,'')]"
 				 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
 				 mv-storage-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I"
-				 style="display:contents"
-				 >
+					 >
 				<div style="display:none">
 					<div mv-list="markidim" mv-initial-items="0">
 						<meta property="uid"> <meta property="name">

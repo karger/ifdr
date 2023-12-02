@@ -136,7 +136,7 @@ document.getElementById("topPicks")
     Mavo.DOMExpression.special.event("$user", {
 				type: "mv-login mv-logout",
 				update: (evt) => {
-						return evt.backend.user
+				    return (evt.type=="mv-login") ? evt.backend.user : null;
 				}
     });
 })();
