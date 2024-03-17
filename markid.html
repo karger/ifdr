@@ -6,6 +6,10 @@
 		<title>IFD Markid</title>
 		<script src="//get.mavo.io/mavo.es5.js"></script>
 		<link rel="stylesheet" href="//get.mavo.io/mavo.css">
+		<script src="https://stretchy.verou.me/dist/stretchy.iife.js"></script>
+		<script>
+			Stretchy.selectors.filter = ".mv-editor:not([property]), .mv-autosize"; 
+		</script>
 		<script src="https://firebase-plugin.netlify.app/src/mavo-firebase-firestore.js"></script>
 		<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -226,8 +230,8 @@
 			<div property="dancedb" mv-list>
 				<div mv-list-item>
 				<meta property="label">
-				<meta property="Type">
-				<meta property="Choreographer">
+				<meta property="type">
+				<meta property="choreographer">
 				</div>
 			</div>
 			<meta property="danceIndex" mv-value=makeIndex(dancedb,"label")>
@@ -240,8 +244,7 @@
 		</div>
 		
 		<main>
-		  <div mv-app="requests" mv-storage="none" mv-bar="none"
-					 mv-plugins="sort">
+		  <div mv-app="requests" mv-storage="none" mv-bar="none">
 				<!--header-->
 				<section id="heading">
 					<meta property="sessions" mv-value="sessionList.$items">
@@ -323,10 +326,15 @@
 							<div mv-list-item>
 								<meta property="label" mv-value="$value">
 								<meta property="timestamp" mv-value="max(max($items.pickerCheckin),$items.rTimestamp)">
+								<meta property="metadata" mv-value="lookup(dancedbApp.danceIndex,label)">
+								<meta property="choreographer" mv-value="metadata.choreographer">
+								<meta property="type" mv-value="metadata.type">
 								<meta property="count" mv-value="count($items)">
 								<meta property="names" mv-list mv-value="$items.pickerName">
 								<meta property="uids" mv-list mv-value="$items.pickerUid">
 								<meta property="requestedSets" mv-list mv-value="condense($items.requestedSet)">
+								<meta property="key"
+											mv-value="get(condensedPicks,sortRule) & (99-count) & type & label">
 							</div>
 						</div>
 					</div>
@@ -339,14 +347,15 @@
 					</div>
 
 					<meta property="thisMinute" mv-value="round($now/60000)*60000">
-					<meta property="sortRule" mv-default="-count">
+					<meta property="sortRule" mv-default="count">
+
 					<table class="dance-table [if(session.showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>
 							<th><!--accept button--></th>
-							<th class="dance-label">Dance</th>
-							<th mv-action="set(sortRule,'-count')">Count</th>
-							<th mv-action="set(sortRule,'-choreographer')">Choreographer</th>
-							<th mv-action="set(sortRule,'-type')">Type</th>
+							<th class="dance-label" mv-action="set(sortRule,'label')">Dance</th>
+							<th mv-action="set(sortRule,'count')">Count</th>
+							<th mv-action="set(sortRule,'choreographer')">Choreographer</th>
+							<th mv-action="set(sortRule,'type')">Type</th>
 							<th style="width: 20ex">
 								<label class="hide-if-[session.hideOptions and !showTimes]"
 									   ><input class="hide-if-[session.hideOptions]"
@@ -371,8 +380,9 @@
 							<td><button id="request-button" mv-action="add(group(label: playSelection, timestamp: +$now, markid: util.me.name),session.played); set(playSelection,'')">accept</button>
 							<td><input id="request-input" list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
 						</tr>
-
-						<tbody mv-list property="requests" mv-value="sort(condensedPicks,sortRule,'-count','-label')">
+						<tbody mv-list property="requests"
+									 mv-value="sort(condensedPicks, condensedPicks.key)">
+							
 						<tr mv-list-item class="request [if(played or declined,'played','unplayed')] [if(recent,'recent')]">
 							<td><span mv-if="not(played) and not(declined)">
 												<button title="mark accepted"
@@ -409,7 +419,7 @@
 					 mv-app="session" mv-bar="none"
 					 mv-storage-options="realtime skip-unsaved-data-warning"
 					 mv-source-options="realtime skip-unsaved-data-warning"
-				 mv-plugins="firebase-firestore sort"
+				 mv-plugins="firebase-firestore"
 				 mv-autosave="2"
 				 mv-source="[util.sessionStore]"
 				 mv-storage="[if(util.me.uid,util.sessionStore,'')]"
@@ -560,7 +570,7 @@
 										   ><input class="hide-if-[hideOptions]" type="checkbox"
 												   mv-default="[hideOptions]" mv-storage="none"
 															 property="showRequests">Requests</label></th>
-								<tbody property="users" mv-list mv-value="sort(userList.users,'-checkInTime')">
+								<tbody property="users" mv-list mv-value="sort(userList.users,'checkInTime',order: 'desc')">
 							<tr mv-list-item class="users [if(active,'','inactive')]">
 								<td>
 								  <span>
@@ -591,8 +601,9 @@
 										<meta property="resolved" mv-value="played or declined">
 										<meta property="current" mv-value="timestamp > session.timeout">
 									</div>
-									<meta property="currentList" mv-list mv-value="sort(picks where current,'+resolved','-timestamp')">
-									<meta property="topPicks" mv-list mv-value="sort(first(requestLimit,currentList),'-timestamp')">
+									<meta property="unsrtCurrentList" mv-value="picks where current">
+									<meta property="currentList" mv-list mv-value="sort(unsrtCurrentList,unsrtCurrentList.resolved & ($startup+1000*60*60*24*7-unsrtCurrentList.timestamp))">
+									<meta property="topPicks" mv-list mv-value="sort(first(requestLimit,currentList),'timestamp', order: desc)">
 
 									<span mv-if="showRequests">[topPicks.label where not(has(label,playedIndex))]</span>
 								</td>
@@ -643,5 +654,5 @@
 		<footer>Created by David Karger.  <a href="mailto:karger@mit.edu">Please send feedback.</a></footer>
 
 
-	</body>
+</body>
 </html>

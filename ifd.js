@@ -1,7 +1,7 @@
 //load as defer script
 
 (function () {
-    
+
     Mavo.inited.then((m) => {
 		let session = Mavo.get(document.querySelector('[mv-app=session]'));
 		afterNap(()=>{console.log('woke '+(new Date()).toLocaleTimeString()); session.load()})
@@ -103,6 +103,12 @@
 	}
     }
 
+//		Mavo.hooks.add("domexpression-update-aftereval", function ({oldValue, value, context} = env) {
+//				if (context.expression.startsWith("sort(co")) {
+//						console.log({oldValue, value, context});
+//				}
+//});
+		
     rest = function(n, arr=n) {
 	return arr.slice(arguments.length > 1 ? n : 1);
     }

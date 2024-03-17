@@ -329,7 +329,7 @@
 						<meta property="topPicksIndex" mv-value="makeIndex(topPicks,'label')">
 
 						<div class="request-list hide show-if-[count(overflowPicks) > 0]">
-							<h3>Overflow Requests</h3>
+							<h3>Overflow Picks</h3>
 							<div>(Request limit is [session.requestLimit])</div>
 							<div class="request-list" mv-list="overflowPicks" mv-value="sort(rest(requestLimit,currentList),'-timestamp')">
 								<div class="[if(resolved,'played','unplayed')]" mv-list-item>
