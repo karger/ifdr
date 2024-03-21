@@ -6,10 +6,6 @@
 		<title>IFD Markid</title>
 		<script src="//get.mavo.io/mavo.es5.js"></script>
 		<link rel="stylesheet" href="//get.mavo.io/mavo.css">
-		<script src="https://stretchy.verou.me/dist/stretchy.iife.js"></script>
-		<script>
-			Stretchy.selectors.filter = ".mv-editor:not([property]), .mv-autosize"; 
-		</script>
 		<script src="https://firebase-plugin.netlify.app/src/mavo-firebase-firestore.js"></script>
 		<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -139,11 +135,9 @@
 				 mv-source-query="[query]"
 				 mv-source-options="realtime"
 				 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
-			<div property="localSid" mv-value="url('session')"></div>
 			<meta property="prefix" content="where('mysid','==','">
-			<meta property="suffix" content="').where('checkInTime','>',[$startup-(session.lookbackTime || 365*24*60*60*100)])">
+			<meta property="suffix" content="').where('checkInTime','>',[$startup-(session.lookbackTime || 365*24*60*60*1000)])">
 			<meta property="query" mv-value="prefix & url('session') & suffix">
-			<meta property="aquery" content="where('mysid','==','[localSid]').where('checkInTime','>',[$startup-(session.lookbackTime || 365*24*60*60*100)])">
 			<div property="$items" mv-list>
 				<div mv-list-item>
 					<meta property="data">
@@ -153,7 +147,7 @@
 						<meta property="name" mv-value="data.name">
 						<meta property="zoomName" mv-value="data.zoomName">
 						<meta property="checkInTime" mv-value="data.checkInTime">
-						<meta property="picks" mv-value="data.picks">
+						<meta property="picks" mv-list mv-value="data.picks">
 					</div>
 				</div>
 			</div>
@@ -575,12 +569,14 @@
 								<td>
 								  <span>
                     <meta property="uid">
-									<meta property="checkInTime">
-									<meta property="name">
-									<meta property="zoomName">
-									<meta property="pushOutTime" mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
-									<meta property="active" mv-value="checkInTime > (pushOutTime or 0)">
-                                                                  </span>
+										<meta property="checkInTime">
+										<meta property="name">
+										<meta property="zoomName">
+										<meta property="pushOutTime"
+													mv-value="lookup(lookup(pushOutIndex,uid),'time') or -1">
+										<meta property="active"
+													mv-value="checkInTime > (pushOutTime or 0)">
+                  </span>
 									<button mv-action="add(group(uid:uid,name:name),markidim)" mv-if="addMarkid and not(uid in markidim.uid)">Make Markid</button>
 									<button mv-action="delete(markidim where uid=uid)" mv-if="addMarkid and (uid in markidim.uid) and not(uid=util.me.uid)">Remove Markid</button>
 									<button mv-if="not(active)" title="Check in" 
@@ -600,11 +596,10 @@
 										<meta property="declined" mv-value="!!lookup(session.declinedIndex,label)">
 										<meta property="resolved" mv-value="played or declined">
 										<meta property="current" mv-value="timestamp > session.timeout">
+										<meta property="key" mv-storage="none" mv-value="!resolved & timestamp">
 									</div>
-									<meta property="unsrtCurrentList" mv-value="picks where current">
-									<meta property="currentList" mv-list mv-value="sort(unsrtCurrentList,unsrtCurrentList.resolved & ($startup+1000*60*60*24*7-unsrtCurrentList.timestamp))">
+									<meta property="currentList" mv-list mv-value="sort(picks where current,'key')">
 									<meta property="topPicks" mv-list mv-value="sort(first(requestLimit,currentList),'timestamp', order: desc)">
-
 									<span mv-if="showRequests">[topPicks.label where not(has(label,playedIndex))]</span>
 								</td>
 							</tr>
