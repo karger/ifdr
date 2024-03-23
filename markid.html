@@ -155,7 +155,7 @@
 		
 		<!--login/utility-->
 		<div mv-app="util" mv-storage="none"
-			 mv-source-options="auth realtime skip-unsaved-data-warning"
+			 mv-source-options="auth realtime"
 			 mv-plugins="firebase-firestore"
 			 mv-bar="status login logout"
 			 mv-source="https://mavo-cd7c3.firebaseio.com/ifdr-user/0"
@@ -192,7 +192,7 @@
 			</div>
 			<meta property="sessionStore" mv-value="if(url('session'),'https://mavo-cd7c3.firebaseio.com/ifdr-session/' & url('session'),'none')">
 
-				<meta property="showNameLogin">
+				<meta property="showNameLogin" mv-default="[false]">
 				<meta property="useNameLogin" mv-default="[false]">
 				<div property="nameLoginData" id="name-login"
 					 mv-storage="local"
@@ -239,7 +239,7 @@
 		
 		<main>
 		  <div mv-app="requests" mv-storage="none" mv-bar="none">
-				<!--header-->
+
 				<section id="heading">
 					<meta property="sessions" mv-value="sessionList.$items">
 					<meta property="mysid" mv-value="url('session')">
@@ -324,11 +324,12 @@
 								<meta property="choreographer" mv-value="metadata.choreographer">
 								<meta property="type" mv-value="metadata.type">
 								<meta property="count" mv-value="count($items)">
+								<meta property="fixCount" mv-value="99-count">
 								<meta property="names" mv-list mv-value="$items.pickerName">
 								<meta property="uids" mv-list mv-value="$items.pickerUid">
 								<meta property="requestedSets" mv-list mv-value="condense($items.requestedSet)">
 								<meta property="key"
-											mv-value="get(condensedPicks,sortRule) & (99-count) & type & label">
+											mv-value="get(condensedPicks,sortRule) & fixCount & type & label">
 							</div>
 						</div>
 					</div>
@@ -347,7 +348,7 @@
 						<tr>
 							<th><!--accept button--></th>
 							<th class="dance-label" mv-action="set(sortRule,'label')">Dance</th>
-							<th mv-action="set(sortRule,'count')">Count</th>
+							<th mv-action="set(sortRule,'fixCount')">Count</th>
 							<th mv-action="set(sortRule,'choreographer')">Choreographer</th>
 							<th mv-action="set(sortRule,'type')">Type</th>
 							<th style="width: 20ex">
