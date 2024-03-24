@@ -46,8 +46,11 @@
 				width: 100%;
 				max-width: 100%;
 			}
-			#session-select {
-				float: right;
+			[mv-app=sessionList] {
+				flex-basis: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
 			}
 			span[mv-multiple]:not(:last-child):after {
 				content: ", "
@@ -113,21 +116,7 @@
 	<body class="logged-out">
 
 		<div hidden
-				 mv-app="sessionList"
-				 mv-plugins="firebase-firestore"
-				 mv-bar="none"
-				 mv-source="firebase://mavo-cd7c3/ifdr-session"
-				 mv-source-query
-				 mv-source-options="realtime"
-				 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
-			<div property="$items" mv-list>
-				<div mv-list-item>
-					<span property="name" mv-value="data.name"></span>
-				</div>
-			</div>
-		</div>
-
-		<div mv-app="userList"
+				 mv-app="userList"
 				 mv-plugins="firebase-firestore"
 				 style="display: none";
 				 mv-bar="none"
@@ -182,7 +171,6 @@
 			
 			<meta property="help" mv-value="0">
 			<meta property="configure">
-			<meta id="signal" property="signal">
 			<div property="namedUser" mv-value="$user.info">
 				<meta property="displayName">
 				<meta property="name" mv-value="displayName">
@@ -213,6 +201,27 @@
 
 		</div>
 
+		<div mv-app="sessionList"
+				 mv-plugins="firebase-firestore"
+				 mv-bar="none"
+				 mv-source="firebase://mavo-cd7c3/ifdr-session"
+				 mv-source-query
+				 mv-source-key="AIzaSyC0PxY82lVLTLv80ZU1z5sz1azoYZits0I">
+			<meta property="sid" mv-value="url('session')">
+
+			<h2 mv-if="sid" property="sessionName">[condense($items where id=sid).name]</h2>
+
+			<form id="session-select" method="get" action="markid.html">
+				<select property="nextSession" name="session">
+					<option value="" selected="[!sid]">Choose a session</option>
+					<optgroup mv-list="$items">
+						<option mv-group mv-list-item value="[id]" selected="[id=sid]">[name]</option>
+					</optgroup>
+				</select>
+				<input type="submit" value="Go to Session">
+			</form>
+		</div>
+
 		<!--dance list-->
 		<div hidden mv-app="dances" mv-storage="none" mv-source="[if(url('session'),'ifd.csv','none')]" mv-format="csv">
 			<datalist id="dancelist" mv-list="dances">
@@ -238,10 +247,10 @@
 		</div>
 		
 		<main>
-		  <div mv-app="requests" mv-storage="none" mv-bar="none">
 
+		  <div mv-app="requests" mv-storage="none" mv-bar="none">
+					
 				<section id="heading">
-					<meta property="sessions" mv-value="sessionList.$items">
 					<meta property="mysid" mv-value="url('session')">
 
 					<ol mv-if="util.help">
@@ -255,22 +264,8 @@
 						<li>Below that is a list of folks currently checked in to your session.  You can check them out by clicking the <button>X</button>.  Or check them back in by clicking the <button>+</button>.</li>
 						<li>The list of folks also has a checkbox to let you see requests by individual.
 					</ol>
-					
-
-					<form id="session-select" method="get" action="markid.html">
-						<select property="nextSession" name="session">
-							<option value="" selected="[!url('session')]">Choose a session</option>
-							<optgroup mv-list mv-value="sessionList.$items">
-								<option mv-group mv-list-item value="[id]"  selected="[id=url('session')]">[name]</option>
-							</optgroup>
-						</select>
-						<input type="submit" value="Go to Session">
-					</form>
 					<div mv-if="not(mysid)">Choose a session to begin</div>
 
-					<div mv-if="mysid">
-						<h2 property="sessionName">[condense(sessions where id=mysid).name]</h2>
-					</div>
 					<div mv-if="!util.me.uid">
 						Please <span mv-if="anonymousMarkid">enter your name </span>or sign in above.
 					</div>
