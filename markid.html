@@ -320,12 +320,13 @@
 								<meta property="choreographer" mv-value="metadata.choreographer">
 								<meta property="type" mv-value="metadata.type">
 								<meta property="count" mv-value="count($items)">
-								<meta property="fixCount" mv-value="99-count">
+								<meta property="countKey" mv-value="99-count">
+								<meta property="timeKey" mv-value="$startup+365*24*7*60*60*1000-timestamp">
 								<meta property="names" mv-list mv-value="$items.pickerName">
 								<meta property="uids" mv-list mv-value="$items.pickerUid">
 								<meta property="requestedSets" mv-list mv-value="condense($items.requestedSet)">
 								<meta property="key"
-											mv-value="get(condensedPicks,sortRule) & fixCount & type & label">
+											mv-value="get(condensedPicks,sortRule) & countKey & type & label">
 							</div>
 						</div>
 					</div>
@@ -344,15 +345,16 @@
 						<tr>
 							<th><!--accept button--></th>
 							<th class="dance-label" mv-action="set(sortRule,'label')">Dance</th>
-							<th mv-action="set(sortRule,'fixCount')">Count</th>
+							<th mv-action="set(sortRule,'countKey')">Count</th>
 							<th mv-action="set(sortRule,'choreographer')">Choreographer</th>
 							<th mv-action="set(sortRule,'type')">Type</th>
 							<th>
-								<label class="hide-if-[session.hideOptions and !showTimes]"
+								<span class="hide-if-[session.hideOptions and !showTimes]"
 									   ><input class="hide-if-[session.hideOptions]"
 											   type="checkbox" property="showTimes"
 											   mv-default="true" mv-storage="none"
-											   >When</label>
+														 ><span mv-action="set(sortRule,'timeKey')"
+																>When</span>
 							</th>
 							<th style="padding-left: 2ex; text-align: left; width: [if(showNames,'30ex','8ex')]">
 								<label class="hide-if-[session.hideOptions and !showNames]"
