@@ -154,7 +154,7 @@
 					<button class="mv-login show-logged-out">Sign in using Google (secure)</button>
 					<button class="show-logged-out"
 							mv-action="set(showNameLogin,true)">Enter my name (insecure), or </button>
-					<button class="show-logged-in" mv-if="[useNameLogin && nameLoginData.name]"
+					<button class="show-logged-in" mv-if="useNameLogin && nameLoginData.name"
 									mv-action="set(useNameLogin, false)">
 						Log out [nameLogInData.name]</button>
 					<button class="help" style="order: 3" mv-action="set(help,!help)">Help</button>

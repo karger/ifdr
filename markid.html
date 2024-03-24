@@ -67,7 +67,8 @@
 					display: contents;
 			}
 			.dance-table {
-				margin-left: 1em;
+					margin-left: 1em;
+					border-spacing: 1ex 2px;
 			}
 			.my-play {
 				font-weight: bold;
@@ -255,7 +256,7 @@
 
 					<ol mv-if="util.help">
 						<h2>Help</h2>
-						<li mv-if="!url('session')">Choose your session using the dropdown and click <button>Go to Session</button></li>
+						<li mv-if="!url('session')">Choose your session using the dropdown and click the Go to Session button there</li>
 						<li mv-if="!util.me.uid">Log in at the top</li>
 						<li>Look over the requests</li>
 						<li>Click <button>accept</button> next to each request you play or queue up, so it will be marked played.</li>
@@ -289,11 +290,11 @@
 					</div>
 				</section>
 
-
-				<!--Experiment-->
 				<div mv-list property="buildRequests" mv-value="(session.users where active)" style="display:none">
 					<div mv-list-item>
 						<div mv-list property="topPicks">
+							<meta property="label">
+							<meta property="timestamp">
 							<meta property="pickerUid" mv-value="uid">
 							<meta property="pickerName" mv-value="name">
 							<meta property="pickerCheckIn" mv-value="checkInTime">
@@ -346,7 +347,7 @@
 							<th mv-action="set(sortRule,'fixCount')">Count</th>
 							<th mv-action="set(sortRule,'choreographer')">Choreographer</th>
 							<th mv-action="set(sortRule,'type')">Type</th>
-							<th style="width: 20ex">
+							<th>
 								<label class="hide-if-[session.hideOptions and !showTimes]"
 									   ><input class="hide-if-[session.hideOptions]"
 											   type="checkbox" property="showTimes"
@@ -392,12 +393,16 @@
 								<span property="choreographer" mv-value="metadata.choreographer"></span></td>
 							<td>
 								<span property="type" mv-value="metadata.type"></span></td>
-							<td class="visible-[showTimes]"  style="padding-left: 3ex">
+							<td  style="padding-left: 3ex">
+								<span class="show-if-[showTimes]" >
 								<meta property="timestamp">
 								<span class="r-time">[duration(thisMinute-timestamp)]</span></td>
-							<td class="visible-[showNames]" style="width: [if(showNames,'30ex','8ex')]" mv-list property="names">
-								<span mv-list-item></span></td>
-							<td class="visible-[showSets]" mv-list property="requestedSets">
+							<td  style="width: [if(showNames,'30ex','8ex')]">
+								<span class="show-if-[showNames]" mv-list property="names">
+									<span mv-list-item></span></span>
+								</span>
+							</td>
+							<td class="show-if-[showSets]" mv-list property="requestedSets">
 								<span style="padding-left: 3ex" mv-list-item></span></td>
 						</tr>
 						</tbody>
@@ -596,7 +601,7 @@
 									</div>
 									<meta property="currentList" mv-list mv-value="sort(picks where current,'key')">
 									<meta property="topPicks" mv-list mv-value="sort(first(requestLimit,currentList),'timestamp', order: desc)">
-									<span mv-if="showRequests">[topPicks.label where not(has(label,playedIndex))]</span>
+									<span mv-if="showRequests">[condense(topPicks.label where not(has(topPicks.label,playedIndex)))]</span>
 								</td>
 							</tr>
 							</tbody>
