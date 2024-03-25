@@ -339,11 +339,11 @@
 					</div>
 
 					<meta property="thisMinute" mv-value="round($now/60000)*60000">
-					<meta property="sortRule" mv-default="count">
+					<meta property="sortRule" mv-default="label">
 
 					<table class="dance-table [if(session.showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>
-							<th><!--accept button--></th>
+							<th><!--accept/decline buttons--></th>
 							<th class="dance-label" mv-action="set(sortRule,'label')">Dance</th>
 							<th mv-action="set(sortRule,'countKey')">Count</th>
 							<th mv-action="set(sortRule,'choreographer')">Choreographer</th>
@@ -356,12 +356,12 @@
 														 ><span mv-action="set(sortRule,'timeKey')"
 																>When</span>
 							</th>
-							<th style="padding-left: 2ex; text-align: left; width: [if(showNames,'30ex','8ex')]">
+							<th style="padding-left: 2ex; text-align: left; width: [if(showNames,'30ex','4ex')]">
 								<label class="hide-if-[session.hideOptions and !showNames]"
 									   ><input class="hide-if-[session.hideOptions]" type="checkbox"
 											   property="showNames" mv-default="true" mv-storage="none">Who</label>
 							</th>
-							<th style="text-align: left; width: 6ex">
+							<th mv-if="session.showSets" style="text-align: left; width: 6ex">
 								<label class="hide-if-[!session.showSets]"
 									   ><input class="hide-if-[session.hideOptions]" type="checkbox" mv-default="[session.showSets]"
 											   property="showSets" mv-storage="none">Set</label>
@@ -370,8 +370,11 @@
 						</tr>
 
 						<tr>
-							<td><button id="request-button" mv-action="add(group(label: playSelection, timestamp: +$now, markid: util.me.name),session.played); set(playSelection,'')">accept</button>
-							<td><input id="request-input" list="dancelist" placeholder="Enter Dance" property="playSelection" mv-storage="none">
+							<td><button id="request-button"
+													mv-action="add(group(label: playSelection, timestamp: +$now, markid: util.me.name),session.played); set(playSelection,'')"
+													>accept</button>
+							<td><input id="request-input" list="dancelist" placeholder="Enter Dance"
+												 property="playSelection" mv-storage="none">
 						</tr>
 						<tbody mv-list property="requests"
 									 mv-value="sort(condensedPicks, condensedPicks.key)">
@@ -384,7 +387,7 @@
 												<button mv-if="session.enableDeclines" title="mark declined"
 																mv-action="add(group(label: label, timestamp: +$now, markid: util.me.name),session.declined)"
 																>decline</button>
-                </span>
+                </span></td>
   							  <meta property="played" mv-value="lookup(session.playedIndex,label)">
  									<meta property="declined" mv-value="lookup(session.declinedIndex,label)">
 									<meta property="metadata" mv-value="lookup(dancedbApp.danceIndex,label)">
@@ -395,7 +398,7 @@
 								<span property="choreographer" mv-value="metadata.choreographer"></span></td>
 							<td>
 								<span property="type" mv-value="metadata.type"></span></td>
-							<td  style="padding-left: 3ex">
+							<td style="padding-left: 3ex">
 								<span class="show-if-[showTimes]" >
 								<meta property="timestamp">
 								<span class="r-time">[duration(thisMinute-timestamp)]</span></td>
@@ -404,7 +407,7 @@
 									<span mv-list-item></span></span>
 								</span>
 							</td>
-							<td class="show-if-[showSets]" mv-list property="requestedSets">
+							<td class="show-if-[session.showSets && showSets]" mv-list property="requestedSets">
 								<span style="padding-left: 3ex" mv-list-item></span></td>
 						</tr>
 						</tbody>
@@ -493,8 +496,8 @@
 
 					<div>Max requests per user: <input property="requestInput" mv-attr-type="'number'" min="0" max="1000"></div>
 					<meta property="requestLimit" mv-value="if(requestInput='',100,requestInput)" mv-storage="inherit">
-					<div> <label><input type="checkbox" property="showPlayed">Include accepted dances in Requests list</label></div>
-					<div><input type="checkbox" property="enableDeclines"> Dances can be declined</div>
+					<div><label><input type="checkbox" property="showPlayed">Include accepted dances in Requests list</label></div>
+					<div><label><input type="checkbox" property="enableDeclines"> Dances can be declined</label></div>
 				  </section>
 				  <section>
 				    <h3>Markidim</h3>
