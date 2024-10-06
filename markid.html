@@ -58,6 +58,9 @@
 			span[mv-list-item]:not(:last-child):after {
 				content: ", "
 			}
+			.sorted-by-true::after {
+			content: "▼"
+			}
 			section {
 				margin-right: 2em;
 				max-width: 80em;
@@ -344,11 +347,16 @@
 					<table class="dance-table [if(session.showPlayed, 'showPlayed', 'hidePlayed')]">
 						<tr>
 							<th><!--accept/decline buttons--></th>
-							<th class="dance-label" mv-action="set(sortRule,'label')">Dance</th>
-							<th mv-action="set(sortRule,'countKey')">Count</th>
-							<th mv-action="set(sortRule,'choreographer')">Choreographer</th>
-							<th mv-action="set(sortRule,'type')">Type</th>
-							<th>
+							<th class="dance-label sorted-by-[sortRule='label']"
+									mv-action="set(sortRule,'label')">Dance</th>
+							<th mv-action="set(sortRule,'countKey')"
+									class="sorted-by-[sortRule='countKey']">Count</th>
+							<th mv-action="set(sortRule,'choreographer')"
+									class="sorted-by-[sortRule='choreographer']">Choreographer</th>
+							<th mv-action="set(sortRule,'type')"
+									class="sorted-by-[sortRule='type']">Type</th>
+							<th
+								class="sorted-by-[sortRule='timeKey']">
 								<span class="hide-if-[session.hideOptions and !showTimes]"
 									   ><input class="hide-if-[session.hideOptions]"
 											   type="checkbox" property="showTimes"
@@ -357,14 +365,14 @@
 																>When</span>
 							</th>
 							<th style="padding-left: 2ex; text-align: left; width: [if(showNames,'30ex','4ex')]">
-								<label class="hide-if-[session.hideOptions and !showNames]"
+								<span class="hide-if-[session.hideOptions and !showNames]"
 									   ><input class="hide-if-[session.hideOptions]" type="checkbox"
-											   property="showNames" mv-default="true" mv-storage="none">Who</label>
+											   property="showNames" mv-default="true" mv-storage="none">Who</span>
 							</th>
 							<th mv-if="session.showSets" style="text-align: left; width: 6ex">
-								<label class="hide-if-[!session.showSets]"
+								<span class="hide-if-[!session.showSets]"
 									   ><input class="hide-if-[session.hideOptions]" type="checkbox" mv-default="[session.showSets]"
-											   property="showSets" mv-storage="none">Set</label>
+											   property="showSets" mv-storage="none">Set</span>
 							</th>
 
 						</tr>
@@ -538,7 +546,7 @@
 						</tr>
 					</table>
 
-					<button mv-if="count(played)>0" class="clear-button" mv-action="delete(played)">Clear playlist</button>
+					<button mv-if="count(played)>0" class="clear-button" mv-action="delete(played)">Clear accepted</button>
 					
 					<datalist id="markidList" property="ownerChoice" mv-list mv-value="markidim.name" >
 						<option mv-list-item mv-attribute="value"></option>
